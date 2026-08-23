@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178743587021516460.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178743587021516460.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178743587021516460.png"
   },
   {
     "id": "7fa80b509487cc70b5a1",
@@ -30,7 +34,7 @@
     "published": "2026-08-22T18:08:52+00:00",
     "published_at": "2026-08-22T18:08:52+00:00",
     "collected_at": "2026-08-23T06:03:14.327309+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "\"النقطة الأساسية المتعلقة بالنوم هي أنه ليس زر تشغيل وإيقاف\". يتحدث هذا التقرير عن تجربة حقيقية لمحاولة الحصول على نوم جيد.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/eed1/live/42c59f30-9e3c-11f1-a291-b542ee92de7c.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/eed1/live/42c59f30-9e3c-11f1-a291-b542ee92de7c.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/eed1/live/42c59f30-9e3c-11f1-a291-b542ee92de7c.jpg"
   },
   {
     "id": "1c6ab8f2fd1d3be94278",
@@ -51,7 +59,7 @@
     "published": "2026-08-22T16:47:38+00:00",
     "published_at": "2026-08-22T16:47:38+00:00",
     "collected_at": "2026-08-23T06:03:14.468507+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "اتجهت سفينة حاويات كورية ​جنوبية السبت إلى أوروبا عبر القطب الشمالي في أول رحلة تجارية من ​نوعها للبلاد عبر هذا المسار، بهدف اختبار جدواه التجارية، في ظل التعطيل المتواصل لحركة الملاحة عبر الشرق الأوسط بفعل الحرب بين الولايات المتحدة وإيران. وتستغرق رحلة هذه السفينة حوالى 45 يوما في الإجمال. ومن المرتقب أن ترسو في مرافئ فيليكستاو في إنكلترا وروتردام في هولندا وغدانسك في بولندا قبل أن تعود إلى كوريا الجنوبية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/fd470830-9dc9-11f1-b054-005056bf30b7/w:1280/p:16x9/e972bea2578e796054d73b7ee80302f38119de7b.jpg",
+    "image_url": "https://s.france24.com/media/display/fd470830-9dc9-11f1-b054-005056bf30b7/w:1280/p:16x9/e972bea2578e796054d73b7ee80302f38119de7b.jpg",
+    "thumbnail": "https://s.france24.com/media/display/fd470830-9dc9-11f1-b054-005056bf30b7/w:1280/p:16x9/e972bea2578e796054d73b7ee80302f38119de7b.jpg"
   },
   {
     "id": "2b56bb84f8d88e8ada0b",
@@ -72,7 +84,7 @@
     "published": "2026-08-22T16:06:59+00:00",
     "published_at": "2026-08-22T16:06:59+00:00",
     "collected_at": "2026-08-23T06:03:15.020048+00:00",
-    "category": "الجنوب",
+    "category": "الضالع",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "الضالع",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "68c0239c82e1cbd669dc",
@@ -93,7 +109,7 @@
     "published": "2026-08-22T15:05:52+00:00",
     "published_at": "2026-08-22T15:05:52+00:00",
     "collected_at": "2026-08-23T06:03:15.020091+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -102,7 +118,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "e9f64cafbc9592a0c9fe",
@@ -114,7 +134,7 @@
     "published": "2026-08-22T14:59:58+00:00",
     "published_at": "2026-08-22T14:59:58+00:00",
     "collected_at": "2026-08-23T06:03:14.468605+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "يعد المغرب أحد أبرز منتجي مادة الفوسفات في العالم، لكنه أصبح يواجه تحديا يتمثل في خفض مستويات الكادميوم في منتجاته من الأسمدة المشتقة من هذه المادة الحيوية، حفاظا على قدرته التصديرية إلى الأسواق الأوروبية. ويأتي ذلك في وقت بات فيه هذا المعدن محور جدل وقضية صحة عامة. وغالبا ما يحتوي الفوسفات في حالته الطبيعية على الكادميوم الذي يمكن أن ينتقل إلى الأسمدة ومنها إلى تربة المزارع ثم الأغذية. ويمكن أن يسبب أضرارا للكلى، ويزيد من مخاطر الإصابة بالسرطان.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://s.france24.com/media/display/8a369ffc-9de4-11f1-9c31-005056a90284/w:1280/p:16x9/3115053ac7a29280152e0cc23393aa2f3860f326.jpg",
+    "image_url": "https://s.france24.com/media/display/8a369ffc-9de4-11f1-9c31-005056a90284/w:1280/p:16x9/3115053ac7a29280152e0cc23393aa2f3860f326.jpg",
+    "thumbnail": "https://s.france24.com/media/display/8a369ffc-9de4-11f1-9c31-005056a90284/w:1280/p:16x9/3115053ac7a29280152e0cc23393aa2f3860f326.jpg"
   },
   {
     "id": "266b69c7550ef9dc4dda",
@@ -135,7 +159,7 @@
     "published": "2026-08-22T14:51:47+00:00",
     "published_at": "2026-08-22T14:51:47+00:00",
     "collected_at": "2026-08-23T06:03:15.020128+00:00",
-    "category": "الجنوب",
+    "category": "أبين",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "أبين",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178741030720971750.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178741030720971750.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178741030720971750.jpeg"
   },
   {
     "id": "341e1c6ec0b32780adbc",
@@ -156,7 +184,7 @@
     "published": "2026-08-22T12:08:13+00:00",
     "published_at": "2026-08-22T12:08:13+00:00",
     "collected_at": "2026-08-23T06:03:15.020168+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178740049326431535.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178740049326431535.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178740049326431535.jpeg"
   },
   {
     "id": "f4e6cbf548505673712e",
@@ -177,7 +209,7 @@
     "published": "2026-08-22T12:06:21+00:00",
     "published_at": "2026-08-22T12:06:21+00:00",
     "collected_at": "2026-08-23T06:03:15.020211+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178740038187993718.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178740038187993718.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178740038187993718.jpeg"
   },
   {
     "id": "550fafd571f4fc8bdcd9",
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739311878902652.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739311878902652.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739311878902652.jpeg"
   },
   {
     "id": "05449b1557ee3cf97baa",
@@ -219,7 +259,7 @@
     "published": "2026-08-22T09:53:19+00:00",
     "published_at": "2026-08-22T09:53:19+00:00",
     "collected_at": "2026-08-23T06:03:15.020339+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -228,7 +268,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739239931794864.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739239931794864.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739239931794864.jpg"
   },
   {
     "id": "48743ae2fb8d9fb33e22",
@@ -240,7 +284,7 @@
     "published": "2026-08-22T09:48:05+00:00",
     "published_at": "2026-08-22T09:48:05+00:00",
     "collected_at": "2026-08-23T06:03:15.020376+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -249,7 +293,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739208531936268.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739208531936268.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178739208531936268.jpg"
   },
   {
     "id": "27bd0789cfde5c20cc4a",
@@ -261,7 +309,7 @@
     "published": "2026-08-22T09:42:43+00:00",
     "published_at": "2026-08-22T09:42:43+00:00",
     "collected_at": "2026-08-23T06:03:15.020411+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -270,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "a98a508781a0eecfee3e",
@@ -291,7 +343,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178734710741534628.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178734710741534628.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178734710741534628.png"
   },
   {
     "id": "42170827d109495d0232",
@@ -2853,7 +2909,7 @@
     "published": "2026-08-15T08:08:18+00:00",
     "published_at": "2026-08-15T08:08:18+00:00",
     "collected_at": "2026-08-23T06:03:14.327546+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -2862,7 +2918,11 @@
     "content": "ساهم عدم الاستقرار العالمي والصراعات وانعدام الثقة بالدولار الأمريكي في هذا الارتفاع، كما دفع الدول إلى تكديس المعدن النفيس.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/1d3c/live/ae764830-987c-11f1-a7ab-8b30adf0800a.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/1d3c/live/ae764830-987c-11f1-a7ab-8b30adf0800a.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/1d3c/live/ae764830-987c-11f1-a7ab-8b30adf0800a.jpg"
   },
   {
     "id": "cbcb5e933c0608a8f9db",
