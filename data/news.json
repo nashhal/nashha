@@ -9,7 +9,7 @@
     "published": "2026-08-23T18:49:21+00:00",
     "published_at": "2026-08-23T18:49:21+00:00",
     "collected_at": "2026-08-23T23:46:12.640838+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "قامت السلطات التونسية بانتشال 11 جثة لمهاجرين غرق زورقهم قبالة السواحل السواحل الجنوبية الشرقية للبلاد، وفق ما أعلن الحرس الوطني التونسي الأحد. ولايزال ثلاثة آخرين في عداد المفقودين فيما نجا مهاجر واحد فقط. ونظم عدد من سكان بن قردان، المدينة المحاذية لليبيا والتي يتحدّر منها 14 من المهاجرين، ليل السبت تحركا احتجاجيا أغلقوا خلاله الطرق وأحرقوا الإطارات.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/3d48bf5a-c900-11ef-9fb1-005056a97e36/w:1280/p:16x9/000_33QY4QD.jpg",
+    "image_url": "https://s.france24.com/media/display/3d48bf5a-c900-11ef-9fb1-005056a97e36/w:1280/p:16x9/000_33QY4QD.jpg",
+    "thumbnail": "https://s.france24.com/media/display/3d48bf5a-c900-11ef-9fb1-005056a97e36/w:1280/p:16x9/000_33QY4QD.jpg"
   },
   {
     "id": "101c01257cc74ec54436",
@@ -30,7 +34,7 @@
     "published": "2026-08-23T16:50:21+00:00",
     "published_at": "2026-08-23T16:50:21+00:00",
     "collected_at": "2026-08-23T23:46:13.522308+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "c2893ff960f3afc01d91",
@@ -51,7 +59,7 @@
     "published": "2026-08-23T16:13:35+00:00",
     "published_at": "2026-08-23T16:13:35+00:00",
     "collected_at": "2026-08-23T23:46:13.522387+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "04ff480cc786d675a280",
@@ -72,7 +84,7 @@
     "published": "2026-08-23T16:10:00+00:00",
     "published_at": "2026-08-23T16:10:00+00:00",
     "collected_at": "2026-08-23T23:46:13.522446+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178750140054168250.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178750140054168250.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178750140054168250.jpg"
   },
   {
     "id": "f5e1fead30f67aa4e69f",
@@ -93,7 +109,7 @@
     "published": "2026-08-23T14:39:02+00:00",
     "published_at": "2026-08-23T14:39:02+00:00",
     "collected_at": "2026-08-23T23:46:13.522547+00:00",
-    "category": "الجنوب",
+    "category": "الضالع",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -102,7 +118,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "الضالع",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "a8d6874684563f34cd6c",
@@ -114,7 +134,7 @@
     "published": "2026-08-23T14:06:38+00:00",
     "published_at": "2026-08-23T14:06:38+00:00",
     "collected_at": "2026-08-23T23:46:13.522617+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178749399852427649.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178749399852427649.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178749399852427649.jpg"
   },
   {
     "id": "f2c65efef308eb5859b8",
@@ -135,7 +159,7 @@
     "published": "2026-08-23T14:01:51+00:00",
     "published_at": "2026-08-23T14:01:51+00:00",
     "collected_at": "2026-08-23T23:46:13.522658+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178749371143004566.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178749371143004566.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178749371143004566.jpg"
   },
   {
     "id": "5ac0c19e611ed2fe2960",
@@ -156,7 +184,7 @@
     "published": "2026-08-23T12:15:51+00:00",
     "published_at": "2026-08-23T12:15:51+00:00",
     "collected_at": "2026-08-23T23:46:13.522774+00:00",
-    "category": "الجنوب",
+    "category": "شبوة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "شبوة",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "e17ffbaa6eb57671947f",
@@ -177,7 +209,7 @@
     "published": "2026-08-23T12:12:02+00:00",
     "published_at": "2026-08-23T12:12:02+00:00",
     "collected_at": "2026-08-23T23:46:13.522863+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178748712297708656.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178748712297708656.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178748712297708656.jpg"
   },
   {
     "id": "6f34ad1a158c7e7316a2",
@@ -198,7 +234,7 @@
     "published": "2026-08-23T08:39:46+00:00",
     "published_at": "2026-08-23T08:39:46+00:00",
     "collected_at": "2026-08-23T23:46:13.522947+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178747438684087196.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178747438684087196.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178747438684087196.jpeg"
   },
   {
     "id": "8262081c2b70ad806887",
@@ -269,7 +309,7 @@
     "published": "2026-08-22T16:47:38+00:00",
     "published_at": "2026-08-22T16:47:38+00:00",
     "collected_at": "2026-08-23T23:46:12.642011+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -278,7 +318,11 @@
     "content": "اتجهت سفينة حاويات كورية ​جنوبية، السبت، إلى أوروبا عبر القطب الشمالي في أول رحلة تجارية من ​نوعها للبلاد عبر هذا المسار، بهدف اختبار جدواه التجارية. وتأني هذه المحاولة في ظل التعطيل المتواصل لحركة الملاحة عبر الشرق الأوسط بسبب الحرب بين الولايات المتحدة وإيران. وتستغرق رحلة هذه السفينة حوالى 45 يوما في الإجمال. ومن المرتقب أن ترسو في مرافئ فيليكستاو في إنكلترا وروتردام في هولندا وغدانسك في بولندا قبل أن تعود إلى كوريا الجنوبية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/fd470830-9dc9-11f1-b054-005056bf30b7/w:1280/p:16x9/e972bea2578e796054d73b7ee80302f38119de7b.jpg",
+    "image_url": "https://s.france24.com/media/display/fd470830-9dc9-11f1-b054-005056bf30b7/w:1280/p:16x9/e972bea2578e796054d73b7ee80302f38119de7b.jpg",
+    "thumbnail": "https://s.france24.com/media/display/fd470830-9dc9-11f1-b054-005056bf30b7/w:1280/p:16x9/e972bea2578e796054d73b7ee80302f38119de7b.jpg"
   },
   {
     "id": "2b56bb84f8d88e8ada0b",
@@ -340,7 +384,7 @@
     "published": "2026-08-22T14:59:58+00:00",
     "published_at": "2026-08-22T14:59:58+00:00",
     "collected_at": "2026-08-23T22:52:01.074160+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -349,7 +393,11 @@
     "content": "يعد المغرب أحد أبرز منتجي مادة الفوسفات في العالم، لكنه أصبح يواجه تحديا يتمثل في خفض مستويات الكادميوم في منتجاته من الأسمدة المشتقة من هذه المادة الحيوية، حفاظا على قدرته التصديرية إلى الأسواق الأوروبية. ويأتي ذلك في وقت بات فيه هذا المعدن محور جدل وقضية صحة عامة. وغالبا ما يحتوي الفوسفات في حالته الطبيعية على الكادميوم الذي يمكن أن ينتقل إلى الأسمدة ومنها إلى تربة المزارع ثم الأغذية. ويمكن أن يسبب أضرارا للكلى، ويزيد من مخاطر الإصابة بالسرطان.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://s.france24.com/media/display/8a369ffc-9de4-11f1-9c31-005056a90284/w:1280/p:16x9/3115053ac7a29280152e0cc23393aa2f3860f326.jpg",
+    "image_url": "https://s.france24.com/media/display/8a369ffc-9de4-11f1-9c31-005056a90284/w:1280/p:16x9/3115053ac7a29280152e0cc23393aa2f3860f326.jpg",
+    "thumbnail": "https://s.france24.com/media/display/8a369ffc-9de4-11f1-9c31-005056a90284/w:1280/p:16x9/3115053ac7a29280152e0cc23393aa2f3860f326.jpg"
   },
   {
     "id": "266b69c7550ef9dc4dda",
