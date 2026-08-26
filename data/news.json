@@ -8,8 +8,8 @@
     "link": "http://www.sabanew.net/viewstory/151318",
     "published": "2026-08-25T18:35:56+00:00",
     "published_at": "2026-08-25T18:35:56+00:00",
-    "collected_at": "2026-08-25T23:58:54.271671+00:00",
-    "category": "الحديدة",
+    "collected_at": "2026-08-26T03:36:58.071331+00:00",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,11 +18,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "الحديدة",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "embed_url": ""
   },
   {
     "id": "3e97e86be12dfb8c572d",
@@ -33,8 +29,8 @@
     "link": "https://www.france24.com/ar/%D8%A7%D9%84%D8%B4%D8%B1%D9%82-%D8%A7%D9%84%D8%A3%D9%88%D8%B3%D8%B7/20260825-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D9%88%D8%B2%D9%8A%D8%B1-%D8%A7%D9%84%D8%AF%D9%81%D8%A7%D8%B9-%D8%A7%D9%84%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84%D9%8A-%D9%83%D8%A7%D8%AA%D8%B3-%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9-%D9%82%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8-%D8%AF%D9%85%D8%B4%D9%82",
     "published": "2026-08-25T18:28:09+00:00",
     "published_at": "2026-08-25T18:28:09+00:00",
-    "collected_at": "2026-08-25T23:58:53.615812+00:00",
-    "category": "اليمن",
+    "collected_at": "2026-08-26T03:36:57.266860+00:00",
+    "category": "الجنوب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -43,11 +39,7 @@
     "content": "زار وزير الدفاع الإسرائيلي يسرائيل كاتس، الثلاثاء، قواته في جنوب سوريا، وبعث بـ\"رسالة واضحة\" إلى الرئيس السوري أحمد الشرع، بحسب تعبيره، قال فيها: \"عندما تستيقظ صباحا في قصرك بدمشق وتنظر نحو جبل حرمون (جبل الشيخ) وترى الجيش الإسرائيلي، فأنت تدرك أننا هنا لحماية بلداتنا وحدودنا\". ودانت وزارة الخارجية السورية في بيان \"الدخول غير الشرعي\" لكاتس \"وتخطيه الحدود الدولية للجمهورية العربية السورية\". ودعت المجتمع الدولي إلى اتخاذ \"الإجراءات اللازمة لإجبار سلطات الاحتلال على وقف الانتهاكات المتكررة\".",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": "",
-    "region": "اليمن",
-    "image": "https://s.france24.com/media/display/3efe6cb4-a095-11f1-80cc-005056a97e36/w:1280/p:16x9/392d7298ca239b411b08b67df71fa4f421927298.jpg",
-    "image_url": "https://s.france24.com/media/display/3efe6cb4-a095-11f1-80cc-005056a97e36/w:1280/p:16x9/392d7298ca239b411b08b67df71fa4f421927298.jpg",
-    "thumbnail": "https://s.france24.com/media/display/3efe6cb4-a095-11f1-80cc-005056a97e36/w:1280/p:16x9/392d7298ca239b411b08b67df71fa4f421927298.jpg"
+    "embed_url": ""
   },
   {
     "id": "be9645c228b806cd4e4a",
@@ -58,8 +50,8 @@
     "link": "http://www.sabanew.net/viewstory/151317",
     "published": "2026-08-25T18:21:18+00:00",
     "published_at": "2026-08-25T18:21:18+00:00",
-    "collected_at": "2026-08-25T23:58:54.271721+00:00",
-    "category": "عدن",
+    "collected_at": "2026-08-26T03:36:58.071386+00:00",
+    "category": "الجنوب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -68,11 +60,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "عدن",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "embed_url": ""
   },
   {
     "id": "7c9d43293d6f001a653d",
@@ -83,7 +71,7 @@
     "link": "http://www.sabanew.net/viewstory/151315",
     "published": "2026-08-25T18:07:09+00:00",
     "published_at": "2026-08-25T18:07:09+00:00",
-    "collected_at": "2026-08-25T23:58:54.271781+00:00",
+    "collected_at": "2026-08-26T03:36:58.071434+00:00",
     "category": "اليمن",
     "status": "published",
     "confidence": "high",
@@ -93,11 +81,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "اليمن",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "embed_url": ""
   },
   {
     "id": "88db638b9b67ecf03560",
@@ -108,7 +92,7 @@
     "link": "http://www.sabanew.net/viewstory/151313",
     "published": "2026-08-25T17:38:30+00:00",
     "published_at": "2026-08-25T17:38:30+00:00",
-    "collected_at": "2026-08-25T23:58:54.271824+00:00",
+    "collected_at": "2026-08-26T03:36:58.071482+00:00",
     "category": "اليمن",
     "status": "published",
     "confidence": "high",
@@ -118,11 +102,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "اليمن",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178768190240869993.jpg",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178768190240869993.jpg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178768190240869993.jpg"
+    "embed_url": ""
   },
   {
     "id": "a422d06cf8740cbe1b0b",
@@ -133,7 +113,7 @@
     "link": "http://www.sabanew.net/viewstory/151310",
     "published": "2026-08-25T17:15:47+00:00",
     "published_at": "2026-08-25T17:15:47+00:00",
-    "collected_at": "2026-08-25T23:58:54.271893+00:00",
+    "collected_at": "2026-08-26T03:36:58.071557+00:00",
     "category": "اليمن",
     "status": "published",
     "confidence": "high",
@@ -143,11 +123,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "اليمن",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178767814767878259.jpeg",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178767814767878259.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178767814767878259.jpeg"
+    "embed_url": ""
   },
   {
     "id": "fae274faa23906dd59cf",
@@ -158,8 +134,8 @@
     "link": "http://www.sabanew.net/viewstory/151307",
     "published": "2026-08-25T15:47:48+00:00",
     "published_at": "2026-08-25T15:47:48+00:00",
-    "collected_at": "2026-08-25T23:58:54.271978+00:00",
-    "category": "حضرموت",
+    "collected_at": "2026-08-26T03:36:58.071650+00:00",
+    "category": "الجنوب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -168,11 +144,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "حضرموت",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "embed_url": ""
   },
   {
     "id": "0ff46983159e5b043dd1",
@@ -183,8 +155,8 @@
     "link": "http://www.sabanew.net/viewstory/151306",
     "published": "2026-08-25T15:44:29+00:00",
     "published_at": "2026-08-25T15:44:29+00:00",
-    "collected_at": "2026-08-25T23:58:54.272014+00:00",
-    "category": "عدن",
+    "collected_at": "2026-08-26T03:36:58.071692+00:00",
+    "category": "الجنوب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -193,11 +165,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "عدن",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "embed_url": ""
   },
   {
     "id": "f8ba26b5a477c7013c15",
@@ -208,8 +176,8 @@
     "link": "http://www.sabanew.net/viewstory/151303",
     "published": "2026-08-25T15:17:16+00:00",
     "published_at": "2026-08-25T15:17:16+00:00",
-    "collected_at": "2026-08-25T23:58:54.272073+00:00",
-    "category": "عدن",
+    "collected_at": "2026-08-26T03:36:58.071782+00:00",
+    "category": "الجنوب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -218,11 +186,7 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": "",
-    "region": "عدن",
-    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178767103691004778.jpg",
-    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178767103691004778.jpg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178767103691004778.jpg"
+    "embed_url": ""
   },
   {
     "id": "db9e9f6899f6d949a43c",
@@ -583,8 +547,8 @@
     "link": "https://www.bbc.com/arabic/articles/cdrv7gldz6mo?at_medium=RSS&at_campaign=rss",
     "published": "2026-08-25T06:07:12+00:00",
     "published_at": "2026-08-25T06:07:12+00:00",
-    "collected_at": "2026-08-25T23:58:53.493617+00:00",
-    "category": "لحج",
+    "collected_at": "2026-08-26T03:36:57.134556+00:00",
+    "category": "الجنوب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -593,11 +557,7 @@
     "content": "بردة نُسج على منوالها عشرات القصائد في المديح النبوي من الحجاز إلى المماليك والعصر الحديث، فما القصة؟ ومن هم أبرز الشعراء في هذا المضمار؟",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": "",
-    "region": "لحج",
-    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/5a43/live/91680220-a04b-11f1-aacc-21a045d9c0c6.jpg",
-    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/5a43/live/91680220-a04b-11f1-aacc-21a045d9c0c6.jpg",
-    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/5a43/live/91680220-a04b-11f1-aacc-21a045d9c0c6.jpg"
+    "embed_url": ""
   },
   {
     "id": "ec568cc6ceab59afba2c",
