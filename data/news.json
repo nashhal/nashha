@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178802494346919767.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178802494346919767.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178802494346919767.jpg"
   },
   {
     "id": "9b1f835e0fdc8069038b",
@@ -30,7 +34,7 @@
     "published": "2026-08-29T16:06:24+00:00",
     "published_at": "2026-08-29T16:06:24+00:00",
     "collected_at": "2026-08-29T17:51:25.201110+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "قام عشرات المستوطنين الإسرائيليين، السبت، بمهاجمة بلدة قُصرة الفلسطينية في شمال الضفة الغربية المحتلة، وفق ما قال سكان والجيش، بعد نحو ثلاثة أسابيع من التوتر في المنطقة، وحاصروا فلسطينيين داخل منزل وبدؤوا برشقهم بالحجارة. ويرتكب مستوطنون إسرائيليون أعمال عنف بحق الفلسطينيين في الضفة منذ سنوات، وغالبا من دون تبعات قانونية تُذكر. وتصاعدت أعمال العنف في الضفة منذ اندلاع الحرب في قطاع غزة، خصوصا هجمات المستوطنين على الفلسطينيين، والتي أصبحت شبه يومية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://s.france24.com/media/display/f4c058d0-9b79-11f1-8fef-005056a97e36/w:1280/p:16x9/6d0fc4b1c0eb864a21f0bac2b849a83c1d353660.jpg",
+    "image_url": "https://s.france24.com/media/display/f4c058d0-9b79-11f1-8fef-005056a97e36/w:1280/p:16x9/6d0fc4b1c0eb864a21f0bac2b849a83c1d353660.jpg",
+    "thumbnail": "https://s.france24.com/media/display/f4c058d0-9b79-11f1-8fef-005056a97e36/w:1280/p:16x9/6d0fc4b1c0eb864a21f0bac2b849a83c1d353660.jpg"
   },
   {
     "id": "cca3aa6ce6e8f0ac0e7a",
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801703655243757.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801703655243757.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801703655243757.jpeg"
   },
   {
     "id": "6a190b1287d3a1cbc1cd",
@@ -72,7 +84,7 @@
     "published": "2026-08-29T15:19:15+00:00",
     "published_at": "2026-08-29T15:19:15+00:00",
     "collected_at": "2026-08-29T17:51:26.051884+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801675568475835.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801675568475835.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801675568475835.jpeg"
   },
   {
     "id": "b70e426daf6dea835e1d",
@@ -93,7 +109,7 @@
     "published": "2026-08-29T14:48:47+00:00",
     "published_at": "2026-08-29T14:48:47+00:00",
     "collected_at": "2026-08-29T17:51:25.201230+00:00",
-    "category": "الجنوب",
+    "category": "أبين",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -102,7 +118,11 @@
     "content": "فتحت النرويج، السبت، صفحة جديدة من تاريخها مع ملكها الجديد هاكون الثامن الذي من المقرر أن يلقي خطابا تأبينيا غداة وفاة والده هارالد الخامس، بعدما توحّد النرويجيون حوله على مدى 35 عاما. ويعتلي الملك البالغ 53 عاما عرش نظام ملكي اشتهر بحداثته وتواضعه، ولكنه شهد مؤخرا عددا من الفضائح.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "أبين",
+    "image": "https://s.france24.com/media/display/ff138b0e-a35d-11f1-8954-005056a97e36/w:1280/p:16x9/f0c7bd22db5cb4def6e766eec8f60dee4ce42cfd.jpg",
+    "image_url": "https://s.france24.com/media/display/ff138b0e-a35d-11f1-8954-005056a97e36/w:1280/p:16x9/f0c7bd22db5cb4def6e766eec8f60dee4ce42cfd.jpg",
+    "thumbnail": "https://s.france24.com/media/display/ff138b0e-a35d-11f1-8954-005056a97e36/w:1280/p:16x9/f0c7bd22db5cb4def6e766eec8f60dee4ce42cfd.jpg"
   },
   {
     "id": "5dc6f0a2dfa5c3eaf02d",
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178800776655231607.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178800776655231607.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178800776655231607.jpeg"
   },
   {
     "id": "9860ee0032bfe0a5e69d",
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "108ce85ede2894ac76c9",
@@ -156,7 +184,7 @@
     "published": "2026-08-28T21:28:47+00:00",
     "published_at": "2026-08-28T21:28:47+00:00",
     "collected_at": "2026-08-29T17:51:26.052066+00:00",
-    "category": "الجنوب",
+    "category": "الضالع",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "الضالع",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "0eeb83f09572c252123c",
@@ -177,7 +209,7 @@
     "published": "2026-08-28T18:05:42+00:00",
     "published_at": "2026-08-28T18:05:42+00:00",
     "collected_at": "2026-08-29T17:51:25.048921+00:00",
-    "category": "اليمن",
+    "category": "صنعاء",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "قال الدكتور فياض النعمان وكيل وزارة الإعلام اليمنية إنّ محاولة جماعة أنصار الله الحوثية إنشاء جسر جوي بين طهران وصنعاء واستهداف السفن في المياه الإقليمية والدولية وضع الهدنة التي تم التوصل إليها في عام 2022 تحت مقصلة النهاية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "صنعاء",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7133/live/2bb1d070-a30a-11f1-aed2-8d6da8d75094.png",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7133/live/2bb1d070-a30a-11f1-aed2-8d6da8d75094.png",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7133/live/2bb1d070-a30a-11f1-aed2-8d6da8d75094.png"
   },
   {
     "id": "22f0eaeeaa5860a2e625",
@@ -198,7 +234,7 @@
     "published": "2026-08-28T16:09:31+00:00",
     "published_at": "2026-08-28T16:09:31+00:00",
     "collected_at": "2026-08-29T17:51:26.052113+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "df11021acf2f4a16e2fe",
@@ -228,7 +268,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178793182122506539.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178793182122506539.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178793182122506539.jpeg"
   },
   {
     "id": "d583c0cb42cb9a1c2f58",
@@ -240,7 +284,7 @@
     "published": "2026-08-28T14:20:58+00:00",
     "published_at": "2026-08-28T14:20:58+00:00",
     "collected_at": "2026-08-29T17:36:24.841301+00:00",
-    "category": "اليمن",
+    "category": "شبوة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -249,7 +293,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "شبوة",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178792685885217082.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178792685885217082.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178792685885217082.jpeg"
   },
   {
     "id": "834ca7d686cbff0f8cd7",
@@ -261,7 +309,7 @@
     "published": "2026-08-28T14:13:07+00:00",
     "published_at": "2026-08-28T14:13:07+00:00",
     "collected_at": "2026-08-29T17:21:30.608819+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -270,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "6bd04d83b59f9854802b",
@@ -291,7 +343,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178792359549947868.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178792359549947868.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178792359549947868.jpg"
   },
   {
     "id": "a824d260b536e8f91853",
@@ -328,7 +384,7 @@
     "published": "2026-08-28T10:08:13+00:00",
     "published_at": "2026-08-28T10:08:13+00:00",
     "collected_at": "2026-08-29T15:06:37.879809+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -337,7 +393,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178791169375135901.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178791169375135901.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178791169375135901.jpeg"
   },
   {
     "id": "287926173b68fe4031b4",
@@ -358,7 +418,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178791141647647679.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178791141647647679.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178791141647647679.jpeg"
   },
   {
     "id": "64add5ef032b4e93710f",
@@ -370,7 +434,7 @@
     "published": "2026-08-28T09:27:20+00:00",
     "published_at": "2026-08-28T09:27:20+00:00",
     "collected_at": "2026-08-29T12:36:24.093919+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -379,7 +443,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178790924089614129.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178790924089614129.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178790924089614129.jpg"
   },
   {
     "id": "9c7f222982b6069ba607",
@@ -1591,7 +1659,7 @@
     "published": "2026-08-25T06:07:12+00:00",
     "published_at": "2026-08-25T06:07:12+00:00",
     "collected_at": "2026-08-29T17:51:25.049060+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -1600,7 +1668,11 @@
     "content": "بردة نُسج على منوالها عشرات القصائد في المديح النبوي من الحجاز إلى المماليك والعصر الحديث، فما القصة؟ ومن هم أبرز الشعراء في هذا المضمار؟",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/dde2/live/6494c6a0-a37c-11f1-ba45-03b8e22efad8.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/dde2/live/6494c6a0-a37c-11f1-ba45-03b8e22efad8.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/dde2/live/6494c6a0-a37c-11f1-ba45-03b8e22efad8.jpg"
   },
   {
     "id": "ec568cc6ceab59afba2c",
