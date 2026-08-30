@@ -9,7 +9,7 @@
     "published": "2026-08-30T10:11:00+00:00",
     "published_at": "2026-08-30T10:11:00+00:00",
     "collected_at": "2026-08-30T11:51:19.194941+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178808953118269440.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178808953118269440.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178808953118269440.jpeg"
   },
   {
     "id": "89bb6be3d7b5bf7191f2",
@@ -39,7 +43,11 @@
     "content": "بمناسبة اليوم الدولي لضحايا الاختفاء القسري، الذي يصادف 30 أغسطس/آب، تواصلت بي بي سي مع عائلات لا تزال تنتظر معرفة مصير أحبائها. وتقدّر منظمة العفو الدولية أن عائلات في العراق وسوريا واليمن ولبنان والسودان أمضت مجتمعةً \"أكثر من مليون سنة\" في انتظار إجابات، في ظل غياب أرقام رسمية دقيقة وتحقيقات كافية في كثير من الحالات.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg"
   },
   {
     "id": "67f43e5f517df284a809",
@@ -51,7 +59,7 @@
     "published": "2026-08-29T18:21:38+00:00",
     "published_at": "2026-08-29T18:21:38+00:00",
     "collected_at": "2026-08-30T10:51:29.734225+00:00",
-    "category": "الجنوب",
+    "category": "شبوة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "تم اعتقال أربعة مهاجرين مغاربة، السبت، في جيب سبتة الإسباني بسبب إلقائهم الحجارة على جنود إسبان كانوا يقومون بدورية، بحسب ما أفاد ناطق باسم الشرطة المحلية. ولايزال جيب سبتة يشكل مصدر توتر سياسي وأمني بالنسبة إلى إسبانيا منذ عبور عشرات آلاف المهاجرين إليها قادمين من المغرب يومَي 30 و31 تموز/يوليو، ما أثار قلق شركاء مدريد في الاتحاد الأوروبي.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "شبوة",
+    "image": "https://s.france24.com/media/display/e36ac830-9d91-11f1-8965-005056bfb2b6/w:1280/p:16x9/FOTO-PORTADA-ESPAN%CC%83A-DESALOJO-PLAYA-CEUTA.jpg",
+    "image_url": "https://s.france24.com/media/display/e36ac830-9d91-11f1-8965-005056bfb2b6/w:1280/p:16x9/FOTO-PORTADA-ESPAN%CC%83A-DESALOJO-PLAYA-CEUTA.jpg",
+    "thumbnail": "https://s.france24.com/media/display/e36ac830-9d91-11f1-8965-005056bfb2b6/w:1280/p:16x9/FOTO-PORTADA-ESPAN%CC%83A-DESALOJO-PLAYA-CEUTA.jpg"
   },
   {
     "id": "3a321dc02967bfccc744",
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178802494346919767.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178802494346919767.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178802494346919767.jpg"
   },
   {
     "id": "9b1f835e0fdc8069038b",
@@ -127,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801703655243757.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801703655243757.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801703655243757.jpeg"
   },
   {
     "id": "6a190b1287d3a1cbc1cd",
@@ -139,7 +159,7 @@
     "published": "2026-08-29T15:19:15+00:00",
     "published_at": "2026-08-29T15:19:15+00:00",
     "collected_at": "2026-08-30T11:51:19.195095+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -148,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801675568475835.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801675568475835.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178801675568475835.jpeg"
   },
   {
     "id": "b70e426daf6dea835e1d",
@@ -160,7 +184,7 @@
     "published": "2026-08-29T14:48:47+00:00",
     "published_at": "2026-08-29T14:48:47+00:00",
     "collected_at": "2026-08-30T09:36:23.607440+00:00",
-    "category": "الجنوب",
+    "category": "أبين",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -169,7 +193,11 @@
     "content": "فتحت النرويج، السبت، صفحة جديدة من تاريخها مع ملكها الجديد هاكون الثامن الذي من المقرر أن يلقي خطابا تأبينيا غداة وفاة والده هارالد الخامس، بعدما توحّد النرويجيون حوله على مدى 35 عاما. ويعتلي الملك البالغ 53 عاما عرش نظام ملكي اشتهر بحداثته وتواضعه، ولكنه شهد مؤخرا عددا من الفضائح.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "أبين",
+    "image": "https://s.france24.com/media/display/ff138b0e-a35d-11f1-8954-005056a97e36/w:1280/p:16x9/f0c7bd22db5cb4def6e766eec8f60dee4ce42cfd.jpg",
+    "image_url": "https://s.france24.com/media/display/ff138b0e-a35d-11f1-8954-005056a97e36/w:1280/p:16x9/f0c7bd22db5cb4def6e766eec8f60dee4ce42cfd.jpg",
+    "thumbnail": "https://s.france24.com/media/display/ff138b0e-a35d-11f1-8954-005056a97e36/w:1280/p:16x9/f0c7bd22db5cb4def6e766eec8f60dee4ce42cfd.jpg"
   },
   {
     "id": "5dc6f0a2dfa5c3eaf02d",
@@ -190,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178800776655231607.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178800776655231607.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178800776655231607.jpeg"
   },
   {
     "id": "9860ee0032bfe0a5e69d",
@@ -211,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "108ce85ede2894ac76c9",
@@ -223,7 +259,7 @@
     "published": "2026-08-28T21:28:47+00:00",
     "published_at": "2026-08-28T21:28:47+00:00",
     "collected_at": "2026-08-30T11:21:23.306813+00:00",
-    "category": "الجنوب",
+    "category": "الضالع",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -232,7 +268,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "الضالع",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "0eeb83f09572c252123c",
@@ -244,7 +284,7 @@
     "published": "2026-08-28T18:05:42+00:00",
     "published_at": "2026-08-28T18:05:42+00:00",
     "collected_at": "2026-08-30T11:51:18.085823+00:00",
-    "category": "اليمن",
+    "category": "صنعاء",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -253,7 +293,11 @@
     "content": "قال الدكتور فياض النعمان وكيل وزارة الإعلام اليمنية إنّ محاولة جماعة أنصار الله الحوثية إنشاء جسر جوي بين طهران وصنعاء واستهداف السفن في المياه الإقليمية والدولية وضع الهدنة التي تم التوصل إليها في عام 2022 تحت مقصلة النهاية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "صنعاء",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7133/live/2bb1d070-a30a-11f1-aed2-8d6da8d75094.png",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7133/live/2bb1d070-a30a-11f1-aed2-8d6da8d75094.png",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7133/live/2bb1d070-a30a-11f1-aed2-8d6da8d75094.png"
   },
   {
     "id": "22f0eaeeaa5860a2e625",
@@ -265,7 +309,7 @@
     "published": "2026-08-28T16:09:31+00:00",
     "published_at": "2026-08-28T16:09:31+00:00",
     "collected_at": "2026-08-30T10:06:48.661602+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -274,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "df11021acf2f4a16e2fe",
@@ -295,7 +343,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178793182122506539.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178793182122506539.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178793182122506539.jpeg"
   },
   {
     "id": "d583c0cb42cb9a1c2f58",
@@ -1682,7 +1734,7 @@
     "published": "2026-08-25T06:07:12+00:00",
     "published_at": "2026-08-25T06:07:12+00:00",
     "collected_at": "2026-08-30T11:51:18.085935+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -1691,7 +1743,11 @@
     "content": "بردة نُسج على منوالها عشرات القصائد في المديح النبوي من الحجاز إلى المماليك والعصر الحديث، فما القصة؟ ومن هم أبرز الشعراء في هذا المضمار؟",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/dde2/live/6494c6a0-a37c-11f1-ba45-03b8e22efad8.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/dde2/live/6494c6a0-a37c-11f1-ba45-03b8e22efad8.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/dde2/live/6494c6a0-a37c-11f1-ba45-03b8e22efad8.jpg"
   },
   {
     "id": "ec568cc6ceab59afba2c",
