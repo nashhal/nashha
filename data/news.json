@@ -9,7 +9,7 @@
     "published": "2026-09-05T09:21:25+00:00",
     "published_at": "2026-09-05T09:21:25+00:00",
     "collected_at": "2026-09-05T11:51:15.702071+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "شن الحوثيون مساء الخميس هجوما بريا تزامن مع قصف بالصواريخ والطائرات المسيرة لمناطق ساحلية مطلة على البحر الأحمر ومحيط تعز. وتركزت المعارك في حيس التابعة للحديدة، ومقبنة غربي تعز، فيما أعلنت القوات الحكومية صد هجوم على الطريق الرابط بين تعز والمخا. وقتل أكثر من 120 شخصا في المواجهات بين القوات الحكومية اليمنية والحوثيين هي الأعنف في البلاد منذ سنوا.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/e1b369fa-a905-11f1-b8fe-005056a97e36/w:1280/p:16x9/AR-20260905-100945-101111-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/e1b369fa-a905-11f1-b8fe-005056a97e36/w:1280/p:16x9/AR-20260905-100945-101111-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/e1b369fa-a905-11f1-b8fe-005056a97e36/w:1280/p:16x9/AR-20260905-100945-101111-CS.jpg"
   },
   {
     "id": "acc1af38add712cdae9f",
@@ -30,7 +34,7 @@
     "published": "2026-09-05T08:49:25+00:00",
     "published_at": "2026-09-05T08:49:25+00:00",
     "collected_at": "2026-09-05T11:51:15.702390+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "اعتمدت الجمعية العامة للأمم المتحدة في نيويورك الجمعة قرارا يهدف إلى تحسين رسم الخرائط العالمية العائدة للحقبة الاستعمارية لتكون أكثر تماشيا مع الحجم الحقيقي للقارات، مع توسيع حجم قارة أفريقيا وتضييق مساحة الولايات المتحدة، في خطوة وصفتها واشنطن بأنها \"تقوض مصداقية\" المنظمة. وأيد القرار 164 دولة مقابل اعتراض واحد للولايات المتحدة وامتناع ستة أعضاء عن التصويت، في مبادرة قادتها توغو بدعم من الاتحاد الأفريقي وفرنسا، وسط ترحيب واسع وانتقاد أمريكي حاد.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://s.france24.com/media/display/b8def100-a88a-11f1-98da-005056a97e36/w:1280/p:16x9/equal-earth.jpg",
+    "image_url": "https://s.france24.com/media/display/b8def100-a88a-11f1-98da-005056a97e36/w:1280/p:16x9/equal-earth.jpg",
+    "thumbnail": "https://s.france24.com/media/display/b8def100-a88a-11f1-98da-005056a97e36/w:1280/p:16x9/equal-earth.jpg"
   },
   {
     "id": "4eef1952028b0d9f5e90",
@@ -51,7 +59,7 @@
     "published": "2026-09-05T08:48:21+00:00",
     "published_at": "2026-09-05T08:48:21+00:00",
     "collected_at": "2026-09-05T11:51:16.707618+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "473ffa6f4b9326a89e83",
@@ -72,7 +84,7 @@
     "published": "2026-09-04T21:56:43+00:00",
     "published_at": "2026-09-04T21:56:43+00:00",
     "collected_at": "2026-09-05T11:51:16.707705+00:00",
-    "category": "الجنوب",
+    "category": "أبين",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "أبين",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "0ed206074b4e99ecaed1",
@@ -118,7 +134,7 @@
     "published": "2026-09-04T17:35:22+00:00",
     "published_at": "2026-09-04T17:35:22+00:00",
     "collected_at": "2026-09-05T11:51:16.707836+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -127,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854332238103499.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854332238103499.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854332238103499.jpeg"
   },
   {
     "id": "6b73a7b3e744913a418d",
@@ -148,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854304715345429.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854304715345429.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854304715345429.jpeg"
   },
   {
     "id": "3b0dc06f52d248321907",
@@ -160,7 +184,7 @@
     "published": "2026-09-04T16:27:57+00:00",
     "published_at": "2026-09-04T16:27:57+00:00",
     "collected_at": "2026-09-05T11:51:15.318009+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -169,7 +193,11 @@
     "content": "تدلّ الضجة التي أُثيرت حول هذه التلة الاستراتيجية الكاشفة على أن السيطرة عليها، إذا ما تأكدت، هي حلقة في إطار التقدم التدريجي الإسرائيلي داخل لبنان وتوسيع احتلال الجنوب مع تمتين هذا الاحتلال عسكريا.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/1318/live/d36f1ee0-a90d-11f1-b101-3b8aa2acb53f.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/1318/live/d36f1ee0-a90d-11f1-b101-3b8aa2acb53f.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/1318/live/d36f1ee0-a90d-11f1-b101-3b8aa2acb53f.jpg"
   },
   {
     "id": "19e07dbdcc4117c2167a",
@@ -181,7 +209,7 @@
     "published": "2026-09-04T14:24:40+00:00",
     "published_at": "2026-09-04T14:24:40+00:00",
     "collected_at": "2026-09-05T11:51:16.708015+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -190,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178853188064063979.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178853188064063979.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178853188064063979.jpeg"
   },
   {
     "id": "0741130f73a7d0167fd4",
@@ -211,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "974fa5c3c067a070e093",
@@ -232,7 +268,11 @@
     "content": "لقي أكثر من 120 شخصا حتفهم في اشتباكات بين القوات الحكومية اليمنية والحوثيين منذ الخميس، في أعنف مواجهات بين الطرفين منذ سنوات، وفق ما أفادت به مصادر من الجانبين لوكالة الأنباء الفرنسية الجمعة، فيما يحاول الحوثيون المدعومون من إيران التقدم نحو مناطق متاخمة لباب المندب الاستراتيجي.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/814637d4-993b-11f1-8658-005056a97e36/w:1280/p:16x9/903713d81e11004082f441c14eb80dcb8f34d9d9.jpg",
+    "image_url": "https://s.france24.com/media/display/814637d4-993b-11f1-8658-005056a97e36/w:1280/p:16x9/903713d81e11004082f441c14eb80dcb8f34d9d9.jpg",
+    "thumbnail": "https://s.france24.com/media/display/814637d4-993b-11f1-8658-005056a97e36/w:1280/p:16x9/903713d81e11004082f441c14eb80dcb8f34d9d9.jpg"
   },
   {
     "id": "40a12bc66406a684dd88",
@@ -244,7 +284,7 @@
     "published": "2026-09-04T12:47:15+00:00",
     "published_at": "2026-09-04T12:47:15+00:00",
     "collected_at": "2026-09-05T07:51:31.056196+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -253,7 +293,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "7a156884537384374701",
@@ -2574,7 +2618,11 @@
     "content": "بمناسبة اليوم الدولي لضحايا الاختفاء القسري، الذي يصادف 30 أغسطس/آب، تواصلت بي بي سي مع عائلات لا تزال تنتظر معرفة مصير أحبائها. وتقدّر منظمة العفو الدولية أن عائلات في العراق وسوريا واليمن ولبنان والسودان أمضت مجتمعةً \"أكثر من مليون سنة\" في انتظار إجابات، في ظل غياب أرقام رسمية دقيقة وتحقيقات كافية في كثير من الحالات.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg"
   },
   {
     "id": "67f43e5f517df284a809",
