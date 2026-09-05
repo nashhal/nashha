@@ -9,7 +9,7 @@
     "published": "2026-09-04T21:56:43+00:00",
     "published_at": "2026-09-04T21:56:43+00:00",
     "collected_at": "2026-09-04T23:51:29.700163+00:00",
-    "category": "الجنوب",
+    "category": "أبين",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "أبين",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "0ed206074b4e99ecaed1",
@@ -30,7 +34,7 @@
     "published": "2026-09-04T17:51:18+00:00",
     "published_at": "2026-09-04T17:51:18+00:00",
     "collected_at": "2026-09-04T19:38:05.712570+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "وزارة الخزانة الأمريكية تقول إن بنك (غولدن غلوبال) \"سهّل معاملات مالية بعشرات ملايين الدولارات\" لصالح الحرس الثوري، وكوريا الجنوبية تدرس \"المساهمة\" في تأمين حركة الملاحة في مضيق هرمز، رغم رفض رئيسها المشاركة مع الولايات المتحدة في الحرب على إيران.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7f4e/live/209a2610-a896-11f1-a291-b542ee92de7c.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7f4e/live/209a2610-a896-11f1-a291-b542ee92de7c.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/7f4e/live/209a2610-a896-11f1-a291-b542ee92de7c.jpg"
   },
   {
     "id": "5c885ecd07e4064441c5",
@@ -51,7 +59,7 @@
     "published": "2026-09-04T17:35:22+00:00",
     "published_at": "2026-09-04T17:35:22+00:00",
     "collected_at": "2026-09-04T23:51:29.700295+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854332238103499.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854332238103499.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854332238103499.jpeg"
   },
   {
     "id": "6b73a7b3e744913a418d",
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854304715345429.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854304715345429.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178854304715345429.jpeg"
   },
   {
     "id": "3b0dc06f52d248321907",
@@ -93,7 +109,7 @@
     "published": "2026-09-04T16:27:57+00:00",
     "published_at": "2026-09-04T16:27:57+00:00",
     "collected_at": "2026-09-04T23:51:28.827676+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -102,7 +118,11 @@
     "content": "تدلّ الضجة التي أُثيرت حول هذه التلة الاستراتيجية الكاشفة على أن السيطرة عليها، إذا ما تأكدت، هي حلقة في إطار التقدم التدريجي الإسرائيلي داخل لبنان وتوسيع احتلال الجنوب مع تمتين هذا الاحتلال عسكريا.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/ccf6/live/ca07e850-a872-11f1-aed2-8d6da8d75094.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/ccf6/live/ca07e850-a872-11f1-aed2-8d6da8d75094.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/ccf6/live/ca07e850-a872-11f1-aed2-8d6da8d75094.jpg"
   },
   {
     "id": "19e07dbdcc4117c2167a",
@@ -114,7 +134,7 @@
     "published": "2026-09-04T14:24:40+00:00",
     "published_at": "2026-09-04T14:24:40+00:00",
     "collected_at": "2026-09-04T23:51:29.700453+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178853188064063979.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178853188064063979.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178853188064063979.jpeg"
   },
   {
     "id": "0741130f73a7d0167fd4",
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "974fa5c3c067a070e093",
@@ -165,7 +193,11 @@
     "content": "لقي أكثر من 120 شخصا حتفهم في اشتباكات بين القوات الحكومية اليمنية والحوثيين منذ الخميس، في أعنف مواجهات بين الطرفين منذ سنوات، وفق ما أفادت به مصادر من الجانبين لوكالة الأنباء الفرنسية الجمعة، فيما يحاول الحوثيون المدعومون من إيران التقدم نحو مناطق متاخمة لباب المندب الاستراتيجي.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/814637d4-993b-11f1-8658-005056a97e36/w:1280/p:16x9/903713d81e11004082f441c14eb80dcb8f34d9d9.jpg",
+    "image_url": "https://s.france24.com/media/display/814637d4-993b-11f1-8658-005056a97e36/w:1280/p:16x9/903713d81e11004082f441c14eb80dcb8f34d9d9.jpg",
+    "thumbnail": "https://s.france24.com/media/display/814637d4-993b-11f1-8658-005056a97e36/w:1280/p:16x9/903713d81e11004082f441c14eb80dcb8f34d9d9.jpg"
   },
   {
     "id": "40a12bc66406a684dd88",
@@ -177,7 +209,7 @@
     "published": "2026-09-04T12:47:15+00:00",
     "published_at": "2026-09-04T12:47:15+00:00",
     "collected_at": "2026-09-04T23:51:29.700569+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "7a156884537384374701",
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178852477240082027.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178852477240082027.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178852477240082027.jpeg"
   },
   {
     "id": "74ae7dd18754d90ad61f",
@@ -278,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178847419162332846.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178847419162332846.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178847419162332846.jpeg"
   },
   {
     "id": "13330ed81981dd74d6c0",
@@ -299,7 +343,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178846318843684177.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178846318843684177.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178846318843684177.jpeg"
   },
   {
     "id": "d683dc0302ac9f2963e6",
@@ -2495,7 +2543,11 @@
     "content": "بمناسبة اليوم الدولي لضحايا الاختفاء القسري، الذي يصادف 30 أغسطس/آب، تواصلت بي بي سي مع عائلات لا تزال تنتظر معرفة مصير أحبائها. وتقدّر منظمة العفو الدولية أن عائلات في العراق وسوريا واليمن ولبنان والسودان أمضت مجتمعةً \"أكثر من مليون سنة\" في انتظار إجابات، في ظل غياب أرقام رسمية دقيقة وتحقيقات كافية في كثير من الحالات.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/708d/live/7939d7b0-a432-11f1-9842-ff6474c8dc91.jpg"
   },
   {
     "id": "67f43e5f517df284a809",
