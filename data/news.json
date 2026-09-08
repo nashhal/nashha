@@ -9,7 +9,7 @@
     "published": "2026-09-08T13:38:24+00:00",
     "published_at": "2026-09-08T13:38:24+00:00",
     "collected_at": "2026-09-08T13:54:15.872657+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887470431152737.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887470431152737.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887470431152737.jpeg"
   },
   {
     "id": "08c3a1f76c0100c669db",
@@ -39,7 +43,11 @@
     "content": "تأتي هجمات جماعة أنصار الله (الحوثيين) على السعودية على وقع معارك عنيفة، بين الحوثيين وقوات الحكومة اليمنية المدعومة من الرياض، إثر محاولة الحوثيين انتزاع السيطرة على مناطق متاخمة لمضيق باب المندب من قبضة الحكومة الشرعية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/841a/live/f20ad790-ab56-11f1-b471-ff02eb3eac27.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/841a/live/f20ad790-ab56-11f1-b471-ff02eb3eac27.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/841a/live/f20ad790-ab56-11f1-b471-ff02eb3eac27.jpg"
   },
   {
     "id": "7d124b688d40345c301f",
@@ -51,7 +59,7 @@
     "published": "2026-09-08T13:28:56+00:00",
     "published_at": "2026-09-08T13:28:56+00:00",
     "collected_at": "2026-09-08T13:54:15.872714+00:00",
-    "category": "اليمن",
+    "category": "مأرب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "مأرب",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887413633272429.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887413633272429.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887413633272429.jpeg"
   },
   {
     "id": "8efdff0f379cd2667e64",
@@ -72,7 +84,7 @@
     "published": "2026-09-08T13:25:36+00:00",
     "published_at": "2026-09-08T13:25:36+00:00",
     "collected_at": "2026-09-08T13:54:15.872756+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "bb9923f52454e1b08a48",
@@ -102,7 +118,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "37fb86bc261cec4fc904",
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887351064956197.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887351064956197.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887351064956197.jpeg"
   },
   {
     "id": "39ab70fd629f1b782e02",
@@ -135,7 +159,7 @@
     "published": "2026-09-08T13:15:26+00:00",
     "published_at": "2026-09-08T13:15:26+00:00",
     "collected_at": "2026-09-08T13:54:15.872900+00:00",
-    "category": "الجنوب",
+    "category": "شبوة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "شبوة",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "e33d133315af2dea1db8",
@@ -165,7 +193,11 @@
     "content": "يشهد اليمن منذ أيام اشتباكات للسيطرة على إحدى النقاط الاستراتيجية المؤدية إلى البحر الأحمر، في أعنف مواجهات تسجلها البلاد منذ انهيار الهدنة المبرمة بين الطرفين عام 2022. وأعلن الحوثيون المدعومون من إيران، الثلاثاء، استهداف منشآت اقتصادية وعسكرية في جنوب غرب السعودية بصواريخ بالستية وطائرات مسيّرة ردا على شن المملكة غارات جوية في اليمن وسط تصاعد المعارك.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/91aba972-ab6c-11f1-bfc0-005056bf30b7/w:1280/p:16x9/AR-20260908-110259-110755-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/91aba972-ab6c-11f1-bfc0-005056bf30b7/w:1280/p:16x9/AR-20260908-110259-110755-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/91aba972-ab6c-11f1-bfc0-005056bf30b7/w:1280/p:16x9/AR-20260908-110259-110755-CS.jpg"
   },
   {
     "id": "3584c42b9823ee51068d",
@@ -177,7 +209,7 @@
     "published": "2026-09-08T13:01:30+00:00",
     "published_at": "2026-09-08T13:01:30+00:00",
     "collected_at": "2026-09-08T13:54:15.872938+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887249022338785.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887249022338785.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887249022338785.jpeg"
   },
   {
     "id": "91ac8b35e946948191b9",
@@ -198,7 +234,7 @@
     "published": "2026-09-08T12:49:43+00:00",
     "published_at": "2026-09-08T12:49:43+00:00",
     "collected_at": "2026-09-08T13:54:15.872975+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887178311501625.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887178311501625.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178887178311501625.jpeg"
   },
   {
     "id": "19e91bf5650335408968",
@@ -228,7 +268,11 @@
     "content": "أعلنت السعودية الثلاثاء توقّف العمليات في ​بعض منشآت الطاقة في المملكة، أكبر مصدر للنفط في العالم، عقب هجمات شنها الحوثيون المدعومون ​من إيران في اليمن وأسفرت عن إصابة أكثر من 70 شخصا في ما وصفته السلطات السعودية بأنه تصعيد خطير. فكيف يمكن تفسير الهجمات الحوثية على السعودية في هذا التوقيت؟",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/780d8b32-ab7d-11f1-b4a6-005056bfb2b6/w:1280/p:16x9/AR-20260908-130409-130744-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/780d8b32-ab7d-11f1-b4a6-005056bfb2b6/w:1280/p:16x9/AR-20260908-130409-130744-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/780d8b32-ab7d-11f1-b4a6-005056bfb2b6/w:1280/p:16x9/AR-20260908-130409-130744-CS.jpg"
   },
   {
     "id": "1c3382f052e8f758bfaf",
@@ -249,7 +293,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178886875420111845.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178886875420111845.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178886875420111845.jpeg"
   },
   {
     "id": "000fadb15a39227a87c2",
@@ -270,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178886534823273982.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178886534823273982.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178886534823273982.png"
   },
   {
     "id": "fdcba45dbb84c8632eb8",
@@ -291,7 +343,11 @@
     "content": "توقفت العمليات في ​بعض منشآت الطاقة في المملكة العربية السعودية، أكبر مصدر للنفط في العالم، الثلاثاء، عقب هجمات شنها الحوثيون المتحالفون ​مع إيران في اليمن وأسفرت عن إصابة أكثر من 70 شخصا في ما وصفته السلطات السعودية بأنه تصعيد خطير. وذكرت وزارة الطاقة السعودية أن حرائق اندلعت في مواقع وأصيب عدة أشخاص، بينما هرعت ​فرق الإطفاء ‌والطوارئ الأخرى لاحتواءؤالنيران وتقييم الأضرار.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/255d2664-ab6d-11f1-9fe9-005056bfb2b6/w:1280/p:16x9/AR-20260908-080506-080722-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/255d2664-ab6d-11f1-9fe9-005056bfb2b6/w:1280/p:16x9/AR-20260908-080506-080722-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/255d2664-ab6d-11f1-9fe9-005056bfb2b6/w:1280/p:16x9/AR-20260908-080506-080722-CS.jpg"
   },
   {
     "id": "7d2c83608922438f5968",
@@ -303,7 +359,7 @@
     "published": "2026-09-08T09:13:43+00:00",
     "published_at": "2026-09-08T09:13:43+00:00",
     "collected_at": "2026-09-08T13:54:15.115589+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -312,7 +368,11 @@
     "content": "تصاعدت المعارك في اليمن بين الحوثيين والقوات الحكومية، وهي أعنف مواجهات تسجلها البلاد منذ انهيار الهدنة المبرمة عام 2022، مع شنّ الحوثيين المدعومين من إيران منذ الخميس هجوما بريا تزامن مع قصف بالصواريخ والطائرات المسيّرة لمناطق ساحلية مطلة على البحر الأحمر وفي محيط تعز، محاولين التقدم نحو مناطق متاخمة لمضيق باب المندب الاستراتيجي، الذي تسيطر عليها الحكومة المدعومة من السعودية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/8072708e-ab5b-11f1-b80d-005056a90284/w:1280/p:16x9/AR-20260908-090716-090925-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/8072708e-ab5b-11f1-b80d-005056a90284/w:1280/p:16x9/AR-20260908-090716-090925-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/8072708e-ab5b-11f1-b80d-005056a90284/w:1280/p:16x9/AR-20260908-090716-090925-CS.jpg"
   },
   {
     "id": "fd25e26b0842f2f33be1",
@@ -324,7 +384,7 @@
     "published": "2026-09-08T08:37:52+00:00",
     "published_at": "2026-09-08T08:37:52+00:00",
     "collected_at": "2026-09-08T13:54:15.873169+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -333,7 +393,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885667286001754.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885667286001754.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885667286001754.jpeg"
   },
   {
     "id": "755fc754cc1788f96f0c",
@@ -354,7 +418,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885663648765575.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885663648765575.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885663648765575.jpeg"
   },
   {
     "id": "6bc3f9cafc9e9f3ecd80",
@@ -366,7 +434,7 @@
     "published": "2026-09-08T08:34:55+00:00",
     "published_at": "2026-09-08T08:34:55+00:00",
     "collected_at": "2026-09-08T13:54:15.115738+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -375,7 +443,11 @@
     "content": "أعلن ​الحوثيون ​المتحالفون مع إيران، الثلاثاء، ​أنهم ‌استهدفوا بطائرات ‌مسيرة وصواريخ باليستية مواقع تابعة لشركة أرامكو ​السعودية العملاقة للنفط ‌في المناطق الجنوبية ‌من ​البلاد، في إطار ما وصفها ​المتحدث العسكري ​باسم الجماعة ​بأنها \"عملية ​نوعية وواسعة\". وأسفرت الهجمات عن إصابة 73 مدنيا، وفق ما أعلنه التحالف الذي تقوده الرياض متعهدا بالرد.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/2c7a6b08-ab5b-11f1-a9ff-005056a97e36/w:1280/p:16x9/AR-20260908-090405-090659-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/2c7a6b08-ab5b-11f1-a9ff-005056a97e36/w:1280/p:16x9/AR-20260908-090405-090659-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/2c7a6b08-ab5b-11f1-a9ff-005056a97e36/w:1280/p:16x9/AR-20260908-090405-090659-CS.jpg"
   },
   {
     "id": "16215aeadf3548b9f1b7",
@@ -387,7 +459,7 @@
     "published": "2026-09-08T08:19:08+00:00",
     "published_at": "2026-09-08T08:19:08+00:00",
     "collected_at": "2026-09-08T13:54:14.840915+00:00",
-    "category": "اليمن",
+    "category": "صعدة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -396,7 +468,11 @@
     "content": "تأسيس الحركة بشكلها الأوّلي كان في بداية تسعينيات القرن الماضي، حين دخل حسين بدر الدين الحوثي الحياة السياسية من خلال المساهمة مع آخرين في تأسيس \"حزب الحق\" المعارض، الذي ضمّ شخصيات سياسية ودينية، وفاز حسين الحوثي بمقعد برلماني عن الحزب في محافظة صعدة في انتخابات عام 1993.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "صعدة",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg"
   },
   {
     "id": "28cd47f9554618a01d01",
@@ -442,7 +518,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885348539245952.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885348539245952.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178885348539245952.png"
   },
   {
     "id": "b9dbb8ee716b077ce00a",
@@ -463,7 +543,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "56e154f8abac7967a5ae",
@@ -475,7 +559,7 @@
     "published": "2026-09-08T06:06:32+00:00",
     "published_at": "2026-09-08T06:06:32+00:00",
     "collected_at": "2026-09-08T13:54:15.873329+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -484,7 +568,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "8b05ab76c6a2309e2977",
