@@ -9,7 +9,7 @@
     "published": "2026-09-07T22:08:46+00:00",
     "published_at": "2026-09-07T22:08:46+00:00",
     "collected_at": "2026-09-08T00:25:41.345927+00:00",
-    "category": "اليمن",
+    "category": "مأرب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "مأرب",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178881892651016354.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178881892651016354.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178881892651016354.jpeg"
   },
   {
     "id": "0cf78229299a31b6edda",
@@ -30,7 +34,7 @@
     "published": "2026-09-07T20:34:44+00:00",
     "published_at": "2026-09-07T20:34:44+00:00",
     "collected_at": "2026-09-08T00:25:40.654386+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "يواجه قرار السلطات النمساوية حظر ارتداء الفتيات دون 14 عاما الحجاب أول اختبار له الإثنين ​مع استئناف الدراسة في فيينا وغيرها من الولايات وسط استنكار من منظمات من بينها الهيئة الرئيسية لتمثيل المسلمين بالبلاد. فيما ينص التشريع على أنه يجب على المدرسة إجراء مناقشات مع أي طالبة تخالف ​الحظر، وبعد ذلك يمكن فرض غرامة تتراوح بين 150 و800 يورو (175-930 دولارا).",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://s.france24.com/media/display/f0eec274-d6b6-11f0-b207-005056bf30b7/w:1280/p:16x9/AP25006366371611.jpg",
+    "image_url": "https://s.france24.com/media/display/f0eec274-d6b6-11f0-b207-005056bf30b7/w:1280/p:16x9/AP25006366371611.jpg",
+    "thumbnail": "https://s.france24.com/media/display/f0eec274-d6b6-11f0-b207-005056bf30b7/w:1280/p:16x9/AP25006366371611.jpg"
   },
   {
     "id": "bc14c22effbf37fe9b46",
@@ -60,7 +68,11 @@
     "content": "في حدث اليوم نسلط الضوء على بدء محاكمة نجلي رئيس اليمن السابق علي عبد الله الصالح في باريس في قضية تبييض أموال. ضيف حدث اليوم: مجيد بودن، رئيس جمعية المحامين في القانون الدولي بباريس.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/c598b360-aaea-11f1-b4ba-005056bfb2b6/w:1280/p:16x9/AR-20260907-201712-202650-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/c598b360-aaea-11f1-b4ba-005056bfb2b6/w:1280/p:16x9/AR-20260907-201712-202650-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/c598b360-aaea-11f1-b4ba-005056bfb2b6/w:1280/p:16x9/AR-20260907-201712-202650-CS.jpg"
   },
   {
     "id": "08c3a1f76c0100c669db",
@@ -81,7 +93,11 @@
     "content": "تضاربت الأنباء بشأن سير المعارك في اليمن، مع إعلان كل طرف تحقيق مكاسب ميدانية، بالتزامن مع تعرض منشآت نفطية تابعة لأرامكو في جازان لهجوم جديد، بحسب صحيفة \"فايننشال تايمز\".",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/bd38/live/78b33c70-aade-11f1-a291-b542ee92de7c.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/bd38/live/78b33c70-aade-11f1-a291-b542ee92de7c.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/bd38/live/78b33c70-aade-11f1-a291-b542ee92de7c.jpg"
   },
   {
     "id": "d16975bbc17ff351f929",
@@ -93,7 +109,7 @@
     "published": "2026-09-07T17:34:21+00:00",
     "published_at": "2026-09-07T17:34:21+00:00",
     "collected_at": "2026-09-08T00:25:41.346186+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -102,7 +118,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178880246120437799.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178880246120437799.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178880246120437799.jpeg"
   },
   {
     "id": "caf72a790d70d8319908",
@@ -114,7 +134,7 @@
     "published": "2026-09-07T15:31:06+00:00",
     "published_at": "2026-09-07T15:31:06+00:00",
     "collected_at": "2026-09-08T00:25:40.654803+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "تشهد الساحة اليمنية تصعيدًا عسكريًا متسارعًا، مع اشتداد المعارك بين الحوثيين والقوات الحكومية في محافظتي تعز والحديدة، وسط مواجهات عنيفة أسفرت عن سقوط مئات القتلى والجرحى، وفق ما ورد في التقرير.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/0d343b8e-aac5-11f1-8452-005056bf30b7/w:1280/p:16x9/AR-20260907-150209-150610-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/0d343b8e-aac5-11f1-8452-005056bf30b7/w:1280/p:16x9/AR-20260907-150209-150610-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/0d343b8e-aac5-11f1-8452-005056bf30b7/w:1280/p:16x9/AR-20260907-150209-150610-CS.jpg"
   },
   {
     "id": "af56adbf12462ac1b198",
@@ -135,7 +159,7 @@
     "published": "2026-09-07T15:15:17+00:00",
     "published_at": "2026-09-07T15:15:17+00:00",
     "collected_at": "2026-09-08T00:25:40.654875+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -144,7 +168,11 @@
     "content": "اتهم المتمردون اليمنيون الحوثيون الاثنين السعودية باستهداف محافظات الجوف والبيضاء ومأرب وتعز في اليمن بعدد من الغارات الجوية وصواريخ الكروز، في ظل تصاعد الاشتباكات بينهم وبين القوات الحكومية المدعومة من تحالف عسكري تقوده المملكة.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/92edd11e-aac9-11f1-9fa7-005056a97e36/w:1280/p:16x9/AR-20260907-160143-160336-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/92edd11e-aac9-11f1-9fa7-005056a97e36/w:1280/p:16x9/AR-20260907-160143-160336-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/92edd11e-aac9-11f1-9fa7-005056a97e36/w:1280/p:16x9/AR-20260907-160143-160336-CS.jpg"
   },
   {
     "id": "6aba2d453ae4e24d4632",
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178879320951268703.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178879320951268703.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178879320951268703.jpeg"
   },
   {
     "id": "9f4e659f64cad62509ae",
@@ -177,7 +209,7 @@
     "published": "2026-09-07T14:45:03+00:00",
     "published_at": "2026-09-07T14:45:03+00:00",
     "collected_at": "2026-09-07T22:01:43.744292+00:00",
-    "category": "الجنوب",
+    "category": "سقطرى",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "سقطرى",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "1032d925da7879ff2451",
