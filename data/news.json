@@ -9,7 +9,7 @@
     "published": "2026-09-09T11:38:23+00:00",
     "published_at": "2026-09-09T11:38:23+00:00",
     "collected_at": "2026-09-09T11:45:27.454546+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178895390373523828.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178895390373523828.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178895390373523828.jpeg"
   },
   {
     "id": "1bb3105058633ad7fa91",
@@ -39,7 +43,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894991662378624.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894991662378624.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894991662378624.jpg"
   },
   {
     "id": "bfa7ec51b27f5417188d",
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894986765795663.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894986765795663.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894986765795663.jpeg"
   },
   {
     "id": "34156f58b2f4c674ece1",
@@ -72,7 +84,7 @@
     "published": "2026-09-09T10:30:11+00:00",
     "published_at": "2026-09-09T10:30:11+00:00",
     "collected_at": "2026-09-09T11:45:27.454684+00:00",
-    "category": "الجنوب",
+    "category": "لحج",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "لحج",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894981154223368.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894981154223368.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894981154223368.jpeg"
   },
   {
     "id": "13db3d963f53add3c50a",
@@ -102,7 +118,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894935127498840.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894935127498840.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894935127498840.jpeg"
   },
   {
     "id": "2482fe31c978b06da4c9",
@@ -114,7 +134,7 @@
     "published": "2026-09-09T09:49:08+00:00",
     "published_at": "2026-09-09T09:49:08+00:00",
     "collected_at": "2026-09-09T11:45:27.454778+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "934c83865bc404967ede",
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894707666975327.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894707666975327.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894707666975327.jpeg"
   },
   {
     "id": "c10a1ba0bdf642c9cb13",
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "dcac4e15405525d105ec",
@@ -177,7 +209,7 @@
     "published": "2026-09-09T09:34:31+00:00",
     "published_at": "2026-09-09T09:34:31+00:00",
     "collected_at": "2026-09-09T11:45:26.650426+00:00",
-    "category": "الجنوب",
+    "category": "اليمن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "رفع الدفاع المدني ​السعودي إنذارا أعلنه في وقت سابق اليوم الأربعاء في محافظة خميس مشيط الجنوبية، وذلك ​بعد يوم من هجمات شنتها جماعة الحوثي اليمنية على المنطقة وثلاث مدن مجاورة أخرى، مما أدى إلى إصابة 73 شخصا واشتعال حرائق في منشآت نفطية. ونفذ الحوثيون المتحالفون ​مع إيران ‌هجوما على قاعدة جوية في خميس مشيط وعلى منشآت نفطية في المدن المجاورة أمس الثلاثاء، فيواحدة من أكبر الهجمات التي تشهدها السعودية منذ بدء ‌الحرب الأمريكية-الإسرائيلية على إيران في فبراير شباط.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/0892d11a-ac20-11f1-be90-005056bfb2b6/w:1280/p:16x9/AR-20260909-080738-081327-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/0892d11a-ac20-11f1-be90-005056bfb2b6/w:1280/p:16x9/AR-20260909-080738-081327-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/0892d11a-ac20-11f1-be90-005056bfb2b6/w:1280/p:16x9/AR-20260909-080738-081327-CS.jpg"
   },
   {
     "id": "94d8ed3fd0f1f882d287",
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894613044796336.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894613044796336.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178894613044796336.png"
   },
   {
     "id": "42146d7cb5256edea33a",
@@ -228,7 +268,11 @@
     "content": "أعلن الحوثيون الثلاثاء أن السعودية شنّت سلسلة غارات في اليمن وذلك بعد هجمات شنها المتمردون على منشآت مدنية واقتصادية في جنوب المملكة، أسفرت عن جرح العشرات، ورأى وزير الخارجية الأميركي ماركو روبيو أن \"اليد الإيرانية\" تقف وراءها. وفي ظل الحرب في الشرق الأوسط، انهارت في الأسابيع الماضية هدنة سادت منذ العام 2022 بين الحوثيين المدعومين من طهران، والقوات الحكومية المدعومة من تحالف عسكري تقوده الرياض.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/73b30a28-ac25-11f1-8860-005056a97e36/w:1280/p:16x9/capture-13501267956aa113ab8b1151-32578428.jpg",
+    "image_url": "https://s.france24.com/media/display/73b30a28-ac25-11f1-8860-005056a97e36/w:1280/p:16x9/capture-13501267956aa113ab8b1151-32578428.jpg",
+    "thumbnail": "https://s.france24.com/media/display/73b30a28-ac25-11f1-8860-005056a97e36/w:1280/p:16x9/capture-13501267956aa113ab8b1151-32578428.jpg"
   },
   {
     "id": "b1ba02d600818ddf7a2e",
@@ -249,7 +293,11 @@
     "content": "أعلن الحوثيون استهداف منشآت لأرامكو في أبها ونجران وجيزان وقاعدة خميس مشيط الجوية بصواريخ بالستية ومسيّرات، ردا على ما قالوا إنها \"121 غارة جوية\" سعودية في اليمن، فيما أعلن التحالف بقيادة الرياض إصابة 73 مدنيا. وفي الخليج، أعلن الحرس الثوري الإيراني مصادرة غواصة أمريكية غير مأهولة عند مدخل مضيق هرمز، بينما قالت القيادة المركزية الأمريكية إن مسيّرة بحرية تشغّلها قواتها أصابها خلل قبل أكثر من يوم.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/c675536e-ab5e-11f1-b52b-005056bfb2b6/w:1280/p:16x9/000-C7M7263.jpg",
+    "image_url": "https://s.france24.com/media/display/c675536e-ab5e-11f1-b52b-005056bfb2b6/w:1280/p:16x9/000-C7M7263.jpg",
+    "thumbnail": "https://s.france24.com/media/display/c675536e-ab5e-11f1-b52b-005056bfb2b6/w:1280/p:16x9/000-C7M7263.jpg"
   },
   {
     "id": "08c3a1f76c0100c669db",
@@ -295,7 +343,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889729566346472.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889729566346472.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889729566346472.jpeg"
   },
   {
     "id": "50e3f91892f3f9568e24",
@@ -316,7 +368,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889605911817404.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889605911817404.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889605911817404.jpeg"
   },
   {
     "id": "0b91094825d85cbe18a6",
@@ -328,7 +384,7 @@
     "published": "2026-09-08T19:23:34+00:00",
     "published_at": "2026-09-08T19:23:34+00:00",
     "collected_at": "2026-09-09T11:45:27.455048+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -337,7 +393,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889541415601417.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889541415601417.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889541415601417.png"
   },
   {
     "id": "e240211566050bf889bb",
@@ -358,7 +418,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889451079294405.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889451079294405.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889451079294405.jpeg"
   },
   {
     "id": "699ef4bb2f0154f598b6",
@@ -370,7 +434,7 @@
     "published": "2026-09-08T18:53:00+00:00",
     "published_at": "2026-09-08T18:53:00+00:00",
     "collected_at": "2026-09-09T11:45:27.455108+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -379,7 +443,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889358094599975.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889358094599975.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889358094599975.jpeg"
   },
   {
     "id": "ebea43c596c2a7324c98",
@@ -400,7 +468,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889343822816350.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889343822816350.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178889343822816350.jpeg"
   },
   {
     "id": "3b7378597cac20b6e77e",
@@ -412,7 +484,7 @@
     "published": "2026-09-08T18:22:09+00:00",
     "published_at": "2026-09-08T18:22:09+00:00",
     "collected_at": "2026-09-09T11:45:27.455165+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -421,7 +493,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "32063033c9bc7b3ad159",
@@ -1233,7 +1309,7 @@
     "published": "2026-09-08T08:19:08+00:00",
     "published_at": "2026-09-08T08:19:08+00:00",
     "collected_at": "2026-09-09T11:45:26.456562+00:00",
-    "category": "اليمن",
+    "category": "صعدة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -1242,7 +1318,11 @@
     "content": "تأسيس الحركة بشكلها الأوّلي كان في بداية تسعينيات القرن الماضي، حين دخل حسين بدر الدين الحوثي الحياة السياسية من خلال المساهمة مع آخرين في تأسيس \"حزب الحق\" المعارض، الذي ضمّ شخصيات سياسية ودينية، وفاز حسين الحوثي بمقعد برلماني عن الحزب في محافظة صعدة في انتخابات عام 1993.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "صعدة",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg"
   },
   {
     "id": "28cd47f9554618a01d01",
