@@ -9,7 +9,7 @@
     "published": "2026-09-10T12:43:09+00:00",
     "published_at": "2026-09-10T12:43:09+00:00",
     "collected_at": "2026-09-10T13:02:49.390491+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "أعلنت عدة مصادر في الحكومة اليمنية، الخميس، أن جماعة الحوثي المتحالفة مع إيران سيطرت على مدينة المخا المطلة على البحر الأحمر عند مضيق باب المندب.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg"
   },
   {
     "id": "52aca96a9bd242d32389",
@@ -30,7 +34,7 @@
     "published": "2026-09-10T12:06:34+00:00",
     "published_at": "2026-09-10T12:06:34+00:00",
     "collected_at": "2026-09-10T13:02:49.390751+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "أفادت ثلاثة مصادر في الحكومة اليمنية بأن جماعة الحوثي المتحالفة مع إيران أحكمت، الخميس، سيطرتها على مدينة المخا المطلة على البحر الأحمر عند مضيق باب المندب الاستراتيجي.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg"
   },
   {
     "id": "971e322f853fa4201c42",
@@ -51,7 +59,7 @@
     "published": "2026-09-10T11:35:52+00:00",
     "published_at": "2026-09-10T11:35:52+00:00",
     "collected_at": "2026-09-10T13:02:50.444796+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg"
   },
   {
     "id": "2d4cddfa53fb6fc510e7",
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg"
   },
   {
     "id": "9c14fe8f70a4562ce6b2",
@@ -102,7 +118,11 @@
     "content": "قالت مصادر سعودية وباكستانية وإيرانية إن باكستان نقلت تحذيرا سعوديا إلى إيران حتى تكبح جماح حلفائها الحوثيين في اليمن بعدما صعدوا هجماتهم على المملكة، وذلك في جهد منسق لمنع تصاعد الأزمة.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg"
   },
   {
     "id": "8bebaefcc07076fde87f",
@@ -114,7 +134,7 @@
     "published": "2026-09-10T08:42:02+00:00",
     "published_at": "2026-09-10T08:42:02+00:00",
     "collected_at": "2026-09-10T13:02:49.391786+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg",
+    "image_url": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg",
+    "thumbnail": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg"
   },
   {
     "id": "1113f4b1078882887a29",
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902749720614768.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902749720614768.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902749720614768.png"
   },
   {
     "id": "4d551ff7ce99f3b5546f",
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902684091846726.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902684091846726.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902684091846726.jpeg"
   },
   {
     "id": "d34402318076e83802be",
@@ -177,7 +209,7 @@
     "published": "2026-09-10T06:51:05+00:00",
     "published_at": "2026-09-10T06:51:05+00:00",
     "collected_at": "2026-09-10T13:02:50.445008+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902306530666835.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902306530666835.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178902306530666835.jpeg"
   },
   {
     "id": "af1c1d28c2ed749c7bf1",
@@ -223,7 +259,7 @@
     "published": "2026-09-09T21:16:13+00:00",
     "published_at": "2026-09-09T21:16:13+00:00",
     "collected_at": "2026-09-10T13:02:50.445107+00:00",
-    "category": "اليمن",
+    "category": "مأرب",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -232,7 +268,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "مأرب",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178898864617006476.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178898864617006476.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178898864617006476.jpeg"
   },
   {
     "id": "f51f66435f222c62d78e",
@@ -253,7 +293,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897775171578882.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897775171578882.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897775171578882.jpg"
   },
   {
     "id": "774c6cf115908b2d8e33",
@@ -274,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897539370754697.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897539370754697.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897539370754697.jpeg"
   },
   {
     "id": "68936fedc2bb148f9fe7",
@@ -295,7 +343,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897525897114925.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897525897114925.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897525897114925.jpeg"
   },
   {
     "id": "7ed037ee89c0ba910bac",
@@ -316,7 +368,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897480164969226.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897480164969226.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897480164969226.jpeg"
   },
   {
     "id": "8141ac67d711f1b60ca5",
@@ -337,7 +393,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897419811161277.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897419811161277.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178897419811161277.jpeg"
   },
   {
     "id": "1af849d67adee69f0ed7",
@@ -349,7 +409,7 @@
     "published": "2026-09-09T17:13:30+00:00",
     "published_at": "2026-09-09T17:13:30+00:00",
     "collected_at": "2026-09-10T13:02:50.445450+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -358,7 +418,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "00a0a4cbe0052bfef480",
@@ -554,7 +618,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178895967247939605.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178895967247939605.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178895967247939605.jpg"
   },
   {
     "id": "17dcb1381886346f0d5e",
@@ -1941,7 +2009,7 @@
     "published": "2026-09-08T08:19:08+00:00",
     "published_at": "2026-09-08T08:19:08+00:00",
     "collected_at": "2026-09-10T13:02:49.237453+00:00",
-    "category": "اليمن",
+    "category": "صعدة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -1950,7 +2018,11 @@
     "content": "تأسيس الحركة بشكلها الأوّلي كان في بداية تسعينيات القرن الماضي، حين دخل حسين بدر الدين الحوثي الحياة السياسية من خلال المساهمة مع آخرين في تأسيس \"حزب الحق\" المعارض، الذي ضمّ شخصيات سياسية ودينية، وفاز حسين الحوثي بمقعد برلماني عن الحزب في محافظة صعدة في انتخابات عام 1993.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "صعدة",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg"
   },
   {
     "id": "28cd47f9554618a01d01",
