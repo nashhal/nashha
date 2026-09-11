@@ -9,7 +9,7 @@
     "published": "2026-09-11T07:46:58+00:00",
     "published_at": "2026-09-11T07:46:58+00:00",
     "collected_at": "2026-09-11T08:19:01.094306+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -18,7 +18,11 @@
     "content": "قال محمد عبد ​السلام المتحدث باسم الحوثيين المتحالفين مع ​إيران في اليمن اليوم الخميس إن الملاحة والتجارة الدولية في البحر الأحمر وباب المندب ​لا ‌تزال آمنة ومنتظمة، في وقت يشتد فيه القتال مع القوات الحكومية ‌المدعومة من السعودية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg"
   },
   {
     "id": "721dded2c2db942f4eed",
@@ -30,7 +34,7 @@
     "published": "2026-09-11T07:00:33+00:00",
     "published_at": "2026-09-11T07:00:33+00:00",
     "collected_at": "2026-09-11T08:19:00.930609+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -39,7 +43,11 @@
     "content": "سيطرت جماعة الحوثي المدعومة من إيران على مدينة وميناء المخا وجزيرة في البحر الأحمر، بعد مواجهات مع القوات الحكومية المدعومة من السعودية. وتمنح السيطرة الحوثيين موقعاً متقدماً قرب مضيق باب المندب، أحد أهم الممرات البحرية للتجارة العالمية، وسط تصاعد التوترات الإقليمية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/2125/live/c97f06e0-94b6-11f1-828d-53e8c722de68.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/2125/live/c97f06e0-94b6-11f1-828d-53e8c722de68.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/2125/live/c97f06e0-94b6-11f1-828d-53e8c722de68.jpg"
   },
   {
     "id": "4ff19bd4ff1413afe4ee",
@@ -51,7 +59,7 @@
     "published": "2026-09-11T02:50:42+00:00",
     "published_at": "2026-09-11T02:50:42+00:00",
     "collected_at": "2026-09-11T08:19:01.094799+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -60,7 +68,11 @@
     "content": "لحقت أضرار بطائرات عسكرية أمريكية في قاعدة موفق السلطي الجوية بالأردن جراء ضربات إيرانية هذا الأسبوع، وفق مسؤول أمريكي، فيما حذّر الرئيس دونالد ترامب طهران من أن واشنطن قد تقصف موقع \"جبل الفأس\" قرب نطنز. وفي اليمن، سيطر الحوثيون على مدينة المخا وجزيرة في البحر الأحمر متقدمين نحو باب المندب بعد أسبوع من معارك أوقعت أكثر من 500 قتيل، فيما أعلنت إسرائيل تدمير بنى تحتية لحزب الله في تلة علي الطاهر بتفجيرات سجلت هزة أرضية بقوة 4,1 درجات.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg",
+    "image_url": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg",
+    "thumbnail": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg"
   },
   {
     "id": "eb96ca5671659df7d725",
@@ -81,7 +93,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907724957809700.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907724957809700.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907724957809700.jpeg"
   },
   {
     "id": "f7757f52f364790bb3a0",
@@ -102,7 +118,11 @@
     "content": "في اليمن تتصاعد وتيرة التصعيد بين القوات الحكومية المدعومة من السعودية وجماعة الحوثيين المدعومة من ايران مع احتدام المعارك في الساحل الغربي وامتدادها إلى عدة محافظات. تصعيد رافقته العديد من المقاطع المضللة نسبت الى المواجهات الجارية. فما أبرزها؟",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg"
   },
   {
     "id": "eeedd0a3b10ae7845917",
@@ -114,7 +134,7 @@
     "published": "2026-09-10T20:35:14+00:00",
     "published_at": "2026-09-10T20:35:14+00:00",
     "collected_at": "2026-09-11T08:19:01.656202+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -123,7 +143,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "058361d7b4d5ec045bca",
@@ -144,7 +168,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg"
   },
   {
     "id": "efa15402a395dfb3adc7",
@@ -165,7 +193,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg"
   },
   {
     "id": "dbaa145813cce59029e9",
@@ -177,7 +209,7 @@
     "published": "2026-09-10T17:49:03+00:00",
     "published_at": "2026-09-10T17:49:03+00:00",
     "collected_at": "2026-09-11T08:19:01.656359+00:00",
-    "category": "الجنوب",
+    "category": "المهرة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -186,7 +218,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "المهرة",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "ab12597e5b63ef2e0794",
@@ -198,7 +234,7 @@
     "published": "2026-09-10T17:32:19+00:00",
     "published_at": "2026-09-10T17:32:19+00:00",
     "collected_at": "2026-09-11T08:19:01.656461+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -207,7 +243,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg"
   },
   {
     "id": "40eeb7d34b5ba6777d38",
@@ -228,7 +268,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg"
   },
   {
     "id": "6cbd2eb6266261d83fc3",
@@ -249,7 +293,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg"
   },
   {
     "id": "f224f5de1439ee174166",
@@ -270,7 +318,11 @@
     "content": "",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg",
+    "image_url": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg",
+    "thumbnail": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg"
   },
   {
     "id": "52c3729372d1a6ea2ee2",
@@ -282,7 +334,7 @@
     "published": "2026-09-10T16:18:35+00:00",
     "published_at": "2026-09-10T16:18:35+00:00",
     "collected_at": "2026-09-11T08:19:01.095647+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -291,7 +343,11 @@
     "content": "أعلنت مصادر في الحكومة اليمنية، الخميس، أن جماعة الحوثي المتحالفة مع إيران سيطرت على مدينة المخا المطلة على البحر الأحمر عند مضيق باب المندب.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg"
   },
   {
     "id": "346e959de5fe49fb9cd2",
@@ -303,7 +359,7 @@
     "published": "2026-09-10T16:16:34+00:00",
     "published_at": "2026-09-10T16:16:34+00:00",
     "collected_at": "2026-09-11T08:19:01.656616+00:00",
-    "category": "الجنوب",
+    "category": "حضرموت",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -312,7 +368,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "حضرموت",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "fb11190a7eba2c332b61",
@@ -324,7 +384,7 @@
     "published": "2026-09-10T16:16:10+00:00",
     "published_at": "2026-09-10T16:16:10+00:00",
     "collected_at": "2026-09-11T08:19:01.656656+00:00",
-    "category": "الجنوب",
+    "category": "عدن",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -333,7 +393,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "عدن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
   },
   {
     "id": "a5f89aed2dd365ac8197",
@@ -345,7 +409,7 @@
     "published": "2026-09-10T16:14:50+00:00",
     "published_at": "2026-09-10T16:14:50+00:00",
     "collected_at": "2026-09-11T08:19:01.656700+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -354,7 +418,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg"
   },
   {
     "id": "93b47ecbd114ea24661e",
@@ -366,7 +434,7 @@
     "published": "2026-09-10T15:34:03+00:00",
     "published_at": "2026-09-10T15:34:03+00:00",
     "collected_at": "2026-09-11T06:22:44.056283+00:00",
-    "category": "اليمن",
+    "category": "تعز",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -375,7 +443,11 @@
     "content": "أفادت ثلاثة مصادر في الحكومة اليمنية بأن جماعة الحوثي المتحالفة مع إيران أحكمت، الخميس، سيطرتها على مدينة المخا المطلة على البحر الأحمر عند مضيق باب المندب الاستراتيجي.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "تعز",
+    "image": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg",
+    "image_url": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg",
+    "thumbnail": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg"
   },
   {
     "id": "38d24ce249d7f87d76a3",
@@ -396,7 +468,11 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg",
+    "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg",
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg"
   },
   {
     "id": "d09d2ea3cb85c8515654",
@@ -542,7 +618,11 @@
     "content": "لماذا عادت المواجهات بين الحوثيين والسعودية؟ وما علاقة التصعيد الحالي بالحرب بين الولايات المتحدة وإيران؟",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "اليمن",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/a08b/live/79b343f0-ad26-11f1-b1d1-571ed4d7ff2c.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/a08b/live/79b343f0-ad26-11f1-b1d1-571ed4d7ff2c.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/a08b/live/79b343f0-ad26-11f1-b1d1-571ed4d7ff2c.jpg"
   },
   {
     "id": "d9e325584207905c1a5c",
@@ -2604,7 +2684,7 @@
     "published": "2026-09-08T08:19:08+00:00",
     "published_at": "2026-09-08T08:19:08+00:00",
     "collected_at": "2026-09-11T08:19:00.931531+00:00",
-    "category": "اليمن",
+    "category": "صعدة",
     "status": "published",
     "confidence": "high",
     "auto_published": true,
@@ -2613,7 +2693,11 @@
     "content": "تأسيس الحركة بشكلها الأوّلي كان في بداية تسعينيات القرن الماضي، حين دخل حسين بدر الدين الحوثي الحياة السياسية من خلال المساهمة مع آخرين في تأسيس \"حزب الحق\" المعارض، الذي ضمّ شخصيات سياسية ودينية، وفاز حسين الحوثي بمقعد برلماني عن الحزب في محافظة صعدة في انتخابات عام 1993.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "region": "صعدة",
+    "image": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "image_url": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg",
+    "thumbnail": "https://ichef.bbci.co.uk/news/1200/branded_arabic/e9ab/live/5ae387a0-8017-11f1-9317-f3c8d3f68726.jpg"
   },
   {
     "id": "28cd47f9554618a01d01",
