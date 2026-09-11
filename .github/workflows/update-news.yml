@@ -11,29 +11,58 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
+      
       - name: Install dependencies
-        run: python -m pip install feedparser
-
-      - name: Update news
+        run: python -m pip install -r requirements.txt
+      
+      - name: Collect and update news
         run: python fetch_news.py
-
-      - name: Commit changes
+      
+      - name: Commit and push changes
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          
+          # Stage the news data file
+          git add data/news.json
+          
+          # Only commit if there are changes
           if git diff --cached --quiet; then
             echo "No news changes to commit"
-          else
-            git commit -m "chore: update news"
-            git push
+            exit 0
           fi
+          
+          # Commit changes
+          git commit -m "chore: auto-update news $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          
+          # Push with retry logic
+          for attempt in 1 2 3; do
+            echo "Push attempt $attempt/3..."
+            if git push origin HEAD:main; then
+              echo "✓ Successfully pushed news update"
+              exit 0
+            fi
+            
+            if [ $attempt -lt 3 ]; then
+              echo "  Retrying after 3 seconds..."
+              sleep 3
+              git fetch origin main
+              git rebase origin/main || git rebase --abort
+            fi
+          done
+          
+          echo "✗ Failed to push after 3 attempts"
+          exit 1
