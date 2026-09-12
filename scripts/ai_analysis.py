@@ -4,6 +4,7 @@
 import json
 import os
 import re
+import sys
 from urllib.parse import urlparse
 import requests
 
@@ -103,20 +104,21 @@ def as_list(value, limit):
 def main():
     token = os.getenv("XAI_API_KEY")
     if not token:
-        print("[INFO] XAI_API_KEY غير مضبوط؛ تخطي التحليل")
-        return
+        print("[ERROR] XAI_API_KEY غير مضبوط؛ لا يمكن إنشاء التقارير التحليلية")
+        sys.exit(1)
 
     try:
         with open(OUT, encoding="utf-8") as f:
             data = json.load(f)
     except Exception as exc:
-        print(f"[WARN] تعذر قراءة الأخبار: {exc}")
-        return
+        print(f"[ERROR] تعذر قراءة الأخبار: {exc}")
+        sys.exit(1)
 
     if isinstance(data, dict):
         data = data.get("news", data.get("items", []))
     if not isinstance(data, list):
-        return
+        print("[ERROR] بنية data/news.json غير صالحة")
+        sys.exit(1)
 
     targets = [
         x for x in data
@@ -126,17 +128,33 @@ def main():
         and clean(x.get("status", "published")) == "published"
     ][:MAX_ANALYZE]
 
+    if not targets:
+        print("[OK] لا توجد أخبار مستهدفة للتحليل؛ لا توجد مشكلة في هذه الدورة.")
+        return
+
     changed = 0
+    failed = 0
     for item in targets:
         try:
             result = analyze(item, token)
             if not isinstance(result, dict):
+                failed += 1
+                print(f"[WARN] رد التحليل غير صالح: {item.get('title','')[:80]}")
                 continue
 
-            item["analysis_ar"] = clean(result.get("analysis_ar"))[:6500]
-            item["background_ar"] = clean(result.get("background_ar"))[:2600]
-            item["what_happened_ar"] = clean(result.get("what_happened_ar"))[:1800]
-            item["why_it_matters_ar"] = clean(result.get("why_it_matters_ar"))[:2600]
+            analysis_ar = clean(result.get("analysis_ar"))
+            background_ar = clean(result.get("background_ar"))
+            what_happened_ar = clean(result.get("what_happened_ar"))
+            why_it_matters_ar = clean(result.get("why_it_matters_ar"))
+            if not analysis_ar and not background_ar and not what_happened_ar and not why_it_matters_ar:
+                failed += 1
+                print(f"[WARN] الرد لا يحتوي على حقول تحليلية صالحة: {item.get('title','')[:80]}")
+                continue
+
+            item["analysis_ar"] = analysis_ar[:6500]
+            item["background_ar"] = background_ar[:2600]
+            item["what_happened_ar"] = what_happened_ar[:1800]
+            item["why_it_matters_ar"] = why_it_matters_ar[:2600]
             item["implications_ar"] = as_list(result.get("implications_ar"), 5)
             item["open_questions_ar"] = as_list(result.get("open_questions_ar"), 5)
 
@@ -152,17 +170,26 @@ def main():
             item["entities_ar"] = as_list(result.get("entities_ar"), 8)
             item["keywords_ar"] = as_list(result.get("keywords_ar"), 10)
             item["analysis_engine"] = MODEL
-            item["analysis_version"] = "2.0"
+            item["analysis_version"] = "2.1"
             changed += 1
             print(f"[OK] تقرير تحليلي: {item.get('title','')[:80]}")
         except Exception as exc:
-            print(f"[WARN] تعذر تحليل خبر: {exc}")
+            failed += 1
+            print(f"[ERROR] تعذر تحليل خبر: {item.get('title','')[:80]} — {exc}")
 
     if changed:
         with open(OUT, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"[DONE] تم إنشاء {changed} تقريرًا تحليليًا مطولًا")
+    if failed and changed == 0:
+        print(f"[ERROR] فشل إنشاء جميع التقارير المستهدفة: 0/{len(targets)} نجح، {failed} فشل.")
+        sys.exit(1)
+
+    if failed:
+        print(f"[ERROR] تم إنشاء {changed}/{len(targets)} تقريرًا، وفشل {failed}. سيتم اعتبار الدورة فاشلة حتى لا تمر المشكلة بصمت.")
+        sys.exit(1)
+
+    print(f"[DONE] تم إنشاء {changed} تقريرًا تحليليًا مطولًا بنجاح")
 
 
 if __name__ == "__main__":
