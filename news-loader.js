@@ -1,48 +1,179 @@
-(async()=>{
-  const box=document.getElementById('cards');
-  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const fallback='logo.jpg';
+/* Nashhal — dynamic homepage news loader */
+(() => {
+  const NEWS_URL = `data/news.json?v=${Date.now()}`;
+  const SOUTH_TERMS = [
+    'عدن','حضرموت','شبوة','أبين','لحج','الضالع','سقطرى','المهرة',
+    'الجنوب','جنوب اليمن','المجلس الانتقالي','الساحل الغربي','العند'
+  ];
+  const YEMEN_TERMS = [
+    'اليمن','يمني','صنعاء','تعز','مأرب','الحديدة','حجة','إب','صعدة','الضالع',
+    'الحوثي','الحوثيين','الحوثيون','حكومة اليمن','الأمم المتحدة في اليمن'
+  ];
 
-  function regionOf(x){
-    const direct=x.region||x.category||'';
-    const regions=['عدن','حضرموت','شبوة','أبين','لحج','الضالع','سقطرى','المهرة'];
-    if(regions.includes(direct)) return direct;
-    const text=((x.title||'')+' '+(x.summary||'')+' '+(x.description||'')).toLowerCase();
-    return regions.find(r=>text.includes(r.toLowerCase()))||'الجنوب';
+  const escapeHTML = (value = '') => String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+
+  const cleanText = (value = '') => String(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const normalize = (item) => {
+    const title = cleanText(item.title || item.headline || '');
+    const summary = cleanText(item.summary || item.description || '');
+    const source = cleanText(item.source || item.publisher || 'المصدر');
+    const published = item.published || item.pubDate || item.date || item.collected_at || '';
+    const text = `${title} ${summary}`.toLowerCase();
+    const isSouth = SOUTH_TERMS.some(term => text.includes(term.toLowerCase()));
+    const isYemen = isSouth || YEMEN_TERMS.some(term => text.includes(term.toLowerCase()));
+    return {
+      ...item,
+      title,
+      summary,
+      source,
+      published,
+      href: item.href || item.link || item.url || '#',
+      image: item.image || item.thumbnail || '',
+      isSouth,
+      isYemen
+    };
+  };
+
+  const dateValue = (item) => {
+    const time = Date.parse(item.published || '');
+    return Number.isNaN(time) ? 0 : time;
+  };
+
+  const formatDate = (value) => {
+    const time = Date.parse(value || '');
+    if (Number.isNaN(time)) return 'الآن';
+    return new Intl.DateTimeFormat('ar-SA', {
+      year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+    }).format(new Date(time));
+  };
+
+  const formatRelative = (value) => {
+    const time = Date.parse(value || '');
+    if (Number.isNaN(time)) return 'الآن';
+    const minutes = Math.max(0, Math.floor((Date.now() - time) / 60000));
+    if (minutes < 1) return 'الآن';
+    if (minutes < 60) return `قبل ${minutes} دقيقة`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `قبل ${hours} ساعة`;
+    const days = Math.floor(hours / 24);
+    return `قبل ${days} يوم`;
+  };
+
+  const sourceLabel = (item) => {
+    const source = escapeHTML(item.source || 'المصدر');
+    const date = escapeHTML(formatDate(item.published));
+    return `<span>${source}</span><span>·</span><span>${date}</span>`;
+  };
+
+  function renderHero(item) {
+    if (!item) return;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const title = hero.querySelector('h1, h2');
+    const summary = hero.querySelector('p');
+    const link = hero.querySelector('a[href]');
+    const meta = hero.querySelector('[data-hero-meta]');
+
+    if (title) title.textContent = item.title;
+    if (summary) summary.textContent = item.summary || 'متابعة مستمرة من نشهل لأبرز التطورات والأخبار.';
+    if (link) {
+      link.href = item.href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    if (meta) meta.innerHTML = sourceLabel(item);
+
+    if (item.image) {
+      hero.style.backgroundImage = `linear-gradient(90deg, rgba(10,24,19,.92), rgba(10,24,19,.42)), url("${item.image}")`;
+      hero.style.backgroundSize = 'cover';
+      hero.style.backgroundPosition = 'center';
+    }
   }
 
-  // Keep the existing homepage design and add the daily report inside its existing report area.
-  const reportBox=document.querySelector('.report');
-  if(reportBox&&!reportBox.querySelector('[data-daily-report]')){
-    const grid=reportBox.querySelector('.report-grid')||reportBox;
-    const card=document.createElement('div');
-    card.setAttribute('data-daily-report','1');
-    card.style.cssText='margin-top:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);padding:18px;display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:center';
-    card.innerHTML='<img src="daily-report.jpg" alt="التقرير اليومي للجبهات الجنوبية" style="width:100%;height:125px;object-fit:cover" onerror="this.style.display=\'none\'"><div><div style="font-size:11px;opacity:.8;margin-bottom:5px">تقرير نشهل · 9–10 أغسطس 2026</div><h3 style="font:800 19px Tahoma,Arial,sans-serif;margin:0 0 6px">جبهات الجنوب ضد الحوثي — التقرير اليومي</h3><p style="font-size:12px;margin:0;opacity:.85">أبرز التطورات في شبوة وأبين ولحج وعدن والضالع والبيضاء، مع قراءة للمشهد الميداني.</p><a href="daily-report.html" style="display:inline-block;background:#fff;color:#1d513a;padding:9px 15px;font:800 12px Tahoma,Arial,sans-serif;margin-top:10px">اقرأ التقرير</a></div>';
-    grid.appendChild(card);
-    const style=document.createElement('style');style.textContent='@media(max-width:600px){[data-daily-report]{grid-template-columns:1fr!important}}';document.head.appendChild(style);
+  function renderTicker(items) {
+    const ticker = document.querySelector('[data-breaking-ticker]') ||
+      document.querySelector('.breaking-ticker');
+    if (!ticker || !items.length) return;
+
+    const stories = items.slice(0, 4);
+    ticker.innerHTML = stories.map(item =>
+      `<a href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer">` +
+      `<strong>عاجل</strong> ${escapeHTML(item.title)} <small>${escapeHTML(formatRelative(item.published))}</small></a>`
+    ).join('');
   }
 
-  if(!box)return;
-  try{
-    const r=await fetch('data/news.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('news unavailable');
-    const data=await r.json();const items=Array.isArray(data)?data:(data.news||[]);
-    const south=items.filter(x=>/عدن|حضرموت|شبوة|أبين|لحج|الضالع|المهرة|سقطرى|الجنوب|الجنوبي/i.test((x.title||'')+' '+(x.summary||'')+' '+(x.region||''))).slice(0,12);
-    const all=south.map(x=>({
-      title:x.title,
-      source:x.source||x.source_name||'المصدر',
-      date:x.published||x.date||x.published_at||'',
-      summary:x.summary||x.description||'',
-      href:'article.html?id='+encodeURIComponent(x.id||x.url||x.link||''),
-      image:x.image||x.image_url||x.thumbnail||'',
-      region:regionOf(x)
-    }));
-    const render=list=>list.map(x=>{
-      const href=esc(x.href);
-      const image=x.image?`<a class="card-image" href="${href}"><img src="${esc(x.image)}" alt="${esc(x.title)}" loading="lazy" onerror="this.closest('.card-image').remove()"><span class="tag">${esc(x.region)}</span></a>`:`<div class="card-image card-image-empty"><span class="tag">${esc(x.region)}</span></div>`;
-      return `<article class="card">${image}<div class="card-body"><div class="label">${esc(x.source)}</div><h3><a href="${href}">${esc(x.title)}</a></h3><p>${esc(x.summary)}</p><div class="card-meta">${esc(x.region)} · ${esc(x.date)}</div></div></article>`;
-    }).join('');
-    box.innerHTML=render(all);
-    document.querySelectorAll('.nav a, .section-grid a').forEach(a=>a.addEventListener('click',e=>{const label=(a.textContent||'').trim();if(!['عدن','حضرموت','شبوة','أبين','لحج','الضالع','سقطرى','المهرة'].includes(label))return;e.preventDefault();const filtered=all.filter(x=>x.region===label);box.innerHTML=render(filtered.length?filtered:all);document.getElementById('news')?.scrollIntoView({behavior:'smooth'});}));
-  }catch(e){console.warn('News feed unavailable',e)}
+  function renderCards(items) {
+    const cards = document.querySelector('#cards');
+    if (!cards) return;
+
+    cards.innerHTML = items.slice(0, 12).map(item => `
+      <article class="news-card" data-region="${escapeHTML(item.region || '')}">
+        ${item.image ? `<img src="${escapeHTML(item.image)}" alt="" loading="lazy">` : ''}
+        <div class="news-card-body">
+          <div class="news-meta">${sourceLabel(item)}</div>
+          <h3><a href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.title)}</a></h3>
+          ${item.summary ? `<p>${escapeHTML(item.summary)}</p>` : ''}
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function renderReport(items) {
+    const report = document.querySelector('.report');
+    if (!report) return;
+    const latest = items[0];
+    const title = report.querySelector('[data-report-title]');
+    const date = report.querySelector('[data-report-date]');
+    const link = report.querySelector('a[href]');
+    if (title) title.textContent = 'ملخص نشهل لأبرز أخبار اليوم';
+    if (date) date.textContent = latest ? formatDate(latest.published) : 'اليوم';
+    if (link && latest) link.href = latest.href;
+    report.style.fontFamily = 'Tajawal, "Noto Kufi Arabic", sans-serif';
+  }
+
+  function setHomepageMeta(items) {
+    const latest = items[0];
+    const title = document.querySelector('[data-latest-title]');
+    const time = document.querySelector('[data-latest-time]');
+    if (title && latest) title.textContent = latest.title;
+    if (time && latest) time.textContent = formatDate(latest.published);
+  }
+
+  fetch(NEWS_URL, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      const raw = Array.isArray(data) ? data : (data.news || data.items || []);
+      const all = raw.map(normalize).filter(item => item.title && item.isYemen);
+      const south = all.filter(item => item.isSouth);
+      const sortedAll = [...all].sort((a, b) => dateValue(b) - dateValue(a));
+      const sortedSouth = [...south].sort((a, b) => dateValue(b) - dateValue(a));
+
+      // South Yemen gets priority for the hero; Yemen-wide coverage fills the cards.
+      const hero = sortedSouth[0] || sortedAll[0];
+      renderHero(hero);
+      renderTicker(sortedAll);
+      renderCards(sortedAll);
+      renderReport(sortedAll);
+      setHomepageMeta(sortedAll);
+
+      document.dispatchEvent(new CustomEvent('nashhal:news-ready', {
+        detail: { all: sortedAll, south: sortedSouth }
+      }));
+    })
+    .catch(error => {
+      console.error('Nashhal news loader:', error);
+    });
 })();
