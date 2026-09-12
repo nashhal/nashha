@@ -30,10 +30,15 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
 
-      - name: AI news discovery and editorial processing
+      - name: AI news discovery
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/news_bot_v2.py
+
+      - name: Claude editorial analysis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/news_ai_analyzer.py
 
       - name: Commit updates
         shell: bash
@@ -43,7 +48,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/news.json
           if git diff --cached --quiet; then echo 'لا توجد تحديثات.'; exit 0; fi
-          git commit -m 'تحديث الأخبار واكتشافها بالذكاء الاصطناعي'
+          git commit -m 'تحديث الأخبار وتحليلها تحريريًا بالذكاء الاصطناعي'
           for attempt in 1 2 3; do
             git fetch origin main
             if git rebase origin/main && git push origin HEAD:main; then
@@ -53,7 +58,7 @@ jobs:
             git rebase --abort || true
             git reset --soft origin/main
             git add data/news.json
-            git commit -m 'تحديث الأخبار واكتشافها بالذكاء الاصطناعي' || true
+            git commit -m 'تحديث الأخبار وتحليلها تحريريًا بالذكاء الاصطناعي' || true
             sleep 3
           done
           echo 'تعذر نشر التحديث بعد 3 محاولات.'
