@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="6" fill="#155DFC"/>
+  
+  <!-- White U shape - simplified for small size -->
+  <path d="M 8 8 L 8 18 Q 8 24 16 24 Q 24 24 24 18 L 24 8" 
+        fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
