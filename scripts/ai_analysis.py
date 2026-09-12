@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""تحليل تحريري عربي للأخبار المنشورة مع فصل الوقائع عن القراءة السياقية."""
+"""تحليل تحريري عربي مطوّل للأخبار المنشورة مع فصل الوقائع عن القراءة السياقية."""
 import json
 import os
 import re
@@ -11,6 +11,9 @@ OUT = "data/news.json"
 MODEL = "grok-4.5"
 MAX_ANALYZE = 20
 TIMEOUT = 90
+
+ALLOWED_ANGLES = ("سياسي", "ميداني", "أمني", "دبلوماسي", "اقتصادي", "إنساني", "متابعة")
+ALLOWED_IMPORTANCE = ("مرتفع", "متوسط", "عادي")
 
 
 def clean(value):
@@ -37,35 +40,50 @@ def analyze(item, token):
     title = clean(item.get("title") or item.get("original_title"))
     summary = clean(item.get("summary") or item.get("description") or item.get("content"))
     source = clean(item.get("source_name") or item.get("source"))
-    prompt = f"""أنت محرر أول ومحلل أخبار في غرفة تحرير عربية محترفة لمنصة نشهل.
-حلّل الخبر التالي اعتمادًا على النص المتاح فقط.
 
-المطلوب JSON فقط:
+    prompt = f"""أنت محرر أول ومحلل أخبار في غرفة تحرير عربية محترفة لمنصة نشهل.
+مهمتك إعداد تقرير تحليلي تحريري دقيق حول الخبر، لا مجرد تلخيصه.
+اعتمد على المادة المتاحة فقط، ولا تستحدث أي معلومة غير موجودة فيها.
+
+أعد JSON فقط بهذا الشكل:
 {{
-  "analysis_ar":"قراءة سياقية من 2 إلى 4 جمل",
-  "news_angle":"سياسي أو ميداني أو أمني أو دبلوماسي أو اقتصادي أو إنساني أو متابعة",
-  "importance":"مرتفع أو متوسط أو عادي",
-  "entities_ar":["حتى 6 كيانات مذكورة صراحة"],
-  "keywords_ar":["حتى 8 كلمات مفتاحية مستمدة من النص"]
+  "analysis_ar": "تحليل مطول من 7 إلى 10 فقرات قصيرة، يشرح الخبر وسياقه ودلالته وتداعياته المحتملة، مع الفصل الصريح بين ما تثبته المادة وما يمثل قراءة سياقية.",
+  "background_ar": "خلفية تفسيرية من 2 إلى 4 فقرات تشرح القضية أو التطور الذي يتناوله الخبر، من دون اختلاق تاريخ أو وقائع غير واردة.",
+  "what_happened_ar": "فقرة دقيقة تجيب: ماذا حدث؟ من المعني؟ أين؟ ومتى؟ بحسب المعلومات المتاحة فقط.",
+  "why_it_matters_ar": "2 إلى 3 فقرات تشرح أهمية التطور بالنسبة للمشهد اليمني أو الجنوبي، مع تجنب الجزم بما لم تثبته المعطيات.",
+  "implications_ar": ["3 إلى 5 تداعيات أو مسارات محتملة، وكل واحدة بصياغة احتمالية منضبطة"],
+  "open_questions_ar": ["حتى 5 أسئلة لا تزال الإجابة عنها غير محسومة من المادة"],
+  "analysis_level": "مرتفع أو متوسط أو محدود",
+  "news_angle": "سياسي أو ميداني أو أمني أو دبلوماسي أو اقتصادي أو إنساني أو متابعة",
+  "importance": "مرتفع أو متوسط أو عادي",
+  "entities_ar": ["حتى 8 كيانات مذكورة صراحة"],
+  "keywords_ar": ["حتى 10 كلمات مفتاحية مستمدة من النص"]
 }}
 
-قواعد التحرير:
-- اشرح ما تعنيه المعلومة في سياقها، لا تعِد صياغة الخبر فقط.
-- ميّز بوضوح بين الوقائع المثبتة والقراءة التحليلية.
-- لا تضف أي اسم أو رقم أو تاريخ أو موقع أو سبب غير وارد في المادة.
-- لا تقدّم استنتاجًا جازمًا عن المستقبل. استخدم عند الحاجة: تشير المعطيات، في السياق الراهن، قد تعكس، من شأنه أن، لا تكفي المعطيات للجزم.
-- استخدم لغة عربية فصيحة قوية ورصينة، وتوظيفًا طبيعيًا لمصطلحات: المشهد، السياق، المعطيات، الدلالة، التداعيات، المسار، المؤشرات، الفاعلون، الاستحقاقات، موازين التأثير، مكامن الغموض، الحراك السياسي، التطورات الميدانية، المسار الدبلوماسي.
-- لا تستخدم لغة دعائية أو تحريضية أو مبالغة.
-- لا تحوّل التحليل إلى رأي شخصي.
+معايير الدقة:
+- لا تضف أسماء أو أرقامًا أو تواريخ أو مواقع أو دوافع أو خلفيات غير ثابتة في المادة.
+- إذا كانت المعلومات غير كافية، صرّح بذلك بدل سد الفجوة بالتخمين.
+- لا تعتبر كلام طرف واحد حقيقة مطلقة؛ انسب الادعاء إلى قائله عند الحاجة.
+- فرّق بين الواقعة والادعاء والتفسير والاحتمال.
+- لا تستخدم لغة دعائية أو تحريضية أو عاطفية أو تهويلية.
+- لا تتنبأ بالمستقبل بصيغة جازمة.
+- استخدم العربية الفصحى الصحفية الواضحة والقوية، مع مصطلحات مثل: المشهد، السياق، المعطيات، الدلالة، التداعيات، المسار، المؤشرات، الفاعلون، الاستحقاقات، موازين التأثير، مكامن الغموض، الحراك السياسي، التطورات الميدانية، المسار الدبلوماسي، البيئة السياسية، الحسابات الإقليمية.
+- لا تكرر الجمل بين الحقول؛ لكل حقل وظيفة تحريرية مستقلة.
+- اجعل التقرير مفيدًا لقارئ يريد فهم الخبر لا مجرد معرفته.
 
 المصدر: {source}
 العنوان: {title}
-المادة: {summary}
+المادة المتاحة: {summary}
 """
+
     r = requests.post(
         "https://api.x.ai/v1/responses",
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-        json={"model": MODEL, "input": [{"role": "user", "content": prompt}], "include": ["no_inline_citations"]},
+        json={
+            "model": MODEL,
+            "input": [{"role": "user", "content": prompt}],
+            "include": ["no_inline_citations"],
+        },
         timeout=TIMEOUT,
     )
     r.raise_for_status()
@@ -76,46 +94,75 @@ def analyze(item, token):
     return json.loads(match.group(0))
 
 
+def as_list(value, limit):
+    if not isinstance(value, list):
+        return []
+    return [clean(v) for v in value if clean(v)][:limit]
+
+
 def main():
     token = os.getenv("XAI_API_KEY")
     if not token:
         print("[INFO] XAI_API_KEY غير مضبوط؛ تخطي التحليل")
         return
+
     try:
         with open(OUT, encoding="utf-8") as f:
             data = json.load(f)
     except Exception as exc:
         print(f"[WARN] تعذر قراءة الأخبار: {exc}")
         return
+
     if isinstance(data, dict):
         data = data.get("news", data.get("items", []))
     if not isinstance(data, list):
         return
 
-    targets = [x for x in data if isinstance(x, dict) and x.get("title") and not clean(x.get("analysis_ar")) and clean(x.get("status", "published")) == "published"][:MAX_ANALYZE]
+    targets = [
+        x for x in data
+        if isinstance(x, dict)
+        and x.get("title")
+        and not clean(x.get("analysis_ar"))
+        and clean(x.get("status", "published")) == "published"
+    ][:MAX_ANALYZE]
+
     changed = 0
     for item in targets:
         try:
             result = analyze(item, token)
             if not isinstance(result, dict):
                 continue
-            item["analysis_ar"] = clean(result.get("analysis_ar"))[:1400]
+
+            item["analysis_ar"] = clean(result.get("analysis_ar"))[:6500]
+            item["background_ar"] = clean(result.get("background_ar"))[:2600]
+            item["what_happened_ar"] = clean(result.get("what_happened_ar"))[:1800]
+            item["why_it_matters_ar"] = clean(result.get("why_it_matters_ar"))[:2600]
+            item["implications_ar"] = as_list(result.get("implications_ar"), 5)
+            item["open_questions_ar"] = as_list(result.get("open_questions_ar"), 5)
+
             angle = clean(result.get("news_angle"))
-            item["news_angle"] = angle if angle in ("سياسي", "ميداني", "أمني", "دبلوماسي", "اقتصادي", "إنساني", "متابعة") else "متابعة"
+            item["news_angle"] = angle if angle in ALLOWED_ANGLES else "متابعة"
+
             importance = clean(result.get("importance"))
-            item["importance"] = importance if importance in ("مرتفع", "متوسط", "عادي") else "عادي"
-            item["entities_ar"] = [clean(v) for v in result.get("entities_ar", []) if clean(v)][:6]
-            item["keywords_ar"] = [clean(v) for v in result.get("keywords_ar", []) if clean(v)][:8]
+            item["importance"] = importance if importance in ALLOWED_IMPORTANCE else "عادي"
+
+            level = clean(result.get("analysis_level"))
+            item["analysis_level"] = level if level in ("مرتفع", "متوسط", "محدود") else "متوسط"
+
+            item["entities_ar"] = as_list(result.get("entities_ar"), 8)
+            item["keywords_ar"] = as_list(result.get("keywords_ar"), 10)
             item["analysis_engine"] = MODEL
+            item["analysis_version"] = "2.0"
             changed += 1
-            print(f"[OK] تحليل: {item.get('title','')[:80]}")
+            print(f"[OK] تقرير تحليلي: {item.get('title','')[:80]}")
         except Exception as exc:
             print(f"[WARN] تعذر تحليل خبر: {exc}")
 
     if changed:
         with open(OUT, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"[DONE] تم تحليل {changed} خبرًا")
+
+    print(f"[DONE] تم إنشاء {changed} تقريرًا تحليليًا مطولًا")
 
 
 if __name__ == "__main__":
