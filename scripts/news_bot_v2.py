@@ -125,9 +125,22 @@ def collect_x():
     if not token:
         print("[INFO] X token غير مضبوط؛ تخطي X")
         return []
-    query = "(عدن OR حضرموت OR شبوة OR أبين OR لحج OR الضالع OR المهرة OR سقطرى OR الجنوب) -is:retweet lang:ar"
+
+    query = clean(os.getenv(
+        "X_SEARCH_QUERY",
+        "(اليمن OR عدن OR حضرموت OR شبوة OR أبين OR لحج OR الضالع OR المهرة OR سقطرى OR الجنوب OR الحوثي) -is:retweet lang:ar"
+    ))
     try:
-        r = requests.get("https://api.x.com/2/tweets/search/recent", headers={"Authorization": f"Bearer {token}"}, params={"query": query, "max_results": 20, "tweet.fields": "created_at,author_id,text"}, timeout=REQUEST_TIMEOUT)
+        r = requests.get(
+            "https://api.x.com/2/tweets/search/recent",
+            headers={"Authorization": f"Bearer {token}"},
+            params={
+                "query": query,
+                "max_results": 20,
+                "tweet.fields": "created_at,author_id,text,lang",
+            },
+            timeout=REQUEST_TIMEOUT,
+        )
         r.raise_for_status()
         result = []
         for p in r.json().get("data", []):
@@ -138,11 +151,13 @@ def collect_x():
             link = f"https://x.com/i/web/status/{pid}"
             item = make_item("X", "social_public", text[:180], link, text, p.get("created_at"), "X", link)
             if item:
+                # X is an early-warning signal, not an automatic publication source.
                 item["status"] = "review"
                 item["auto_published"] = False
-                item["confidence"] = "medium"
+                item["confidence"] = "low"
+                item["review_label"] = "قيد التحقق"
                 result.append(item)
-        print(f"[OK] X: {len(result)} منشور للمراجعة")
+        print(f"[OK] X: {len(result)} إشارة مبكرة للمراجعة")
         return result
     except Exception as exc:
         print(f"[WARN] X: {exc}")
@@ -280,7 +295,8 @@ def main():
     except Exception:
         old = []
     existing = {x.get("id"): x for x in old if isinstance(x, dict) and x.get("id")}
-    fresh = collect_rss() + collect_x() + collect_facebook() + collect_grok()
+    # X is collected first as the rapid signal layer, then RSS/social sources, then verification.
+    fresh = collect_x() + collect_rss() + collect_facebook() + collect_grok()
     for item in fresh:
         existing[item["id"]] = item
     final = dedupe(list(existing.values()))[:MAX_ITEMS]
