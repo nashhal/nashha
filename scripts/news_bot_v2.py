@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""نشهل - يجمع المعلومات من الجهات الرسمية والوكالات الرسمية ثم يعيد تحريرها صحفيًا."""
+"""نشهل - منصة أخبار تجمع من المصادر الرسمية/الأولية ثم تعيد التحرير صحفيًا."""
 import hashlib
 import html
 import json
@@ -18,19 +18,27 @@ MAX_ITEMS = 120
 REQUEST_TIMEOUT = 25
 REWRITE_TIMEOUT = 90
 
-# مصادر نشر أساسية: جهات رسمية أو وكالة الأنباء الرسمية، وليست قنوات تلفزيونية.
+# لا توجد هنا BBC أو الجزيرة أو فرنسا 24 أو أي قناة إخبارية.
+# سبأ تُستخدم كوكالة أنباء رسمية، بينما بقية المواد تأتي من مواقع الجهات نفسها.
 OFFICIAL_RSS = [
     ("وكالة سبأ", "https://www.sabanew.net/rss.php?lang=ar", "official_agency"),
 ]
+
 OFFICIAL_PAGES = [
-    ("وزارة الخارجية اليمنية", "https://www.mofa-ye.org/Pages/ar/", "official_ministry"),
+    ("رئاسة مجلس القيادة الرئاسي", "https://www.presidentalalimi.net/cat1.html", "official_presidency"),
+    ("وزارة الخارجية اليمنية", "https://www.mofa-ye.org/Pages/category/mofa-news/", "official_ministry"),
+    ("وزارة الداخلية اليمنية", "https://www.moi-gov-ye.org/page/المركز-الإعلامي", "official_security"),
     ("الأمم المتحدة في اليمن", "https://yemen.un.org/ar", "international_official"),
 ]
 
-# المصادر الإعلامية القديمة ممنوعة من الاستمرار في سجل النشر الآلي.
+# تمنع أي بقايا من النظام القديم من العودة إلى واجهة الأخبار.
 BLOCKED_SOURCES = {
     "بي بي سي عربي", "فرانس 24 عربي", "الجزيرة", "الأيام", "عدن الغد", "المصدر أونلاين",
     "BBC Arabic", "France 24", "Al Jazeera", "BBC", "CNN", "Sky News",
+}
+BLOCKED_DOMAINS = {
+    "bbc.co.uk", "bbc.com", "france24.com", "aljazeera.net", "alayyam.info",
+    "adenalghad.net", "almasdaronline.com",
 }
 
 KEYWORDS = [
@@ -51,12 +59,23 @@ EXCLUDED_KEYWORDS = [
     "ممثل", "ممثلة", "مشاهير", "سينما", "مسلسل", "فيلم", "ترفيه", "حفلة",
     "حفل غنائي", "تيك توك", "إنستغرام", "مؤثر", "مؤثرة",
 ]
-HEADERS = {"User-Agent": "NahshalNews/4.0 (+https://nashhal.github.io/nashha/)"}
+HEADERS = {"User-Agent": "NahshalNews/5.0 (+https://nashhal.github.io/nashha/)"}
 
 
 def clean(value):
     value = html.unescape(re.sub(r"<[^>]+>", " ", str(value or "")))
     return re.sub(r"\s+", " ", value).strip()
+
+
+def domain(url):
+    m = re.search(r"https?://(?:www\.)?([^/]+)", str(url or "").lower())
+    return m.group(1) if m else ""
+
+
+def blocked(source, link):
+    s = clean(source)
+    d = domain(link)
+    return s in BLOCKED_SOURCES or any(d == x or d.endswith("." + x) for x in BLOCKED_DOMAINS)
 
 
 def relevant(title, summary):
@@ -97,7 +116,7 @@ def make_item(source, source_type, title, link, summary, published):
     title, link, summary = clean(title), clean(link), clean(summary)
     if not title or not link or not link.startswith(("http://", "https://")):
         return None
-    if source in BLOCKED_SOURCES or not relevant(title, summary):
+    if blocked(source, link) or not relevant(title, summary):
         return None
     published = parse_date(published) or datetime.now(timezone.utc).isoformat()
     return {
@@ -169,7 +188,7 @@ def extract_page_links(base_url, html_text):
             continue
         seen.add(key)
         unique.append(key)
-    return unique[:35]
+    return unique[:40]
 
 
 def extract_article(url, fallback_title):
@@ -181,7 +200,7 @@ def extract_article(url, fallback_title):
         title = clean(title_match.group(1)) if title_match else clean(fallback_title)
         paragraphs = [clean(x) for x in re.findall(r'<p[^>]*>(.*?)</p>', raw, flags=re.I | re.S)]
         paragraphs = [p for p in paragraphs if len(p) > 50]
-        summary = " ".join(paragraphs[:4])[:2600]
+        summary = " ".join(paragraphs[:5])[:2800]
         date_match = re.search(r'(20\d{2}[-/]\d{1,2}[-/]\d{1,2})', raw)
         published = date_match.group(1) if date_match else None
         return title, summary, published
@@ -198,14 +217,14 @@ def collect_official_pages():
             links = extract_page_links(page_url, response.text)
             count = 0
             for title, url in links:
-                if source == "وزارة الخارجية اليمنية" and not any(x in url for x in ["mofa-ye.org/Pages/"]):
+                if blocked(source, url):
                     continue
                 article_title, summary, published = extract_article(url, title)
                 if not summary:
                     continue
                 item = make_item(source, source_type, article_title, url, summary, published)
                 if item:
-                    item["raw_source_text"] = summary[:2600]
+                    item["raw_source_text"] = summary[:2800]
                     found.append(item)
                     count += 1
             print(f"[OK] {source}: {count} مادة رسمية")
@@ -233,29 +252,26 @@ def rewrite_with_grok(item):
     original_title = clean(item.get("original_title") or item.get("title") or "")
     if not source_text:
         return item
-
     prompt = f"""
-أنت المحرر المسؤول عن قسم الأخبار في منصة نشهل.
-حوّل المادة الرسمية التالية إلى خبر عربي مهني بأسلوب وكالات الأنباء والمنصات الإخبارية الكبرى.
+أنت محرر أخبار محترف لمنصة نشهل.
+أعد بناء المادة الرسمية التالية في صياغة خبر عربية مستقلة، دقيقة ومحايدة، بأسلوب مهني مشابه لوكالات الأنباء والمنصات الإخبارية الكبرى.
 
-القواعد الصارمة:
-- اعتمد على المعلومات الموجودة في النص فقط.
-- لا تضف أي معلومة أو رقم أو اسم أو مكان أو سبب أو دافع غير مذكور.
-- لا تنسخ الصياغة الأصلية حرفيًا؛ أعد بناء الخبر بصياغة صحفية مستقلة.
-- اجعل العنوان خبريًا مباشرًا ودقيقًا، بلا مبالغة أو clickbait.
-- ضع أهم معلومة في بداية الملخص.
-- استخدم لغة محايدة، ولا تتبنَّ لغة دعائية للجهة الرسمية.
-- عند وجود رأي أو موقف رسمي، انسبه للجهة في صياغة الخبر بدل تقديمه كحقيقة مطلقة.
-- لا تخترع اقتباسات.
-- لا تذكر اسم المصدر داخل العنوان أو الملخص إلا إذا كان ضروريًا لفهم من أصدر الموقف.
+قواعد إلزامية:
+- استخدم المعلومات الواردة فقط.
+- ممنوع اختراع أي حقيقة أو رقم أو اسم أو مكان أو سبب أو اقتباس.
+- لا تنسخ الجمل الأصلية حرفيًا؛ أعد صياغتها صحفيًا.
+- ابدأ بأهم معلومة.
+- العنوان مباشر ودقيق وغير مثير.
+- إذا كانت المعلومة موقفًا أو إعلانًا رسميًا، انسبها للجهة بدل تقديمها كحقيقة مطلقة.
+- لا تستخدم لغة دعائية أو حزبية أو عاطفية.
 
-العنوان الأصلي:
+عنوان المادة:
 {original_title}
 
-النص الرسمي:
+نص المادة الرسمية:
 {source_text}
 
-أعد JSON فقط بهذا الشكل:
+أعد JSON فقط:
 {{"title":"...","summary":"..."}}
 """.strip()
     try:
@@ -297,51 +313,50 @@ def editorial_process(items):
         item.pop("raw_source_text", None)
         processed.append(item)
         if index % 5 == 0:
-            print(f"[OK] التحرير الصحفي: {index}/{len(items)}")
+            print(f"[OK] تمت معالجة الصياغة: {index}/{len(items)}")
     return processed
 
 
 def dedupe(items):
     by_id = {}
     for item in items:
-        if not item or not item.get("id"):
-            continue
-        if item.get("source_name") in BLOCKED_SOURCES:
-            continue
-        by_id[item["id"]] = item
+        if item and item.get("id") and not blocked(item.get("source"), item.get("source_url")):
+            by_id[item["id"]] = item
     return sorted(by_id.values(), key=lambda x: x.get("published_at", ""), reverse=True)
 
 
 def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
+
+    # لا نحتفظ بأي خبر سابق من القنوات أو المصادر الإعلامية القديمة.
+    # يبدأ السجل الحالي من المصادر الرسمية فقط.
+    old = []
     try:
         with open(OUT, encoding="utf-8") as f:
-            old = json.load(f)
-        if not isinstance(old, list):
-            old = old.get("news", []) if isinstance(old, dict) else []
+            loaded = json.load(f)
+        if isinstance(loaded, dict):
+            loaded = loaded.get("news", [])
+        if isinstance(loaded, list):
+            old = [
+                x for x in loaded
+                if isinstance(x, dict)
+                and x.get("status") == "published"
+                and x.get("auto_published", True) is True
+                and x.get("source_type", "").startswith("official")
+                and not blocked(x.get("source"), x.get("source_url"))
+            ]
     except Exception:
         old = []
 
-    # الاحتفاظ فقط بالأخبار الرسمية السابقة، وحذف ما أضيف من القنوات الإعلامية.
-    existing = {
-        x.get("id"): x for x in old
-        if isinstance(x, dict)
-        and x.get("id")
-        and x.get("status") == "published"
-        and x.get("auto_published", True) is True
-        and x.get("source_name") not in BLOCKED_SOURCES
-        and x.get("source_type") in {"official_agency", "official_ministry", "international_official"}
-    }
-
-    fresh = collect_official_rss() + collect_official_pages()
-    fresh = editorial_process(fresh)
+    fresh = editorial_process(collect_official_rss() + collect_official_pages())
+    by_id = {x["id"]: x for x in old if x.get("id")}
     for item in fresh:
-        existing[item["id"]] = item
+        by_id[item["id"]] = item
 
-    final = dedupe(list(existing.values()))[:MAX_ITEMS]
+    final = dedupe(list(by_id.values()))[:MAX_ITEMS]
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(final, f, ensure_ascii=False, indent=2)
-    print(f"[DONE] {len(final)} خبر منشور من المصادر الرسمية؛ {len(fresh)} مادة جديدة")
+    print(f"[DONE] {len(final)} خبرًا رسميًا؛ {len(fresh)} مادة جديدة")
 
 
 if __name__ == "__main__":
