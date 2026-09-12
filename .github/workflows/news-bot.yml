@@ -15,54 +15,35 @@ permissions:
 jobs:
   collect-news:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - name: Checkout latest main
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: main
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
-
       - name: Install dependencies
         run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
-
-      - name: Collect and verify public news
+      - name: Collect news
         env:
-          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
-          FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/news_bot_v2.py
-
-      - name: Commit news safely
+      - name: Analyze news with AI
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+        run: python scripts/ai_analysis.py
+      - name: Commit updates
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'nashhal-news-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/news.json
-          if git diff --cached --quiet; then
-            echo 'لا توجد أخبار جديدة.'
-            exit 0
-          fi
-          git commit -m 'تحديث الأخبار تلقائيًا'
-          for attempt in 1 2 3; do
-            git fetch origin main
-            if git rebase origin/main && git push origin HEAD:main; then
-              echo 'تم نشر تحديث الأخبار بنجاح.'
-              exit 0
-            fi
-            git rebase --abort || true
-            git reset --soft origin/main
-            git add data/news.json
-            git commit -m 'تحديث الأخبار تلقائيًا' || true
-            sleep 3
-          done
-          echo 'تعذر نشر التحديث بعد 3 محاولات.'
-          exit 1
+          if git diff --cached --quiet; then echo 'لا توجد تحديثات.'; exit 0; fi
+          git commit -m 'تحديث الأخبار وتحليلها بالذكاء الاصطناعي'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
