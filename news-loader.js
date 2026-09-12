@@ -51,6 +51,9 @@
       summary,
       source,
       published,
+      status: cleanText(item.status || 'published'),
+      platform: cleanText(item.platform || 'news'),
+      confidence: cleanText(item.confidence || ''),
       href: safeURL(item.href || item.link || item.url || '#'),
       image: safeImageURL(item.image || item.thumbnail || ''),
       region: cleanText(item.region || item.category || ''),
@@ -112,9 +115,50 @@
       .nashhal-enhanced .card,.nashhal-enhanced .hero-main,.nashhal-enhanced .side{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
       .nashhal-enhanced .card:hover,.nashhal-enhanced .side:hover{border-color:#c9d5cc}
       .nashhal-enhanced a:focus-visible,.nashhal-enhanced button:focus-visible,.nashhal-enhanced input:focus-visible{outline:3px solid rgba(47,122,82,.28);outline-offset:2px}
-      @media(max-width:600px){.nashhal-enhanced .brand::after{display:none}.nashhal-enhanced .hero-main::before{width:3px}.nashhal-enhanced .news-age{display:none}}
+      .nashhal-x-review{margin:0 0 22px;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow);overflow:hidden}
+      .nashhal-x-review-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;border-bottom:1px solid var(--line);background:var(--soft)}
+      .nashhal-x-review-title{font:800 13px 'IBM Plex Sans Arabic',sans-serif;color:var(--green)}
+      .nashhal-x-review-note{font-size:9px;color:var(--muted)}
+      .nashhal-x-review-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+      .nashhal-x-item{display:block;padding:13px 14px;border-left:1px solid var(--line);min-width:0}
+      .nashhal-x-item:last-child{border-left:0}
+      .nashhal-x-item:hover{background:var(--soft)}
+      .nashhal-x-badge{display:inline-block;font:800 8px 'IBM Plex Sans Arabic',sans-serif;color:var(--red);background:rgba(186,30,35,.08);padding:2px 6px;border-radius:4px;margin-bottom:6px}
+      .nashhal-x-item h3{font:600 11px/1.7 'IBM Plex Sans Arabic',sans-serif}
+      .nashhal-x-item p{margin-top:4px;font-size:8px;color:var(--muted)}
+      @media(max-width:900px){.nashhal-x-review-list{grid-template-columns:1fr}.nashhal-x-item{border-left:0;border-bottom:1px solid var(--line)}.nashhal-x-item:last-child{border-bottom:0}}
+      @media(max-width:600px){.nashhal-enhanced .brand::after{display:none}.nashhal-enhanced .hero-main::before{width:3px}.nashhal-enhanced .news-age{display:none}.nashhal-x-review{margin-bottom:15px}.nashhal-x-review-head{align-items:flex-start;flex-direction:column;gap:3px}}
     `;
     document.head.appendChild(style);
+  }
+
+  function renderXReview(items) {
+    const existing = document.querySelector('.nashhal-x-review');
+    if (existing) existing.remove();
+    if (!items.length) return;
+
+    const breaking = document.querySelector('.breaking');
+    if (!breaking) return;
+
+    const box = document.createElement('section');
+    box.className = 'nashhal-x-review wrap';
+    box.setAttribute('aria-label', 'رصد من منصة X قيد التحقق');
+    box.innerHTML = `
+      <div class="nashhal-x-review-head">
+        <div class="nashhal-x-review-title">رصد X · قيد التحقق</div>
+        <div class="nashhal-x-review-note">إشارات سريعة من X لا تُعد خبرًا منشورًا قبل التحقق من المصدر</div>
+      </div>
+      <div class="nashhal-x-review-list">
+        ${items.slice(0, 6).map(item => `
+          <a class="nashhal-x-item" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer">
+            <span class="nashhal-x-badge">قيد التحقق</span>
+            <h3>${escapeHTML(item.title)}</h3>
+            <p>X · ${escapeHTML(formatRelative(item.published))}</p>
+          </a>
+        `).join('')}
+      </div>
+    `;
+    breaking.insertAdjacentElement('afterend', box);
   }
 
   function renderHero(item) {
@@ -245,11 +289,19 @@
     })
     .then(data => {
       const raw = Array.isArray(data) ? data : (data.news || data.items || []);
-      const all = raw.map(normalize).filter(item => item.title && item.isYemen && item.href !== '#');
+      const normalized = raw.map(normalize).filter(item => item.title && item.href !== '#');
+      const review = normalized
+        .filter(item => item.status === 'review' && item.platform.toLowerCase() === 'x')
+        .filter(item => item.isYemen)
+        .sort((a, b) => dateValue(b) - dateValue(a));
+      const all = normalized
+        .filter(item => item.status === 'published' || !item.status)
+        .filter(item => item.isYemen);
       const south = all.filter(item => item.isSouth);
       const sortedAll = [...all].sort((a, b) => dateValue(b) - dateValue(a));
       const sortedSouth = [...south].sort((a, b) => dateValue(b) - dateValue(a));
 
+      renderXReview(review);
       const hero = sortedSouth[0] || sortedAll[0];
       renderHero(hero);
       renderTicker(sortedAll);
@@ -260,7 +312,7 @@
       rebindFilters();
 
       document.dispatchEvent(new CustomEvent('nashhal:news-ready', {
-        detail: { all: sortedAll, south: sortedSouth }
+        detail: { all: sortedAll, south: sortedSouth, xReview: review }
       }));
     })
     .catch(error => {
