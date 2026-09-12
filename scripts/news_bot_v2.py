@@ -1,114 +1,421 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Nashhal: collect from official/primary sources, editorially rewrite in Arabic and English."""
-import hashlib, html, json, os, re
-from datetime import datetime, timezone
+"""نشهل: جامع أخبار موثوقة مع حماية البيانات من المسح عند فشل المصادر."""
+import hashlib
+import html
+import json
+import os
+import re
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from urllib.parse import urljoin, urlparse
-import feedparser, requests
 
-OUT='data/news.json'; MAX_ITEMS=120; TIMEOUT=25; AI_TIMEOUT=90
-OFFICIAL_RSS=[('وكالة سبأ','https://www.sabanew.net/rss.php?lang=ar','official_agency')]
-OFFICIAL_PAGES=[
- ('رئاسة مجلس القيادة الرئاسي','https://www.presidentalalimi.net/cat1.html','official_presidency'),
- ('وزارة الخارجية اليمنية','https://www.mofa-ye.org/Pages/category/mofa-news/','official_ministry'),
- ('وزارة الداخلية اليمنية','https://www.moi-gov-ye.org/page/المركز-الإعلامي','official_security'),
- ('الأمم المتحدة في اليمن','https://yemen.un.org/ar','international_official'),
+import feedparser
+import requests
+
+OUT = "data/news.json"
+MAX_ITEMS = 120
+REQUEST_TIMEOUT = 25
+AI_TIMEOUT = 90
+
+# مصادر RSS موثوقة + رسمية. المصادر المحلية الحزبية لا تدخل تلقائيًا.
+TRUSTED_FEEDS = [
+    ("بي بي سي عربي", "https://feeds.bbci.co.uk/arabic/rss.xml", "دولي"),
+    ("فرانس 24 عربي", "https://www.france24.com/ar/rss", "دولي"),
+    ("الجزيرة", "https://www.aljazeera.net/xml/rss/all.xml", "عربي"),
+    ("سبأ", "https://www.sabanew.net/rss.php?lang=ar", "يمني"),
 ]
-BLOCKED_DOMAINS={'bbc.co.uk','bbc.com','france24.com','aljazeera.net','alayyam.info','adenalghad.net','almasdaronline.com','aljanoubalyoum.tv'}
-KEYWORDS=['اليمن','اليمني','اليمنية','عدن','حضرموت','شبوة','أبين','لحج','الضالع','المهرة','سقطرى','الجنوب','الجنوبي','القضية الجنوبية','الحوثي','الحوثيون','أنصار الله','مجلس القيادة الرئاسي','الحكومة اليمنية']
-SOUTH=['عدن','حضرموت','شبوة','أبين','لحج','الضالع','المهرة','سقطرى','الجنوب','الجنوبي','القضية الجنوبية']
-EXCLUDED=['كرة القدم','كأس العالم','الدوري','المباراة','منتخب','لاعب','مدرب','رياضة','فيفا','football','soccer','fifa','match','موسيقى','أغنية','فنان','ممثل','مشاهير','سينما','مسلسل','فيلم','ترفيه']
-HEADERS={'User-Agent':'NahshalNews/6.0 (+https://nashhal.github.io/nashha/)'}
 
-def clean(v): return re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',str(v or '')))).strip()
-def domain(u): return urlparse(str(u)).netloc.lower().removeprefix('www.')
-def blocked(source,url):
-    d=domain(url); return clean(source) in {'بي بي سي عربي','فرانس 24 عربي','الجزيرة','الأيام','عدن الغد','المصدر أونلاين'} or d in BLOCKED_DOMAINS or any(d.endswith('.'+x) for x in BLOCKED_DOMAINS)
-def relevant(t,s):
-    x=f'{t} {s}'.lower(); return not any(k.lower() in x for k in EXCLUDED) and any(k.lower() in x for k in KEYWORDS)
-def south(t,s):
-    x=f'{t} {s}'.lower(); return any(k.lower() in x for k in SOUTH)
-def date(v):
-    if not v:return None
-    for fn in (lambda:parsedate_to_datetime(str(v)),lambda:datetime.fromisoformat(str(v).replace('Z','+00:00'))):
+OFFICIAL_PAGES = [
+    ("رئاسة مجلس القيادة الرئاسي", "https://www.presidentalalimi.net/cat1.html", "رسمي"),
+    ("وزارة الخارجية اليمنية", "https://www.mofa-ye.org/Pages/category/mofa-news/", "رسمي"),
+    ("وزارة الداخلية اليمنية", "https://www.moi-gov-ye.org/page/المركز-الإعلامي", "رسمي"),
+    ("الأمم المتحدة في اليمن", "https://yemen.un.org/ar", "دولي"),
+]
+
+KEYWORDS = [
+    "اليمن", "اليمني", "اليمنية", "عدن", "حضرموت", "شبوة", "أبين", "لحج",
+    "الضالع", "المهرة", "سقطرى", "الجنوب", "الجنوبي", "القضية الجنوبية",
+    "المقاومة الجنوبية", "الحوثي", "الحوثيون", "الحوثيين", "أنصار الله",
+    "مجلس القيادة الرئاسي", "الحكومة اليمنية", "باب المندب", "البحر الأحمر",
+]
+SOUTH = [
+    "عدن", "حضرموت", "شبوة", "أبين", "لحج", "الضالع", "المهرة", "سقطرى",
+    "الجنوب", "الجنوبي", "القضية الجنوبية", "المقاومة الجنوبية",
+]
+EXCLUDED = [
+    "كرة القدم", "كأس العالم", "الدوري", "دوري أبطال", "المباراة", "مباراة",
+    "منتخب", "لاعب", "لاعبة", "مدرب", "رياضة", "رياضي", "رياضية", "فيفا",
+    "football", "soccer", "fifa", "match", "champions league", "premier league",
+    "موسيقى", "أغنية", "فنان", "فنانة", "ممثل", "ممثلة", "مشاهير", "سينما",
+    "مسلسل", "فيلم", "ترفيه", "حفلة", "حفل غنائي", "تيك توك", "إنستغرام", "مؤثر",
+]
+
+HEADERS = {"User-Agent": "NashhalNews/7.0 (+https://nashhal.github.io/nashha/)"}
+
+
+def clean(value):
+    value = html.unescape(re.sub(r"<[^>]+>", " ", str(value or "")))
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def domain(url):
+    return urlparse(str(url)).netloc.lower().removeprefix("www.")
+
+
+def relevant(title, summary):
+    text = f"{title} {summary}".lower()
+    if any(word.lower() in text for word in EXCLUDED):
+        return False
+    return any(word.lower() in text for word in KEYWORDS)
+
+
+def is_south(title, summary):
+    text = f"{title} {summary}".lower()
+    return any(word.lower() in text for word in SOUTH)
+
+
+def parse_date(value):
+    if not value:
+        return None
+    for parser in (
+        lambda: parsedate_to_datetime(str(value)),
+        lambda: datetime.fromisoformat(str(value).replace("Z", "+00:00")),
+    ):
         try:
-            d=fn(); d=d.replace(tzinfo=timezone.utc) if d.tzinfo is None else d; return d.astimezone(timezone.utc).isoformat()
-        except Exception: pass
+            dt = parser()
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc).isoformat()
+        except Exception:
+            pass
     return None
-def iid(source,link): return hashlib.sha256(f'{source}|{link}'.encode()).hexdigest()[:20]
-def make_item(source,stype,title,link,summary,published):
-    title,link,summary=clean(title),clean(link),clean(summary)
-    if not title or not link.startswith(('http://','https://')) or blocked(source,link) or not relevant(title,summary): return None
-    p=date(published) or datetime.now(timezone.utc).isoformat()
-    return {'id':iid(source,link),'title':title,'original_title':title,'source':source,'source_name':source,'source_url':link,'link':link,'published':p,'published_at':p,'collected_at':datetime.now(timezone.utc).isoformat(),'category':'الجنوب' if south(title,summary) else 'اليمن','status':'published','confidence':'high','auto_published':True,'summary':summary[:900],'description':summary[:300],'content':summary[:900],'title_en':'','summary_en':'','platform':'official','source_type':stype,'rewrite_status':'source_text'}
-def rss():
-    out=[]
-    for source,url,stype in OFFICIAL_RSS:
+
+
+def item_id(source, link):
+    return hashlib.sha256(f"{source}|{link}".encode()).hexdigest()[:20]
+
+
+def make_item(source, source_type, title, link, summary, published, platform="news", embed_url=""):
+    title, link, summary = clean(title), clean(link), clean(summary)
+    if not title or not link.startswith(("http://", "https://")):
+        return None
+    if not relevant(title, summary):
+        return None
+    published = parse_date(published) or datetime.now(timezone.utc).isoformat()
+    return {
+        "id": item_id(source, link),
+        "title": title,
+        "original_title": title,
+        "source": source,
+        "source_name": source,
+        "source_url": link,
+        "link": link,
+        "published": published,
+        "published_at": published,
+        "collected_at": datetime.now(timezone.utc).isoformat(),
+        "category": "الجنوب" if is_south(title, summary) else "اليمن",
+        "status": "published",
+        "confidence": "high" if source_type in ("يمني", "عربي", "دولي", "رسمي") else "medium",
+        "auto_published": True,
+        "summary": summary[:900],
+        "description": summary[:300],
+        "content": summary[:900],
+        "title_en": "",
+        "summary_en": "",
+        "platform": platform,
+        "source_type": source_type,
+        "rewrite_status": "source_text",
+        "embed_url": embed_url,
+    }
+
+
+def collect_rss():
+    found = []
+    for source, url, source_type in TRUSTED_FEEDS:
         try:
-            f=feedparser.parse(requests.get(url,headers=HEADERS,timeout=TIMEOUT).content)
-            for e in f.entries[:60]:
-                it=make_item(source,stype,e.get('title'),e.get('link',''),e.get('summary') or e.get('description'),e.get('published') or e.get('updated'))
-                if it: it['_raw']=clean(e.get('summary') or e.get('description') or e.get('title'))[:3000]; out.append(it)
-        except Exception as ex: print('[WARN] RSS',source,ex)
-    return out
-def links(base,raw):
-    found=[]
-    for href,title in re.findall(r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',raw,re.I|re.S):
-        title=clean(title); url=urljoin(base,html.unescape(href))
-        if len(title)>=25 and url.startswith(('http://','https://')): found.append((title,url))
-    seen=set(); out=[]
-    for x in found:
-        if x not in seen: seen.add(x); out.append(x)
-    return out[:45]
-def article(url,fallback):
+            response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            feed = feedparser.parse(response.content)
+            if not feed.entries:
+                raise RuntimeError(f"RSS returned no entries (bozo={getattr(feed, 'bozo', False)})")
+            before = len(found)
+            for entry in feed.entries[:60]:
+                item = make_item(
+                    source,
+                    source_type,
+                    entry.get("title"),
+                    entry.get("link", ""),
+                    entry.get("summary") or entry.get("description"),
+                    entry.get("published") or entry.get("updated"),
+                )
+                if item:
+                    item["_raw"] = clean(
+                        entry.get("summary") or entry.get("description") or entry.get("title")
+                    )[:3000]
+                    found.append(item)
+            print(f"[OK] RSS {source}: {len(found) - before} relevant")
+        except Exception as exc:
+            print(f"[WARN] RSS {source}: {exc}")
+    return found
+
+
+def extract_links(base, raw):
+    links = []
+    pattern = r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>'
+    for href, title in re.findall(pattern, raw, re.I | re.S):
+        title = clean(title)
+        url = urljoin(base, html.unescape(href))
+        if len(title) >= 25 and url.startswith(("http://", "https://")):
+            links.append((title, url))
+    seen = set()
+    result = []
+    for value in links:
+        if value in seen:
+            continue
+        seen.add(value)
+        result.append(value)
+    return result[:60]
+
+
+def fetch_article(url, fallback_title):
     try:
-        r=requests.get(url,headers=HEADERS,timeout=TIMEOUT); r.raise_for_status(); raw=r.text
-        hm=re.search(r'<h1[^>]*>(.*?)</h1>',raw,re.I|re.S); t=clean(hm.group(1)) if hm else clean(fallback)
-        ps=[clean(x) for x in re.findall(r'<p[^>]*>(.*?)</p>',raw,re.I|re.S)]; ps=[x for x in ps if len(x)>45]
-        d=re.search(r'(20\d{2}[-/]\d{1,2}[-/]\d{1,2})',raw); return t,' '.join(ps[:6])[:3200],d.group(1) if d else None
-    except Exception:return clean(fallback),'',None
-def pages():
-    out=[]
-    for source,base,stype in OFFICIAL_PAGES:
+        response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        raw = response.text
+        title_match = re.search(r"<h1[^>]*>(.*?)</h1>", raw, re.I | re.S)
+        title = clean(title_match.group(1)) if title_match else clean(fallback_title)
+        paragraphs = [clean(x) for x in re.findall(r"<p[^>]*>(.*?)</p>", raw, re.I | re.S)]
+        paragraphs = [x for x in paragraphs if len(x) > 45]
+        date_match = re.search(r"(20\d{2}[-/]\d{1,2}[-/]\d{1,2})", raw)
+        return title, " ".join(paragraphs[:8])[:3200], date_match.group(1) if date_match else None
+    except Exception:
+        return clean(fallback_title), "", None
+
+
+def collect_official_pages():
+    found = []
+    for source, base, source_type in OFFICIAL_PAGES:
         try:
-            r=requests.get(base,headers=HEADERS,timeout=TIMEOUT); r.raise_for_status()
-            for t,u in links(base,r.text):
-                if blocked(source,u): continue
-                at,s,d=article(u,t)
-                it=make_item(source,stype,at,u,s,d)
-                if it: it['_raw']=s[:3200]; out.append(it)
-        except Exception as ex: print('[WARN] PAGE',source,ex)
-    return out
-def ai(item):
-    token=os.getenv('XAI_API_KEY'); raw=clean(item.get('_raw','')); title=clean(item.get('original_title',item.get('title','')))
-    if not token or not raw:return item
-    prompt=f'''أنت محرر أخبار محترف لمنصة نشهل. أعد تحرير المادة الرسمية التالية بالعربية والإنجليزية.
-قواعد صارمة: استخدم المعلومات الموجودة فقط، لا تضف حقائق أو أرقام أو أسماء أو سياقًا، لا تنسخ الصياغة حرفيًا، اجعل العنوان مباشرًا وغير مثير، وإذا كان النص موقفًا رسميًا انسبه للجهة، ولا تخترع اقتباسات.
-العنوان العربي: {title}
-النص الرسمي: {raw}
-أعد JSON فقط: {{"title_ar":"...","summary_ar":"...","title_en":"...","summary_en":"..."}}'''
+            response = requests.get(base, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            links = extract_links(base, response.text)
+            before = len(found)
+            for title, url in links:
+                article_title, summary, published = fetch_article(url, title)
+                item = make_item(source, source_type, article_title, url, summary, published)
+                if item:
+                    item["_raw"] = summary[:3200]
+                    found.append(item)
+            print(f"[OK] PAGE {source}: {len(found) - before} relevant")
+        except Exception as exc:
+            print(f"[WARN] PAGE {source}: {exc}")
+    return found
+
+
+def response_text(data):
+    parts = []
+    for output in data.get("output", []):
+        if output.get("type") != "message":
+            continue
+        for content in output.get("content", []):
+            if content.get("type") == "output_text":
+                parts.append(content.get("text", ""))
+    return "\n".join(parts).strip()
+
+
+def normalize_url(url):
+    return clean(url).rstrip("/")
+
+
+def collect_grok():
+    token = os.getenv("XAI_API_KEY")
+    if not token:
+        print("[INFO] XAI_API_KEY غير مضبوط؛ تخطي Grok")
+        return []
+
+    now = datetime.now(timezone.utc)
+    from_date = (now - timedelta(days=1)).date().isoformat()
+    to_date = now.date().isoformat()
+    prompt = """أنت محرر أخبار لمنصة نشهل اليمنية. ابحث عن أحدث التطورات الموثوقة المتعلقة باليمن، مع أولوية للجنوب اليمني، خلال آخر 24 ساعة. استخدم البحث على الويب وX فقط كوسيلة رصد، ولا تعتمد على منشور منفرد غير مؤكد.
+
+أعد JSON فقط بهذا الشكل:
+[{"title":"...","summary":"...","source_name":"...","source_url":"https://...","published":"ISO-8601 أو فارغ","category":"الجنوب أو اليمن"}]
+
+قواعد:
+- بحد أقصى 8 أخبار.
+- كل عنصر يجب أن يحتوي رابط مصدر مباشر صالحًا.
+- لا تخترع روابط أو أسماء مصادر.
+- استبعد الرياضة وكرة القدم والترفيه والمحتوى غير المرتبط جوهريًا باليمن.
+- استبعد الشائعات والآراء غير الموثقة.
+- اكتب بالعربية وبصياغة خبرية محايدة.
+"""
     try:
-        r=requests.post('https://api.x.ai/v1/responses',headers={'Authorization':f'Bearer {token}','Content-Type':'application/json'},json={'model':'grok-4.5','input':[{'role':'user','content':prompt}],'include':['no_inline_citations']},timeout=AI_TIMEOUT); r.raise_for_status(); data=r.json(); text='\n'.join(c.get('text','') for o in data.get('output',[]) if o.get('type')=='message' for c in o.get('content',[]) if c.get('type')=='output_text'); m=re.search(r'\{[\s\S]*\}',text)
-        if not m:return item
-        x=json.loads(m.group(0));
-        for k in ('title_ar','summary_ar','title_en','summary_en'):
-            item[k]=clean(x.get(k,''))
-        if item.get('title_ar'): item['title']=item['title_ar'][:300]
-        if item.get('summary_ar'): item['summary']=item['summary_ar'][:900]; item['description']=item['summary'][:300]; item['content']=item['summary']
-        item['rewrite_status']='editorial_rewrite_bilingual'
-    except Exception as ex: print('[WARN] AI',ex)
-    item.pop('_raw',None); item.pop('title_ar',None); item.pop('summary_ar',None); return item
+        response = requests.post(
+            "https://api.x.ai/v1/responses",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json={
+                "model": "grok-4.5",
+                "input": [{"role": "user", "content": prompt}],
+                "tools": [
+                    {"type": "web_search"},
+                    {"type": "x_search", "from_date": from_date, "to_date": to_date},
+                ],
+                "include": ["no_inline_citations"],
+            },
+            timeout=120,
+        )
+        response.raise_for_status()
+        data = response.json()
+        text = response_text(data)
+        match = re.search(r"\[[\s\S]*\]", text)
+        if not match:
+            print("[WARN] Grok لم يُرجع JSON صالحًا")
+            return []
+        raw = json.loads(match.group(0))
+        if not isinstance(raw, list):
+            return []
+        citations = {
+            normalize_url(value)
+            for value in data.get("citations", [])
+            if isinstance(value, str) and value.startswith(("http://", "https://"))
+        }
+        result = []
+        for candidate in raw:
+            if not isinstance(candidate, dict):
+                continue
+            title = clean(candidate.get("title"))
+            summary = clean(candidate.get("summary"))
+            source_name = clean(candidate.get("source_name"))
+            source_url = clean(candidate.get("source_url"))
+            published = candidate.get("published") or ""
+            if not title or not summary or not source_name or not source_url.startswith(("http://", "https://")):
+                continue
+            if citations and normalize_url(source_url) not in citations:
+                continue
+            item = make_item("Grok / " + source_name, "grok_verified", title, source_url, summary, published)
+            if item:
+                item["source"] = source_name
+                item["source_name"] = source_name
+                item["source_type"] = "grok_verified"
+                item["confidence"] = "high"
+                item["auto_published"] = True
+                item["_raw"] = summary[:3000]
+                result.append(item)
+        print(f"[OK] Grok: {len(result)} verified")
+        return result
+    except Exception as exc:
+        print(f"[WARN] Grok: {exc}")
+        return []
+
+
+def rewrite_with_ai(item):
+    token = os.getenv("XAI_API_KEY")
+    raw = clean(item.get("_raw", ""))
+    title = clean(item.get("original_title", item.get("title", "")))
+    if not token or not raw:
+        item.pop("_raw", None)
+        return item
+
+    prompt = f"""أنت محرر أخبار محترف لمنصة نشهل. أعد تحرير المادة الرسمية التالية بالعربية والإنجليزية.
+استخدم المعلومات الموجودة فقط، ولا تضف حقائق أو أرقامًا أو أسماء أو اقتباسات. لا تنسخ الصياغة حرفيًا. اجعل العنوان مباشرًا ومحايدًا.
+
+العنوان: {title}
+النص: {raw}
+
+أعد JSON فقط: {{\"title_ar\":\"...\",\"summary_ar\":\"...\",\"title_en\":\"...\",\"summary_en\":\"...\"}}"""
+    try:
+        response = requests.post(
+            "https://api.x.ai/v1/responses",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json={
+                "model": "grok-4.5",
+                "input": [{"role": "user", "content": prompt}],
+                "include": ["no_inline_citations"],
+            },
+            timeout=AI_TIMEOUT,
+        )
+        response.raise_for_status()
+        data = response.json()
+        text = response_text(data)
+        match = re.search(r"\{[\s\S]*\}", text)
+        if not match:
+            item.pop("_raw", None)
+            return item
+        result = json.loads(match.group(0))
+        item["title_en"] = clean(result.get("title_en", ""))
+        item["summary_en"] = clean(result.get("summary_en", ""))
+        title_ar = clean(result.get("title_ar", ""))
+        summary_ar = clean(result.get("summary_ar", ""))
+        if title_ar:
+            item["title"] = title_ar[:300]
+        if summary_ar:
+            item["summary"] = summary_ar[:900]
+            item["description"] = item["summary"][:300]
+            item["content"] = item["summary"]
+        item["rewrite_status"] = "editorial_rewrite_bilingual"
+    except Exception as exc:
+        print(f"[WARN] AI rewrite: {exc}")
+    item.pop("_raw", None)
+    return item
+
+
+def valid_old_items(raw):
+    result = []
+    for item in raw if isinstance(raw, list) else []:
+        if not isinstance(item, dict):
+            continue
+        if not item.get("id"):
+            continue
+        if clean(item.get("status", "published")) == "published" and not item.get("source_url", item.get("link", "")):
+            continue
+        result.append(item)
+    return result
+
+
+def dedupe(items):
+    by_id = {}
+    for item in items:
+        if item and item.get("id"):
+            by_id[item["id"]] = item
+    return sorted(by_id.values(), key=lambda x: x.get("published_at") or x.get("published") or "", reverse=True)
+
+
+def load_existing():
+    try:
+        with open(OUT, encoding="utf-8") as handle:
+            data = json.load(handle)
+        if isinstance(data, dict):
+            data = data.get("news", data.get("items", []))
+        return valid_old_items(data)
+    except Exception as exc:
+        print(f"[WARN] تعذر قراءة البيانات الحالية: {exc}")
+        return []
+
+
 def main():
-    os.makedirs('data',exist_ok=True); old=[]
-    try:
-        loaded=json.load(open(OUT,encoding='utf-8')); loaded=loaded.get('news',[]) if isinstance(loaded,dict) else loaded
-        old=[x for x in loaded if isinstance(x,dict) and x.get('status')=='published' and x.get('auto_published') is True and str(x.get('source_type','')).startswith('official') and not blocked(x.get('source'),x.get('source_url'))]
-    except Exception: pass
-    fresh=[ai(x) for x in rss()+pages()]
-    by={x.get('id'):x for x in old if x.get('id')}
-    by.update({x.get('id'):x for x in fresh if x.get('id')})
-    final=sorted(by.values(),key=lambda x:x.get('published_at',''),reverse=True)[:MAX_ITEMS]
-    with open(OUT,'w',encoding='utf-8') as f: json.dump(final,f,ensure_ascii=False,indent=2)
-    print(f'[DONE] {len(final)} official stories; {len(fresh)} new')
-if __name__=='__main__': main()
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    existing = load_existing()
+
+    rss_items = collect_rss()
+    page_items = collect_official_pages()
+    grok_items = collect_grok()
+    fresh = rss_items + page_items + grok_items
+    fresh = [rewrite_with_ai(item) for item in fresh]
+
+    # أهم حماية: لا تسمح لجولة فاشلة من المصادر بإفراغ قاعدة الأخبار.
+    if not fresh:
+        if existing:
+            print(f"[SAFE] لم تصل أخبار جديدة؛ الإبقاء على {len(existing)} خبرًا موجودًا.")
+            return
+        print("[WARN] لم تصل أي أخبار ولا توجد بيانات سابقة؛ لن يتم تغيير الملف.")
+        return
+
+    merged = dedupe(existing + fresh)[:MAX_ITEMS]
+    with open(OUT, "w", encoding="utf-8") as handle:
+        json.dump(merged, handle, ensure_ascii=False, indent=2)
+    print(f"[DONE] {len(merged)} news records; {len(fresh)} fresh records")
+
+
+if __name__ == "__main__":
+    main()
