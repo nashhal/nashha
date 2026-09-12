@@ -1,323 +1,244 @@
-/* Nashhal — secure dynamic homepage news loader */
-(() => {
+/* news-loader.js
+   يقرأ data/news.json الذي ينتجه news_bot_v2.py دون تعديل على بنيته
+   ويبني واجهة نشهل: عاجل، خبر رئيسي، آخر الأخبار، شبكة الأخبار، وقيد التحقق.
+*/
+(function () {
   'use strict';
 
-  const NEWS_URL = `data/news.json?v=${Date.now()}`;
-  const SOUTH_TERMS = [
-    'عدن','حضرموت','شبوة','أبين','لحج','الضالع','سقطرى','المهرة',
-    'الجنوب','جنوب اليمن','المجلس الانتقالي','الساحل الغربي','العند'
-  ];
-  const YEMEN_TERMS = [
-    'اليمن','يمني','صنعاء','تعز','مأرب','الحديدة','حجة','إب','صعدة','الضالع',
-    'الحوثي','الحوثيين','الحوثيون','حكومة اليمن','الأمم المتحدة في اليمن'
-  ];
+  const DATA_URL = `data/news.json?v=${Date.now()}`;
+  const GRID_LIMIT = 12;
+  const VERIFY_LIMIT = 6;
+  const TICKER_LIMIT = 8;
 
-  const escapeHTML = (value = '') => String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
+  let allItems = [];
+  let currentFilter = 'all';
 
-  const cleanText = (value = '') => String(value)
+  const platformLabel = { X: 'رصد من X', Facebook: 'رصد من فيسبوك' };
+
+  const clean = (value = '') => String(value)
     .replace(/<[^>]*>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
-  const safeURL = (value = '') => {
+  const escapeHtml = (value = '') => clean(value).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+
+  const safeUrl = (value = '') => {
     try {
       const url = new URL(String(value), window.location.href);
-      if (url.protocol === 'http:' || url.protocol === 'https:') return url.href;
-    } catch (_) {}
-    return '#';
+      return ['http:', 'https:'].includes(url.protocol) ? url.href : '#';
+    } catch (_) { return '#'; }
   };
 
-  const safeImageURL = (value = '') => {
-    const url = safeURL(value);
-    return url === '#' ? '' : url;
-  };
-
-  const normalize = (item = {}) => {
-    const title = cleanText(item.title || item.headline || '');
-    const summary = cleanText(item.summary || item.description || '');
-    const source = cleanText(item.source || item.publisher || 'المصدر');
-    const published = item.published || item.pubDate || item.date || item.collected_at || '';
-    const text = `${title} ${summary}`.toLowerCase();
-    const isSouth = SOUTH_TERMS.some(term => text.includes(term.toLowerCase()));
-    const isYemen = isSouth || YEMEN_TERMS.some(term => text.includes(term.toLowerCase()));
-
-    return {
-      title,
-      summary,
-      source,
-      published,
-      status: cleanText(item.status || 'published'),
-      platform: cleanText(item.platform || 'news'),
-      confidence: cleanText(item.confidence || ''),
-      href: safeURL(item.href || item.link || item.url || '#'),
-      image: safeImageURL(item.image || item.thumbnail || ''),
-      region: cleanText(item.region || item.category || ''),
-      isSouth,
-      isYemen
-    };
-  };
-
-  const dateValue = (item) => {
-    const time = Date.parse(item.published || '');
-    return Number.isNaN(time) ? 0 : time;
-  };
-
-  const formatDate = (value) => {
-    const time = Date.parse(value || '');
-    if (Number.isNaN(time)) return 'الآن';
-    return new Intl.DateTimeFormat('ar-SA', {
-      year: 'numeric', month: 'long', day: 'numeric',
-      hour: '2-digit', minute: '2-digit'
-    }).format(new Date(time));
-  };
-
-  const formatRelative = (value) => {
-    const time = Date.parse(value || '');
-    if (Number.isNaN(time)) return 'الآن';
-    const minutes = Math.max(0, Math.floor((Date.now() - time) / 60000));
-    if (minutes < 1) return 'الآن';
-    if (minutes < 60) return `قبل ${minutes} دقيقة`;
-    const hours = Math.floor(minutes / 60);
-    if (hours < 24) return `قبل ${hours} ساعة`;
-    const days = Math.floor(hours / 24);
-    return `قبل ${days} يوم`;
-  };
-
-  const sourceLabel = (item) => {
-    const source = escapeHTML(item.source || 'المصدر');
-    const date = escapeHTML(formatDate(item.published));
-    const relative = escapeHTML(formatRelative(item.published));
-    return `<span>${source}</span><span aria-hidden="true">·</span><span>${date}</span><span class="news-age">${relative}</span>`;
-  };
-
-  function enhanceIdentity() {
-    document.body.classList.add('nashhal-enhanced');
-    if (document.getElementById('nashhal-enhanced-style')) return;
-    const style = document.createElement('style');
-    style.id = 'nashhal-enhanced-style';
-    style.textContent = `
-      :root{--nh-accent:#1d513a;--nh-accent-soft:#e9efe9}
-      .nashhal-enhanced .brand-name{letter-spacing:-.04em}
-      .nashhal-enhanced .brand::after{content:'NEWS';font:800 9px/1 Tajawal,sans-serif;letter-spacing:.16em;color:var(--accent2);align-self:flex-end;margin:0 0 8px -5px}
-      .nashhal-enhanced .hero-main{overflow:hidden;position:relative}
-      .nashhal-enhanced .hero-main::before{content:'';position:absolute;inset:0 auto 0 0;width:4px;background:var(--accent2);z-index:2}
-      .nashhal-enhanced .label{text-transform:none;letter-spacing:.01em}
-      .nashhal-enhanced .ticker{scrollbar-width:none}
-      .nashhal-enhanced .ticker a{padding:0 10px;border-left:1px solid rgba(255,255,255,.12)}
-      .nashhal-enhanced .ticker strong{font:800 10px Tajawal,sans-serif;color:#f3b9b5;margin-left:5px}
-      .nashhal-enhanced .ticker small,.news-age{opacity:.62;font-size:10px}
-      .nashhal-enhanced .card-meta,.nashhal-enhanced .meta{align-items:center;gap:8px}
-      .nashhal-enhanced .card,.nashhal-enhanced .hero-main,.nashhal-enhanced .side{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-      .nashhal-enhanced .card:hover,.nashhal-enhanced .side:hover{border-color:#c9d5cc}
-      .nashhal-enhanced a:focus-visible,.nashhal-enhanced button:focus-visible,.nashhal-enhanced input:focus-visible{outline:3px solid rgba(47,122,82,.28);outline-offset:2px}
-      .nashhal-x-review{margin:0 0 22px;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow);overflow:hidden}
-      .nashhal-x-review-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;border-bottom:1px solid var(--line);background:var(--soft)}
-      .nashhal-x-review-title{font:800 13px 'IBM Plex Sans Arabic',sans-serif;color:var(--green)}
-      .nashhal-x-review-note{font-size:9px;color:var(--muted)}
-      .nashhal-x-review-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
-      .nashhal-x-item{display:block;padding:13px 14px;border-left:1px solid var(--line);min-width:0}
-      .nashhal-x-item:last-child{border-left:0}
-      .nashhal-x-item:hover{background:var(--soft)}
-      .nashhal-x-badge{display:inline-block;font:800 8px 'IBM Plex Sans Arabic',sans-serif;color:var(--red);background:rgba(186,30,35,.08);padding:2px 6px;border-radius:4px;margin-bottom:6px}
-      .nashhal-x-item h3{font:600 11px/1.7 'IBM Plex Sans Arabic',sans-serif}
-      .nashhal-x-item p{margin-top:4px;font-size:8px;color:var(--muted)}
-      @media(max-width:900px){.nashhal-x-review-list{grid-template-columns:1fr}.nashhal-x-item{border-left:0;border-bottom:1px solid var(--line)}.nashhal-x-item:last-child{border-bottom:0}}
-      @media(max-width:600px){.nashhal-enhanced .brand::after{display:none}.nashhal-enhanced .hero-main::before{width:3px}.nashhal-enhanced .news-age{display:none}.nashhal-x-review{margin-bottom:15px}.nashhal-x-review-head{align-items:flex-start;flex-direction:column;gap:3px}}
-    `;
-    document.head.appendChild(style);
+  function timeAgo(iso) {
+    if (!iso) return '';
+    const then = Date.parse(iso);
+    if (Number.isNaN(then)) return '';
+    const diffMin = Math.max(0, Math.floor((Date.now() - then) / 60000));
+    if (diffMin < 1) return 'الآن';
+    if (diffMin < 60) return `قبل ${diffMin} دقيقة`;
+    const diffHr = Math.floor(diffMin / 60);
+    if (diffHr < 24) return `قبل ${diffHr} ساعة`;
+    const diffDay = Math.floor(diffHr / 24);
+    return `قبل ${diffDay} يوم`;
   }
 
-  function renderXReview(items) {
-    const existing = document.querySelector('.nashhal-x-review');
-    if (existing) existing.remove();
-    if (!items.length) return;
+  function normalize(item = {}) {
+    const title = clean(item.title || item.headline || '');
+    const summary = clean(item.summary || item.description || '');
+    const sourceName = clean(item.source_name || item.source || item.publisher || 'المصدر');
+    const sourceUrl = safeUrl(item.source_url || item.link || item.url || '#');
+    const published = item.published || item.published_at || item.pubDate || item.date || item.collected_at || '';
+    const category = clean(item.category || item.region || 'اليمن');
+    const status = clean(item.status || 'published');
+    const confidence = clean(item.confidence || '');
+    const platform = clean(item.platform || 'news');
+    const image = safeUrl(item.image || item.thumbnail || '') === '#' ? '' : safeUrl(item.image || item.thumbnail || '');
 
-    const breaking = document.querySelector('.breaking');
-    if (!breaking) return;
-
-    const box = document.createElement('section');
-    box.className = 'nashhal-x-review wrap';
-    box.setAttribute('aria-label', 'رصد من منصة X قيد التحقق');
-    box.innerHTML = `
-      <div class="nashhal-x-review-head">
-        <div class="nashhal-x-review-title">رصد X · قيد التحقق</div>
-        <div class="nashhal-x-review-note">إشارات سريعة من X لا تُعد خبرًا منشورًا قبل التحقق من المصدر</div>
-      </div>
-      <div class="nashhal-x-review-list">
-        ${items.slice(0, 6).map(item => `
-          <a class="nashhal-x-item" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer">
-            <span class="nashhal-x-badge">قيد التحقق</span>
-            <h3>${escapeHTML(item.title)}</h3>
-            <p>X · ${escapeHTML(formatRelative(item.published))}</p>
-          </a>
-        `).join('')}
-      </div>
-    `;
-    breaking.insertAdjacentElement('afterend', box);
+    return { title, summary, sourceName, sourceUrl, published, category, status, confidence, platform, image };
   }
 
-  function renderHero(item) {
-    if (!item) return;
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
+  function confirmed(item) {
+    return item.status === 'published' && ['high', 'medium'].includes(item.confidence);
+  }
 
-    const title = hero.querySelector('[data-hero-title]');
-    const summary = hero.querySelector('[data-hero-summary]');
-    const link = hero.querySelector('[data-hero-link]');
-    const image = hero.querySelector('[data-hero-image]');
-    const meta = hero.querySelector('[data-hero-meta]');
+  function review(item) {
+    return item.status === 'review';
+  }
 
-    if (title) title.innerHTML = `<a href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer" style="color:inherit">${escapeHTML(item.title)}</a>`;
-    if (summary) summary.textContent = item.summary || 'متابعة مستمرة من نشهل لأبرز التطورات والأخبار.';
-    if (link) {
-      link.href = item.href;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
+  function sortRecent(items) {
+    return [...items].sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
+  }
+
+  function confirmedItems(filter = 'all') {
+    let items = allItems.filter(confirmed);
+    if (filter !== 'all') items = items.filter(item => item.category === filter);
+    return sortRecent(items);
+  }
+
+  function sourceLink(item) {
+    if (!item.sourceName) return '';
+    return item.sourceUrl && item.sourceUrl !== '#'
+      ? `<a class="src-link" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.sourceName)}</a>`
+      : escapeHtml(item.sourceName);
+  }
+
+  function metaLine(item) {
+    return `<div class="meta-line"><span>${escapeHtml(item.category)}</span><span class="dot"></span><span>${escapeHtml(timeAgo(item.published))}</span><span class="dot"></span>${sourceLink(item)}</div>`;
+  }
+
+  function placeholder(label = 'صورة الخبر') {
+    return `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
+  }
+
+  function media(item, klass = '') {
+    return item.image
+      ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+      : placeholder('نشهل');
+  }
+
+  function renderTicker() {
+    const track = document.getElementById('tickerTrack');
+    if (!track) return;
+    const items = confirmedItems().slice(0, TICKER_LIMIT);
+    track.innerHTML = items.length
+      ? items.map(item => `<a class="ticker-item" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer"><strong>عاجل</strong><span>${escapeHtml(item.title)}</span><small>${escapeHtml(timeAgo(item.published))}</small></a>`).join('')
+      : `<span class="ticker-item">لا توجد تحديثات جديدة حاليًا</span>`;
+  }
+
+  function renderHero(filter = 'all') {
+    const root = document.getElementById('heroGrid');
+    if (!root) return;
+    const items = confirmedItems(filter);
+    if (!items.length) {
+      root.innerHTML = '<div class="empty-state">لا توجد أخبار منشورة في هذا القسم حاليًا</div>';
+      return;
     }
-    if (image && item.image) {
-      image.src = item.image;
-      image.alt = item.title;
-      image.loading = 'eager';
-      image.referrerPolicy = 'no-referrer';
-    }
-    if (meta) meta.innerHTML = sourceLabel(item);
-  }
-
-  function renderTicker(items) {
-    const ticker = document.querySelector('[data-breaking-ticker]') || document.querySelector('.ticker');
-    if (!ticker || !items.length) return;
-    ticker.innerHTML = items.slice(0, 5).map(item =>
-      `<a href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer"><strong>عاجل</strong>${escapeHTML(item.title)} <small>${escapeHTML(formatRelative(item.published))}</small></a>`
-    ).join('');
-  }
-
-  function renderLatest(items) {
-    const list = document.querySelector('[data-latest-list]');
-    if (!list) return;
-    list.innerHTML = items.slice(0, 4).map((item, index) => `
-      <div class="rank">
-        <div class="rank-num">${String(index + 1).padStart(2, '0')}</div>
-        <div>
-          <h3><a href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.title)}</a></h3>
-          <p>${escapeHTML(item.source)} · ${escapeHTML(formatRelative(item.published))}</p>
+    const main = items[0];
+    const rail = items.slice(1, 5);
+    root.innerHTML = `
+      <article class="hero-main">
+        <a class="hero-media" href="${escapeHtml(main.sourceUrl)}" target="_blank" rel="noopener noreferrer">${media(main, 'hero-photo')}</a>
+        <div class="hero-body">
+          <span class="kicker">${escapeHtml(main.category)}</span>
+          <h1><a href="${escapeHtml(main.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(main.title)}</a></h1>
+          <p class="hero-summary">${escapeHtml(main.summary)}</p>
+          ${metaLine(main)}
         </div>
-      </div>
-    `).join('');
+      </article>
+      <aside class="hero-rail" aria-label="أحدث أربعة أخبار">
+        ${rail.map((item, index) => `
+          <article class="rail-item">
+            <div class="rail-index">0${index + 1}</div>
+            <a class="rail-media" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${media(item, 'rail-photo')}</a>
+            <div class="rail-content">
+              <span class="kicker">${escapeHtml(item.category)}</span>
+              <h2><a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></h2>
+              ${metaLine(item)}
+            </div>
+          </article>`).join('')}
+      </aside>`;
   }
 
-  function renderCards(items) {
-    const cards = document.querySelector('#cards');
-    if (!cards) return;
-
-    cards.innerHTML = items.slice(0, 12).map(item => {
-      const region = item.region || (item.isSouth ? 'الجنوب' : 'اليمن');
-      const image = item.image ? `<a class="card-image" href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHTML(item.image)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="tag">${escapeHTML(region)}</span></a>` : '';
-      return `
-        <article class="card" data-region="${escapeHTML(region)}" data-title="${escapeHTML(item.title)}">
-          ${image}
-          <div class="card-body">
-            <div class="card-meta">${sourceLabel(item)}</div>
-            <h3><a href="${escapeHTML(item.href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.title)}</a></h3>
-            ${item.summary ? `<p>${escapeHTML(item.summary)}</p>` : ''}
-          </div>
-        </article>
-      `;
-    }).join('');
-  }
-
-  function renderReport(items) {
-    const report = document.querySelector('.report');
-    if (!report || !items.length) return;
-    const latest = items[0];
-    const title = report.querySelector('[data-report-title]');
-    const text = report.querySelector('[data-report-text]');
-    const day = report.querySelector('[data-report-day]');
-    const month = report.querySelector('[data-report-month]');
-    const link = report.querySelector('[data-report-link]');
-
-    if (title) title.textContent = 'ملخص نشهل لأبرز أخبار اليوم';
-    if (text) text.textContent = `${latest.title} — المصدر: ${latest.source}.`;
-
-    const date = new Date(Date.parse(latest.published));
-    if (!Number.isNaN(date.getTime())) {
-      if (day) day.textContent = String(date.getDate()).padStart(2, '0');
-      if (month) month.textContent = new Intl.DateTimeFormat('ar-SA', { month: 'long', year: 'numeric' }).format(date);
+  function renderGrid(filter = 'all') {
+    const grid = document.getElementById('newsGrid');
+    const title = document.getElementById('gridTitle');
+    if (!grid) return;
+    if (title) title.textContent = filter === 'all' ? 'أحدث الأخبار' : `أحدث أخبار ${filter}`;
+    const items = confirmedItems(filter).slice(5, 5 + GRID_LIMIT);
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty-state">لا مزيد من الأخبار في هذا القسم حاليًا</div>';
+      return;
     }
-
-    if (link) {
-      link.href = latest.href;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = 'فتح الخبر الأصلي ←';
-    }
+    grid.innerHTML = items.map((item, index) => `
+      <article class="news-card ${index === 0 ? 'news-card-featured' : ''}">
+        <a class="card-media" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${media(item, 'card-photo')}<span class="card-tag">${escapeHtml(item.category)}</span></a>
+        <div class="card-body">
+          <span class="kicker">${escapeHtml(item.category)}</span>
+          <h3><a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></h3>
+          <p>${escapeHtml(item.summary)}</p>
+          ${metaLine(item)}
+        </div>
+      </article>`).join('');
   }
 
-  function setHomepageMeta(items) {
-    const latest = items[0];
-    const title = document.querySelector('[data-latest-title]');
-    const time = document.querySelector('[data-latest-time]');
-    if (title && latest) title.textContent = latest.title;
-    if (time && latest) time.textContent = formatDate(latest.published);
+  function renderVerify() {
+    const wrap = document.getElementById('verifySection');
+    const list = document.getElementById('verifyList');
+    if (!wrap || !list) return;
+    const items = sortRecent(allItems.filter(review)).slice(0, VERIFY_LIMIT);
+    wrap.hidden = !items.length;
+    list.innerHTML = items.map(item => `
+      <article class="verify-item">
+        <span class="verify-badge">${escapeHtml(platformLabel[item.platform] || 'قيد التحقق')}</span>
+        <div>
+          <h3><a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></h3>
+          <div class="verify-meta">${escapeHtml(item.category)} · ${escapeHtml(timeAgo(item.published))}</div>
+        </div>
+      </article>`).join('');
   }
 
-  function rebindFilters() {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = cleanText(btn.dataset.filter || 'all');
-        document.querySelectorAll('#south .card').forEach(card => {
-          const region = card.dataset.region || '';
-          const title = card.dataset.title || '';
-          card.style.display = filter === 'all' || region.includes(filter) || title.includes(filter) ? 'block' : 'none';
-        });
-      };
+  function setupFilters() {
+    const nav = document.getElementById('sectionNav');
+    if (!nav) return;
+    nav.querySelectorAll('[data-filter]').forEach(button => {
+      button.addEventListener('click', () => {
+        nav.querySelectorAll('[data-filter]').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentFilter = button.dataset.filter || 'all';
+        renderHero(currentFilter);
+        renderGrid(currentFilter);
+      });
     });
   }
 
-  enhanceIdentity();
+  function setupDarkMode() {
+    const root = document.documentElement;
+    const saved = localStorage.getItem('nahshal-theme');
+    if (saved === 'dark') root.classList.add('dark');
+    const toggle = document.getElementById('darkToggle');
+    if (toggle) toggle.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('nahshal-theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+  }
 
-  fetch(NEWS_URL, { cache: 'no-store' })
-    .then(response => {
+  function setupSearch() {
+    const button = document.getElementById('searchToggle');
+    const panel = document.getElementById('searchPanel');
+    const form = document.getElementById('searchForm');
+    const input = document.getElementById('searchInput');
+    const results = document.getElementById('searchResults');
+    if (!button || !panel || !form || !input || !results) return;
+    button.addEventListener('click', () => panel.classList.toggle('open'));
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const q = clean(input.value).toLowerCase();
+      const matches = confirmedItems().filter(item => `${item.title} ${item.summary} ${item.category}`.toLowerCase().includes(q)).slice(0, 8);
+      results.innerHTML = q && matches.length ? matches.map(item => `<a href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)} <small>${escapeHtml(item.sourceName)}</small></a>`).join('') : (q ? '<span>لا توجد نتائج مطابقة</span>' : '');
+    });
+  }
+
+  async function init() {
+    setupFilters();
+    setupDarkMode();
+    setupSearch();
+    try {
+      const response = await fetch(DATA_URL, { cache: 'no-store' });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
-    })
-    .then(data => {
-      const raw = Array.isArray(data) ? data : (data.news || data.items || []);
-      const normalized = raw.map(normalize).filter(item => item.title && item.href !== '#');
-      const review = normalized
-        .filter(item => item.status === 'review' && item.platform.toLowerCase() === 'x')
-        .filter(item => item.isYemen)
-        .sort((a, b) => dateValue(b) - dateValue(a));
-      const all = normalized
-        .filter(item => item.status === 'published' || !item.status)
-        .filter(item => item.isYemen);
-      const south = all.filter(item => item.isSouth);
-      const sortedAll = [...all].sort((a, b) => dateValue(b) - dateValue(a));
-      const sortedSouth = [...south].sort((a, b) => dateValue(b) - dateValue(a));
+      const data = await response.json();
+      const raw = Array.isArray(data) ? data : (data.items || data.news || []);
+      allItems = raw.map(normalize).filter(item => item.title && item.sourceUrl !== '#');
+    } catch (error) {
+      console.error('تعذر تحميل الأخبار:', error);
+      allItems = [];
+    }
+    renderTicker();
+    renderHero(currentFilter);
+    renderGrid(currentFilter);
+    renderVerify();
+  }
 
-      renderXReview(review);
-      const hero = sortedSouth[0] || sortedAll[0];
-      renderHero(hero);
-      renderTicker(sortedAll);
-      renderLatest(sortedSouth.length ? sortedSouth : sortedAll);
-      renderCards(sortedAll);
-      renderReport(sortedAll);
-      setHomepageMeta(sortedAll);
-      rebindFilters();
-
-      document.dispatchEvent(new CustomEvent('nashhal:news-ready', {
-        detail: { all: sortedAll, south: sortedSouth, xReview: review }
-      }));
-    })
-    .catch(error => {
-      console.error('Nashhal news loader:', error);
-      const cards = document.querySelector('#cards');
-      if (cards) cards.innerHTML = '<div class="card"><div class="card-body"><h3>تعذر تحديث الأخبار حاليًا</h3><p>سيبقى المحتوى الحالي ظاهرًا حتى عودة خدمة الأخبار.</p></div></div>';
-    });
+  document.addEventListener('DOMContentLoaded', init);
 })();
