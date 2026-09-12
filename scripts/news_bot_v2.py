@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""نشهل - جمع الأخبار من مصادرها الأصلية وإعادة صياغتها بصياغة صحفية مهنية."""
+"""نشهل - يجمع المعلومات من الجهات الرسمية والوكالات الرسمية ثم يعيد تحريرها صحفيًا."""
 import hashlib
 import html
 import json
@@ -8,6 +8,7 @@ import os
 import re
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+from urllib.parse import urljoin
 
 import feedparser
 import requests
@@ -17,15 +18,20 @@ MAX_ITEMS = 120
 REQUEST_TIMEOUT = 25
 REWRITE_TIMEOUT = 90
 
-TRUSTED_FEEDS = [
-    ("بي بي سي عربي", "https://feeds.bbci.co.uk/arabic/rss.xml", "دولي"),
-    ("فرانس 24 عربي", "https://www.france24.com/ar/rss", "دولي"),
-    ("الجزيرة", "https://www.aljazeera.net/xml/rss/all.xml", "عربي"),
-    ("سبأ", "https://www.sabanew.net/rss.php?lang=ar", "يمني"),
-    ("الأيام", "https://www.alayyam.info/rss", "يمني"),
-    ("عدن الغد", "https://www.adenalghad.net/rss", "يمني"),
-    ("المصدر أونلاين", "https://almasdaronline.com/rss", "يمني"),
+# مصادر نشر أساسية: جهات رسمية أو وكالة الأنباء الرسمية، وليست قنوات تلفزيونية.
+OFFICIAL_RSS = [
+    ("وكالة سبأ", "https://www.sabanew.net/rss.php?lang=ar", "official_agency"),
 ]
+OFFICIAL_PAGES = [
+    ("وزارة الخارجية اليمنية", "https://www.mofa-ye.org/Pages/ar/", "official_ministry"),
+    ("الأمم المتحدة في اليمن", "https://yemen.un.org/ar", "international_official"),
+]
+
+# المصادر الإعلامية القديمة ممنوعة من الاستمرار في سجل النشر الآلي.
+BLOCKED_SOURCES = {
+    "بي بي سي عربي", "فرانس 24 عربي", "الجزيرة", "الأيام", "عدن الغد", "المصدر أونلاين",
+    "BBC Arabic", "France 24", "Al Jazeera", "BBC", "CNN", "Sky News",
+}
 
 KEYWORDS = [
     "اليمن", "اليمني", "اليمنية", "عدن", "حضرموت", "شبوة", "أبين", "لحج",
@@ -45,7 +51,7 @@ EXCLUDED_KEYWORDS = [
     "ممثل", "ممثلة", "مشاهير", "سينما", "مسلسل", "فيلم", "ترفيه", "حفلة",
     "حفل غنائي", "تيك توك", "إنستغرام", "مؤثر", "مؤثرة",
 ]
-HEADERS = {"User-Agent": "NahshalNews/3.0 (+https://nashhal.github.io/nashha/)"}
+HEADERS = {"User-Agent": "NahshalNews/4.0 (+https://nashhal.github.io/nashha/)"}
 
 
 def clean(value):
@@ -91,7 +97,7 @@ def make_item(source, source_type, title, link, summary, published):
     title, link, summary = clean(title), clean(link), clean(summary)
     if not title or not link or not link.startswith(("http://", "https://")):
         return None
-    if not relevant(title, summary):
+    if source in BLOCKED_SOURCES or not relevant(title, summary):
         return None
     published = parse_date(published) or datetime.now(timezone.utc).isoformat()
     return {
@@ -113,38 +119,98 @@ def make_item(source, source_type, title, link, summary, published):
         "original_summary": summary[:1800],
         "description": summary[:300],
         "content": summary[:900],
-        "platform": "news",
+        "platform": "official",
         "source_type": source_type,
         "rewrite_status": "source_text",
     }
 
 
-def collect_rss():
+def collect_official_rss():
     found = []
-    for source, url, source_type in TRUSTED_FEEDS:
+    for source, url, source_type in OFFICIAL_RSS:
         try:
             response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
             response.raise_for_status()
             feed = feedparser.parse(response.content)
-            source_count = 0
-            for entry in feed.entries[:50]:
+            count = 0
+            for entry in feed.entries[:60]:
                 item = make_item(
-                    source,
-                    source_type,
-                    entry.get("title"),
-                    entry.get("link"),
+                    source, source_type, entry.get("title"), entry.get("link"),
                     entry.get("summary") or entry.get("description"),
                     entry.get("published") or entry.get("updated"),
                 )
                 if item:
-                    item["raw_source_text"] = clean(
-                        entry.get("summary") or entry.get("description") or entry.get("title")
-                    )[:2200]
+                    item["raw_source_text"] = clean(entry.get("summary") or entry.get("description") or entry.get("title"))[:2600]
                     found.append(item)
-                    source_count += 1
-            print(f"[OK] {source}: {source_count} خبرًا صالحًا")
+                    count += 1
+            print(f"[OK] {source}: {count} خبرًا رسميًا")
         except Exception as exc:
             print(f"[WARN] RSS {source}: {exc}")
+    return found
+
+
+def extract_page_links(base_url, html_text):
+    candidates = []
+    patterns = [
+        r'<h[1-4][^>]*>\s*<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+        r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>\s*([^<]{35,260})\s*</a>',
+    ]
+    for pattern in patterns:
+        for match in re.findall(pattern, html_text, flags=re.I | re.S):
+            href, title = match[0], clean(match[1])
+            url = urljoin(base_url, html.unescape(href))
+            if url.startswith(("http://", "https://")) and title and len(title) >= 25:
+                candidates.append((title, url))
+    unique = []
+    seen = set()
+    for title, url in candidates:
+        key = (title, url)
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(key)
+    return unique[:35]
+
+
+def extract_article(url, fallback_title):
+    try:
+        response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+        raw = response.text
+        title_match = re.search(r'<h1[^>]*>(.*?)</h1>', raw, flags=re.I | re.S)
+        title = clean(title_match.group(1)) if title_match else clean(fallback_title)
+        paragraphs = [clean(x) for x in re.findall(r'<p[^>]*>(.*?)</p>', raw, flags=re.I | re.S)]
+        paragraphs = [p for p in paragraphs if len(p) > 50]
+        summary = " ".join(paragraphs[:4])[:2600]
+        date_match = re.search(r'(20\d{2}[-/]\d{1,2}[-/]\d{1,2})', raw)
+        published = date_match.group(1) if date_match else None
+        return title, summary, published
+    except Exception:
+        return clean(fallback_title), "", None
+
+
+def collect_official_pages():
+    found = []
+    for source, page_url, source_type in OFFICIAL_PAGES:
+        try:
+            response = requests.get(page_url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            links = extract_page_links(page_url, response.text)
+            count = 0
+            for title, url in links:
+                if source == "وزارة الخارجية اليمنية" and not any(x in url for x in ["mofa-ye.org/Pages/"]):
+                    continue
+                article_title, summary, published = extract_article(url, title)
+                if not summary:
+                    continue
+                item = make_item(source, source_type, article_title, url, summary, published)
+                if item:
+                    item["raw_source_text"] = summary[:2600]
+                    found.append(item)
+                    count += 1
+            print(f"[OK] {source}: {count} مادة رسمية")
+        except Exception as exc:
+            print(f"[WARN] الصفحة الرسمية {source}: {exc}")
     return found
 
 
@@ -169,23 +235,29 @@ def rewrite_with_grok(item):
         return item
 
     prompt = f"""
-أنت محرر أخبار محترف لمنصة نشهل اليمنية.
-أعد تحرير الخبر التالي بصياغة صحفية عربية مهنية ومحايدة.
-استخدم المعلومات الواردة في المصدر فقط. ممنوع إضافة أي معلومة أو رقم أو اسم أو سياق غير موجود في النص.
-لا تغيّر حقيقة الخبر ولا تبالغ في العنوان. لا تستخدم لغة دعائية أو حزبية أو عاطفية. لا تستنتج اتهامات أو دوافع غير مذكورة. لا تخترع اقتباسات.
-حافظ على أسماء الأشخاص والجهات والأماكن كما وردت. اجعل العنوان واضحًا ودقيقًا وغير مثير للنقر.
-اكتب ملخصًا من جملتين إلى ثلاث جمل يشرح أهم ما ورد في المصدر.
+أنت المحرر المسؤول عن قسم الأخبار في منصة نشهل.
+حوّل المادة الرسمية التالية إلى خبر عربي مهني بأسلوب وكالات الأنباء والمنصات الإخبارية الكبرى.
 
-عنوان المصدر:
+القواعد الصارمة:
+- اعتمد على المعلومات الموجودة في النص فقط.
+- لا تضف أي معلومة أو رقم أو اسم أو مكان أو سبب أو دافع غير مذكور.
+- لا تنسخ الصياغة الأصلية حرفيًا؛ أعد بناء الخبر بصياغة صحفية مستقلة.
+- اجعل العنوان خبريًا مباشرًا ودقيقًا، بلا مبالغة أو clickbait.
+- ضع أهم معلومة في بداية الملخص.
+- استخدم لغة محايدة، ولا تتبنَّ لغة دعائية للجهة الرسمية.
+- عند وجود رأي أو موقف رسمي، انسبه للجهة في صياغة الخبر بدل تقديمه كحقيقة مطلقة.
+- لا تخترع اقتباسات.
+- لا تذكر اسم المصدر داخل العنوان أو الملخص إلا إذا كان ضروريًا لفهم من أصدر الموقف.
+
+العنوان الأصلي:
 {original_title}
 
-نص المصدر:
+النص الرسمي:
 {source_text}
 
-أعد JSON فقط:
+أعد JSON فقط بهذا الشكل:
 {{"title":"...","summary":"..."}}
 """.strip()
-
     try:
         response = requests.post(
             "https://api.x.ai/v1/responses",
@@ -212,9 +284,9 @@ def rewrite_with_grok(item):
         item["description"] = new_summary[:300]
         item["content"] = new_summary[:900]
         item["rewrite_status"] = "editorial_rewrite"
-        item["editorial_note"] = "أعيدت الصياغة اعتمادًا على نص المصدر الأصلي دون إضافة معلومات جديدة."
+        item["editorial_note"] = "أعيد تحرير المادة الرسمية بصياغة صحفية مستقلة دون إضافة معلومات جديدة."
     except Exception as exc:
-        print(f"[WARN] تعذر إعادة صياغة خبر من {item.get('source')}: {exc}")
+        print(f"[WARN] تعذر التحرير: {exc}")
     return item
 
 
@@ -225,15 +297,18 @@ def editorial_process(items):
         item.pop("raw_source_text", None)
         processed.append(item)
         if index % 5 == 0:
-            print(f"[OK] تمت معالجة الصياغة: {index}/{len(items)}")
+            print(f"[OK] التحرير الصحفي: {index}/{len(items)}")
     return processed
 
 
 def dedupe(items):
     by_id = {}
     for item in items:
-        if item and item.get("id"):
-            by_id[item["id"]] = item
+        if not item or not item.get("id"):
+            continue
+        if item.get("source_name") in BLOCKED_SOURCES:
+            continue
+        by_id[item["id"]] = item
     return sorted(by_id.values(), key=lambda x: x.get("published_at", ""), reverse=True)
 
 
@@ -247,25 +322,26 @@ def main():
     except Exception:
         old = []
 
+    # الاحتفاظ فقط بالأخبار الرسمية السابقة، وحذف ما أضيف من القنوات الإعلامية.
     existing = {
-        x.get("id"): x
-        for x in old
+        x.get("id"): x for x in old
         if isinstance(x, dict)
         and x.get("id")
         and x.get("status") == "published"
         and x.get("auto_published", True) is True
-        and x.get("source_type") != "social_public"
+        and x.get("source_name") not in BLOCKED_SOURCES
+        and x.get("source_type") in {"official_agency", "official_ministry", "international_official"}
     }
 
-    # النشر الآلي يعتمد على خلاصات الأخبار من المصادر الأصلية فقط.
-    fresh = editorial_process(collect_rss())
+    fresh = collect_official_rss() + collect_official_pages()
+    fresh = editorial_process(fresh)
     for item in fresh:
         existing[item["id"]] = item
 
     final = dedupe(list(existing.values()))[:MAX_ITEMS]
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(final, f, ensure_ascii=False, indent=2)
-    print(f"[DONE] {len(final)} خبر منشور؛ {len(fresh)} خبر جديد من المصادر الأصلية")
+    print(f"[DONE] {len(final)} خبر منشور من المصادر الرسمية؛ {len(fresh)} مادة جديدة")
 
 
 if __name__ == "__main__":
