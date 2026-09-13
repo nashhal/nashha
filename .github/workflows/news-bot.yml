@@ -2,6 +2,13 @@ name: News Bot
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/global_news_bot.py'
+      - 'scripts/ai_analysis.py'
+      - 'scripts/news_quality_gate.py'
+      - 'scripts/build_site.py'
+      - '.github/workflows/news-bot.yml'
   schedule:
     - cron: '*/15 * * * *'
 
