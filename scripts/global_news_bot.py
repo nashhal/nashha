@@ -236,7 +236,6 @@ def discover() -> list[dict]:
             "verification_evidence_count": len(evidence),
             "verification_evidence": evidence,
             "primary_evidence": evidence[0] if evidence else {},
-            # حقول المصدر موجودة كسجل داخلي للتحقق ولا تُعرض في واجهة الموقع.
             "source": primary_name or (evidence[0].get("name") if evidence else ""),
             "source_name": primary_name or (evidence[0].get("name") if evidence else ""),
             "source_url": primary_url or (evidence[0].get("url") if evidence else ""),
@@ -257,36 +256,88 @@ def discover() -> list[dict]:
 
 
 def merge_events(existing: list[dict], fresh: list[dict]) -> list[dict]:
+    """ادمج الأحداث مع اعتبار الاكتشاف الأحدث هو السجل التحريري الأساسي.
+
+    نحتفظ بالتحليل السابق والحقول الإضافية الموجودة فقط عندما لا توفر النسخة
+    الجديدة قيمة لها، بينما يتم تحديث العنوان والملخص والوقائع والتحقق والأدلة
+    من الاكتشاف الجديد. هذا يمنع بقاء تحرير قديم يطغى على الخبر المعاد اكتشافه.
+    """
     merged: dict[str, dict] = {}
-    for item in existing + fresh:
+
+    preserved_analysis = (
+        "analysis_ar", "background_ar", "what_happened_ar", "why_it_matters_ar",
+        "implications_ar", "open_questions_ar", "analysis_level", "news_angle",
+        "importance", "entities_ar", "keywords_ar", "analysis_engine", "analysis_version",
+    )
+
+    for item in existing:
         if not isinstance(item, dict):
             continue
         key = str(item.get("event_key") or item.get("id") or "").strip()
+        if key:
+            merged[key] = dict(item)
+
+    for fresh_item in fresh:
+        if not isinstance(fresh_item, dict):
+            continue
+        key = str(fresh_item.get("event_key") or fresh_item.get("id") or "").strip()
         if not key:
             continue
-        old = merged.get(key)
-        if not old:
-            merged[key] = item
-            continue
-        # عند إعادة اكتشاف الحدث نحتفظ بأغنى سجل أدلة وأحدث وقت جمع.
+
+        old = merged.get(key, {})
+        combined = dict(fresh_item)
+
+        # الاحتفاظ بالتحليل القديم فقط عند عدم وجود تحليل أحدث في البيانات الجديدة.
+        for field in preserved_analysis:
+            if not clean(combined.get(field)) and old.get(field):
+                combined[field] = old[field]
+
+        # الاحتفاظ بأي حقول داخلية مضافة سابقًا ما لم يقدم الاكتشاف الجديد بديلًا.
+        for field, value in old.items():
+            if field not in combined and value not in (None, "", [], {}):
+                combined[field] = value
+
         old_evidence = old.get("verification_evidence") if isinstance(old.get("verification_evidence"), list) else []
-        new_evidence = item.get("verification_evidence") if isinstance(item.get("verification_evidence"), list) else []
-        urls = {canonical_url(e.get("url", "")) for e in old_evidence if isinstance(e, dict)}
-        for ev in new_evidence:
-            if isinstance(ev, dict) and canonical_url(ev.get("url", "")) not in urls:
-                old_evidence.append(ev)
-        old["verification_evidence"] = old_evidence[:12]
-        old["verification_evidence_count"] = len(old_evidence)
-        if int(item.get("verification_score", 0) or 0) > int(old.get("verification_score", 0) or 0):
-            old["verification_score"] = item.get("verification_score")
-            old["verification_basis"] = item.get("verification_basis", old.get("verification_basis", ""))
-            old["verification"] = item.get("verification", old.get("verification", "developing"))
-        if old.get("verification") == "confirmed":
-            old["confidence"] = "high"
-            old["status"] = "published"
-        elif old.get("verification") == "developing":
-            old["confidence"] = "medium"
-            old["status"] = "published"
+        new_evidence = combined.get("verification_evidence") if isinstance(combined.get("verification_evidence"), list) else []
+        evidence = []
+        seen_urls = set()
+        for ev in new_evidence + old_evidence:
+            if not isinstance(ev, dict):
+                continue
+            ev_url = canonical_url(ev.get("url", ""))
+            if not ev_url or ev_url in seen_urls:
+                continue
+            evidence.append(ev)
+            seen_urls.add(ev_url)
+        combined["verification_evidence"] = evidence[:12]
+        combined["verification_evidence_count"] = len(combined["verification_evidence"])
+
+        # لا نسمح بمرور حالة أقل جودة بسبب سجل قديم أقوى أو أضعف؛ نعتمد نتيجة الاكتشاف الحالي.
+        verification = clean(combined.get("verification")).lower() or "developing"
+        if verification not in VERIFICATIONS:
+            verification = "developing"
+        combined["verification"] = verification
+        combined["verification_status"] = verification
+        try:
+            score = max(0, min(100, int(combined.get("verification_score", 0))))
+        except (TypeError, ValueError):
+            score = 0
+        combined["verification_score"] = score
+        if verification == "confirmed":
+            combined["confidence"] = "high"
+            combined["status"] = "published"
+            combined["auto_published"] = True
+        elif verification == "developing":
+            combined["confidence"] = "medium"
+            combined["status"] = "published"
+            combined["auto_published"] = True
+        else:
+            combined["confidence"] = "low"
+            combined["status"] = "review"
+            combined["auto_published"] = False
+
+        merged[key] = combined
+
     return list(merged.values())
 
 
