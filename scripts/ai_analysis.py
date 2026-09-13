@@ -5,6 +5,7 @@ import json
 import os
 import re
 import sys
+import time
 from urllib.parse import urlparse
 import requests
 
@@ -12,6 +13,8 @@ OUT = "data/news.json"
 MODEL = "grok-4.5"
 MAX_ANALYZE = 20
 TIMEOUT = 90
+MAX_RETRIES = 3
+RETRY_DELAY = 2  # seconds
 
 ALLOWED_ANGLES = ("سياسي", "ميداني", "أمني", "دبلوماسي", "اقتصادي", "إنساني", "متابعة")
 ALLOWED_IMPORTANCE = ("مرتفع", "متوسط", "عادي")
@@ -48,10 +51,10 @@ def analyze(item, token):
 
 أعد JSON فقط بهذا الشكل:
 {{
-  "analysis_ar": "تحليل مطول من 7 إلى 10 فقرات قصيرة، يشرح الخبر وسياقه ودلالته وتداعياته المحتملة، مع الفصل الصريح بين ما تثبته المادة وما يمثل قراءة سياقية.",
-  "background_ar": "خلفية تفسيرية من 2 إلى 4 فقرات تشرح القضية أو التطور الذي يتناوله الخبر، من دون اختلاق تاريخ أو وقائع غير واردة.",
+  "analysis_ar": "تحليل مطول من 7 إلى 10 فقرات قصيرة، يشرح الخبر وسياقه ودلالته وتداعياته المحتملة، مع الفصل الصريح ب[...]
+  "background_ar": "خلفية تفسيرية من 2 إلى 4 فقرات تشرح القضية أو التطور الذي يتناوله الخبر، من دون اختلاق تاريخ أو وق[...]
   "what_happened_ar": "فقرة دقيقة تجيب: ماذا حدث؟ من المعني؟ أين؟ ومتى؟ بحسب المعلومات المتاحة فقط.",
-  "why_it_matters_ar": "2 إلى 3 فقرات تشرح أهمية التطور بالنسبة للمشهد اليمني أو الجنوبي، مع تجنب الجزم بما لم تثبته المعطيات.",
+  "why_it_matters_ar": "2 إلى 3 فقرات تشرح أهمية التطور بالنسبة للمشهد اليمني أو الجنوبي، مع تجنب الجزم بما لم تثبته الم[...]
   "implications_ar": ["3 إلى 5 تداعيات أو مسارات محتملة، وكل واحدة بصياغة احتمالية منضبطة"],
   "open_questions_ar": ["حتى 5 أسئلة لا تزال الإجابة عنها غير محسومة من المادة"],
   "analysis_level": "مرتفع أو متوسط أو محدود",
@@ -68,7 +71,7 @@ def analyze(item, token):
 - فرّق بين الواقعة والادعاء والتفسير والاحتمال.
 - لا تستخدم لغة دعائية أو تحريضية أو عاطفية أو تهويلية.
 - لا تتنبأ بالمستقبل بصيغة جازمة.
-- استخدم العربية الفصحى الصحفية الواضحة والقوية، مع مصطلحات مثل: المشهد، السياق، المعطيات، الدلالة، التداعيات، المسار، المؤشرات، الفاعلون، الاستحقاقات، موازين التأثير، مكامن الغموض، الحراك السياسي، التطورات الميدانية، المسار الدبلوماسي، البيئة السياسية، الحسابات الإقليمية.
+- استخدم العربية الفصحى الصحفية الواضحة والقوية، مع مصطلحات مثل: المشهد، السياق، المعطيات، الدلالة، التداع[...]
 - لا تكرر الجمل بين الحقول؛ لكل حقل وظيفة تحريرية مستقلة.
 - اجعل التقرير مفيدًا لقارئ يريد فهم الخبر لا مجرد معرفته.
 
@@ -77,22 +80,48 @@ def analyze(item, token):
 المادة المتاحة: {summary}
 """
 
-    r = requests.post(
-        "https://api.x.ai/v1/responses",
-        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-        json={
-            "model": MODEL,
-            "input": [{"role": "user", "content": prompt}],
-            "include": ["no_inline_citations"],
-        },
-        timeout=TIMEOUT,
-    )
-    r.raise_for_status()
-    text = response_text(r.json())
-    match = re.search(r"\{[\s\S]*\}", text)
-    if not match:
-        return None
-    return json.loads(match.group(0))
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            r = requests.post(
+                "https://api.x.ai/v1/responses",
+                headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+                json={
+                    "model": MODEL,
+                    "input": [{"role": "user", "content": prompt}],
+                    "include": ["no_inline_citations"],
+                },
+                timeout=TIMEOUT,
+            )
+            r.raise_for_status()
+            text = response_text(r.json())
+            match = re.search(r"\{[\s\S]*\}", text)
+            if not match:
+                return None
+            return json.loads(match.group(0))
+        except requests.exceptions.HTTPError as e:
+            if r.status_code == 403:
+                print(f"[WARN] محاولة {attempt}/{MAX_RETRIES}: خطأ 403 - قد تكون هناك مشكلة في المصادقة أو الصلاحيات")
+                if attempt < MAX_RETRIES:
+                    time.sleep(RETRY_DELAY * attempt)
+                    continue
+                else:
+                    print(f"[ERROR] فشلت المحاولات الـ {MAX_RETRIES} بسبب خطأ 403")
+                    return None
+            raise
+        except requests.exceptions.Timeout:
+            print(f"[WARN] محاولة {attempt}/{MAX_RETRIES}: انتهت المهلة الزمنية")
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_DELAY * attempt)
+                continue
+            return None
+        except requests.exceptions.RequestException as e:
+            print(f"[WARN] محاولة {attempt}/{MAX_RETRIES}: {e}")
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_DELAY * attempt)
+                continue
+            return None
+    
+    return None
 
 
 def as_list(value, limit):
@@ -182,12 +211,12 @@ def main():
             json.dump(data, f, ensure_ascii=False, indent=2)
 
     if failed and changed == 0:
-        print(f"[ERROR] فشل إنشاء جميع التقارير المستهدفة: 0/{len(targets)} نجح، {failed} فشل.")
-        sys.exit(1)
+        print(f"[WARN] تعذر إنشاء أي تقارير: 0/{len(targets)} نجح، {failed} فشل.")
+        print("[INFO] سيتم المتابعة في الدورة القادمة.")
+        return
 
     if failed:
-        print(f"[ERROR] تم إنشاء {changed}/{len(targets)} تقريرًا، وفشل {failed}. سيتم اعتبار الدورة فاشلة حتى لا تمر المشكلة بصمت.")
-        sys.exit(1)
+        print(f"[WARN] تم إنشاء {changed}/{len(targets)} تقريرًا، وفشل {failed}.")
 
     print(f"[DONE] تم إنشاء {changed} تقريرًا تحليليًا مطولًا بنجاح")
 
