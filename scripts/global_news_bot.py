@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""محرك نشهل لاكتشاف الأخبار العربية والعالمية بالذكاء الاصطناعي.
-لا يعتمد على قائمة قنوات ثابتة. يستخدم بحث الويب وX لاكتشاف الأحداث، ثم يتحقق من
-وجود روابط فعلية ويعيد صياغة الخبر بالعربية مع تصنيف جغرافي وموضوعي.
+"""محرك نشهل لاكتشاف الأحداث وبناء أخبار أصلية مدعومة بالأدلة.
+
+المبدأ التحريري:
+حدث -> أدلة أولية -> مقارنة مستقلة -> تقييم تحقق -> خبر نشهل
+المصادر تحفظ داخل البيانات كسجل تحقق ولا تظهر في واجهة الخبر كهوية للنشر.
 """
 from __future__ import annotations
 
@@ -11,16 +13,19 @@ import json
 import os
 import re
 from datetime import datetime, timedelta, timezone
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlunparse
 
 import requests
 
 OUT = "data/news.json"
 MODEL = os.getenv("XAI_MODEL", "grok-4.5")
 MAX_ITEMS = 180
+MAX_FRESH = 25
 TIMEOUT = 120
 
 CATEGORIES = ["اليمن", "الخليج", "العالم العربي", "العالم", "اقتصاد", "تقنية", "علوم", "رياضة", "ثقافة"]
+REGIONS = ["اليمن", "الخليج", "الشرق الأوسط", "العالم العربي", "أوروبا", "أميركا", "آسيا", "أفريقيا", "دولي"]
+VERIFICATIONS = {"confirmed", "developing", "unconfirmed"}
 
 
 def clean(value: str | None) -> str:
@@ -39,12 +44,24 @@ def response_text(data: dict) -> str:
     return "\n".join(parts).strip()
 
 
-def normalize_url(url: str) -> str:
-    return clean(url).rstrip("/")
+def canonical_url(url: str) -> str:
+    try:
+        p = urlparse(clean(url))
+        if p.scheme not in {"http", "https"} or not p.netloc:
+            return ""
+        return urlunparse((p.scheme.lower(), p.netloc.lower(), p.path.rstrip("/"), "", "", ""))
+    except Exception:
+        return ""
 
 
-def make_id(url: str) -> str:
-    return hashlib.sha256(normalize_url(url).encode()).hexdigest()[:20]
+def make_id(seed: str) -> str:
+    return hashlib.sha256(clean(seed).encode("utf-8")).hexdigest()[:20]
+
+
+def make_event_key(title: str, summary: str) -> str:
+    text = re.sub(r"[^\w\u0600-\u06FF ]+", " ", f"{title} {summary}".lower())
+    tokens = [x for x in text.split() if len(x) > 2][:36]
+    return hashlib.sha256(" ".join(tokens).encode("utf-8")).hexdigest()[:16]
 
 
 def load_existing() -> list[dict]:
@@ -67,44 +84,55 @@ def discover() -> list[dict]:
     from_date = (now - timedelta(hours=24)).date().isoformat()
     to_date = now.date().isoformat()
 
-    prompt = """أنت محرك اكتشاف أخبار وغرفة رصد رقمية لمنصة عربية ذات تغطية عالمية اسمها نشهل.
-ابحث عن أبرز الأخبار والتطورات الحقيقية خلال آخر 24 ساعة، بالعربية أو من المصادر العالمية مهما كانت لغتها، ثم أعد عرضها بالعربية.
+    prompt = f"""أنت غرفة رصد رقمية مستقلة لمنصة نشهل.
+مهمتك ليست جمع روابط أو تلخيص ما نشرته القنوات، بل اكتشاف الأحداث نفسها وبناء ملف تحقق لكل حدث خلال آخر 24 ساعة.
 
 نطاق التغطية:
 - اليمن والجنوب اليمني والخليج والشرق الأوسط والعالم العربي.
-- الأخبار الدولية ذات الأهمية العالمية.
+- الأخبار الدولية المهمة.
 - السياسة والدبلوماسية والأمن والاقتصاد والأسواق والتقنية والعلوم والصحة والبيئة والثقافة والرياضة.
-- لا تجعل اليمن محور كل النتائج؛ نريد منصة عربية وعالمية متوازنة.
 
-منهج الاكتشاف:
-- استخدم البحث على الويب كمحرك أساسي، وX كمجال رصد واكتشاف مبكر.
-- لا تعتبر منشور X أو حسابًا منفردًا دليلًا كافيًا لخبر مؤكد.
-- أعط الأولوية للتطورات التي يمكن التحقق منها من مادة صحفية أو بيان رسمي أو جهة موثوقة.
-- ابحث عن أكثر من تغطية عندما يكون الخبر كبيرًا أو حساسًا.
-- لا تكرر الحدث نفسه بصيغ مختلفة.
-- استبعد المحتوى الدعائي والإعلانات والشائعات والآراء الفردية.
+منهج العمل الإلزامي لكل حدث:
+1) اكتشف الحدث نفسه، لا اسم القناة التي غطته.
+2) ابحث أولًا عن المصدر الأولي أو الأقرب للحدث: بيان رسمي، وثيقة، جهة حكومية، تصريح مباشر، ملف رسمي، بيانات شركة أو منظمة، أو شاهد/حساب موثق عند الحاجة.
+3) اجمع مادة مستقلة ثانية أو أكثر عندما يكون الحدث حساسًا أو مهمًا.
+4) قارن الروايات واكشف أي تناقض أو نقص.
+5) افصل بين "ما ثبت" و"ما ادعاه طرف" و"ما يزال قيد التحقق".
+6) لا تجعل منشورًا واحدًا على X أو Facebook دليلًا كافيًا لخبر مؤكد.
+7) لا تكرر الحدث نفسه لمجرد أن أكثر من مؤسسة غطته.
+8) لا تنشر الإشاعة على أنها خبر.
 
-أعد JSON فقط بالشكل:
+أعد JSON فقط بالشكل التالي:
 [
-  {
-    "title":"عنوان عربي مهني",
-    "summary":"ملخص دقيق من 3 إلى 5 جمل يذكر الوقائع الأساسية دون تهويل",
-    "source_name":"اسم أفضل مصدر متاح",
-    "source_url":"رابط مباشر للمادة",
+  {{
+    "event_key":"معرف ثابت للحدث",
+    "title":"عنوان عربي مهني أصلي لا يبدأ باسم مصدر",
+    "summary":"ملخص دقيق من 3 إلى 5 جمل يصف الحدث نفسه",
+    "facts_ar":["3 إلى 8 وقائع يمكن إسنادها إلى الأدلة"],
+    "claims_ar":["حتى 5 ادعاءات منسوبة بوضوح إلى أصحابها إن وجدت"],
+    "verification_basis":"شرح قصير لماذا اعتبر الحدث مؤكدًا أو جاريًا أو غير مؤكد",
+    "verification_score":0,
+    "verification":"confirmed أو developing أو unconfirmed",
+    "primary_evidence":{{"name":"اسم الجهة أو المادة الأولية","url":"رابط مباشر"}},
+    "evidence":[
+      {{"name":"اسم الجهة أو المادة","url":"رابط مباشر","type":"primary أو independent أو contextual","role":"ماذا تثبت هذه المادة"}}
+    ],
     "published":"ISO-8601 إن توفر وإلا فارغ",
     "category":"اليمن أو الخليج أو العالم العربي أو العالم أو اقتصاد أو تقنية أو علوم أو رياضة أو ثقافة",
-    "region":"اليمن أو الخليج أو الشرق الأوسط أو العالم العربي أو أوروبا أو أميركا أو آسيا أو أفريقيا أو دولي",
-    "verification":"confirmed أو developing أو unconfirmed"
-  }
+    "region":"اليمن أو الخليج أو الشرق الأوسط أو العالم العربي أو أوروبا أو أميركا أو آسيا أو أفريقيا أو دولي"
+  }}
 ]
 
-قواعد مهمة:
-- بحد أقصى 25 خبرًا.
-- كل خبر يجب أن يملك source_url صالحًا ظهر في نتائج البحث أو الاستشهادات.
-- لا تخترع رابطًا أو اسم مصدر.
-- في الخبر الحساس استخدم confirmed فقط عند وجود أساس موثوق؛ developing للحدث الجاري الذي تتغير تفاصيله؛ unconfirmed لا يُنشر في الواجهة الرئيسية.
-- اكتب العربية الفصحى الصحفية، لا ترجمة حرفية ركيكة.
-- لا تنسب موقفًا أو نيةً أو سببًا لم يثبت في المادة.
+قواعد حاسمة:
+- بحد أقصى {MAX_FRESH} حدثًا.
+- كل رابط يجب أن يكون رابطًا مباشرًا حقيقيًا ظهر في البحث أو الاستشهادات.
+- لا تخترع أسماء أو روابط أو أرقامًا أو تواريخ.
+- confirmed: يلزم أساس أولي واضح ومعه دعم مستقل مناسب للحدث، وتكون درجة التحقق 80-100.
+- developing: حدث حقيقي جاري أو معلوماته الأساسية مثبتة لكن بعض التفاصيل لم تُحسم، ودرجة 55-79.
+- unconfirmed: لا تكفي الأدلة، ودرجة 0-54. هذه العناصر لا تُنشر في الصفحة الرئيسية.
+- في الأخبار الحساسة: لا تستخدم لغة قطعية عندما تكون الأدلة طرفية أو متضاربة.
+- صياغة العنوان والملخص يجب أن تكون تحريرًا أصليًا من نشهل، لا إعادة إنتاج للعنوان الأصلي للمصدر.
+- لا تجعل "source_name" أو أسماء المؤسسات جزءًا من عنوان الخبر أو مقدمته إلا عندما تكون جزءًا من الواقعة نفسها.
 """
 
     r = requests.post(
@@ -131,82 +159,158 @@ def discover() -> list[dict]:
     if not isinstance(raw, list):
         return []
 
-    citations = {normalize_url(x) for x in data.get("citations", []) if isinstance(x, str) and x.startswith(("http://", "https://"))}
+    citations = {canonical_url(x) for x in data.get("citations", []) if isinstance(x, str)}
     results: list[dict] = []
-    seen_urls: set[str] = set()
+    seen_events: set[str] = set()
 
-    for item in raw:
+    for item in raw[:MAX_FRESH]:
         if not isinstance(item, dict):
             continue
         title = clean(item.get("title"))
         summary = clean(item.get("summary"))
-        source_name = clean(item.get("source_name"))
-        source_url = clean(item.get("source_url"))
-        verification = clean(item.get("verification")) or "developing"
+        verification = clean(item.get("verification")).lower() or "developing"
         category = clean(item.get("category"))
         region = clean(item.get("region"))
-        if not title or not summary or not source_name or not source_url.startswith(("http://", "https://")):
+        event_key = clean(item.get("event_key")) or make_event_key(title, summary)
+        primary = item.get("primary_evidence") if isinstance(item.get("primary_evidence"), dict) else {}
+        primary_name = clean(primary.get("name"))
+        primary_url = canonical_url(primary.get("url", ""))
+        raw_evidence = item.get("evidence") if isinstance(item.get("evidence"), list) else []
+
+        evidence: list[dict] = []
+        seen_urls: set[str] = set()
+        for ev in raw_evidence:
+            if not isinstance(ev, dict):
+                continue
+            ev_name = clean(ev.get("name"))
+            ev_url = canonical_url(ev.get("url", ""))
+            ev_type = clean(ev.get("type")) or "contextual"
+            ev_role = clean(ev.get("role"))
+            if not ev_name or not ev_url or ev_url in seen_urls:
+                continue
+            if citations and ev_url not in citations:
+                continue
+            if ev_type not in {"primary", "independent", "contextual"}:
+                ev_type = "contextual"
+            evidence.append({"name": ev_name[:180], "url": ev_url, "type": ev_type, "role": ev_role[:500]})
+            seen_urls.add(ev_url)
+
+        if primary_url and primary_url not in seen_urls and (not citations or primary_url in citations):
+            evidence.insert(0, {"name": primary_name or "المادة الأولية", "url": primary_url, "type": "primary", "role": "المادة الأولية المرتبطة بالحدث"})
+            seen_urls.add(primary_url)
+
+        if not title or not summary or not evidence:
             continue
-        normalized = normalize_url(source_url)
-        if citations and normalized not in citations:
+        if event_key in seen_events:
             continue
-        if normalized in seen_urls:
-            continue
-        seen_urls.add(normalized)
-        if category not in CATEGORIES:
-            category = "العالم"
-        if verification not in {"confirmed", "developing", "unconfirmed"}:
+        seen_events.add(event_key)
+
+        try:
+            score = max(0, min(100, int(item.get("verification_score", 0))))
+        except (TypeError, ValueError):
+            score = 0
+
+        independent_count = sum(1 for e in evidence if e.get("type") == "independent")
+        has_primary = any(e.get("type") == "primary" for e in evidence)
+        if verification == "confirmed" and not (has_primary and independent_count >= 1):
             verification = "developing"
+            score = min(score or 70, 79)
+        if verification not in VERIFICATIONS:
+            verification = "developing"
+
+        published = clean(item.get("published")) or datetime.now(timezone.utc).isoformat()
         results.append({
-            "id": make_id(source_url),
+            "id": make_id(event_key),
+            "event_key": event_key,
             "title": title[:300],
             "original_title": title[:300],
             "summary": summary[:1400],
             "description": summary[:500],
-            "content": summary[:1400],
-            "source": source_name,
-            "source_name": source_name,
-            "source_url": source_url,
-            "link": source_url,
-            "published": clean(item.get("published")) or datetime.now(timezone.utc).isoformat(),
-            "published_at": clean(item.get("published")) or datetime.now(timezone.utc).isoformat(),
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-            "category": category,
-            "region": region or "دولي",
-            "status": "review" if verification == "unconfirmed" else "published",
-            "confidence": "high" if verification == "confirmed" else "medium",
+            "content": "\n\n".join(clean(x) for x in item.get("facts_ar", []) if clean(x))[:2600],
+            "facts_ar": [clean(x)[:600] for x in item.get("facts_ar", []) if clean(x)][:8],
+            "claims_ar": [clean(x)[:600] for x in item.get("claims_ar", []) if clean(x)][:5],
+            "verification_basis": clean(item.get("verification_basis"))[:1200],
+            "verification_score": score,
             "verification": verification,
-            "platform": "news",
-            "source_type": "ai_discovery",
+            "verification_status": verification,
+            "verification_evidence_count": len(evidence),
+            "verification_evidence": evidence,
+            "primary_evidence": evidence[0] if evidence else {},
+            # حقول المصدر موجودة كسجل داخلي للتحقق ولا تُعرض في واجهة الموقع.
+            "source": primary_name or (evidence[0].get("name") if evidence else ""),
+            "source_name": primary_name or (evidence[0].get("name") if evidence else ""),
+            "source_url": primary_url or (evidence[0].get("url") if evidence else ""),
+            "published": published,
+            "published_at": published,
+            "collected_at": datetime.now(timezone.utc).isoformat(),
+            "category": category if category in CATEGORIES else "العالم",
+            "region": region if region in REGIONS else "دولي",
+            "status": "review" if verification == "unconfirmed" else "published",
+            "confidence": "high" if verification == "confirmed" else ("medium" if verification == "developing" else "low"),
             "auto_published": verification != "unconfirmed",
-            "rewrite_status": "ai_discovery",
+            "source_type": "event_discovery",
+            "rewrite_status": "original_editorial",
+            "editorial_model": MODEL,
+            "editorial_version": "3.0-event-first",
         })
     return results
+
+
+def merge_events(existing: list[dict], fresh: list[dict]) -> list[dict]:
+    merged: dict[str, dict] = {}
+    for item in existing + fresh:
+        if not isinstance(item, dict):
+            continue
+        key = str(item.get("event_key") or item.get("id") or "").strip()
+        if not key:
+            continue
+        old = merged.get(key)
+        if not old:
+            merged[key] = item
+            continue
+        # عند إعادة اكتشاف الحدث نحتفظ بأغنى سجل أدلة وأحدث وقت جمع.
+        old_evidence = old.get("verification_evidence") if isinstance(old.get("verification_evidence"), list) else []
+        new_evidence = item.get("verification_evidence") if isinstance(item.get("verification_evidence"), list) else []
+        urls = {canonical_url(e.get("url", "")) for e in old_evidence if isinstance(e, dict)}
+        for ev in new_evidence:
+            if isinstance(ev, dict) and canonical_url(ev.get("url", "")) not in urls:
+                old_evidence.append(ev)
+        old["verification_evidence"] = old_evidence[:12]
+        old["verification_evidence_count"] = len(old_evidence)
+        if int(item.get("verification_score", 0) or 0) > int(old.get("verification_score", 0) or 0):
+            old["verification_score"] = item.get("verification_score")
+            old["verification_basis"] = item.get("verification_basis", old.get("verification_basis", ""))
+            old["verification"] = item.get("verification", old.get("verification", "developing"))
+        if old.get("verification") == "confirmed":
+            old["confidence"] = "high"
+            old["status"] = "published"
+        elif old.get("verification") == "developing":
+            old["confidence"] = "medium"
+            old["status"] = "published"
+    return list(merged.values())
 
 
 def main() -> None:
     existing = load_existing()
     try:
         fresh = discover()
-        print(f"[OK] AI discovery: {len(fresh)} stories")
+        print(f"[OK] Event discovery: {len(fresh)} events")
     except Exception as exc:
-        print(f"[WARN] AI discovery failed: {exc}")
-        if existing:
-            return
+        print(f"[WARN] Event discovery failed: {exc}")
         return
 
     if not fresh and existing:
+        print("[OK] No fresh events; keeping existing dataset.")
         return
 
-    merged: dict[str, dict] = {}
-    for item in existing + fresh:
-        if isinstance(item, dict) and item.get("id"):
-            merged[str(item["id"])] = item
-
-    ordered = sorted(merged.values(), key=lambda x: x.get("published_at") or x.get("published") or "", reverse=True)
+    ordered = sorted(
+        merge_events(existing, fresh),
+        key=lambda x: x.get("published_at") or x.get("published") or "",
+        reverse=True,
+    )
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(ordered[:MAX_ITEMS], f, ensure_ascii=False, indent=2)
-    print(f"[DONE] {min(len(ordered), MAX_ITEMS)} total stories")
+    print(f"[DONE] {min(len(ordered), MAX_ITEMS)} total event stories")
 
 
 if __name__ == "__main__":
