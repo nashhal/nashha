@@ -55,9 +55,11 @@ jobs:
         run: python scripts/build_site.py
 
       - name: Build Nashhal Trust provenance manifest
+        if: always()
         run: python scripts/build_provenance.py
 
       - name: Commit newsroom dataset and generated site
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
