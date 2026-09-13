@@ -11,9 +11,9 @@
     "published_at": "2026-09-12T12:43:45.978553+00:00",
     "collected_at": "2026-09-12T12:43:45.978570+00:00",
     "category": "اليمن",
-    "status": "published",
+    "status": "archive",
     "confidence": "high",
-    "auto_published": true,
+    "auto_published": false,
     "summary": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / إحاطة ديفيد غريسلي 25 يوليو 2023 منشور إحاطة ديفيد غريسلي 25 يوليو 2023 ٢٥ يوليو ٢٠٢٣ نعم ، شكراً جزيلاً لك ، وشكراً جزيلاً لك أكيم على هذه الخلفية. كما ذكر أكيم، أنا حالياً على متن الناقلة نديفور ، في الواقع على الجسر الذي يشرف على عمل شركة سمت. يمكنكم أن تنظروا ورائي الخزان العائم صافر وبجانبه الناقلة يمن -والتي كانت تسمى نوتيكا سابقاً- والتي تستحمل النفط الذي سيتم نقله من على متن الخزان العائم صافر. يجب أن أقول، منذ وصولي إلى هنا في 30 مايو ، بذلت ندي",
     "description": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف ا",
     "content": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / إحاطة ديفيد غريسلي 25 يوليو 2023 منشور إحاطة ديفيد غريسلي 25 يوليو 2023 ٢٥ يوليو ٢٠٢٣ نعم ، شكراً جزيلاً لك ، وشكراً جزيلاً لك أكيم على هذه الخلفية. كما ذكر أكيم، أنا حالياً على متن الناقلة نديفور ، في الواقع على الجسر الذي يشرف على عمل شركة سمت. يمكنكم أن تنظروا ورائي الخزان العائم صافر وبجانبه الناقلة يمن -والتي كانت تسمى نوتيكا سابقاً- والتي تستحمل النفط الذي سيتم نقله من على متن الخزان العائم صافر. يجب أن أقول، منذ وصولي إلى هنا في 30 مايو ، بذلت ندي",
@@ -22,7 +22,9 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing"
   },
   {
     "id": "b4abcebac87cacc06cad",
@@ -47,7 +49,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "4e5b1a4810e56e83c875",
@@ -72,7 +79,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "e43f48c35d5e5371035d",
@@ -97,7 +109,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "e8f6f167849c8ce8b9de",
@@ -111,9 +128,9 @@
     "published_at": "2026-09-12T12:43:41.910384+00:00",
     "collected_at": "2026-09-12T12:43:41.910400+00:00",
     "category": "اليمن",
-    "status": "published",
+    "status": "archive",
     "confidence": "high",
-    "auto_published": true,
+    "auto_published": false,
     "summary": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / صندوق الأمم المتحدة للسكان - اليمن: الاستجابة الإنسانية لصندوق الأمم المتحدة للسكان في اليمن 2025 منشور صندوق الأمم المتحدة للسكان - اليمن: الاستجابة الإنسانية لصندوق الأمم المتحدة للسكان في اليمن 2025 ٠٨ أبريل ٢٠٢٥ في عامها العاشر الآن، تستمر الأزمة اليمنية المستعرة و تردي الوضع الاقتصادي المتدهور والصراع المزمن وانهيار الخدمات الأساسية في مفاقمة الاحتياجات الإنسانية في أنحاء البلاد. وفي الوقت نفسه, تؤدي الصدمات المناخية، والتوترات الإقليمية المتزايدة، ",
     "description": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف ا",
     "content": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / صندوق الأمم المتحدة للسكان - اليمن: الاستجابة الإنسانية لصندوق الأمم المتحدة للسكان في اليمن 2025 منشور صندوق الأمم المتحدة للسكان - اليمن: الاستجابة الإنسانية لصندوق الأمم المتحدة للسكان في اليمن 2025 ٠٨ أبريل ٢٠٢٥ في عامها العاشر الآن، تستمر الأزمة اليمنية المستعرة و تردي الوضع الاقتصادي المتدهور والصراع المزمن وانهيار الخدمات الأساسية في مفاقمة الاحتياجات الإنسانية في أنحاء البلاد. وفي الوقت نفسه, تؤدي الصدمات المناخية، والتوترات الإقليمية المتزايدة، ",
@@ -122,7 +139,9 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing"
   },
   {
     "id": "b2456b077def212cbdaa",
@@ -147,7 +166,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "313f005cbc1813d7b0ea",
@@ -161,9 +185,9 @@
     "published_at": "2026-09-12T12:43:40.570399+00:00",
     "collected_at": "2026-09-12T12:43:40.570414+00:00",
     "category": "اليمن",
-    "status": "published",
+    "status": "archive",
     "confidence": "high",
-    "auto_published": true,
+    "auto_published": false,
     "summary": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / برنامج الأمم المتحدة الإنمائي - اليمن: تقرير تأثير البرنامج المشترك لدعم سبل العيش والأمن الغذائي والتكيف المناخي في اليمن - من عام 2016 حتى 2025 منشور برنامج الأمم المتحدة الإنمائي - اليمن: تقرير تأثير البرنامج المشترك لدعم سبل العيش والأمن الغذائي والتكيف المناخي في اليمن - من عام 2016 حتى 2025 ٠٧ يوليو ٢٠٢٥ من عام 2016 إلى عام 2025، شكّل البرنامج المشترك لدعم سبل العيش والأمن الغذائي والتكيف المناخي في اليمن(ERRY) نموذجاً رائداً في التحول نحو التعافي ",
     "description": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف ا",
     "content": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / برنامج الأمم المتحدة الإنمائي - اليمن: تقرير تأثير البرنامج المشترك لدعم سبل العيش والأمن الغذائي والتكيف المناخي في اليمن - من عام 2016 حتى 2025 منشور برنامج الأمم المتحدة الإنمائي - اليمن: تقرير تأثير البرنامج المشترك لدعم سبل العيش والأمن الغذائي والتكيف المناخي في اليمن - من عام 2016 حتى 2025 ٠٧ يوليو ٢٠٢٥ من عام 2016 إلى عام 2025، شكّل البرنامج المشترك لدعم سبل العيش والأمن الغذائي والتكيف المناخي في اليمن(ERRY) نموذجاً رائداً في التحول نحو التعافي ",
@@ -172,7 +196,9 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing"
   },
   {
     "id": "90cb849eac3fc6ddf76a",
@@ -186,9 +212,9 @@
     "published_at": "2026-09-12T12:43:39.843272+00:00",
     "collected_at": "2026-09-12T12:43:39.843286+00:00",
     "category": "اليمن",
-    "status": "published",
+    "status": "archive",
     "confidence": "high",
-    "auto_published": true,
+    "auto_published": false,
     "summary": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / الأمم المتحدة في اليمن - التقرير السنوي 2025 منشور الأمم المتحدة في اليمن - التقرير السنوي 2025 ١٥ يونيو ٢٠٢٦ بعد مرور أ كثر من عقد من النزاع، ما زالت اليمن التي يقطنها أكثر من 40 مليون نسمة تُُعاني من أقسى الأزمات الإنسانية والإنمائية نتيجة الانهيار الاقتصادي والتقلبات الإقليمية. تشهد الاحتياجات الإنسانية زيادة مستمرة، حيث من المتوقع أن يحتاج أ كثر من 21 مليون شخص للمساعدات في عام 2026 . كما يؤثر انعدام الأمن الغذائي الحاد على ما يقرب من 18.3 مليون شخص،",
     "description": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف ا",
     "content": "English العربية UN Logo الأمم المتحدة اليمن الأمم المتحدة اليمن ابحث عن بيانات الأمم المتحدة ومواردها وأخبارها والمزيد... Submit search من نحن عن الأمم المتحدة الأمم المتحدة في اليمن كيانات الأمم المتحدة في اليمن مكتب المنسق(ـة) المقيم(ـة) فريقنا في اليمن للاتصال بنا مجموعة التنمية المستدامة أهداف التنمية المستدامة قصص موارد منشورات الصور فيديوهات المركز الإعلامي بيانات صحفية الخطب للتواصل الإعلامي مسار التنقل استقبال / موارد / منشورات / الأمم المتحدة في اليمن - التقرير السنوي 2025 منشور الأمم المتحدة في اليمن - التقرير السنوي 2025 ١٥ يونيو ٢٠٢٦ بعد مرور أ كثر من عقد من النزاع، ما زالت اليمن التي يقطنها أكثر من 40 مليون نسمة تُُعاني من أقسى الأزمات الإنسانية والإنمائية نتيجة الانهيار الاقتصادي والتقلبات الإقليمية. تشهد الاحتياجات الإنسانية زيادة مستمرة، حيث من المتوقع أن يحتاج أ كثر من 21 مليون شخص للمساعدات في عام 2026 . كما يؤثر انعدام الأمن الغذائي الحاد على ما يقرب من 18.3 مليون شخص،",
@@ -197,7 +223,9 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing"
   },
   {
     "id": "522e9cbdee3d5f238c1a",
@@ -222,7 +250,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "126be69521aeeaeb692e",
@@ -247,7 +280,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "b001bfa14b3736404371",
@@ -272,7 +310,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "8d1c3fa736985ec3e3e4",
@@ -297,7 +340,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "85ee206d1c290a2480a0",
@@ -322,7 +370,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "bb70638bd9e2d69d92ab",
@@ -347,7 +400,12 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "18f7ac3bd84c49ef24fd",
@@ -372,7 +430,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "4a7cb5e3c30acc10cfe8",
@@ -397,7 +460,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "3e6284e94847da40fe30",
@@ -422,7 +490,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "b0cac47b97f3e44c974d",
@@ -447,7 +520,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "5f1b34042c4096922900",
@@ -472,7 +550,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "e2f749d1f3e4d7c2928f",
@@ -497,7 +580,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "b7d5026a15abb6bc1ac1",
@@ -522,7 +610,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "007a7c84d660a1d92682",
@@ -547,7 +640,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "a1b33c5b5a5e0f72ebcd",
@@ -572,7 +670,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "1ed6142376e3c26b8d8b",
@@ -597,7 +700,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "e6548a8bd9f4e0e229c9",
@@ -622,7 +730,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "d8c31b7569af766a7e87",
@@ -647,7 +760,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "7f9620bd52aafd810c3a",
@@ -672,7 +790,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "348a68137f91488c18a3",
@@ -697,7 +820,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "c8833cff204eeeb9da69",
@@ -722,7 +850,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "a3c372baa8e4b99c4414",
@@ -747,7 +880,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "7f28d6e9e88a2c65a1da",
@@ -772,7 +910,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "f6929aa50eb7f2936c5b",
@@ -797,7 +940,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.87
   },
   {
     "id": "0f1f1ae8c5f21ee98a3c",
@@ -822,7 +970,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "197d36407f09f398b413",
@@ -847,7 +1000,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "18d47405f32680295d3b",
@@ -872,7 +1030,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "a9c989c22671591824d2",
@@ -897,7 +1060,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "b84a538d57e9359d965b",
@@ -922,7 +1090,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "838518744b65e3fe9606",
@@ -947,7 +1120,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "a6378ec74bbcef064e5c",
@@ -972,7 +1150,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "d692bbde321662a9fe50",
@@ -997,7 +1180,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "13222449ea913c44950a",
@@ -1022,7 +1210,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "8a2942ec3b0d85743ab9",
@@ -1047,7 +1240,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "f2c12d285e8a82630391",
@@ -1072,7 +1270,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "a73d110ca44cde25bfeb",
@@ -1097,7 +1300,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.88
   },
   {
     "id": "f86092dbdd1c2b768dbd",
@@ -1122,7 +1330,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.89
   },
   {
     "id": "21b93b4647300ad3c9c1",
@@ -1147,7 +1360,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.89
   },
   {
     "id": "a7506ee9cb19a7d22dbb",
@@ -1172,7 +1390,12 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 14.89
   },
   {
     "id": "5912dfd746bd529084bd",
@@ -1197,7 +1420,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 15.45
   },
   {
     "id": "2a86b1f648b332f66e0f",
@@ -1222,7 +1450,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-12T06:11:40.280000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 21.4
   },
   {
     "id": "72c1bf862cbe0a9fe1ba",
@@ -1247,7 +1481,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-12T11:22:18+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 16.22
   },
   {
     "id": "b9719c2d31bbe6d91b8e",
@@ -1272,7 +1512,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-12T11:20:39+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 16.25
   },
   {
     "id": "24809673fd8b0b02e131",
@@ -1297,7 +1543,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 16.37
   },
   {
     "id": "f8f84bb6016dff08066e",
@@ -1322,7 +1573,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 17.25
   },
   {
     "id": "b4b0156f24f8f5d3276c",
@@ -1347,7 +1603,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 17.32
   },
   {
     "id": "0a57b2cdbe5767202317",
@@ -1372,7 +1633,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 17.37
   },
   {
     "id": "8cc3eda14355d1b8b55a",
@@ -1397,7 +1663,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-12T08:43:09+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 18.88
   },
   {
     "id": "ef388a79b7ce2e6796fb",
@@ -1422,7 +1694,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-12T05:22:35+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 22.22
   },
   {
     "id": "65736c0f874ff0594d27",
@@ -1443,7 +1721,13 @@
     "content": "استكمل الحوثيون نفوذهم الميداني على مضيق باب المندب، وهو تقدم وصف إيرانياً بـ\"الانتصار الساحق\". وأسفرت هجمات بطائرات مسيّرة انطلقت من العراق عن وقوع أضرار مادية في خط أنابيب شرق-غرب النفطي داخل السعودية.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T12:58:00+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 38.63
   },
   {
     "id": "890bcd0d07aff4eaa0ba",
@@ -1468,7 +1752,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T22:16:24+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 29.32
   },
   {
     "id": "563a3358fc0398a74127",
@@ -1493,7 +1783,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T20:25:01+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 31.18
   },
   {
     "id": "bac6f1770a7f8cbb1d19",
@@ -1518,7 +1814,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T20:01:12+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 31.57
   },
   {
     "id": "5a079881e834f52a9b31",
@@ -1539,7 +1841,13 @@
     "content": "نقاشات بين دول كوريا الجنوبية وإيران، ولقاء متوقع بين وزراء خارجية من دول الخليج مع نظيرهم الإيراني لمناقشة ملف هرمز، في حين تستقبل الهند الرئيس الإيراني للمشاركة في قمة منتدى بريكس الدولي.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T13:39:16.055000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 37.94
   },
   {
     "id": "c4ced93f22dfbd8dfad7",
@@ -1564,7 +1872,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T16:14:53.439000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 35.35
   },
   {
     "id": "390f051ea70fb707d9dd",
@@ -1589,7 +1903,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T16:10:06+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 35.43
   },
   {
     "id": "72cface9509014d14bce",
@@ -1614,7 +1934,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T13:57:28.629000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 37.64
   },
   {
     "id": "04adc376aabb044c19d9",
@@ -1639,7 +1965,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 35.48
   },
   {
     "id": "149e586efa0dcf990d78",
@@ -1664,7 +1995,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 36.52
   },
   {
     "id": "8d84912b88e9dc2ef860",
@@ -1689,7 +2025,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 36.58
   },
   {
     "id": "cdc6eda1cf63fa091149",
@@ -1714,7 +2055,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 36.65
   },
   {
     "id": "b37fab189ce6acaffd98",
@@ -1739,7 +2085,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 36.74
   },
   {
     "id": "48d5b1d8a2ddaf411899",
@@ -1760,7 +2111,13 @@
     "content": "قالت مصادر حكومية يمنية إن الحوثيين المتحالفين مع إيران وصلوا، في وقت مبكر الجمعة، إلى جزيرة بريم اليمنية الاستراتيجية، الواقعة عند مدخل مضيق باب المندب، وذلك عقب انسحاب القوات الحكومية. وهو ما يعد أبرز تقدم تحرزه الجماعة في إحكام سيطرتها على هذا الممر المائي بالغ الأهمية للشحن.",
     "platform": "news",
     "source_type": "دولي",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T14:24:36+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 37.18
   },
   {
     "id": "22f2315e14dff5004c2b",
@@ -1785,7 +2142,13 @@
     "region": "اليمن",
     "image": "https://s.france24.com/media/display/212c913a-c4a8-11f0-84e8-005056bfb2b6/w:1280/p:16x9/2025-11-18T175023Z-535892466-RC2TYHANJ2N3-RTRMADP-3-USA-SAUDI.jpg",
     "image_url": "https://s.france24.com/media/display/212c913a-c4a8-11f0-84e8-005056bfb2b6/w:1280/p:16x9/2025-11-18T175023Z-535892466-RC2TYHANJ2N3-RTRMADP-3-USA-SAUDI.jpg",
-    "thumbnail": "https://s.france24.com/media/display/212c913a-c4a8-11f0-84e8-005056bfb2b6/w:1280/p:16x9/2025-11-18T175023Z-535892466-RC2TYHANJ2N3-RTRMADP-3-USA-SAUDI.jpg"
+    "thumbnail": "https://s.france24.com/media/display/212c913a-c4a8-11f0-84e8-005056bfb2b6/w:1280/p:16x9/2025-11-18T175023Z-535892466-RC2TYHANJ2N3-RTRMADP-3-USA-SAUDI.jpg",
+    "source_published_at": "2026-09-11T13:54:08+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 37.69
   },
   {
     "id": "d202feef4b101cb11bc1",
@@ -1810,7 +2173,13 @@
     "region": "اليمن",
     "image": "https://s.france24.com/media/display/0ccc558a-ade7-11f1-bbc0-005056bf30b7/w:1280/p:16x9/capture-10087944486aa405f85f2be3-04170359.jpg",
     "image_url": "https://s.france24.com/media/display/0ccc558a-ade7-11f1-bbc0-005056bf30b7/w:1280/p:16x9/capture-10087944486aa405f85f2be3-04170359.jpg",
-    "thumbnail": "https://s.france24.com/media/display/0ccc558a-ade7-11f1-bbc0-005056bf30b7/w:1280/p:16x9/capture-10087944486aa405f85f2be3-04170359.jpg"
+    "thumbnail": "https://s.france24.com/media/display/0ccc558a-ade7-11f1-bbc0-005056bf30b7/w:1280/p:16x9/capture-10087944486aa405f85f2be3-04170359.jpg",
+    "source_published_at": "2026-09-11T13:52:19+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 37.72
   },
   {
     "id": "06b7344382256a7bc169",
@@ -1824,9 +2193,9 @@
     "published_at": "2026-09-11T13:33:22+00:00",
     "collected_at": "2026-09-12T12:42:04.666311+00:00",
     "category": "اليمن",
-    "status": "published",
+    "status": "archive",
     "confidence": "high",
-    "auto_published": true,
+    "auto_published": false,
     "summary": "بسط الحوثيون سيطرتهم على مناطق استراتيجية مطلة على باب المندب، ما أثار مخاوف عالمية من تهديد حركة الملاحة والتجارة البحرية.",
     "description": "بسط الحوثيون سيطرتهم على مناطق استراتيجية مطلة على باب المندب، ما أثار مخاوف عالمية من تهديد حركة الملاحة والتجارة البحرية.",
     "content": "بسط الحوثيون سيطرتهم على مناطق استراتيجية مطلة على باب المندب، ما أثار مخاوف عالمية من تهديد حركة الملاحة والتجارة البحرية.",
@@ -1835,7 +2204,10 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-07-22T13:27:20.820000+00:00",
+    "verification": "developing",
+    "verification_status": "developing"
   },
   {
     "id": "7efd73f84bdc33e0c723",
@@ -1860,7 +2232,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/2e12a8d8-add4-11f1-9232-005056bfb2b6/w:1280/p:16x9/AR-20260911-130335-130828-CS.jpg",
     "image_url": "https://s.france24.com/media/display/2e12a8d8-add4-11f1-9232-005056bfb2b6/w:1280/p:16x9/AR-20260911-130335-130828-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/2e12a8d8-add4-11f1-9232-005056bfb2b6/w:1280/p:16x9/AR-20260911-130335-130828-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/2e12a8d8-add4-11f1-9232-005056bfb2b6/w:1280/p:16x9/AR-20260911-130335-130828-CS.jpg",
+    "source_published_at": "2026-09-11T13:21:27+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 38.24
   },
   {
     "id": "f3344e8a1b8176c4c0b3",
@@ -1885,7 +2263,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T12:25:38.872000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 39.17
   },
   {
     "id": "e5627dc1c80d353d11c6",
@@ -1910,7 +2294,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 41.68
   },
   {
     "id": "83ea37faa12ba32b217f",
@@ -1935,7 +2324,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 42.02
   },
   {
     "id": "3fb4a270bfbdc75aa031",
@@ -1960,7 +2354,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 42.07
   },
   {
     "id": "0d0dab9447054e1366e8",
@@ -1985,7 +2384,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 42.13
   },
   {
     "id": "6c3de357679e7e6f6e12",
@@ -2010,7 +2414,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 42.32
   },
   {
     "id": "e7840592473d6c355e2f",
@@ -2035,7 +2444,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 42.41
   },
   {
     "id": "1d47702abe51c146c05a",
@@ -2060,7 +2474,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T09:00:17.778000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 42.59
   },
   {
     "id": "771460beac5757b68089",
@@ -2085,7 +2505,13 @@
     "region": "لحج",
     "image": "https://s.france24.com/media/display/452368ba-adba-11f1-ac9e-005056a90284/w:1280/p:16x9/capture-1153176506aa3bad7899314-17810380.jpg",
     "image_url": "https://s.france24.com/media/display/452368ba-adba-11f1-ac9e-005056a90284/w:1280/p:16x9/capture-1153176506aa3bad7899314-17810380.jpg",
-    "thumbnail": "https://s.france24.com/media/display/452368ba-adba-11f1-ac9e-005056a90284/w:1280/p:16x9/capture-1153176506aa3bad7899314-17810380.jpg"
+    "thumbnail": "https://s.france24.com/media/display/452368ba-adba-11f1-ac9e-005056a90284/w:1280/p:16x9/capture-1153176506aa3bad7899314-17810380.jpg",
+    "source_published_at": "2026-09-11T08:28:12+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 43.12
   },
   {
     "id": "5c76fea9fdf7befdfd5a",
@@ -2110,7 +2536,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg",
     "image_url": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/27bd48b0-ad81-11f1-b2c3-005056a90284/w:1280/p:16x9/AR-20260911-030353-030549-CS.jpg",
+    "source_published_at": "2026-09-11T07:46:58+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 43.81
   },
   {
     "id": "721dded2c2db942f4eed",
@@ -2124,9 +2556,9 @@
     "published_at": "2026-09-11T07:00:33+00:00",
     "collected_at": "2026-09-12T12:42:04.666570+00:00",
     "category": "اليمن",
-    "status": "published",
+    "status": "archive",
     "confidence": "high",
-    "auto_published": true,
+    "auto_published": false,
     "summary": "سيطرت جماعة الحوثي المدعومة من إيران على مدينة وميناء المخا وجزيرة في البحر الأحمر، بعد مواجهات مع القوات الحكومية المدعومة من السعودية. وتمنح السيطرة الحوثيين موقعاً متقدماً قرب مضيق باب المندب، أحد أهم الممرات البحرية للتجارة العالمية، وسط تصاعد التوترات الإقليمية.",
     "description": "سيطرت جماعة الحوثي المدعومة من إيران على مدينة وميناء المخا وجزيرة في البحر الأحمر، بعد مواجهات مع القوات الحكومية المدعومة من السعودية. وتمنح السيطرة الحوثيين موقعاً متقدماً قرب مضيق باب المندب، أحد أهم الممرات البحرية للتجارة العالمية، وسط تصاعد التوترات الإقليمية.",
     "content": "سيطرت جماعة الحوثي المدعومة من إيران على مدينة وميناء المخا وجزيرة في البحر الأحمر، بعد مواجهات مع القوات الحكومية المدعومة من السعودية. وتمنح السيطرة الحوثيين موقعاً متقدماً قرب مضيق باب المندب، أحد أهم الممرات البحرية للتجارة العالمية، وسط تصاعد التوترات الإقليمية.",
@@ -2135,7 +2567,10 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-08-10T10:51:25.197000+00:00",
+    "verification": "developing",
+    "verification_status": "developing"
   },
   {
     "id": "4ff19bd4ff1413afe4ee",
@@ -2160,7 +2595,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg",
     "image_url": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg",
-    "thumbnail": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg"
+    "thumbnail": "https://s.france24.com/media/display/6620eaf0-a51e-11f1-b104-005056bfb2b6/w:1280/p:16x9/2026-08-31T085336Z-115528668-RC2J9NAP5OBK-RTRMADP-3-IRAN-CRISIS-STRIKE.jpg",
+    "source_published_at": "2026-09-11T02:50:42+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 48.75
   },
   {
     "id": "5637fd6f19b00d58f991",
@@ -2185,7 +2626,13 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T00:05:37+03:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 54.5
   },
   {
     "id": "5f286b3eb4c472e2c0f6",
@@ -2210,7 +2657,13 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T16:37:56+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 34.96
   },
   {
     "id": "915710bb58a4f8524d13",
@@ -2235,7 +2688,13 @@
     "platform": "news",
     "source_type": "رسمي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-11T16:14:12+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 35.36
   },
   {
     "id": "eb96ca5671659df7d725",
@@ -2260,7 +2719,12 @@
     "platform": "news",
     "source_type": "يمني",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 53.69
   },
   {
     "id": "f7757f52f364790bb3a0",
@@ -2285,7 +2749,13 @@
     "region": "اليمن",
     "image": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg",
     "image_url": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/57ec13ae-ad59-11f1-a6a7-005056bfb2b6/w:1280/p:16x9/AR-20260910-224007-224400-CS.jpg",
+    "source_published_at": "2026-09-10T21:09:47+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 54.43
   },
   {
     "id": "eeedd0a3b10ae7845917",
@@ -2306,7 +2776,12 @@
     "content": "",
     "platform": "news",
     "source_type": "يمني",
-    "embed_url": ""
+    "embed_url": "",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 55.01
   },
   {
     "id": "058361d7b4d5ec045bca",
@@ -2331,7 +2806,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178907217484737115.jpg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 55.1
   },
   {
     "id": "efa15402a395dfb3adc7",
@@ -2356,7 +2836,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906457864706243.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 57.21
   },
   {
     "id": "dbaa145813cce59029e9",
@@ -2381,7 +2866,12 @@
     "region": "المهرة",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 57.78
   },
   {
     "id": "ab12597e5b63ef2e0794",
@@ -2406,7 +2896,12 @@
     "region": "تعز",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906153934198401.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 58.06
   },
   {
     "id": "40eeb7d34b5ba6777d38",
@@ -2431,7 +2926,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906173473482687.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 58.32
   },
   {
     "id": "6cbd2eb6266261d83fc3",
@@ -2456,7 +2956,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178906053148321961.jpg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 58.38
   },
   {
     "id": "f224f5de1439ee174166",
@@ -2481,7 +2986,13 @@
     "region": "اليمن",
     "image": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg",
     "image_url": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg",
-    "thumbnail": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg"
+    "thumbnail": "https://s.france24.com/media/display/6f27bda6-8c35-11f1-9d33-005056a90284/w:1280/p:16x9/000-C37P2FU.jpg",
+    "source_published_at": "2026-09-10T04:36:30+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 70.99
   },
   {
     "id": "52c3729372d1a6ea2ee2",
@@ -2506,7 +3017,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg",
     "image_url": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/a4989f90-ad1a-11f1-bcfd-005056a97e36/w:1280/p:16x9/AR-20260910-143802-144015-CS.jpg",
+    "source_published_at": "2026-09-10T16:18:35+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 59.29
   },
   {
     "id": "346e959de5fe49fb9cd2",
@@ -2531,7 +3048,12 @@
     "region": "حضرموت",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 59.32
   },
   {
     "id": "fb11190a7eba2c332b61",
@@ -2556,7 +3078,12 @@
     "region": "عدن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 59.33
   },
   {
     "id": "a5f89aed2dd365ac8197",
@@ -2581,7 +3108,12 @@
     "region": "تعز",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905689039275800.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 59.35
   },
   {
     "id": "93b47ecbd114ea24661e",
@@ -2606,7 +3138,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg",
     "image_url": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/70befdd0-ad1b-11f1-90c5-005056bf30b7/w:1280/p:16x9/AR-20260910-150801-150936-CS.jpg",
+    "source_published_at": "2026-09-10T15:34:03+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 60.03
   },
   {
     "id": "38d24ce249d7f87d76a3",
@@ -2631,7 +3169,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905327795927280.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 60.35
   },
   {
     "id": "d09d2ea3cb85c8515654",
@@ -2656,7 +3199,12 @@
     "region": "لحج",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905200519769067.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905200519769067.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905200519769067.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905200519769067.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 60.7
   },
   {
     "id": "cffbe762adba15796325",
@@ -2681,7 +3229,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905154119648806.jpg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905154119648806.jpg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905154119648806.jpg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905154119648806.jpg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 60.83
   },
   {
     "id": "c104f201bd501de70185",
@@ -2706,7 +3259,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905105739547469.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905105739547469.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905105739547469.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178905105739547469.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 60.97
   },
   {
     "id": "7c5f1c2331c5a8e5be3a",
@@ -2731,7 +3289,12 @@
     "region": "المهرة",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 61.11
   },
   {
     "id": "148701156f5320e69f58",
@@ -2756,7 +3319,12 @@
     "region": "أبين",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/sabanew.png",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 61.27
   },
   {
     "id": "34768c5661b8829a7abb",
@@ -2781,7 +3349,13 @@
     "platform": "news",
     "source_type": "دولي",
     "rewrite_status": "source_text",
-    "embed_url": ""
+    "embed_url": "",
+    "source_published_at": "2026-09-10T13:37:31.989000+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 61.97
   },
   {
     "id": "d9e325584207905c1a5c",
@@ -2806,7 +3380,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904666046502177.jpg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904666046502177.jpg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904666046502177.jpg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904666046502177.jpg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 62.19
   },
   {
     "id": "8f9141cdf842a85f94f3",
@@ -2831,7 +3410,12 @@
     "region": "حضرموت",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904541261862221.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904541261862221.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904541261862221.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904541261862221.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 62.54
   },
   {
     "id": "a6e7af0cf34add8ea7f9",
@@ -2856,7 +3440,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg",
     "image_url": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/2f8e8522-ad0e-11f1-810d-005056a97e36/w:1280/p:16x9/AR-20260910-121324-121601-CS.jpg",
+    "source_published_at": "2026-09-10T12:43:09+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 62.88
   },
   {
     "id": "52aca96a9bd242d32389",
@@ -2881,7 +3471,13 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg",
     "image_url": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/0beb5b80-ad0f-11f1-8269-005056a97e36/w:1280/p:16x9/AR-20260910-131313-131554-CS.jpg",
+    "source_published_at": "2026-09-10T12:06:34+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 63.49
   },
   {
     "id": "971e322f853fa4201c42",
@@ -2906,7 +3502,12 @@
     "region": "تعز",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178904015275897694.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 64.0
   },
   {
     "id": "2d4cddfa53fb6fc510e7",
@@ -2931,7 +3532,12 @@
     "region": "اليمن",
     "image": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg",
     "image_url": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg",
-    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg"
+    "thumbnail": "https://sabanew.net/image-resizer/w850/upload/thumbs/178903977741643121.jpeg",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 64.1
   },
   {
     "id": "9c14fe8f70a4562ce6b2",
@@ -2956,7 +3562,13 @@
     "region": "اليمن",
     "image": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg",
     "image_url": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg",
-    "thumbnail": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg"
+    "thumbnail": "https://s.france24.com/media/display/3c6b9022-aca6-11f1-b46b-005056a97e36/w:1280/p:16x9/AR-20260910-010521-010728-CS.jpg",
+    "source_published_at": "2026-09-10T09:01:00+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 66.58
   },
   {
     "id": "8bebaefcc07076fde87f",
@@ -2981,6 +3593,12 @@
     "region": "تعز",
     "image": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg",
     "image_url": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg",
-    "thumbnail": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg"
+    "thumbnail": "https://s.france24.com/media/display/e8132f9a-91ce-11f1-be6e-005056bfb2b6/w:1280/p:16x9/000-C2MN3L4.jpg",
+    "source_published_at": "2026-09-10T08:40:27+00:00",
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_evidence_count": 0,
+    "freshness_hours": 66.92
   }
 ]

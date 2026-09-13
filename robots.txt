@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /data/
-Disallow: /scripts/
 Sitemap: https://nashhal.github.io/nashha/sitemap.xml
 Sitemap: https://nashhal.github.io/nashha/news-sitemap.xml
