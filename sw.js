@@ -1,6 +1,6 @@
-const CACHE='nashhal-shell-v2';
-const DATA='nashhal-data-v1';
-const SHELL=['./','./index.html','./article.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest'];
+const CACHE='nashhal-shell-v3';
+const DATA='nashhal-data-v2';
+const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
@@ -29,19 +29,17 @@ self.addEventListener('fetch',event=>{
 
   if(url.origin===self.location.origin){
     event.respondWith((async()=>{
-      const cached=await caches.match(event.request);
-      if(cached) return cached;
       try{
         const response=await fetch(event.request);
         const path=url.pathname;
         const cacheable=/\.(js|css|html|jpg|jpeg|png|webp|webmanifest)$/.test(path);
-        if(response.ok && cacheable){
+        if(response.ok&&cacheable){
           const cache=await caches.open(CACHE);
           cache.put(event.request,response.clone());
         }
         return response;
       }catch(_){
-        return cached || Response.error();
+        return (await caches.match(event.request)) || Response.error();
       }
     })());
   }
