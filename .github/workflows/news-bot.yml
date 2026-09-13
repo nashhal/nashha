@@ -15,7 +15,7 @@ permissions:
 jobs:
   collect-news:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,35 +30,41 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
 
-      - name: AI global news discovery
+      - name: AI event discovery and evidence collection
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/global_news_bot.py
 
-      - name: Generate extended editorial reports
+      - name: Enforce freshness and verification quality gate
+        run: python scripts/news_quality_gate.py
+
+      - name: Generate editorial analysis
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/ai_analysis.py
 
-      - name: Commit updates
+      - name: Build SEO article pages and sitemaps
+        run: python scripts/build_site.py
+
+      - name: Commit newsroom dataset and generated site
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'nashhal-news-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/news.json
+          git add data/news.json articles sitemap.xml news-sitemap.xml robots.txt
           if git diff --cached --quiet; then echo 'لا توجد تحديثات.'; exit 0; fi
-          git commit -m 'تحديث الأخبار العربية والعالمية والتقارير التحريرية'
+          git commit -m 'تحديث غرفة أخبار نشهل وبناء صفحات الأخبار والفهرسة'
           for attempt in 1 2 3; do
             git fetch origin main
             if git rebase origin/main && git push origin HEAD:main; then
-              echo 'تم نشر التحديث بنجاح.'
+              echo 'تم نشر تحديث غرفة الأخبار بنجاح.'
               exit 0
             fi
             git rebase --abort || true
             git reset --soft origin/main
-            git add data/news.json
-            git commit -m 'تحديث الأخبار العربية والعالمية والتقارير التحريرية' || true
+            git add data/news.json articles sitemap.xml news-sitemap.xml robots.txt
+            git commit -m 'تحديث غرفة أخبار نشهل وبناء صفحات الأخبار والفهرسة' || true
             sleep 3
           done
           echo 'تعذر نشر التحديث بعد 3 محاولات.'
