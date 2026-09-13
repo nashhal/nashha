@@ -22,7 +22,7 @@ def canonical(item: dict) -> dict[str, str]:
         "title": clean(item.get("title")),
         "url": clean(item.get("source_url") or item.get("link")),
         "published": clean(item.get("published") or item.get("published_at")),
-        "source": clean(item.get("source_name") or item.get("source")),
+        "source": clean(item.get("source_name") or item.get("source")) or "غير محدد",
     }
 
 
@@ -43,11 +43,11 @@ def main() -> None:
             "title": base["title"],
             "url": base["url"],
             "published": base["published"],
-            "source": base["source"] or "غير محدد",
+            "source": base["source"],
             "captured_at": now,
             "content_hash": hashlib.sha256(payload).hexdigest(),
             "hash_algorithm": "SHA-256",
-            "status": "anchored",
+            "status": "recorded",
             "anchor": {"type": "github-history", "ref": "main"},
         })
     rows.sort(key=lambda x: x["id"])
