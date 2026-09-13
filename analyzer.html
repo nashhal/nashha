@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>محلل نشهل الذكي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#0b3d2e;--brand2:#17684f;--ink:#17221f;--muted:#697772;--bg:#f3f5f4;--paper:#fff;--line:#d9e1de;--soft:#eef3f1;--red:#b42318;--amber:#9a6700;--ok:#177245;--shadow:0 10px 28px rgba(11,61,46,.07)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Arabic',Arial,sans-serif;line-height:1.8}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.top{background:var(--brand);color:#fff;padding:9px 0;font:500 12px 'IBM Plex Sans Arabic'}.top a{color:#fff;text-decoration:none}.head{background:var(--paper);border-bottom:1px solid var(--line)}.head .wrap{min-height:78px;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font:800 27px 'IBM Plex Sans Arabic';color:var(--brand);text-decoration:none}.back{font:600 12px 'IBM Plex Sans Arabic';color:var(--brand2);text-decoration:none}.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(360px,.8fr);gap:18px;padding:22px 0 40px}.panel{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px}.panel h1{font:800 24px/1.4 'IBM Plex Sans Arabic';margin:0 0 5px;color:var(--brand)}.sub{font-size:12px;color:var(--muted);margin-bottom:17px}.label{display:block;font:700 11px 'IBM Plex Sans Arabic';margin:13px 0 7px;color:var(--brand)}textarea,input{width:100%;border:1px solid var(--line);border-radius:8px;background:#fbfcfc;color:var(--ink);font:400 14px/1.9 'Noto Sans Arabic';padding:11px;outline:none}textarea{min-height:270px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btns{display:flex;gap:9px;margin-top:13px;flex-wrap:wrap}.btn{border:0;border-radius:7px;padding:10px 18px;font:700 12px 'IBM Plex Sans Arabic';cursor:pointer}.primary{background:var(--brand);color:#fff}.ghost{background:var(--soft);color:var(--brand);border:1px solid var(--line)}.status{margin-top:12px;font-size:11px;color:var(--muted);min-height:20px}.scorebox{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.score{background:var(--soft);border:1px solid var(--line);padding:12px;text-align:center;border-radius:7px}.score b{display:block;font:800 25px 'IBM Plex Sans Arabic';color:var(--brand)}.score span{font-size:10px;color:var(--muted)}.section{border-top:1px solid var(--line);padding-top:13px;margin-top:13px}.section h2{font:800 14px 'IBM Plex Sans Arabic';color:var(--brand);margin:0 0 7px}.section p{margin:0;font-size:13px}.section ul{margin:0;padding-right:20px;font-size:12px}.badge{display:inline-block;padding:3px 8px;border-radius:4px;font:700 10px 'IBM Plex Sans Arabic';background:var(--soft);color:var(--brand)}.warn{background:#fff5db;color:var(--amber)}.danger{background:#fde9e7;color:var(--red)}.ok{background:#e9f6ee;color:var(--ok)}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:3px 8px;background:var(--soft);border-radius:999px;font-size:10px}.empty{color:var(--muted);font-size:12px;padding:20px;background:var(--soft);text-align:center;border:1px dashed var(--line)}.note{margin-top:12px;padding:10px 12px;background:#fffaf0;border-right:3px solid var(--amber);font-size:11px;color:#5e543b}.foot{padding:0 0 28px;color:var(--muted);font-size:10px}@media(max-width:850px){.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.scorebox{grid-template-columns:1fr 1fr 1fr}}@media(max-width:560px){.head .wrap{min-height:66px}.brand{font-size:23px}.panel{padding:15px}.scorebox{gap:6px}.score b{font-size:21px}}
+</style></head>
+<body>
+<div class="top"><div class="wrap"><a href="index.html">نشهل</a> · غرفة التحرير الذكية</div></div>
+<header class="head"><div class="wrap"><a class="brand" href="index.html">محلل نشهل الذكي</a><a class="back" href="index.html">العودة إلى الأخبار</a></div></header>
+<main class="wrap grid">
+<section class="panel">
+<h1>تحليل خبر</h1><div class="sub">حلّل المادة قبل النشر وافصل بين الوقائع والادعاءات والقراءة السياقية</div>
+<label class="label" for="title">عنوان الخبر</label><input id="title" placeholder="مثال: اجتماع جديد حول الملف الجنوبي">
+<label class="label" for="source">المصدر</label><input id="source" placeholder="اسم المصدر أو الرابط">
+<label class="label" for="text">نص الخبر أو المادة المتاحة</label><textarea id="text" placeholder="الصق هنا نص الخبر كما ورد من المصدر..."></textarea>
+<div class="btns"><button class="btn primary" id="analyze">تحليل الخبر</button><button class="btn ghost" id="sample">تجربة بمادة نموذجية</button><button class="btn ghost" id="clear">مسح</button></div>
+<div class="status" id="status"></div>
+<div class="note">هذه النسخة تعمل كمحلل تحريري محلي داخل المتصفح. لا ترسل النص إلى أي خدمة خارجية ولا تتطلب وضع مفتاح API في المتصفح. الربط السحابي بالنموذج سيتم عبر الخادم/سير العمل وليس داخل الصفحة.</div>
+</section>
+<section class="panel" id="resultPanel">
+<div class="empty" id="empty">أدخل مادة خبرية ثم اضغط «تحليل الخبر» لعرض القراءة التحريرية</div>
+<div id="result" hidden>
+<div class="scorebox"><div class="score"><b id="cred">—</b><span>مؤشر اكتمال المادة</span></div><div class="score"><b id="risk">—</b><span>مستوى المخاطر</span></div><div class="score"><b id="importance">—</b><span>الأهمية التحريرية</span></div></div>
+<div class="section"><h2>الحكم التحريري</h2><p id="verdict"></p></div>
+<div class="section"><h2>ماذا حدث؟</h2><p id="what"></p></div>
+<div class="section"><h2>ما يحتاج إلى نسبة أو تحقق</h2><ul id="claims"></ul></div>
+<div class="section"><h2>علامات التحيز أو اللغة الدعائية</h2><ul id="bias"></ul></div>
+<div class="section"><h2>الأسئلة المفتوحة</h2><ul id="questions"></ul></div>
+<div class="section"><h2>الزاوية التحريرية المقترحة</h2><p><span class="badge" id="angle"></span></p></div>
+<div class="section"><h2>الكلمات المفتاحية</h2><div class="chips" id="keywords"></div></div>
+</div></section></main>
+<footer class="wrap foot">نشهل · الخبر أولًا · التحقق أولًا · الذكاء الاصطناعي مساعد للتحرير وليس بديلًا عن المراجعة البشرية</footer>
+<script>
+const $=id=>document.getElementById(id);
+const stopwords=new Set('من في على إلى عن مع هذا هذه ذلك التي الذي و قد تم ثم كان كانت هو هي هم نحن أن إن أو لا ما لم لن كما حيث بعد قبل بين لدى عند خلال بسبب لها له به بها من ضمن فقط أكثر أقل جدًا جدا خبر اخبار اليوم أمس غدا'.split(' '));
+const biased=['عاجل جدا','فضيحة','كارثة','خيانة','مؤامرة','هزيمة ساحقة','انتصار ساحق','احتلال','عملاء','مرتزقة','يُثبت نهائيا','بلا شك','حتما','الأعداء'];
+function clean(s){return String(s||'').replace(/\s+/g,' ').trim()}
+function list(items){return items.length?items.map(x=>'<li>'+esc(x)+'</li>').join(''):'<li>لا توجد مؤشرات واضحة في المادة المتاحة</li>'}
+function esc(s){return clean(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function extractSentences(t){return t.split(/[.!؟\n]+/).map(clean).filter(x=>x.length>18)}
+function analyzeLocal(){
+ const title=clean($('title').value),source=clean($('source').value),text=clean($('text').value); if(text.length<40){$('status').textContent='أدخل مادة أطول قليلًا حتى يمكن تحليلها';return}
+ $('status').textContent='جاري بناء القراءة التحريرية...';
+ const sents=extractSentences(text), words=text.split(/\s+/).filter(Boolean); const lower=text.toLowerCase();
+ const foundBias=biased.filter(x=>lower.includes(x));
+ const numbers=(text.match(/\b\d+(?:[.,]\d+)?\b/g)||[]).length;
+ const attribution=/(قال|أفاد|ذكر|أعلن|بحسب|وفقا|وفقًا|صرح|أكد|أضاف|أشارت|مصدر|مصادر)/g;
+ const attr=(text.match(attribution)||[]).length;
+ const sourceScore=Math.min(25,source?15:0)+Math.min(20,attr*3)+Math.min(20,sents.length*2)+Math.min(15,numbers*2)+Math.min(20,words.length/25);
+ const cred=Math.max(25,Math.min(96,Math.round(sourceScore)));
+ const risk=foundBias.length>=3?'مرتفع':foundBias.length?'متوسط':'منخفض';
+ const importance=(/رئيس|وزير|رئاسة|اتفاق|هدنة|اشتباك|هجوم|أمن|مجلس|الأمم المتحدة|حضرموت|عدن|شبوة|أبين|لحج|الضالع/i.test(text+title))?'مرتفع':(sents.length>4?'متوسط':'عادي');
+ const claims=[];
+ if(attr===0) claims.push('لا توجد نسبة واضحة لأقوال الأطراف أو الادعاءات داخل المادة');
+ if(numbers) claims.push('توجد أرقام تحتاج مطابقتها مع المصدر الأصلي');
+ if(!/\b(اليوم|أمس|غدا|202[0-9]|يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)\b/i.test(text)) claims.push('التاريخ أو الإطار الزمني غير واضح في النص المتاح');
+ if(source && !/^https?:\/\//i.test(source)) claims.push('اسم المصدر موجود لكن رابط المصدر الأصلي غير مرفق');
+ const what=sents.slice(0,2).join(' ')||text.slice(0,500);
+ const questions=[];
+ if(!source) questions.push('ما هو المصدر الأصلي للخبر؟');
+ if(attr<2) questions.push('هل توجد روايات مستقلة أو تصريحات من الطرف الآخر؟');
+ if(numbers) questions.push('هل يمكن مطابقة الأرقام مع بيان أو وثيقة أصلية؟');
+ if(foundBias.length) questions.push('هل يمكن إعادة صياغة العبارات المشحونة إلى لغة خبرية محايدة؟');
+ if(!questions.length) questions.push('هل ظهرت أي تحديثات أو أدلة جديدة منذ نشر المصدر؟');
+ let angle='متابعة'; if(/اجتماع|مفاوض|اتفاق|دبلوماس|مجلس|مبعوث|الأمم المتحدة/i.test(text)) angle='دبلوماسي'; else if(/اقتصاد|راتب|نفط|غاز|عملة|سعر|ميناء/i.test(text)) angle='اقتصادي'; else if(/أمن|قوات|عملية|اشتباك|هجوم|سيطر|اعتقال/i.test(text)) angle='أمني'; else if(/مقتل|جرح|معركة|جبهة|قتال/i.test(text)) angle='ميداني'; else if(/حكومة|رئيس|وزير|قرار|سياسي|سياسة/i.test(text)) angle='سياسي';
+ $('cred').textContent=cred+'/100'; $('risk').textContent=risk; $('importance').textContent=importance;
+ $('verdict').innerHTML='<span class="badge '+(risk==='منخفض'?'ok':risk==='متوسط'?'warn':'danger')+'">'+esc(risk==='منخفض'?'مادة قابلة للتحرير بعد المراجعة':risk==='متوسط'?'تحتاج تحققًا إضافيًا قبل الاعتماد':'تحتاج مراجعة تحريرية ومطابقة مصادر قبل النشر')+'</span>';
+ $('what').textContent=what;
+ $('claims').innerHTML=list(claims);
+ $('bias').innerHTML=list(foundBias.map(x=>'استخدام عبارة ذات حمولة '+x));
+ $('questions').innerHTML=list(questions);
+ $('angle').textContent=angle;
+ $('keywords').innerHTML=[...new Set(words.map(x=>x.replace(/[^\u0600-\u06FF\u0627-\u064A0-9]/g,'')).filter(x=>x.length>3&&!stopwords.has(x)).slice(0,10))].map(x=>'<span class="chip">'+esc(x)+'</span>').join('')||'<span class="chip">—</span>';
+ $('empty').hidden=true;$('result').hidden=false;$('status').textContent='اكتمل التحليل المحلي. النتيجة مساعدة تحريرية وليست حكمًا نهائيًا على صحة الخبر.';
+}
+$('analyze').onclick=analyzeLocal;
+$('clear').onclick=()=>{['title','source','text'].forEach(id=>$(id).value='');$('result').hidden=true;$('empty').hidden=false;$('status').textContent=''};
+$('sample').onclick=()=>{$('title').value='اجتماع جديد لبحث مستجدات الملف الجنوبي';$('source').value='مصدر محلي';$('text').value='أفاد مصدر محلي بأن عددًا من المسؤولين عقدوا اجتماعًا لمناقشة مستجدات الملف الجنوبي. وذكر المصدر أن النقاش تناول التطورات السياسية والأمنية الأخيرة. ولم تتوفر في المادة معلومات مستقلة عن نتائج الاجتماع أو موقف بقية الأطراف.';analyzeLocal()};
+</script></body></html>
