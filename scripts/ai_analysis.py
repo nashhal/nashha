@@ -13,8 +13,7 @@ OUT = "data/news.json"
 MODEL = "grok-4.5"
 MAX_ANALYZE = 20
 TIMEOUT = 90
-MAX_RETRIES = 3
-RETRY_DELAY = 2  # seconds
+MAX_RETRIES = 1  # لا نحتاج retry للـ 403، لأنها مشكلة صلاحيات دائمة
 
 ALLOWED_ANGLES = ("سياسي", "ميداني", "أمني", "دبلوماسي", "اقتصادي", "إنساني", "متابعة")
 ALLOWED_IMPORTANCE = ("مرتفع", "متوسط", "عادي")
@@ -66,7 +65,7 @@ def analyze(item, token):
 
 معايير الدقة:
 - لا تضف أسماء أو أرقامًا أو تواريخ أو مواقع أو دوافع أو خلفيات غير ثابتة في المادة.
-- إذا كانت المعلومات غير كافية، صرّح بذلك بدل سد الفجوة بالتخمين.
+- إذا كانت المعلومات غ��ر كافية، صرّح بذلك بدل سد الفجوة بالتخمين.
 - لا تعتبر كلام طرف واحد حقيقة مطلقة؛ انسب الادعاء إلى قائله عند الحاجة.
 - فرّق بين الواقعة والادعاء والتفسير والاحتمال.
 - لا تستخدم لغة دعائية أو تحريضية أو عاطفية أو تهويلية.
@@ -80,48 +79,58 @@ def analyze(item, token):
 المادة المتاحة: {summary}
 """
 
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            r = requests.post(
-                "https://api.x.ai/v1/responses",
-                headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-                json={
-                    "model": MODEL,
-                    "input": [{"role": "user", "content": prompt}],
-                    "include": ["no_inline_citations"],
-                },
-                timeout=TIMEOUT,
-            )
-            r.raise_for_status()
-            text = response_text(r.json())
-            match = re.search(r"\{[\s\S]*\}", text)
-            if not match:
-                return None
-            return json.loads(match.group(0))
-        except requests.exceptions.HTTPError as e:
+    try:
+        r = requests.post(
+            "https://api.x.ai/v1/responses",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json={
+                "model": MODEL,
+                "input": [{"role": "user", "content": prompt}],
+                "include": ["no_inline_citations"],
+            },
+            timeout=TIMEOUT,
+        )
+        
+        # تسجيل تفصيلي لأي خطأ HTTP
+        if not r.ok:
+            error_detail = ""
+            try:
+                error_detail = r.json()
+            except:
+                error_detail = r.text[:500]
+            
+            print(f"[ERROR] HTTP {r.status_code} من xAI API")
+            print(f"  URL: {r.url}")
+            print(f"  Headers: {dict(r.headers)}")
+            print(f"  Response: {error_detail}")
+            
             if r.status_code == 403:
-                print(f"[WARN] محاولة {attempt}/{MAX_RETRIES}: خطأ 403 - قد تكون هناك مشكلة في المصادقة أو الصلاحيات")
-                if attempt < MAX_RETRIES:
-                    time.sleep(RETRY_DELAY * attempt)
-                    continue
-                else:
-                    print(f"[ERROR] فشلت المحاولات الـ {MAX_RETRIES} بسبب خطأ 403")
-                    return None
-            raise
-        except requests.exceptions.Timeout:
-            print(f"[WARN] محاولة {attempt}/{MAX_RETRIES}: انتهت المهلة الزمنية")
-            if attempt < MAX_RETRIES:
-                time.sleep(RETRY_DELAY * attempt)
-                continue
+                print(f"[DIAGNOSTIC] 403 Forbidden - يشير إلى مشكلة صلاحيات:")
+                print(f"  - تحقق من صحة XAI_API_KEY في GitHub Secrets")
+                print(f"  - تحقق من صلاحيات المفتاح (scopes)")
+                print(f"  - تأكد من تفعيل إمكانية الوصول إلى نموذج {MODEL}")
+                print(f"  - تحقق من حالة فريق xAI (قد يكون محظورًا أو معلقًا)")
+            
+            r.raise_for_status()
+        
+        text = response_text(r.json())
+        match = re.search(r"\{[\s\S]*\}", text)
+        if not match:
             return None
-        except requests.exceptions.RequestException as e:
-            print(f"[WARN] محاولة {attempt}/{MAX_RETRIES}: {e}")
-            if attempt < MAX_RETRIES:
-                time.sleep(RETRY_DELAY * attempt)
-                continue
-            return None
-    
-    return None
+        return json.loads(match.group(0))
+        
+    except requests.exceptions.Timeout:
+        print(f"[ERROR] انتهت المهلة الزمنية ({TIMEOUT}s) عند الاتصال بـ xAI")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"[ERROR] خطأ في الاتصال بـ xAI: {e}")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"[ERROR] فشل تحليل JSON من الاستجابة: {e}")
+        return None
+    except Exception as e:
+        print(f"[ERROR] خطأ غير متوقع: {e}")
+        return None
 
 
 def as_list(value, limit):
@@ -134,7 +143,12 @@ def main():
     token = os.getenv("XAI_API_KEY")
     if not token:
         print("[ERROR] XAI_API_KEY غير مضبوط؛ لا يمكن إنشاء التقارير التحليلية")
+        print("[DIAGNOSTIC] أضف XAI_API_KEY إلى GitHub Secrets في الإعدادات")
         sys.exit(1)
+
+    # تحقق بسيط من صيغة المفتاح (يجب أن يبدأ بـ xai- عادةً)
+    if not token.startswith(('xai-', 'sk-')):
+        print(f"[WARN] تحذير: XAI_API_KEY قد لا تكون بالصيغة الصحيحة")
 
     try:
         with open(OUT, encoding="utf-8") as f:
@@ -161,14 +175,16 @@ def main():
         print("[OK] لا توجد أخبار مستهدفة للتحليل؛ لا توجد مشكلة في هذه الدورة.")
         return
 
+    print(f"[INFO] بدء تحليل {len(targets)} خبر...")
     changed = 0
     failed = 0
-    for item in targets:
+    for idx, item in enumerate(targets, 1):
         try:
+            print(f"[{idx}/{len(targets)}] معالجة: {item.get('title','')[:60]}...")
             result = analyze(item, token)
             if not isinstance(result, dict):
                 failed += 1
-                print(f"[WARN] رد التحليل غير صالح: {item.get('title','')[:80]}")
+                print(f"  [WARN] رد التحليل غير صالح")
                 continue
 
             analysis_ar = clean(result.get("analysis_ar"))
@@ -177,7 +193,7 @@ def main():
             why_it_matters_ar = clean(result.get("why_it_matters_ar"))
             if not analysis_ar and not background_ar and not what_happened_ar and not why_it_matters_ar:
                 failed += 1
-                print(f"[WARN] الرد لا يحتوي على حقول تحليلية صالحة: {item.get('title','')[:80]}")
+                print(f"  [WARN] الرد لا يحتوي على حقول تحليلية صالحة")
                 continue
 
             item["analysis_ar"] = analysis_ar[:6500]
@@ -201,24 +217,25 @@ def main():
             item["analysis_engine"] = MODEL
             item["analysis_version"] = "2.1"
             changed += 1
-            print(f"[OK] تقرير تحليلي: {item.get('title','')[:80]}")
+            print(f"  [OK] تم التحليل بنجاح")
         except Exception as exc:
             failed += 1
-            print(f"[ERROR] تعذر تحليل خبر: {item.get('title','')[:80]} — {exc}")
+            print(f"  [ERROR] {exc}")
 
     if changed:
         with open(OUT, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"[OK] تم حفظ البيانات في {OUT}")
 
     if failed and changed == 0:
-        print(f"[WARN] تعذر إنشاء أي تقارير: 0/{len(targets)} نجح، {failed} فشل.")
-        print("[INFO] سيتم المتابعة في الدورة القادمة.")
-        return
+        print(f"\n[ERROR] فشل تحليل جميع الأخبار: 0/{len(targets)} نجح، {failed} فشل")
+        print("[INFO] تحقق من الأخطاء التشخيصية أعلاه")
+        sys.exit(1)
 
     if failed:
-        print(f"[WARN] تم إنشاء {changed}/{len(targets)} تقريرًا، وفشل {failed}.")
+        print(f"\n[WARN] نتائج جزئية: {changed}/{len(targets)} نجح، {failed} فشل")
 
-    print(f"[DONE] تم إنشاء {changed} تقريرًا تحليليًا مطولًا بنجاح")
+    print(f"[DONE] تم إنشاء {changed} تقريرًا تحليليًا بنجاح")
 
 
 if __name__ == "__main__":
