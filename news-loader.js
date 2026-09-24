@@ -30,7 +30,7 @@
     const then = Date.parse(iso || '');
     if (Number.isNaN(then)) return '';
     const min = Math.max(0, Math.floor((Date.now() - then) / 60000));
-    if (min < 1) return Now;
+    if (min < 1) return 'Now';
     if (min < 60) return `${min} min ago`;
     const hr = Math.floor(min / 60);
     if (hr < 24) return `${hr}h ago`;
