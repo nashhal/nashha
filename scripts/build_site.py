@@ -108,12 +108,12 @@ def render_article(n: dict) -> str:
     verification = clean(n.get("verification"))
     label = {"confirmed": "Confirmed", "developing": "Developing", "unconfirmed": "Unverified"}.get(verification, "Under review")
     badge = "confirmed" if verification == "confirmed" else "developing" if verification == "developing" else ""
-    facts = n.get("facts_ar") if isinstance(n.get("facts_ar"), list) else []
-    claims = n.get("claims_ar") if isinstance(n.get("claims_ar"), list) else []
+    facts = n.get("facts_en") if isinstance(n.get("facts_en"), list) else (n.get("facts_ar") if isinstance(n.get("facts_ar"), list) else [])
+    claims = n.get("claims_en") if isinstance(n.get("claims_en"), list) else (n.get("claims_ar") if isinstance(n.get("claims_ar"), list) else [])
     evidence = n.get("verification_evidence") if isinstance(n.get("verification_evidence"), list) else []
     independent = sum(1 for x in evidence if isinstance(x, dict) and x.get("type") == "independent")
     primary = sum(1 for x in evidence if isinstance(x, dict) and x.get("type") == "primary")
-    body = display_body(n, summary)
+    body = [clean(x) for x in (n.get("content_en") or "").split("\n") if clean(x)] or display_body(n, summary)
 
     graph = {
         "@context": "https://schema.org",
@@ -131,8 +131,8 @@ def render_article(n: dict) -> str:
     }
     graph = {k: v for k, v in graph.items() if v is not None}
 
-    facts_block = f'<section class="box facts"><h2>الوقائع</h2>{list_html(facts)}</section>' if facts else ""
-    claims_block = f'<section class="box claims"><h2>ادعاءات تحتاج إلى نسبة</h2>{list_html(claims)}</section>' if claims else ""
+    facts_block = f'<section class="box facts"><h2>Verified Facts</h2>{list_html(facts)}</section>' if facts else ""
+    claims_block = f'<section class="box claims"><h2>Attributed Claims</h2>{list_html(claims)}</section>' if claims else ""
     analysis = clean(n.get("analysis_ar"))
     background = clean(n.get("background_ar"))
     what = clean(n.get("what_happened_ar"))
@@ -141,7 +141,7 @@ def render_article(n: dict) -> str:
     questions = list_html(n.get("open_questions_ar"))
     analysis_block = ""
     if any((what, background, analysis, why, implications, questions)):
-        analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>Editorial Context</strong><span>{esc(n.get("importance") or "عادي")}</span></div>'''
+        analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>Editorial Context</strong><span>{esc(n.get("importance") or "Normal")}</span></div>'''
         if what: analysis_block += f'<div><h3>What Happened?</h3>{paragraphize(what)}</div>'
         if background: analysis_block += f'<div><h3>Background</h3>{paragraphize(background)}</div>'
         if analysis: analysis_block += f'<div><h3>Context and Analysis</h3>{paragraphize(analysis)}</div>'
@@ -175,18 +175,18 @@ def render_article(n: dict) -> str:
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><a href="../index.html">الثورة الجنوبية</a> · منصة أخبار مستقلة</div></div>
-<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">الثورة الجنوبية</a><a class="back" href="../index.html">Back to News</a></div></header>
+<div class="top"><div class="wrap"><a href="../index.html">Al-Thawra Newspaper</a> · Independent News Platform</div></div>
+<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">Al-Thawra Newspaper</a><a class="back" href="../index.html">Back to News</a></div></header>
 <main class="wrap"><article class="article">
 <div class="kicker">{esc(n.get("category") or "أخبار")}</div><h1>{esc(title)}</h1>
-<div class="meta">{esc(n.get("region") or "")} · {esc(published.isoformat() if published else "")}</div>
+<div class="meta">{esc(n.get("region_en") or n.get("region") or "")} · {esc(published.isoformat() if published else "")}</div>
 <p class="lead">{esc(summary)}</p>
 {facts_block}{claims_block}
 <div class="article-body">{''.join(f'<p>{esc(clean(x))}</p>' for x in body if clean(x))}</div>
-<section class="box verification"><div class="ver-head"><strong>Verification Status</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis") or "Available information is reviewed, separating established facts from attributed claims and unresolved details.")}</div><div class="ver-meta">Verification score: {score_text} · Evidence: {len(evidence)} · Primary: {primary} · Independent: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · Verifiable Record</div><div class="trust-state" id="trustState">Digital fingerprint stored in the newspaper record · Web3 status available on the verification page</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">Open Verification Log ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: قيد التحقق</span><span>·</span><span>Story text and images are not stored on-chain</span></div></section>
+<section class="box verification"><div class="ver-head"><strong>Verification Status</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis") or "Available information is reviewed, separating established facts from attributed claims and unresolved details.")}</div><div class="ver-meta">Verification score: {score_text} · Evidence: {len(evidence)} · Primary: {primary} · Independent: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · Verifiable Record</div><div class="trust-state" id="trustState">Digital fingerprint stored in the newspaper record · Web3 status available on the verification page</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">Open Verification Log ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: Under Review</span><span>·</span><span>Story text and images are not stored on-chain</span></div></section>
 {analysis_block}
-<div class="notice">هذا Story edited by Al-Thawra Newspaper يركز على الحدث نفسه. تحفظ newsroom مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. AI assistance does not replace editorial verification.</div>
-</article></main><footer><div class="wrap">© الثورة الجنوبية · الحدث أولًا · التحقق أولًا · Southern Revolution Trust</div></footer>
+<div class="notice">This story is edited by Al-Thawra Newspaper يركز على الحدث نفسه. تحفظ newsroom مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. AI assistance does not replace editorial verification.</div>
+</article></main><footer><div class="wrap">© Al-Thawra Newspaper · News First · Verification First · Southern Revolution Trust</div></footer>
 
 </body></html>'''
 
