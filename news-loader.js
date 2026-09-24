@@ -76,8 +76,8 @@
   }
 
   function normalize(item = {}, index = 0) {
-    const title = clean(item.title_en || item.title || item.headline || '');
-    const summary = clean(item.summary_en || displaySummary(item));
+    const title = clean(item.title_en || '');
+    const summary = clean(item.summary_en || '');
     const sourceName = clean(item.source_name || item.source || item.publisher || '');
     const sourceUrl = safeUrl(item.source_url || item.link || item.url || '#');
     const published = item.published || item.published_at || item.pubDate || item.date || '';
@@ -96,7 +96,7 @@
     };
   }
 
-  const confirmed = item => item.status === 'published' && ['high', 'medium'].includes(item.confidence) && isCurrent(item);
+  const confirmed = item => item.status === 'published' && ['high', 'medium'].includes(item.confidence) && isCurrent(item) && Boolean(item.title_en);
   const review = item => ['review', 'developing_review'].includes(item.status) || item.verification === 'unconfirmed';
   const sortRecent = items => [...items].sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
   const confirmedItems = (filter = 'all') => {
