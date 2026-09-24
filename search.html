@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b3d2e">
 <meta name="description" content="Southern Revolution Search محرك Search إخباري Global للعثور على الأخبار من Sources متعددة حول World.">
-<title>Southern Revolution Search | الSearch الإخباري Worldي</title>
+<title>Southern Revolution Search | Global News Search</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700" rel="stylesheet">
@@ -16,16 +16,16 @@
 </head>
 <body>
 <div class="top"><div class="wrap"><a href="index.html">Al-Thawra Newspaper</a><span>Global News Search</span></div></div>
-<header class="head"><div class="wrap"><a class="brand" href="search.html"><span class="mark">ث</span><span><strong>Southern Revolution Search</strong><small>الSearch الإخباري Worldي</small></span></a><a class="back" href="index.html">Back إلى Al-Thawra Newspaper</a></div></header>
+<header class="head"><div class="wrap"><a class="brand" href="search.html"><span class="mark">ث</span><span><strong>Southern Revolution Search</strong><small>Global News Search</small></span></a><a class="back" href="index.html">Back to Al-Thawra Newspaper</a></div></header>
 <main class="wrap">
 <section class="hero">
 <h1>Search World News</h1>
 <p>Search for a topic, person or event and compare coverage from local and international sources.</p>
 <div class="searchbox">
-<form id="searchForm" class="searchrow"><input id="query" type="search" autocomplete="off" placeholder="مثال: Sudan peace talks أو محادثات السلام في Sudan"><button type="submit">Search</button></form>
+<form id="searchForm" class="searchrow"><input id="query" type="search" autocomplete="off" placeholder="Example: Sudan peace talks"><button type="submit">Search</button></form>
 <div class="filters">
-<select id="timespan" class="select" aria-label="الفترة"><option value="1h">Last hour</option><option value="6h">Last 6 hours</option><option value="24h" selected>Last 24 hours</option><option value="3d">Last 3 days</option><option value="1w">Last week</option><option value="1m">Last month</option></select>
-<select id="sort" class="select" aria-label="الترتيب"><option value="datedesc" selected>Newest first</option><option value="rel">Most relevant</option></select>
+<select id="timespan" class="select" aria-label="Time range"><option value="1h">Last hour</option><option value="6h">Last 6 hours</option><option value="24h" selected>Last 24 hours</option><option value="3d">Last 3 days</option><option value="1w">Last week</option><option value="1m">Last month</option></select>
+<select id="sort" class="select" aria-label="Sort"><option value="datedesc" selected>Newest first</option><option value="rel">Most relevant</option></select>
 <button type="button" class="chip active" data-q="World News">World</button>
 <button type="button" class="chip" data-q="Yemen">Yemen</button>
 <button type="button" class="chip" data-q="Gaza">Gaza</button>
@@ -38,14 +38,14 @@
 <section class="layout">
 <section class="panel"><div class="panelhead"><h2>Search Results</h2><span id="count">—</span></div><div class="results" id="results"><div class="empty">Search has not started</div></div></section>
 <aside class="panel side">
-<div class="box"><h3>تغطية Al-Thawra Newspaper</h3><div class="stat"><div><b id="total">0</b><span>results</span></div><div><b id="local">0</b><span>من Al-Thawra Newspaper</span></div><div><b id="global">0</b><span>Globalة</span></div><div><b id="sources">0</b><span>Sources</span></div></div></div>
+<div class="box"><h3>Al-Thawra Coverage</h3><div class="stat"><div><b id="total">0</b><span>results</span></div><div><b id="local">0</b><span>From Al-Thawra</span></div><div><b id="global">0</b><span>Global</span></div><div><b id="sources">0</b><span>Sources</span></div></div></div>
 <div class="box"><h3>Source Distribution</h3><div class="countries" id="countries"><span class="country">Appears after search</span></div></div>
-<div class="box"><h3>How It Works</h3><p>نCollect النتائج المحلية من قاعدة أخبار Al-Thawra Newspaper، ثم نضيف تغطية Globalة حديثة من فهرس GDELT. Results are ranked and duplicate links are removed before display.</p></div>
-<div class="box"><h3>Southern Revolution Trust</h3><p>Every story محلي منشور يدخل LOG الثقة مع بصمة SHA-256 ووقت توثيق ومصدر أصلي. FINGERPRINT تثبت تطابق الLOG، ولا تثبت صحة الادعاء بحد ذاتها.</p><div class="notice">Search Results الخارجية هي مواد من Sourcesها الأصلية. لا يعني ظهور SOURCE أن Al-Thawra Newspaper تتبنى موقفه، ولا تُعد هذه الصفحة بحد ذاتها تحققًا صحفيًا مستقلًا.</div></div>
+<div class="box"><h3>How It Works</h3><p>نCollect النتائج المحلية من قاعدة أخبار Al-Thawra Newspaper، ثم نضيف تغطية Global حديثة من فهرس GDELT. Results are ranked and duplicate links are removed before display.</p></div>
+<div class="box"><h3>Southern Revolution Trust</h3><p>Every locally published story has a verification record with a SHA-256 fingerprint, timestamp and original source. The fingerprint proves record integrity, not the underlying claim.</p><div class="notice">External search results remain the material of their original sources. A source appearing here does not mean Al-Thawra adopts its position, and this page is not independent journalistic verification.</div></div>
 </aside>
 </section>
 </main>
-<footer class="wrap footer">Southern Revolution Search · Search First · SOURCE الأصلي أولًا · Southern Revolution Trust</footer>
+<footer class="wrap footer">Southern Revolution Search · Search First · Original Source First · Southern Revolution Trust</footer>
 <script>
 const $=id=>document.getElementById(id); const API='https://api.gdeltproject.org/api/v2/doc/doc'; let currentRequest=0;
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
