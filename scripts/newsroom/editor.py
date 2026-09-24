@@ -36,10 +36,13 @@ def edit(verified: list[dict]) -> list[dict]:
     "summary_en":"English summary in 2 to 4 sentences",
     "content_en":"English newsroom body text from 4 to 8 short paragraphs",
     "facts_ar":["حتى 8 وقائع مدعومة"],
+    "facts_en":["Up to 8 supported facts, translated accurately into English"],
     "claims_ar":["الادعاءات المنسوبة بوضوح إن وجدت"],
+    "claims_en":["Attributed claims translated accurately into English when present"],
     "news_angle":"سياسي أو ميداني أو أمني أو دبلوماسي أو اقتصادي أو إنساني أو متابعة",
     "importance":"مرتفع أو متوسط أو عادي",
     "keywords_ar":["حتى 10 كلمات"],
+    "verification_basis_en":"Short English explanation of the available verification basis",
     "editorial_note":"ملخص داخلي قصير عن سبب جاهزية المادة"
   }}
 ]
@@ -94,10 +97,13 @@ def edit(verified: list[dict]) -> list[dict]:
             "content_ar": body[:6500],
             "content_en": body_en[:6500],
             "facts_ar": [clean(x)[:600] for x in item.get("facts_ar", []) if clean(x)][:8],
+            "facts_en": [clean(x)[:600] for x in facts_en if clean(x)][:8],
             "claims_ar": [clean(x)[:600] for x in item.get("claims_ar", []) if clean(x)][:5],
+            "claims_en": [clean(x)[:600] for x in claims_en if clean(x)][:5],
             "news_angle": angle,
             "importance": importance,
             "keywords_ar": [clean(x)[:80] for x in item.get("keywords_ar", []) if clean(x)][:10],
+            "verification_basis_en": clean(item.get("verification_basis_en"))[:1200],
             "editorial_note": clean(item.get("editorial_note"))[:700],
             "editorial_status": "ready" if base.get("verification") == "confirmed" else "review_required",
             "pipeline_stage": "edited",
