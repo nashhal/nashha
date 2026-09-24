@@ -38,57 +38,50 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 async function sha256(text){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 function clean(v){return String(v??'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim()}
-function canonical(a){
-  return JSON.stringify({
-    id:clean(a.id),
-    title:clean(a.title),
-    url:clean(a.url||a.source_url||a.link),
-    published:clean(a.published||a.published_at),
-    source:clean(a.source||a.source_name)||'Not specified'
-  },Object.keys({id:'',title:'',url:'',published:'',source:''}).sort());
-}
+function canonical(a){return JSON.stringify({id:clean(a.id),title:clean(a.title),url:clean(a.url||a.source_url||a.link),published:clean(a.published||a.published_at),source:clean(a.source||a.source_name)||'Not specified'},Object.keys({id:'',title:'',url:'',published:'',source:''}).sort())}
 function parseFallback(){try{return raw?JSON.parse(decodeURIComponent(raw)):null}catch{return null}}
 async function json(path){try{const r=await fetch(path+'?'+Date.now(),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
+function regionLabel(v){return {الجنوب:'South Yemen',اليمن:'Yemen',عدن:'Aden',حضرموت:'Hadramout',شبوة:'Shabwah',أبين:'Abyan',لحج:'Lahj',الضالع:"Al Dhale'e",المهرة:'Al Mahrah',سقطرى:'Socotra'}[v]||v||''}
 async function load(){
-  const [provenance,web3Manifest,web3Anchor]=await Promise.all([
-    json('data/provenance.json'),json('data/web3/manifest.json'),json('data/web3/anchor.json')
-  ]);
-  let record=id&&Array.isArray(provenance)?provenance.find(x=>x.id===id):null;
-  if(!record){const f=parseFallback();if(f)record={...f,status:'external'};}
-  if(!record){$('card').innerHTML='<div class="empty">لم يتم العثور على LOG توثيق لهذا Story.<br><small>قد يكون Story خارجيًا أو لم تدخل بصمته في الLOG بعد.</small></div>';return}
-  const calculated=await sha256(canonical(record));
-  const expected=String(record.content_hash||'');
-  const localOk=!expected||expected===calculated;
-  const wrecord=web3Manifest&&Array.isArray(web3Manifest.records)?web3Manifest.records.find(x=>x.id===record.id):null;
-  const web3Match=!!(wrecord&&wrecord.content_hash===calculated);
-  const anchored=web3Anchor?.status==='anchored'&&web3Match;
-  const prepared=web3Anchor?.status==='prepared'&&web3Match;
-  let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'Fingerprint Match':'Fingerprint Mismatch')+'</h2><p>'+esc(localOk?'The displayed record matches the fingerprint stored for this Al-Thawra Newspaper record.':'The current record could not be matched to its stored fingerprint.')+'</p></div></div>';
-  html+='<div class="body"><div class="grid">';
-  html+='<div class="item"><span>Story ID</span><b>'+esc(record.id)+'</b></div>';
-  html+='<div class="item"><span>SOURCE</span><b>'+esc(record.source||'Not specified')+'</b></div>';
-  html+='<div class="item"><span>Published At</span><b>'+esc(record.published||'Not specified')+'</b></div>';
-  html+='<div class="item"><span>وقت التوثيق</span><b>'+esc(record.captured_at||'Not specified')+'</b></div></div>';
-  html+='<div class="item" style="margin-top:9px"><span>Headline</span><b>'+esc(record.title||'بدون عنوان')+'</b></div>';
-  html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
-  html+='<div class="item" style="margin-top:9px"><span>Original Source</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">فتح Original Source ↗</a>':'Not available')+'</b></div>';
-  html+='<section class="web3"><h3>Southern Revolution Trust Web3</h3>';
-  if(anchored) html+='<p class="desc">This manifest contains the story fingerprint and has been anchored on Ethereum Sepolia according to the published Web3 record.</p>';
-  else if(prepared) html+='<p class="desc">The manifest is prepared with this story fingerprint, but on-chain anchoring is not complete yet.</p>';
-  else html+='<p class="desc">No matching Web3 proof for this story is currently published.</p>';
-  if(anchored||prepared){
-    html+='<span class="network">ETHEREUM SEPOLIA · CHAIN 11155111</span><div class="web3-grid">';
-    html+='<div class="item"><span>Manifest Hash</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.manifest_hash||web3Manifest.manifest_hash||'')+'</b></div>';
-    html+='<div class="item"><span>IPFS CID</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.cid||'Not available')+'</b></div>';
-    html+='<div class="item"><span>Contract</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.contract_address||'Not available')+'</b></div>';
-    if(anchored&&web3Anchor.transaction_hash)html+='<div class="item"><span>Transaction</span><b><a href="'+esc(web3Anchor.explorer_url||('https://sepolia.etherscan.io/tx/'+web3Anchor.transaction_hash))+'" target="_blank" rel="noopener noreferrer">Open Proof on Etherscan ↗</a></b></div>';
-    html+='</div>';
-  }
-  html+='</section>';
-  html+='<div class="actions"><a class="btn primary" href="index.html">Back to News</a><a class="btn" href="search.html">Latest Search</a><button class="btn" type="button" id="copyBtn">Copy Verification Link</button></div>';
-  html+='<div class="note"><strong>Note:</strong> Fingerprints and Web3 proofs establish record identity and data integrity; they do not establish the truth of every claim in a story. Story text and images are not stored on-chain.</div></div>';
-  $('card').innerHTML=html;
-  $('copyBtn')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);$('copyBtn').textContent='Copied ✓'}catch{}})
+ const [provenance,web3Manifest,web3Anchor,newsData]=await Promise.all([json('data/provenance.json'),json('data/web3/manifest.json'),json('data/web3/anchor.json'),json('data/news.json')]);
+ let record=id&&Array.isArray(provenance)?provenance.find(x=>x.id===id):null;
+ if(!record){const f=parseFallback();if(f)record={...f,status:'external'}}
+ if(!record){$('card').innerHTML='<div class="empty">No verification record was found for this story.<br><small>The story may be external or its fingerprint may not have been recorded yet.</small></div>';return}
+ const news=Array.isArray(newsData)?newsData:(newsData?.news||newsData?.items||[]);
+ const sourceStory=news.find(x=>String(x.id)===String(record.id));
+ const displayTitle=sourceStory?.title_en||record.title||'Story record';
+ const displaySource=sourceStory?.source_name_en||record.source||record.source_name||'Not specified';
+ const displayRegion=sourceStory?.region_en||regionLabel(sourceStory?.region);
+ const calculated=await sha256(canonical(record)),expected=String(record.content_hash||'');
+ const localOk=!expected||expected===calculated;
+ const wrecord=web3Manifest&&Array.isArray(web3Manifest.records)?web3Manifest.records.find(x=>x.id===record.id):null;
+ const web3Match=!!(wrecord&&wrecord.content_hash===calculated);
+ const anchored=web3Anchor?.status==='anchored'&&web3Match,prepared=web3Anchor?.status==='prepared'&&web3Match;
+ let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'Fingerprint Match':'Fingerprint Mismatch')+'</h2><p>'+esc(localOk?'The displayed record matches the stored fingerprint.':'The current record could not be matched to its stored fingerprint.')+'</p></div></div>';
+ html+='<div class="body"><div class="grid">';
+ html+='<div class="item"><span>Story ID</span><b>'+esc(record.id)+'</b></div>';
+ html+='<div class="item"><span>Source</span><b>'+esc(displaySource)+'</b></div>';
+ html+='<div class="item"><span>Published At</span><b>'+esc(record.published||'Not specified')+'</b></div>';
+ html+='<div class="item"><span>Recorded At</span><b>'+esc(record.captured_at||'Not specified')+'</b></div></div>';
+ html+='<div class="item" style="margin-top:9px"><span>Headline</span><b>'+esc(displayTitle)+'</b></div>';
+ if(displayRegion) html+='<div class="item" style="margin-top:9px"><span>Region</span><b>'+esc(displayRegion)+'</b></div>';
+ html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
+ html+='<div class="item" style="margin-top:9px"><span>Original Source</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">Open Original Source ↗</a>':'Not available')+'</b></div>';
+ html+='<section class="web3"><h3>Southern Revolution Trust Web3</h3>';
+ if(anchored) html+='<p class="desc">This manifest contains the story fingerprint and has been anchored on Ethereum Sepolia according to the published Web3 record.</p>';
+ else if(prepared) html+='<p class="desc">The manifest is prepared with this story fingerprint, but on-chain anchoring is not complete yet.</p>';
+ else html+='<p class="desc">No matching Web3 proof for this story is currently published.</p>';
+ if(anchored||prepared){html+='<span class="network">ETHEREUM SEPOLIA · CHAIN 11155111</span><div class="web3-grid">';
+ html+='<div class="item"><span>Manifest Hash</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor?.manifest_hash||web3Manifest?.manifest_hash||'')+'</b></div>';
+ html+='<div class="item"><span>IPFS CID</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor?.cid||'Not available')+'</b></div>';
+ html+='<div class="item"><span>Contract</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor?.contract_address||'Not available')+'</b></div>';
+ if(anchored&&web3Anchor?.transaction_hash) html+='<div class="item"><span>Transaction</span><b><a href="'+esc(web3Anchor.explorer_url||('https://sepolia.etherscan.io/tx/'+web3Anchor.transaction_hash))+'" target="_blank" rel="noopener noreferrer">Open Proof on Etherscan ↗</a></b></div>';
+ html+='</div>';}
+ html+='</section>';
+ html+='<div class="actions"><a class="btn primary" href="index.html">Back to News</a><a class="btn" href="search.html">Latest Search</a><button class="btn" type="button" id="copyBtn">Copy Verification Link</button></div>';
+ html+='<div class="note"><strong>Note:</strong> Fingerprints and Web3 proofs establish record identity and data integrity; they do not establish the truth of every claim in a story. Story text and images are not stored on-chain.</div></div>';
+ $('card').innerHTML=html;
+ $('copyBtn')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);$('copyBtn').textContent='Copied ✓'}catch{}})
 }
 load();
 </script>
