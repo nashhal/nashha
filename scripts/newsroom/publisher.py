@@ -54,6 +54,9 @@ def publish(items: list[dict]) -> dict:
         current["event_key"] = key
         current["original_title"] = clean(item.get("source_title"))[:320]
         current["title"] = clean(item.get("title") or item.get("headline"))
+        current["title_en"] = clean(item.get("title_en"))[:320]
+        current["summary_en"] = clean(item.get("summary_en"))[:1600]
+        current["content_en"] = clean_body(item.get("content_en"))
         current["summary"] = clean(item.get("summary"))
         current["description"] = clean(item.get("summary"))[:500]
         current["content"] = clean_body(item.get("content_ar"))
