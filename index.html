@@ -3,179 +3,104 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#071b2a">
+<meta name="theme-color" content="#0b202c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="description" content="صحيفة الثورة الجنوبية — صحيفة إخبارية جنوبية تتابع الأحداث من مصادرها الأصلية وتعرض حالة التحقق.">
-<meta property="og:title" content="صحيفة الثورة الجنوبية | أخبار الجنوب واليمن">
-<meta property="og:description" content="منصة أخبار تضع المصدر والتحقق وسجل التوثيق في قلب تجربة النشر.">
+<meta name="description" content="صحيفة الثورة الجنوبية — أخبار الجنوب واليمن مع متابعة المصدر وحالة التحقق.">
+<meta property="og:title" content="صحيفة الثورة الجنوبية">
+<meta property="og:description" content="صحيفة رقمية تتابع الأخبار والتطورات من مصادرها الأصلية مع توضيح حالة التحقق.">
 <title>صحيفة الثورة الجنوبية | أخبار الجنوب واليمن</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
- --ink:#102332;--muted:#617180;--paper:#fff;--bg:#f4f7f8;--line:#dce4e8;--soft:#edf3f4;
- --navy:#0B2A4A;--navy2:#1F5A8A;--mint:#2E7D5B;--mint2:#256B4D;--cyan:#4A90B8;--red:#C62828;
- --max:1320px;--shadow:0 16px 44px rgba(7,27,42,.08);--radius:14px
+ --paper:#fffdf8;--paper2:#f3f0e9;--ink:#111b20;--muted:#68747b;--line:#cfd5d7;
+ --navy:#0b202c;--navy2:#16384b;--green:#28785b;--red:#b42318;--max:1380px;
+ --shadow:0 10px 28px rgba(10,29,39,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:'Noto Sans Arabic',Arial,sans-serif;line-height:1.8}
-body.dark{--ink:#edf3f8;--muted:#a7b5c2;--paper:#101923;--bg:#08111a;--line:#2a3946;--soft:#182735;--navy:#0B2A4A;--navy2:#2B6EA3;--mint:#4AAE83;--mint2:#3F916F;--cyan:#62A9CF;--shadow:0 18px 50px rgba(0,0,0,.28)}
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}
-.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
-.top{background:var(--navy);color:#dbeaf0;font-size:10px}
-.top .wrap{min-height:34px;display:flex;justify-content:space-between;align-items:center}
-.top-links{display:flex;gap:16px}.top-links a{opacity:.86}
-.header{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
-body.dark .header{background:rgba(14,27,37,.94)}
-.header .wrap{min-height:82px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;justify-self:start}
-.brand-logo{width:44px;height:44px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--soft)}
-.brand-logo img{width:100%;height:100%;object-fit:cover}
-.brand-name{font:800 28px/1 'IBM Plex Sans Arabic'}.brand-sub{font-size:9px;color:var(--muted);margin-top:4px}
-.mast{text-align:center;font:700 10px/1.55 'IBM Plex Sans Arabic';color:var(--muted)}
-.mast strong{display:block;color:var(--navy2);font-size:15px}
-.actions{justify-self:end;display:flex;gap:8px}
-.action{height:38px;min-width:38px;padding:0 11px;border:1px solid var(--line);border-radius:11px;background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;font:700 10px 'IBM Plex Sans Arabic'}
-.action:hover{border-color:var(--mint2);color:var(--mint2)}
-#langToggle{border-radius:22px}
-.search-panel{display:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);padding:12px 0}
-.search-panel.open{display:block}.search-form{display:grid;grid-template-columns:1fr auto;gap:8px}
-.search-form input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);outline:none}
-.search-form button{border:0;border-radius:10px;padding:0 20px;background:var(--navy2);color:#fff;cursor:pointer}
-.search-results{display:grid;gap:4px;margin-top:8px}.search-results a{padding:7px 2px;border-bottom:1px solid var(--line);font-size:11px}.search-results small{display:block;color:var(--muted);font-size:8px}
-
-.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-body.dark .nav{background:rgba(14,27,37,.96)}
-.nav .wrap{display:flex;overflow:auto}.nav button{border:0;background:none;color:var(--muted);padding:12px 16px;white-space:nowrap;cursor:pointer;border-left:1px solid var(--line);font:700 10px 'IBM Plex Sans Arabic'}
-.nav button.active,.nav button:hover{background:var(--navy2);color:#fff}
-
-.breaking{background:#06131d;color:#fff;min-height:42px;display:flex;align-items:stretch;overflow:hidden}
-.breaking-label{background:var(--red);padding:0 16px;display:flex;align-items:center;gap:8px;flex:none;font:800 10px 'IBM Plex Sans Arabic'}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:blink 1s infinite}@keyframes blink{50%{opacity:.25}}
-.ticker{flex:1;overflow:hidden;display:flex;align-items:center}.ticker-track{display:flex;gap:36px;white-space:nowrap;min-width:max-content;animation:tickerMove 38s linear infinite}.ticker-track:hover{animation-play-state:paused}
-.ticker-item{display:flex;align-items:center;gap:7px;font-size:10px}.ticker-item strong{color:#79d6bd;font:800 9px 'IBM Plex Sans Arabic'}.ticker-item small{opacity:.55;font-size:8px}
-@keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(45%)}}
-
-.web3-hero{padding:22px 0 4px}.web3-hero-card{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,.8fr);gap:20px;background:linear-gradient(135deg,#061b29,#103b55);color:#fff;border-radius:20px;padding:28px 30px;box-shadow:0 20px 55px rgba(7,27,42,.18)}
-.web3-hero-card:before{content:'';position:absolute;width:340px;height:340px;border:1px solid rgba(57,191,226,.25);border-radius:50%;left:-160px;top:-180px}.web3-hero-card:after{content:'';position:absolute;width:220px;height:220px;border:1px solid rgba(19,167,124,.24);border-radius:50%;left:90px;bottom:-150px}
-.web3-copy,.web3-status-card{position:relative;z-index:2}.eyebrow{display:inline-flex;align-items:center;gap:7px;color:#9fe7d2;font:800 10px 'IBM Plex Sans Arabic';letter-spacing:.02em}
-.eyebrow i{display:block;width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 5px rgba(19,167,124,.15)}
-.web3-copy h1{font:800 clamp(28px,4.5vw,52px)/1.24 'IBM Plex Sans Arabic';margin:8px 0 10px;max-width:760px}
-.web3-copy p{font-size:13px;line-height:2;color:#c9d9e0;max-width:760px}.web3-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.web3-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:9px 14px;font:800 10px 'IBM Plex Sans Arabic';border:1px solid rgba(255,255,255,.18);color:#fff}
-.web3-btn.primary{background:var(--mint2);border-color:var(--mint2)}.web3-btn.ghost{background:rgba(255,255,255,.06)}
-.web3-status-card{align-self:stretch;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);border-radius:15px;padding:17px}
-.status-kicker{font:800 9px 'IBM Plex Sans Arabic';color:#9fe7d2}.status-title{font:800 20px 'IBM Plex Sans Arabic';margin-top:3px}
-.status-desc{font-size:9px;color:#b8cbd4;margin-top:4px}.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
-.status-pill{padding:9px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}.status-pill span{display:block;font-size:7px;color:#8fa8b4}.status-pill b{display:block;font-size:10px;margin-top:1px}
-.status-live{color:#9fe7d2}.status-pending{color:#f1d58c}
-
-.hero{padding:18px 0}.hero-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(330px,1fr);gap:16px}
-.hero-main,.hero-rail,.news-panel,.verify-panel,.info-card,.ledger-panel{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
-.hero-main{overflow:hidden;position:relative}.hero-main:after{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:var(--red);z-index:3}
-.hero-media{display:block;aspect-ratio:16/7.6;background:linear-gradient(135deg,#0d2e43,#1c5d73);overflow:hidden}.hero-photo{width:100%;height:100%;object-fit:cover;display:block}
-.media-ph{width:100%;height:100%;min-height:170px;display:grid;place-items:center;background:radial-gradient(circle at 25% 25%,#164b63 0,#0c2b40 40%,#071b2a 100%);color:#cbe6ed;font:800 19px 'IBM Plex Sans Arabic';letter-spacing:.05em}
-.hero-body{padding:20px 22px 22px}.kicker{display:inline-flex;align-items:center;gap:6px;color:var(--mint2);font:800 10px 'IBM Plex Sans Arabic'}.kicker:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--mint)}
-.hero-main h1{font:800 clamp(28px,4vw,46px)/1.4 'IBM Plex Sans Arabic';margin:5px 0 8px}.hero-summary{font-size:13px;color:var(--muted);max-width:900px}
-.meta-line{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:11px;padding-top:11px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}.dot{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.5}
-.hero-rail{padding:6px 0}.rail-head{display:flex;justify-content:space-between;align-items:center;padding:12px 15px 7px}.rail-head h2{font:800 13px 'IBM Plex Sans Arabic'}.rail-head span{font-size:8px;color:var(--muted)}
-.rail-item{display:grid;grid-template-columns:38px 82px minmax(0,1fr);gap:9px;padding:11px 13px;border-top:1px solid var(--line);align-items:start}.rail-index{font:800 20px/1 'IBM Plex Sans Arabic';color:var(--mint2);padding-top:3px}.rail-media{width:82px;height:66px;display:block;overflow:hidden;border-radius:8px;background:var(--soft)}.rail-photo{width:100%;height:100%;object-fit:cover}
-.rail-content h2{font:700 11px/1.75 'IBM Plex Sans Arabic';margin-top:1px}.rail-content h2 a:hover{color:var(--mint2)}.rail-content .meta-line{border-top:0;padding-top:0;margin-top:4px;font-size:7px}
-
-.news-panel{padding:18px;margin-bottom:18px}.panel-head{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:14px}.panel-head h2{font:800 19px 'IBM Plex Sans Arabic'}.panel-head h2:after{content:'';display:block;width:54px;height:3px;background:var(--mint);margin-top:7px;border-radius:4px}.panel-head span{font-size:8px;color:var(--muted)}
-.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.news-card{border:1px solid var(--line);background:var(--paper);overflow:hidden;border-radius:11px;transition:.18s}.news-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.news-card-featured{grid-column:span 2;display:grid;grid-template-columns:1.05fr 1fr}
-.card-media{display:block;position:relative;background:var(--soft);min-height:165px}.card-photo{width:100%;height:100%;object-fit:cover;display:block}.card-tag{position:absolute;right:9px;top:9px;padding:3px 7px;border-radius:5px;background:var(--navy);color:#fff;font:800 8px 'IBM Plex Sans Arabic'}
-.card-status{font:800 8px 'IBM Plex Sans Arabic';color:var(--mint2);display:flex;align-items:center;gap:5px}.status-icon{font-size:11px}.card-body{padding:12px 13px 14px}.card-body h3{font:700 13px/1.75 'IBM Plex Sans Arabic';margin-top:4px}.card-body p{font-size:9px;color:var(--muted);margin-top:4px}.card-body .meta-line{font-size:7px;margin-top:8px;padding-top:7px}
-
-.ledger-panel{padding:20px;margin-bottom:18px;background:linear-gradient(180deg,var(--paper),var(--soft))}
-.ledger-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end}.ledger-head h2{font:800 18px 'IBM Plex Sans Arabic'}.ledger-head p{font-size:9px;color:var(--muted);max-width:580px}
-.ledger-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px}
-.ledger-step{position:relative;padding:13px 12px;border:1px solid var(--line);border-radius:11px;background:var(--paper)}.ledger-step:not(:last-child):after{content:'←';position:absolute;left:-12px;top:50%;transform:translateY(-50%);color:var(--mint2);font:800 14px ui-monospace}.ledger-step b{display:block;font:800 11px 'IBM Plex Sans Arabic'}.ledger-step span{display:block;color:var(--muted);font-size:8px;margin-top:4px}.ledger-step strong{display:inline-flex;margin-bottom:7px;width:25px;height:25px;border-radius:7px;align-items:center;justify-content:center;background:#e3f5ef;color:var(--mint2);font:800 10px ui-monospace}
-
-.verify-panel{padding:15px;margin-bottom:18px;border-right:4px solid var(--mint2)}.verify-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:9px}.verify-head h2{font:800 14px 'IBM Plex Sans Arabic'}.verify-head p{font-size:8px;color:var(--muted)}.verify-list{display:grid;grid-template-columns:repeat(3,1fr)}.verify-item{padding:11px 12px;border-left:1px solid var(--line)}.verify-item:last-child{border-left:0}.verify-badge{display:inline-block;padding:2px 6px;border-radius:4px;background:rgba(19,167,124,.1);color:var(--mint2);font:800 8px 'IBM Plex Sans Arabic';margin-bottom:4px}.verify-item h3{font:700 10px/1.7 'IBM Plex Sans Arabic'}.verify-meta{font-size:7px;color:var(--muted);margin-top:3px}
-
-.info-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;padding-bottom:24px}.info-card{padding:17px}.info-card h3{font:800 13px 'IBM Plex Sans Arabic';margin-bottom:5px}.info-card p{font-size:9px;color:var(--muted)}
-.footer{background:#06131d;color:#dceaf0;padding:30px 0 16px}.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:28px}.footer h3{font:800 13px 'IBM Plex Sans Arabic';margin-bottom:7px}.footer p,.footer li,.footer a{font-size:8px;color:#9bb0bc}.footer ul{list-style:none;display:grid;gap:5px}.footer a:hover{color:#fff}.copy{border-top:1px solid #203540;margin-top:20px;padding-top:11px;font-size:7px;color:#718692}
-.trust-compact{display:grid;grid-template-columns:minmax(0,1.5fr) auto;gap:16px;align-items:center;margin-bottom:18px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-right:4px solid var(--navy2);box-shadow:var(--shadow);border-radius:12px}.trust-compact-main{display:flex;align-items:center;gap:10px}.trust-icon{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--soft);color:var(--navy2);font:800 12px ui-monospace}.trust-compact strong{font:800 13px 'IBM Plex Sans Arabic'}.trust-compact p{font-size:8px;color:var(--muted);margin-top:2px;max-width:760px}.trust-compact-side{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}.trust-compact-side span{padding:4px 7px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font:700 7px ui-monospace}.trust-compact-side a{padding:7px 10px;border-radius:8px;background:var(--navy2);color:#fff;font:800 8px 'IBM Plex Sans Arabic'}
-.empty-state{padding:35px;text-align:center;color:var(--muted);background:var(--soft);border:1px dashed var(--line);border-radius:10px}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(19,167,124,.25);outline-offset:2px}
-@media(max-width:1000px){.header .wrap{grid-template-columns:1fr auto}.mast{display:none}.hero-grid{grid-template-columns:1fr}.news-grid{grid-template-columns:repeat(2,1fr)}.verify-list{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.trust-compact{grid-template-columns:1fr}}
-@media(max-width:650px){.wrap{width:calc(100% - 20px)}.top-links{display:none}.header .wrap{min-height:70px}.brand-name{font-size:23px}.brand-logo{width:40px;height:40px}.actions .action:nth-child(2){display:none}.nav button{padding:10px 12px;font-size:9px}.breaking{min-height:37px}.breaking-label{padding:0 10px;font-size:8px}.ticker-track{gap:22px}.ticker-item{font-size:8px}.hero{padding-top:13px}.hero-body{padding:15px}.hero-main h1{font-size:23px}.hero-summary{font-size:11px}.rail-item{grid-template-columns:31px 68px minmax(0,1fr);padding:9px}.rail-media{width:68px;height:55px}.rail-content h2{font-size:9px}.news-grid{grid-template-columns:1fr}.news-card-featured{grid-column:auto;display:block}.verify-list{grid-template-columns:1fr}.verify-item{border-left:0;border-bottom:1px solid var(--line)}.verify-item:last-child{border-bottom:0}.info-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.trust-compact-side{justify-content:flex-start}.actions .action#langToggle{display:grid}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-html[dir="ltr"] .hero-main:after{right:auto;left:0}html[dir="ltr"] .card-tag{right:auto;left:9px}html[dir="ltr"] .verify-panel{border-right:0;border-left:4px solid var(--mint2)}html[dir="ltr"] .nav button{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .verify-item{border-left:0;border-right:1px solid var(--line)}
+body{background:var(--paper2);color:var(--ink);font-family:'Noto Sans Arabic','IBM Plex Sans Arabic',Arial,sans-serif;line-height:1.75}
+body.dark{--paper:#101518;--paper2:#080d10;--ink:#edf2f3;--muted:#a1adb2;--line:#334149;--navy:#0b202c;--navy2:#234a60;--green:#55a27f;--red:#dd594b;--shadow:0 12px 36px rgba(0,0,0,.22)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+.utility{background:var(--navy);color:#dce7eb;font:500 11px 'IBM Plex Sans Arabic',Arial,sans-serif}
+.utility .wrap{min-height:34px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.utility-links{display:flex;gap:18px}.utility-links a{opacity:.9}
+.masthead{background:var(--paper);border-bottom:3px double var(--ink)}
+.mast-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center;padding:18px 0 14px}
+.edition{text-align:right;color:var(--muted);font:600 10px/1.8 'IBM Plex Sans Arabic'}.edition strong{display:block;color:var(--ink);font-size:12px}
+.edition .en{font:600 9px 'IBM Plex Sans'}
+.mast-brand{text-align:center}.mast-logo{width:72px;height:72px;display:block;margin:0 auto 5px}.mast-title{font:800 clamp(36px,5.8vw,74px)/1 'IBM Plex Sans Arabic';letter-spacing:-1.5px}.mast-en{font:700 12px/1.4 'IBM Plex Sans';letter-spacing:3px;color:var(--green);margin-top:5px}.rule{width:140px;height:2px;background:var(--ink);margin:10px auto 0}
+.actions{display:flex;justify-content:flex-end;gap:7px}.action{min-width:42px;height:40px;padding:0 11px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;border-radius:4px;font:700 10px 'IBM Plex Sans Arabic'}.action:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+#langToggle{min-width:72px}
+.search-panel{display:none;padding:12px 0;border-top:1px solid var(--line);background:var(--paper)}.search-panel.open{display:block}
+.search-form{display:grid;grid-template-columns:1fr auto;gap:8px}.search-form input{min-width:0;background:var(--paper2);border:1px solid var(--line);padding:10px 12px;color:var(--ink);outline:none;border-radius:3px}.search-form button{border:1px solid var(--navy);background:var(--navy);color:#fff;padding:0 18px;cursor:pointer;border-radius:3px}
+.search-results{margin-top:8px}.search-results a{display:block;padding:7px 0;border-top:1px solid var(--line);font-size:11px}.search-results small{display:block;color:var(--muted);font-size:8px}
+.nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}.nav .wrap{display:flex;overflow:auto}.nav button{border:0;border-left:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 16px;white-space:nowrap;cursor:pointer;font:700 11px 'IBM Plex Sans Arabic'}.nav button:last-child{border-left:0}.nav button.active,.nav button:hover{background:var(--navy);color:#fff}
+.breaking{background:var(--navy);color:#fff;min-height:42px;display:flex;align-items:stretch}.breaking-label{flex:none;background:var(--red);padding:0 15px;display:flex;align-items:center;gap:7px;font:800 10px 'IBM Plex Sans Arabic'}.live-dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:pulse 1.4s infinite}@keyframes pulse{50%{opacity:.25}}.ticker{flex:1;overflow:hidden}.ticker-track{display:flex;align-items:center;gap:30px;min-width:max-content;height:42px;animation:move 42s linear infinite}.ticker-track:hover{animation-play-state:paused}@keyframes move{from{transform:translateX(0)}to{transform:translateX(38%)}}
+.ticker-item{display:flex;align-items:center;gap:7px;font:500 10px 'IBM Plex Sans Arabic';white-space:nowrap}.ticker-item strong{color:#8bd2b5;font-weight:800}.ticker-item small{color:#95a3a9;font:500 8px 'IBM Plex Sans'}
+.section{padding:24px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;border-bottom:3px double var(--ink);padding-bottom:7px;margin-bottom:14px}.section-head h2{font:800 25px/1.3 'IBM Plex Sans Arabic'}.section-head p{color:var(--muted);font-size:9px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(320px,.95fr);gap:0;background:var(--paper);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.hero-main{padding:0 18px 20px;min-width:0}.hero-main .hero-media{display:block;aspect-ratio:16/8;background:#d9dddb;overflow:hidden;margin:0 -18px 16px}.hero-photo{width:100%;height:100%;object-fit:cover;display:block}.media-ph{height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#102f40,#1a5a66);color:#e9f1f0;font:800 22px 'IBM Plex Sans Arabic'}
+.hero-main .kicker,.rail-content .kicker{color:var(--green);font:800 10px 'IBM Plex Sans Arabic'}.hero-main h1{font:800 clamp(28px,4.5vw,58px)/1.35 'IBM Plex Sans Arabic';margin:4px 0 8px;letter-spacing:-.7px}.hero-summary{max-width:900px;color:#4e5a60;font-size:13px}.hero-main .meta-line{margin-top:11px}
+body.dark .hero-summary{color:#aab5ba}
+.hero-rail{border-right:1px solid var(--line);padding:0}.rail-head{padding:12px 14px 9px;border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;align-items:end}.rail-head h2{font:800 15px 'IBM Plex Sans Arabic'}.rail-head span{font-size:8px;color:var(--muted)}.rail-item{display:grid;grid-template-columns:28px 86px minmax(0,1fr);gap:9px;padding:12px 13px;border-bottom:1px solid var(--line);align-items:start}.rail-index{font:800 18px/1 'IBM Plex Sans';color:var(--green);padding-top:2px}.rail-media{display:block;width:86px;height:66px;background:var(--paper2);overflow:hidden}.rail-photo{width:100%;height:100%;object-fit:cover}.rail-content h2{font:700 11px/1.7 'IBM Plex Sans Arabic';margin:3px 0}.meta-line{display:flex;flex-wrap:wrap;align-items:center;gap:7px;color:var(--muted);font-size:8px;border-top:1px solid var(--line);padding-top:7px}.dot{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.45}
+.news-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.news-panel{background:var(--paper);border:1px solid var(--line)}.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}.news-card{border-left:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);transition:background .16s}.news-card:hover{background:var(--paper2)}.news-card:nth-child(3n){border-left:0}.news-card-featured{grid-column:span 2}.card-media{position:relative;display:block;aspect-ratio:16/9;background:var(--paper2);overflow:hidden}.card-photo{width:100%;height:100%;object-fit:cover}.card-tag{position:absolute;top:8px;right:8px;padding:3px 6px;background:var(--navy);color:#fff;font:800 8px 'IBM Plex Sans Arabic'}.card-body{padding:12px 13px 14px}.card-status{font:800 8px 'IBM Plex Sans Arabic';color:var(--green)}.status-icon{margin-left:4px}.card-body h3{font:700 14px/1.65 'IBM Plex Sans Arabic';margin-top:4px}.card-body p{font-size:9px;color:var(--muted);margin-top:4px}.card-body .meta-line{margin-top:9px}
+.sidebar{display:grid;gap:14px}.sidebox{background:var(--paper);border-top:3px double var(--ink);padding:13px 14px}.sidebox h3{font:800 15px 'IBM Plex Sans Arabic';margin-bottom:8px}.sidebox p{font-size:9px;color:var(--muted)}.side-links{display:grid}.side-links a{padding:8px 0;border-top:1px solid var(--line);font:600 10px 'IBM Plex Sans Arabic'}
+.trust-panel{background:var(--navy);color:#fff;padding:16px;border-top:4px solid var(--green)}.trust-panel .section-head{border-color:rgba(255,255,255,.35)}.trust-panel .section-head h2{color:#fff}.trust-panel .section-head p{color:#b9c8ce}.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,.18)}.trust-cell{padding:12px;border-left:1px solid rgba(255,255,255,.18)}.trust-cell:last-child{border-left:0}.trust-cell strong{display:block;color:#8bd2b5;font:800 11px 'IBM Plex Sans Arabic';margin-bottom:2px}.trust-cell span{font-size:8px;color:#c4d0d5}
+.verify-panel{margin-top:18px;background:var(--paper);border-top:3px double var(--ink);border-bottom:1px solid var(--ink);padding:15px}.verify-head{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:9px}.verify-head h2{font:800 16px 'IBM Plex Sans Arabic'}.verify-head p{font-size:8px;color:var(--muted)}.verify-list{display:grid;grid-template-columns:repeat(3,1fr)}.verify-item{padding:10px 12px;border-left:1px solid var(--line)}.verify-item:last-child{border-left:0}.verify-badge{font:800 8px 'IBM Plex Sans Arabic';color:var(--green)}.verify-item h3{font:700 10px/1.7 'IBM Plex Sans Arabic';margin-top:4px}.verify-meta{font-size:7px;color:var(--muted);margin-top:3px}
+.footer{margin-top:30px;background:var(--navy);color:#d6e1e5;padding:28px 0 14px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}.footer h3{font:800 14px 'IBM Plex Sans Arabic';margin-bottom:5px}.footer p,.footer a{font-size:9px;color:#aebcc2}.footer ul{list-style:none;display:grid;gap:5px}.footer a:hover{color:#fff}.copy{border-top:1px solid rgba(255,255,255,.2);margin-top:20px;padding-top:10px;font-size:8px;color:#81939b}
+.empty-state,.error-state{padding:45px 20px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);font-size:11px}.error-state button{margin-top:10px;background:var(--navy);color:#fff;border:0;padding:8px 14px;cursor:pointer;border-radius:3px}
+.news-skeleton{display:grid;gap:10px;padding:14px;background:var(--paper)}.sk{background:linear-gradient(90deg,var(--paper2) 25%,rgba(255,255,255,.6) 50%,var(--paper2) 75%);background-size:200% 100%;animation:shimmer 1.3s linear infinite}.sk.h{height:260px}.sk.t{height:24px;width:80%}.sk.s{height:14px;width:92%}.sk.m{height:12px;width:55%}@keyframes shimmer{to{background-position:-200% 0}}
+@media(max-width:1000px){.mast-grid{grid-template-columns:1fr auto}.edition{display:none}.mast-brand{grid-column:1}.actions{grid-column:2;grid-row:1}.mast-title{font-size:42px}.hero-grid{grid-template-columns:1fr}.hero-rail{border-right:0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr}.rail-head{grid-column:1/-1}.news-layout{grid-template-columns:1fr}.sidebar{grid-template-columns:repeat(2,1fr)}.trust-row{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.wrap{width:calc(100% - 20px)}.utility-links{display:none}.mast-grid{padding:12px 0}.mast-logo{width:58px;height:58px}.mast-title{font-size:30px}.mast-en{font-size:8px;letter-spacing:2px}.actions{gap:5px}.action{min-width:36px;height:36px;padding:0 8px}.action:nth-child(2){display:none}#langToggle{min-width:62px}.nav button{padding:9px 12px;font-size:9px}.breaking-label{padding:0 10px;font-size:8px}.ticker-track{height:37px;gap:20px}.breaking{min-height:37px}.hero-main{padding:0 12px 16px}.hero-main .hero-media{margin:0 -12px 13px}.hero-main h1{font-size:26px}.hero-summary{font-size:11px}.hero-rail{display:block}.rail-item{grid-template-columns:24px 72px minmax(0,1fr);padding:10px}.rail-media{width:72px;height:56px}.rail-content h2{font-size:9px}.news-grid{grid-template-columns:1fr}.news-card,.news-card:nth-child(3n){border-left:0}.news-card-featured{grid-column:auto}.sidebar{grid-template-columns:1fr}.trust-row{grid-template-columns:1fr 1fr}.verify-list{grid-template-columns:1fr}.verify-item{border-left:0;border-bottom:1px solid var(--line)}.verify-item:last-child{border-bottom:0}.footer-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
+html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-align:left}.ltr .mast-brand{text-align:center}html[dir="ltr"] .nav button{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .hero-rail{border-right:0;border-left:1px solid var(--line)}html[dir="ltr"] .rail-item{grid-template-columns:28px 86px minmax(0,1fr)}html[dir="ltr"] .card-tag{right:auto;left:8px}html[dir="ltr"] .verify-item{border-left:0;border-right:1px solid var(--line)}
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><div>الثورة الجنوبية · الخبر أولًا</div><div class="top-links"><a href="trust.html">توثيق الثورة الجنوبية</a><a href="#about">عن الثورة الجنوبية</a></div></div></div>
-
-<header class="header">
-<div class="wrap">
-<a class="brand" href="#home"><div class="brand-logo"><img src="logo-square.svg" alt="شعار صحيفة الثورة الجنوبية"></div><div><div class="brand-name">الثورة الجنوبية</div><div class="brand-sub">صحيفة · خبر · متابعة</div></div></a>
-<div class="mast"><strong>الثورة الجنوبية</strong>خبر · تفاصيل · متابعة</div>
-<div class="actions"><button class="action" id="searchToggle" aria-label="البحث">⌕</button><button class="action" id="darkToggle" aria-label="الوضع الليلي">◐</button></div>
+<div class="utility"><div class="wrap"><div>الخميس 24 سبتمبر 2026 · إصدار رقمي</div><div class="utility-links"><a href="daily-report.html">النشرة اليومية</a><a href="trust.html">سجل التوثيق</a><a href="about.html">عن الصحيفة</a></div></div></div>
+<header class="masthead">
+<div class="wrap mast-grid">
+<div class="edition"><strong>صحيفة الثورة الجنوبية</strong><span>أخبار الجنوب واليمن</span><div class="en">SOUTHERN REVOLUTION NEWSPAPER</div></div>
+<a class="mast-brand" href="#home" aria-label="صحيفة الثورة الجنوبية"><img class="mast-logo" src="logo-square.svg" alt=""><div class="mast-title">الثورة الجنوبية</div><div class="mast-en">SOUTHERN REVOLUTION NEWSPAPER</div><div class="rule"></div></a>
+<div class="actions"><button class="action" id="searchToggle" aria-label="البحث">بحث</button><button class="action" id="darkToggle" aria-label="الوضع الليلي">◐</button><button class="action" id="langToggle" aria-label="اللغة">English</button></div>
 </div>
-<div class="search-panel" id="searchPanel"><div class="wrap"><form class="search-form" id="searchForm"><input id="searchInput" type="search" placeholder="ابحث في أخبار الثورة الجنوبية"><button type="submit">بحث</button></form><div class="search-results" id="searchResults"></div></div></div>
+<div class="search-panel" id="searchPanel"><div class="wrap"><form class="search-form" id="searchForm"><input id="searchInput" type="search" placeholder="ابحث في أخبار الصحيفة"><button type="submit">بحث</button></form><div class="search-results" id="searchResults"></div></div></div>
 </header>
-
 <nav class="nav" aria-label="الأقسام"><div class="wrap" id="sectionNav">
-<button class="active" data-filter="all">الرئيسية</button><button data-filter="الجنوب">الجنوب</button><button data-filter="اليمن">اليمن</button><button data-filter="عدن">عدن</button><button data-filter="حضرموت">حضرموت</button><button data-filter="شبوة">شبوة</button><button data-filter="أبين">أبين</button><button data-filter="لحج">لحج</button>
+<button class="active" data-filter="all">الرئيسية</button><button data-filter="الجنوب">الجنوب</button><button data-filter="عدن">عدن</button><button data-filter="حضرموت">حضرموت</button><button data-filter="شبوة">شبوة</button><button data-filter="أبين">أبين</button><button data-filter="لحج">لحج</button><button data-filter="الضالع">الضالع</button><button data-filter="المهرة">المهرة</button><button data-filter="سقطرى">سقطرى</button><button data-filter="اليمن">اليمن</button><a class="nav-more" href="search.html">بحث موسع</a>
 </div></nav>
-
-<section class="breaking" aria-label="عاجل"><div class="breaking-label"><span class="live-dot"></span>مباشر</div><div class="ticker"><div class="ticker-track" id="tickerTrack"><span class="ticker-item">جاري تحميل آخر التحديثات…</span></div></div></section>
-
+<section class="breaking" aria-label="آخر التحديثات"><div class="breaking-label"><span class="live-dot"></span><span id="breakingLabelText">عاجل</span></div><div class="ticker"><div class="ticker-track" id="tickerTrack"><span class="ticker-item">جاري تحميل آخر التحديثات...</span></div></div></section>
 <main id="home">
-<section class="hero"><div class="wrap hero-grid" id="heroGrid"></div></section>
-
-<section class="wrap news-panel" id="south">
-<div class="panel-head"><h2 id="gridTitle">أحدث الأخبار</h2><span>تحديث تلقائي · المصدر الأصلي · سجل التوثيق</span></div>
-<div class="news-grid" id="newsGrid"></div>
-</section>
-
-<section class="wrap trust-compact" id="trust">
-<div class="trust-compact-main"><span class="trust-icon">✓</span><div><strong>توثيق الثورة الجنوبية</strong><p>لكل خبر منشور سجل مصدر وبصمة رقمية يمكن مراجعتها من صفحة التحقق.</p></div></div>
-<div class="trust-compact-side"><span>المصدر الأصلي</span><span>البصمة الرقمية</span><a href="trust.html">تحقق من خبر ↗</a></div>
-</section>
-
-<section class="wrap verify-panel" id="verifySection" hidden>
-<div class="verify-head"><h2>مواد رصدية · قيد التحقق</h2><p>لا تُعامل كأخبار منشورة حتى تستوفي بوابة التحقق</p></div><div class="verify-list" id="verifyList"></div>
-</section>
-
-<section class="wrap info-grid" id="about">
-<article class="info-card"><h3>ما الذي تضيفه Southern Revolution Trust؟</h3><p>تحتفظ الثورة الجنوبية ببصمة SHA-256 وبيانات المصدر ووقت التسجيل ومعلومات مراحل التحرير. وعند تفعيل الربط الخارجي يمكن إدراج manifest على IPFS وتثبيت بصمته على شبكة بلوكشين للاحتفاظ بإثبات مستقل عن واجهة الموقع.</p></article>
-<article class="info-card"><h3>مصدر الخبر ليس رأي الثورة الجنوبية</h3><p>عرض المصدر أو ربطه لا يعني تبني موقفه. نميز بين الوقائع والادعاءات ونوضح حالة التحقق، ولا تستخدم طبقة Web3 كبديل للتحقق التحريري.</p></article>
-</section>
+<section class="section"><div class="wrap">
+<div class="section-head"><h2 id="gridTitle">أحدث الأخبار</h2><p id="sectionMeta">خبر · مصدر · تحقق</p></div>
+<div class="hero-grid" id="heroGrid"></div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap news-layout">
+<div class="news-panel"><div class="news-grid" id="newsGrid"></div></div>
+<aside class="sidebar">
+<div class="sidebox"><h3>العدد الرقمي</h3><p>تغطية متواصلة للأحداث المنشورة حديثًا، مع إبقاء المواد قيد التحقق في مسار منفصل.</p></div>
+<div class="sidebox"><h3>منهج الصحيفة</h3><div class="side-links"><a href="editorial-policy.html">السياسة التحريرية</a><a href="ai-policy.html">سياسة الذكاء الاصطناعي</a><a href="corrections.html">التصحيحات والتحديثات</a></div></div>
+<div class="sidebox"><h3>الثقة والتوثيق</h3><p>لكل خبر منشور سجل مصدر وبصمة رقمية يمكن مراجعتها من صفحة التحقق.</p><div class="side-links"><a href="trust.html">فتح سجل التوثيق ↗</a><a href="web3.html">طبقة Web3</a></div></div>
+</aside>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap trust-panel">
+<div class="section-head"><h2>سجل الصحيفة</h2><p>شفافية المصدر وحالة النشر</p></div>
+<div class="trust-row">
+<div class="trust-cell"><strong>المصدر</strong><span>رابط المصدر الأصلي مع كل خبر</span></div>
+<div class="trust-cell"><strong>التحقق</strong><span>فصل الخبر المنشور عن الرصد قيد المتابعة</span></div>
+<div class="trust-cell"><strong>SHA-256</strong><span>بصمة رقمية للسجل المحفوظ</span></div>
+<div class="trust-cell"><strong>Web3</strong><span>إثبات خارجي عند تفعيل الربط على الشبكة</span></div>
+</div></div></section>
+<section class="wrap verify-panel" id="verifySection" hidden><div class="verify-head"><h2>رصد قيد التحقق</h2><p>لا يظهر كخبر منشور حتى تتوفر معطيات كافية</p></div><div class="verify-list" id="verifyList"></div></section>
 </main>
-
 <footer class="footer"><div class="wrap"><div class="footer-grid">
-<div><h3>الثورة الجنوبية</h3><p>منصة أخبار تركز على المصدر والتحقق وسجل التوثيق، مع طبقة Web3 مخصصة لإثبات سلامة السجلات بدل تخزين المحتوى نفسه على السلسلة.</p></div>
-<div><h3>الشفافية</h3><ul><li><a href="trust.html">Southern Revolution Trust</a></li><li><a href="web3.html">طبقة Web3</a></li><li><a href="editorial-policy.html">السياسة التحريرية</a></li><li><a href="ai-policy.html">سياسة استخدام AI</a></li></ul></div>
-<div><h3>الأقسام</h3><ul><li><a href="#south">الجنوب</a></li><li><a href="#south">عدن</a></li><li><a href="#south">حضرموت</a></li><li><a href="#south">اليمن</a></li></ul></div>
-</div><div class="copy">© الثورة الجنوبية · الخبر · المصدر · التحقق · البصمة</div></div></footer>
-
-<script>
-async function loadWeb3HomeState(){
-  const title=document.getElementById('web3StatusTitle'),desc=document.getElementById('web3StatusDesc'),badge=document.getElementById('web3StatusBadge');
-  if(!title||!desc||!badge)return;
-  try{
-    const r=await fetch('data/web3/anchor.json?'+Date.now(),{cache:'no-store'});
-    if(!r.ok)throw new Error('missing');
-    const a=await r.json();
-    if(a.status==='anchored'){
-      title.textContent='السجل موثّق على الشبكة';
-      desc.textContent='توجد بصمة manifest مرتبطة بإثبات on-chain ويمكن فتح المعاملة من سجل التحقق.';
-      badge.textContent='موثّق on-chain'; badge.className='status-live';
-    }else if(a.status==='prepared'){
-      title.textContent='الـManifest جاهز';
-      desc.textContent='تم تجهيز سجل البصمات، بينما يبقى التثبيت على الشبكة معلقًا حتى تفعيل بيانات الربط.';
-      badge.textContent='Prepared'; badge.className='status-pending';
-    }
-  }catch(_){}
-}
-loadWeb3HomeState();
-</script>
+<div><h3>صحيفة الثورة الجنوبية</h3><p>صحيفة رقمية تتابع الأخبار والتطورات مع إظهار المصدر وحالة التحقق، وتستخدم الأدوات الآلية للمساعدة في الرصد والتنظيم لا كبديل عن التحرير.</p></div>
+<div><h3>الصحيفة</h3><ul><li><a href="about.html">عن الصحيفة</a></li><li><a href="daily-report.html">النشرة اليومية</a></li><li><a href="search.html">البحث الموسع</a></li></ul></div>
+<div><h3>الشفافية</h3><ul><li><a href="trust.html">سجل التوثيق</a></li><li><a href="editorial-policy.html">السياسة التحريرية</a></li><li><a href="corrections.html">التصحيحات</a></li></ul></div>
+</div><div class="copy">© 2026 صحيفة الثورة الجنوبية · Southern Revolution Newspaper</div></div></footer>
 <script src="language.js"></script>
 <script src="news-loader.js" defer></script>
 </body>
