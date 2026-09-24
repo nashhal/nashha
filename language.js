@@ -1,9 +1,68 @@
 (function(){'use strict';
-const KEY='nahshal-language';
+const KEY='nashhal-language';
 let lang=localStorage.getItem(KEY)||'ar';
-const dict={ar:{about:'عن نشهل',sources:'المصادر',search:'البحث',searchPlaceholder:'ابحث في أخبار نشهل',searchButton:'بحث',home:'الرئيسية',south:'اليمن',yemen:'العالم العربي',aden:'الخليج',hadramout:'العالم',shabwa:'اقتصاد',abyan:'تقنية',lahj:'علوم',latest:'أحدث الأخبار',auto:'تحديث مستمر · تغطية عربية وعالمية',how:'كيف تعمل نشهل؟',note:'ملاحظة تحريرية',footerDesc:'منصة أخبار عربية وعالمية تجمع التطورات من مصادر مفتوحة ومتنوعة، مع اهتمام خاص باليمن والجنوب، وتفصل بين الخبر المؤكد والرصد قيد المتابعة.',sections:'الأقسام',policy:'السياسة التحريرية',original:'التحقق قبل النشر',noRumor:'لا نشر للشائعة كخبر',radar:'الرصد غير المؤكد منفصل',lang:'English',brandSub:'خبر · سياق · تحليل',mast:'العالم العربي · التطورات الدولية',top:'نشهل · منصة أخبار عربية وعالمية',verifyTitle:'الرصد الرقمي · قيد التحقق',verifyDesc:'المواد غير المؤكدة لا تُعامل كأخبار منشورة حتى تتوفر معطيات كافية',howText:'تكتشف نشهل الأخبار والتطورات عبر محرك بحث وذكاء اصطناعي مفتوح، ثم تُقيّم الروابط والمعطيات وتُعاد صياغتها عربيًا مع فصل واضح بين الخبر والتحليل.',noteText:'المعلومة لا تُنشر لمجرد تداولها. تعتمد نشهل على التحقق من الروابط والوقائع، وتضع المواد التي تحتاج إلى مزيد من التأكيد في مسار مراجعة منفصل.',breaking:'آخر التحديثات'},en:{about:'About Nashhal',sources:'Sources',search:'Search',searchPlaceholder:'Search Nashhal news',searchButton:'Search',home:'Home',south:'Yemen',yemen:'Arab World',aden:'Gulf',hadramout:'World',shabwa:'Business',abyan:'Technology',lahj:'Science',latest:'Latest News',auto:'Continuously updated · Arabic & global coverage',how:'How Nashhal Works',note:'Editorial Note',footerDesc:'An Arabic and global news platform that discovers developments from open and diverse sources, with special attention to Yemen and the South, separating confirmed reporting from monitoring.',sections:'Sections',policy:'Editorial Policy',original:'Verify before publishing',noRumor:'No rumor published as news',radar:'Unverified monitoring kept separate',lang:'العربية',brandSub:'News · Context · Analysis',mast:'Arab World · Global Developments',top:'Nashhal · Arabic & Global News',verifyTitle:'Digital Radar · Under Review',verifyDesc:'Unconfirmed material is not treated as published news until sufficient evidence is available',howText:'Nashhal discovers news and developments through open search and AI, evaluates links and evidence, then rewrites them in Arabic while clearly separating reporting from analysis.',noteText:'Information is not published simply because it is circulating. Nashhal evaluates links and facts and keeps material needing further confirmation in a separate review path.',breaking:'Latest Updates'}};
-const text=(s,k)=>document.querySelectorAll(s).forEach(e=>{if(dict[lang][k])e.textContent=dict[lang][k]});
-function apply(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';text('.top .wrap > div:first-child','top');text('.top-links a:nth-child(1)','about');text('.top-links a:nth-child(2)','sources');text('.brand-sub','brandSub');text('.mast','mast');text('.breaking-label','breaking');text('#gridTitle','latest');text('.panel-head span','auto');text('.verify-head h2','verifyTitle');text('.verify-head p','verifyDesc');text('.info-card:first-child h3','how');text('.info-card:first-child p','howText');text('.info-card:nth-child(2) h3','note');text('.info-card:nth-child(2) p','noteText');text('.footer-grid > div:first-child p','footerDesc');text('.footer-grid > div:nth-child(2) h3','sections');text('.footer-grid > div:nth-child(3) h3','policy');const input=document.getElementById('searchInput');if(input)input.placeholder=dict[lang].searchPlaceholder;const sb=document.querySelector('#searchForm button');if(sb)sb.textContent=dict[lang].searchButton;const search=document.getElementById('searchToggle');if(search){search.title=dict[lang].search;search.setAttribute('aria-label',dict[lang].search)}let b=document.getElementById('langToggle');if(b)b.textContent=dict[lang].lang;document.title=lang==='ar'?'نشهل | منصة أخبار عربية وعالمية':'Nashhal | Arabic & Global News';const m=document.querySelector('meta[name="description"]');if(m)m.content=lang==='ar'?'نشهل منصة أخبار عربية وعالمية تتابع أبرز التطورات العربية والدولية مع اهتمام خاص باليمن والجنوب.':'Nashhal is an Arabic and global news platform covering major Arab and international developments, with special attention to Yemen and the South.';window.dispatchEvent(new CustomEvent('nashhal-language-change',{detail:{lang}}))}
+const dict={
+ ar:{
+  search:'بحث',searchPlaceholder:'ابحث في أخبار الصحيفة',searchButton:'بحث',lang:'English',
+  nav:['الرئيسية','الجنوب','عدن','حضرموت','شبوة','أبين','لحج','الضالع','المهرة','سقطرى','اليمن'],
+  sectionMeta:'خبر · مصدر · تحقق',breaking:'عاجل',latest:'أحدث الأخبار',
+  latestMeta:'تغطية مستمرة · المصدر الأصلي · حالة التحقق',
+  edition:'إصدار رقمي',daily:'النشرة اليومية',trust:'سجل التوثيق',about:'عن الصحيفة',
+  newspaper:'صحيفة الثورة الجنوبية',subtitle:'أخبار الجنوب واليمن',
+  trustTitle:'سجل الصحيفة',trustMeta:'شفافية المصدر وحالة النشر',
+  review:'رصد قيد التحقق',reviewMeta:'لا يظهر كخبر منشور حتى تتوفر معطيات كافية',
+  footerNews:'الصحيفة',footerTransparency:'الشفافية'
+ },
+ en:{
+  search:'Search',searchPlaceholder:'Search the newspaper',searchButton:'Search',lang:'العربية',
+  nav:['Home','South','Aden','Hadramout','Shabwah','Abyan','Lahj','Al Dhale’e','Al Mahrah','Socotra','Yemen'],
+  sectionMeta:'News · Source · Verification',breaking:'BREAKING',latest:'Latest News',
+  latestMeta:'Continuous coverage · Original source · Verification status',
+  edition:'Digital edition',daily:'Daily bulletin',trust:'Verification log',about:'About',
+  newspaper:'Southern Revolution Newspaper',subtitle:'South Yemen · Yemen',
+  trustTitle:'Newspaper Record',trustMeta:'Source transparency and publication status',
+  review:'Monitoring under review',reviewMeta:'Not treated as published news until sufficient evidence is available',
+  footerNews:'Newspaper',footerTransparency:'Transparency'
+ }
+};
+function q(sel){return document.querySelector(sel)}
+function setText(sel,value){document.querySelectorAll(sel).forEach(e=>e.textContent=value)}
+function nav(){
+ const navEl=document.getElementById('sectionNav'); if(!navEl)return;
+ const buttons=navEl.querySelectorAll('button[data-filter]');
+ buttons.forEach((b,i)=>{if(dict[lang].nav[i])b.textContent=dict[lang].nav[i]});
+ const more=navEl.querySelector('.nav-more'); if(more)more.textContent=lang==='ar'?'بحث موسع':'Advanced Search';
+}
+function apply(){
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ const d=dict[lang];
+ const st=q('#searchToggle'); if(st){st.textContent=d.search;st.setAttribute('aria-label',d.search)}
+ const sb=q('#searchForm button'); if(sb)sb.textContent=d.searchButton;
+ const si=q('#searchInput'); if(si)si.placeholder=d.searchPlaceholder;
+ const lb=q('#langToggle'); if(lb)lb.textContent=d.lang;
+ const meta=q('#sectionMeta'); if(meta)meta.textContent=d.sectionMeta;
+ const br=q('#breakingLabelText'); if(br)br.textContent=d.breaking;
+ const heading=q('#gridTitle'); if(heading&&!heading.dataset.dynamic)heading.textContent=d.latest;
+ const sm=q('#sectionMeta'); if(sm)sm.textContent=d.latestMeta;
+ setText('.edition span',d.edition);
+ setText('.utility-links a:nth-child(1)',d.daily);
+ setText('.utility-links a:nth-child(2)',d.trust);
+ setText('.utility-links a:nth-child(3)',d.about);
+ setText('.edition strong',d.newspaper);
+ setText('.mast-en','SOUTHERN REVOLUTION NEWSPAPER');
+ setText('.trust-panel .section-head h2',d.trustTitle);
+ setText('.trust-panel .section-head p',d.trustMeta);
+ setText('.verify-head h2',d.review);
+ setText('.verify-head p',d.reviewMeta);
+ setText('.footer-grid > div:nth-child(2) h3',d.footerNews);
+ setText('.footer-grid > div:nth-child(3) h3',d.footerTransparency);
+ const m=q('meta[name="description"]');
+ if(m)m.content=lang==='ar'?'صحيفة الثورة الجنوبية — أخبار الجنوب واليمن مع متابعة المصدر وحالة التحقق.':'Southern Revolution Newspaper — South Yemen and Yemen news with source and verification context.';
+ document.title=lang==='ar'?'صحيفة الثورة الجنوبية | أخبار الجنوب واليمن':'Southern Revolution Newspaper | South Yemen & Yemen News';
+ nav();
+ window.dispatchEvent(new CustomEvent('nashhal-language-change',{detail:{lang}}));
+}
 window.NashhalLang={get:()=>lang,toggle:()=>{lang=lang==='ar'?'en':'ar';localStorage.setItem(KEY,lang);apply()}};
-document.addEventListener('DOMContentLoaded',()=>{const a=document.querySelector('.actions');if(a&&!document.getElementById('langToggle')){const b=document.createElement('button');b.className='action';b.id='langToggle';b.setAttribute('aria-label','Language');a.appendChild(b);b.onclick=()=>window.NashhalLang.toggle()}if(!document.getElementById('globalUiScript')){const s=document.createElement('script');s.id='globalUiScript';s.src='global-mode.js';s.defer=true;document.body.appendChild(s)}apply()});
+document.addEventListener('DOMContentLoaded',()=>{const b=q('#langToggle');if(b)b.addEventListener('click',()=>window.NashhalLang.toggle());apply()});
 })();
