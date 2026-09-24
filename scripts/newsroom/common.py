@@ -17,6 +17,12 @@ ROOT = Path(__file__).resolve().parents[2]
 NEWS_PATH = ROOT / "data" / "news.json"
 
 MODEL = os.getenv("XAI_MODEL") or "grok-4.5"
+
+
+class ProviderUnavailable(RuntimeError):
+    """AI provider is configured but temporarily unavailable or not entitled."""
+
+
 REQUEST_TIMEOUT = int(os.getenv("NEWSROOM_TIMEOUT", "120"))
 MAX_CANDIDATES = int(os.getenv("NEWSROOM_MAX_CANDIDATES", "8"))
 MAX_EVIDENCE = 12
@@ -128,7 +134,10 @@ def xai_responses(*, prompt: str, tools: list[dict] | None = None, from_date: st
             detail = response.text[:1000]
         except Exception:
             pass
-        raise RuntimeError(f"xAI API HTTP {response.status_code}: {detail}")
+        message = f"xAI API HTTP {response.status_code}: {detail}"
+        if response.status_code in {401, 402, 403, 429} or response.status_code >= 500:
+            raise ProviderUnavailable(message)
+        raise RuntimeError(message)
 
     data = response.json()
     return response_text(data), citations_from(data)
