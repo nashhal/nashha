@@ -88,16 +88,10 @@ def main():
         source_url = item.get("source_url") or (
             evidence[0].get("url") if evidence and isinstance(evidence[0], dict) else ""
         )
-        source_published = source_date(source_url)
+        # Only fetch the source page when the item could still be live.
+        recent_hint = bool(published and now - published <= timedelta(hours=96))
+        source_published = source_date(source_url) if recent_hint or str(item.get("status") or "") == "published" else None
         effective_date = source_published or published
-        fresh = bool(
-            effective_date
-            and now - effective_date <= timedelta(hours=MAX_LIVE_AGE_HOURS)
-            and effective_date <= now + timedelta(minutes=10)
-        )
-
-        years = [int(y) for y in YEAR_RE.findall(str(item.get("title") or ""))]
-        historical_title = bool(years and max(years) < now.year)
 
         if source_published:
             item["source_published_at"] = source_published.isoformat()
