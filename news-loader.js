@@ -102,8 +102,8 @@
     return sortRecent(items);
   };
   const metaLine = item => `<div class="meta-line"><span>${escapeHtml(item.category)}</span><span class="dot"></span><span>${escapeHtml(timeAgo(item.published))}</span></div>`;
-  const placeholder = (label = 'نشهل') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
-  const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder('نشهل');
+  const placeholder = (label = 'الثورة الجنوبية') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
+  const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder('الثورة الجنوبية');
 
   function injectPerformanceCSS() {
     if (document.getElementById('nashhal-perf-css')) return;
