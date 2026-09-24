@@ -1,6 +1,6 @@
-const CACHE='southern-revolution-shell-v5';
+const CACHE='southern-revolution-shell-v6';
 const DATA='nashhal-data-v2';
-const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest'];
+const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest','./favicon.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
