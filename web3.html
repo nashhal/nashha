@@ -50,7 +50,7 @@
 </main>
 <footer class="wrap footer">Southern Revolution Trust Web3 · Record transparency without storing content on-chain</footer>
 <script>
-(async()=>{try{const r=await fetch('data/web3/anchor.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const a=await r.json();const s=document.getElementById('state');if(a.status==='anchored')s.textContent='الLOG الحالي مرتبط بإثبات on-chain على Ethereum Sepolia';else if(a.status==='prepared')s.textContent='تم تجهيز manifest — التثبيت on-chain غير مكتمل بعد';}catch(_){}})();
+(async()=>{try{const r=await fetch('data/web3/anchor.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const a=await r.json();const s=document.getElementById('state');if(a.status==='anchored')s.textContent='The current record is linked to an on-chain proof on Ethereum Sepolia';else if(a.status==='prepared')s.textContent='Manifest prepared — on-chain anchoring is not complete yet';}catch(_){}})();
 </script>
 </body>
 </html>
