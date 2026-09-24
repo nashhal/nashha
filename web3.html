@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071b2a">
+<meta name="description" content="Nashhal Trust Web3 — كيف توثق نشهل سجل الأخبار بالبصمة الرقمية وIPFS وEthereum.">
+<title>Nashhal Trust Web3 | نشهل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#071b2a;--navy2:#103b55;--mint:#13a77c;--cyan:#39bfe2;--ink:#102332;--muted:#617180;--bg:#f4f7f8;--paper:#fff;--line:#dce5e9;--soft:#edf3f4;--warn:#9b6a0b;--shadow:0 16px 44px rgba(7,27,42,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Arabic',Arial,sans-serif;line-height:1.8}.wrap{width:min(1050px,calc(100% - 28px));margin:auto}
+.top{background:var(--navy);color:#dceaf0}.top .wrap{min-height:35px;display:flex;align-items:center;justify-content:space-between;font-size:9px}.top a{color:#fff;text-decoration:none}
+.head{background:var(--paper);border-bottom:1px solid var(--line)}.head .wrap{min-height:74px;display:flex;align-items:center;justify-content:space-between}.brand{font:800 21px 'IBM Plex Sans Arabic';color:var(--ink);text-decoration:none}.back{font:800 9px 'IBM Plex Sans Arabic';color:var(--mint)}
+.hero{margin-top:25px;padding:28px;border-radius:18px;background:linear-gradient(135deg,#071b2a,#103b55);color:#fff;box-shadow:0 20px 55px rgba(7,27,42,.15)}.eyebrow{color:#9fe7d2;font:800 9px ui-monospace,SFMono-Regular,monospace;letter-spacing:.05em}.hero h1{font:800 clamp(28px,4.3vw,48px)/1.25 'IBM Plex Sans Arabic';margin:8px 0 10px;max-width:800px}.hero p{font-size:11px;color:#c9d9e0;max-width:830px}.state{display:inline-flex;align-items:center;gap:7px;margin-top:15px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);font:800 8px 'IBM Plex Sans Arabic'}.state i{width:7px;height:7px;border-radius:50%;background:var(--mint)}
+.section{margin:18px 0;background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:19px}.section h2{margin:0;font:800 18px 'IBM Plex Sans Arabic';color:var(--navy)}.section>p{margin:5px 0 0;color:var(--muted);font-size:9px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:15px}.step{position:relative;padding:15px 12px;border:1px solid var(--line);border-radius:11px;background:linear-gradient(180deg,#fff,#f7fafb)}.step b{display:block;font:800 11px 'IBM Plex Sans Arabic'}.step span{display:block;margin-top:4px;color:var(--muted);font-size:8px}.num{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#e2f5ef;color:#08795d;font:800 10px ui-monospace;margin-bottom:9px}.step:not(:last-child):after{content:'←';position:absolute;left:-13px;top:50%;transform:translateY(-50%);font:800 13px ui-monospace;color:var(--mint)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.card{padding:14px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}.card h3{margin:0 0 4px;font:800 12px 'IBM Plex Sans Arabic';color:var(--navy2)}.card p{margin:0;color:var(--muted);font-size:9px}.code{direction:ltr;text-align:left;overflow:auto;margin-top:8px;padding:10px;border-radius:8px;background:#071b2a;color:#bfe8ec;font:700 9px/1.8 ui-monospace,SFMono-Regular,monospace}
+.notice{padding:13px;border-right:3px solid var(--warn);background:#fff9ec;color:#5f5339;font-size:8px;margin-top:13px}
+.footer{padding:5px 0 35px;color:var(--muted);font-size:8px}
+@media(max-width:850px){.flow{grid-template-columns:repeat(3,1fr)}.step:nth-child(3):after{display:none}}@media(max-width:600px){.grid,.flow{grid-template-columns:1fr}.step:after{display:none!important}.hero{padding:21px 17px}.hero h1{font-size:29px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><a href="index.html">نشهل</a><span>Nashhal Trust Web3</span></div></div>
+<header class="head"><div class="wrap"><a class="brand" href="index.html">نشهل</a><a class="back" href="trust.html">التحقق من سجل خبر</a></div></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">NASHHAL TRUST · VERIFIABLE NEWS</div><h1>طبقة Web3 توثق السجل ولا تستبدل غرفة الأخبار</h1><p>الهدف هو إعطاء القارئ طريقة مستقلة للتحقق من أن manifest محدد لم يتغير بعد تثبيته. المحتوى نفسه يبقى خارج البلوكشين، بينما تحفظ السلسلة إثباتًا موجزًا للبصمة.</p><span class="state"><i></i><span id="state">طبقة Web3 مهيأة — في انتظار سجل on-chain</span></span></section>
+
+<section class="section"><h2>كيف تنتقل القصة من المصدر إلى الإثبات؟</h2><p>كل مرحلة لها وظيفة مختلفة، ولا تعتبر البصمة بديلًا عن التحقق التحريري.</p>
+<div class="flow">
+<div class="step"><div class="num">01</div><b>جمع</b><span>اكتشاف الحدث والمصادر الأولية</span></div>
+<div class="step"><div class="num">02</div><b>كتابة</b><span>تحرير مسودة مرتبطة بالمصدر</span></div>
+<div class="step"><div class="num">03</div><b>تأكيد</b><span>مراجعة الأدلة والادعاءات</span></div>
+<div class="step"><div class="num">04</div><b>تحرير</b><span>صياغة نهائية وسياق واضح</span></div>
+<div class="step"><div class="num">05</div><b>نشر + Trust</b><span>SHA-256 ثم manifest ثم Web3 عند التفعيل</span></div>
+</div></section>
+
+<section class="section"><h2>ماذا يتم وضعه على Web3؟</h2><div class="grid">
+<div class="card"><h3>على البلوكشين</h3><p>بصمة manifest، وCID عند استخدام IPFS، ووقت التثبيت، وهوية حساب التثبيت وفق العقد الذكي.</p><div class="code">manifestHash → anchorManifest(manifestHash, cid)</div></div>
+<div class="card"><h3>خارج البلوكشين</h3><p>نص الخبر، الصور، صفحات الموقع ومواد التحقق التفصيلية. هذا يحافظ على الأداء ويقلل تكلفة ومساحة السجل.</p><div class="code">article + media + evidence → Nashhal infrastructure</div></div>
+</div><div class="notice"><strong>مهم:</strong> وجود معاملة على البلوكشين يثبت وجود بصمة لسجل معين وعدم تغييرها على السلسلة، ولا يثبت بمفرده أن كل جملة في الخبر صحيحة.</div></section>
+
+<section class="section"><h2>حالة التنفيذ</h2><div class="grid">
+<div class="card"><h3>SHA-256</h3><p>مفعل ضمن Nashhal Trust لحساب بصمة البيانات الأساسية للخبر بصيغة JSON ثابتة.</p></div>
+<div class="card"><h3>IPFS</h3><p>مهيأ ليحفظ manifest بعنوان محتوى عند توفير مزود IPFS وبيانات الاعتماد اللازمة.</p></div>
+<div class="card"><h3>Ethereum Sepolia</h3><p>العقد الذكي وأتمتة التثبيت موجودان في المستودع. حالة on-chain الفعلية تعتمد على تفعيل أسرار الشبكة والمحفظة.</p></div>
+<div class="card"><h3>التحقق</h3><p>صفحة Nashhal Trust تفحص البصمة وتقارنها بالـmanifest وتعرض المعاملة عندما تتوفر.</p></div>
+</div></section>
+</main>
+<footer class="wrap footer">Nashhal Trust Web3 · شفافية السجل دون تخزين المحتوى نفسه على السلسلة</footer>
+<script>
+(async()=>{try{const r=await fetch('data/web3/anchor.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const a=await r.json();const s=document.getElementById('state');if(a.status==='anchored')s.textContent='السجل الحالي مرتبط بإثبات on-chain على Ethereum Sepolia';else if(a.status==='prepared')s.textContent='تم تجهيز manifest — التثبيت on-chain غير مكتمل بعد';}catch(_){}})();
+</script>
+</body>
+</html>
