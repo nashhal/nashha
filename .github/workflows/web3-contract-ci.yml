@@ -1,0 +1,32 @@
+name: Nashhal Web3 Contract CI
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/**'
+      - 'web3/**'
+      - '.github/workflows/web3-contract-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/**'
+      - 'web3/**'
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install
+        working-directory: web3
+        run: npm install --no-audit --no-fund --ignore-scripts
+      - name: Compile
+        working-directory: web3
+        run: npm run compile
