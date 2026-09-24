@@ -156,13 +156,14 @@ def render_article(n: dict) -> str:
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | الثورة الجنوبية</title>
 <meta name="description" content="{esc(summary[:300])}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="canonical" href="{page_url(n)}">
 <meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="الثورة الجنوبية">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(summary[:300])}">
 <script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
 <style>
 :root{{--bg:#f2f4f6;--paper:#fff;--ink:#14202b;--muted:#687482;--line:#d7dde3;--brand:#0B2A4A;--brand2:#1F5A8A;--ok:#18794e;--warn:#a16207;--soft:#eef3f7;--max:920px}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:2}}
+*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Arabic','IBM Plex Sans Arabic','IBM Plex Sans',Arial,sans-serif;line-height:2}}
 .top{{background:var(--brand);color:#fff;padding:9px 0;font-size:12px}}.wrap{{width:min(var(--max),calc(100% - 30px));margin:auto}}.top a,.back{{color:#fff;text-decoration:none}}
 .head{{background:var(--paper);border-bottom:1px solid var(--line);padding:18px 0}}.headrow{{display:flex;justify-content:space-between;gap:15px;align-items:center}}.brand{{font-size:28px;font-weight:900;color:var(--ink);text-decoration:none}}.back{{color:var(--brand2);font-weight:700;text-decoration:none}}
 .article{{margin:28px 0 55px;background:var(--paper);border:1px solid var(--line);padding:32px;box-shadow:0 8px 28px rgba(11,42,74,.06)}}.kicker{{color:var(--brand2);font-size:12px;font-weight:900}}h1{{font-size:34px;line-height:1.5;margin:8px 0 10px}}.meta{{color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);padding-bottom:15px}}
