@@ -2,12 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { ContractFactory, JsonRpcProvider, Wallet } from "ethers";
 
-const root = process.cwd();
+const packageRoot = process.cwd();
 const rpcUrl = process.env.WEB3_RPC_URL;
 const privateKey = process.env.WEB3_PRIVATE_KEY;
 if (!rpcUrl || !privateKey) throw new Error("WEB3_RPC_URL and WEB3_PRIVATE_KEY are required");
 
-const artifact = JSON.parse(fs.readFileSync(path.join(root, "web3", "artifacts", "NashhalTrustAnchor.json"), "utf8"));
+const artifact = JSON.parse(fs.readFileSync(path.join(packageRoot, "artifacts", "NashhalTrustAnchor.json"), "utf8"));
 const provider = new JsonRpcProvider(rpcUrl);
 const wallet = new Wallet(privateKey, provider);
 const network = await provider.getNetwork();
