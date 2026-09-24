@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Quality gate: validate freshness, evidence strength and publication readiness."""
+"""Final publication gate: freshness, evidence and editorial readiness."""
 from __future__ import annotations
 
 import json
@@ -34,7 +34,11 @@ def source_date(url: str):
     if not str(url).startswith(("http://", "https://")):
         return None
     try:
-        r = requests.get(url, timeout=FETCH_TIMEOUT, headers={"User-Agent": "NashhalNewsBot/1.0 (+https://nashhal.github.io/nashha)"})
+        r = requests.get(
+            url,
+            timeout=FETCH_TIMEOUT,
+            headers={"User-Agent": "NashhalNewsBot/1.0 (+https://nashhal.github.io/nashha)"},
+        )
         if not r.ok:
             return None
         text = r.text[:500000]
@@ -54,16 +58,18 @@ def main():
     now = datetime.now(timezone.utc)
     seen = set()
     live = 0
-    demoted = 0
+    review = 0
+    archive = 0
 
     for item in data:
         if not isinstance(item, dict):
             continue
+
         key = str(item.get("event_key") or item.get("id") or "").strip()
         if key and key in seen:
             item["status"] = "archive"
             item["auto_published"] = False
-            demoted += 1
+            archive += 1
             continue
         if key:
             seen.add(key)
@@ -73,42 +79,73 @@ def main():
             score = int(item.get("verification_score") or 0)
         except (TypeError, ValueError):
             score = 0
+
         evidence = item.get("verification_evidence") if isinstance(item.get("verification_evidence"), list) else []
         primary = sum(1 for e in evidence if isinstance(e, dict) and e.get("type") == "primary")
         independent = sum(1 for e in evidence if isinstance(e, dict) and e.get("type") == "independent")
+
         published = dt(item.get("published") or item.get("published_at"))
-        source_url = item.get("source_url") or (evidence[0].get("url") if evidence and isinstance(evidence[0], dict) else "")
+        source_url = item.get("source_url") or (
+            evidence[0].get("url") if evidence and isinstance(evidence[0], dict) else ""
+        )
         source_published = source_date(source_url)
         effective_date = source_published or published
-        fresh = bool(effective_date and now - effective_date <= timedelta(hours=MAX_LIVE_AGE_HOURS) and effective_date <= now + timedelta(minutes=10))
-        title = str(item.get("title") or "")
-        years = [int(y) for y in YEAR_RE.findall(title)]
+        fresh = bool(
+            effective_date
+            and now - effective_date <= timedelta(hours=MAX_LIVE_AGE_HOURS)
+            and effective_date <= now + timedelta(minutes=10)
+        )
+
+        years = [int(y) for y in YEAR_RE.findall(str(item.get("title") or ""))]
         historical_title = bool(years and max(years) < now.year)
 
         if source_published:
             item["source_published_at"] = source_published.isoformat()
-        if verification == "confirmed" and not (primary >= 1 and independent >= 1 and score >= 80):
-            verification = "developing"
-            score = min(score if score else 70, 79)
-        if verification == "unconfirmed" or not fresh or historical_title:
-            item["status"] = "archive" if effective_date else "review"
-            item["auto_published"] = False
-            item["verification"] = verification
-            item["verification_status"] = verification
-            demoted += 1
-            continue
+
+        # Only fully verified and editor-approved material can become public automatically.
+        ready = (
+            verification == "confirmed"
+            and score >= 80
+            and primary >= 1
+            and independent >= 1
+            and str(item.get("editorial_status") or "") == "ready"
+            and str(item.get("title") or "").strip()
+            and str(item.get("summary") or "").strip()
+            and str(item.get("content") or "").strip()
+            and str(item.get("source_url") or "").strip()
+        )
 
         item["verification"] = verification
         item["verification_status"] = verification
-        item["verification_score"] = max(55 if verification == "developing" else 80, min(score or 70, 100))
+        item["verification_score"] = max(0, min(score, 100))
         item["verification_evidence_count"] = len(evidence)
-        item["status"] = "published"
-        item["auto_published"] = True
-        item["freshness_hours"] = round((now - effective_date).total_seconds() / 3600, 2)
-        live += 1
 
-    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[DONE] quality gate: {live} live, {demoted} demoted")
+        if historical_title:
+            item["status"] = "archive"
+            item["auto_published"] = False
+            archive += 1
+            continue
+
+        if not fresh and effective_date:
+            item["status"] = "archive"
+            item["auto_published"] = False
+            archive += 1
+            continue
+
+        if ready and fresh:
+            item["status"] = "published"
+            item["auto_published"] = True
+            item["confidence"] = "high"
+            item["freshness_hours"] = round((now - effective_date).total_seconds() / 3600, 2)
+            live += 1
+        else:
+            item["status"] = "review"
+            item["auto_published"] = False
+            item["confidence"] = "medium" if verification == "developing" else "low"
+            review += 1
+
+    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"[DONE] publication gate: {live} live, {review} review, {archive} archive")
 
 
 if __name__ == "__main__":
