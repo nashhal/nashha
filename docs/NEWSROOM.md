@@ -59,3 +59,8 @@ The code defaults to the repository's existing grok-4.5 setting when XAI_MODEL i
 ## Design principle
 
 AI is used as a research and editorial aid. It does not get a free-form publish capability. Publication is a deterministic outcome of source evidence, verification rules, editorial readiness, and the final self-check.
+
+
+## Degraded mode
+
+If the AI provider returns an authentication, entitlement, rate-limit, or server-availability error, the orchestrator exits safely without creating or publishing new stories. Existing published data is retained and the workflow can continue rebuilding the site.
