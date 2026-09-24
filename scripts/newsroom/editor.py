@@ -70,7 +70,12 @@ def edit(verified: list[dict]) -> list[dict]:
         title = clean(item.get("title"))
         summary = clean(item.get("summary"))
         body = clean_body(item.get("content_ar"))
+        title_en = clean(item.get("title_en"))
+        summary_en = clean(item.get("summary_en"))
+        body_en = clean_body(item.get("content_en"))
         if not title or not summary or not body:
+            continue
+        if not title_en or not summary_en or not body_en:
             continue
 
         angle = clean(item.get("news_angle"))
@@ -84,7 +89,10 @@ def edit(verified: list[dict]) -> list[dict]:
             **base,
             "title": title[:320],
             "summary": summary[:1600],
+            "title_en": title_en[:320],
+            "summary_en": summary_en[:1600],
             "content_ar": body[:6500],
+            "content_en": body_en[:6500],
             "facts_ar": [clean(x)[:600] for x in item.get("facts_ar", []) if clean(x)][:8],
             "claims_ar": [clean(x)[:600] for x in item.get("claims_ar", []) if clean(x)][:5],
             "news_angle": angle,
