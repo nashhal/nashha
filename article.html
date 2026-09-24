@@ -14,7 +14,7 @@ async function load(){
   document.title='Al-Thawra Newspaper | '+title;
   document.getElementById('category').textContent=categoryLabel(n.category);
   document.getElementById('title').textContent=title;
-  document.getElementById('meta').textContent=[n.published||n.published_at||'',n.region_en||categoryLabel(n.region)||'',n.news_angle||''].filter(Boolean).join(' · ');
+  document.getElementById('meta').textContent=[n.published||n.published_at||'',n.region_en||categoryLabel(n.region)||'',({سياسي:'Political',ميداني:'Field',أمني:'Security',دبلوماسي:'Diplomatic',اقتصادي:'Business',إنساني:'Humanitarian',متابعة:'Follow-up'}[n.news_angle]||n.news_angle||'')].filter(Boolean).join(' · ');
   document.getElementById('summary').textContent=summary;
   const facts=Array.isArray(n.facts_en)?n.facts_en:[]; const claims=Array.isArray(n.claims_en)?n.claims_en:[];
   if(fillList('facts',facts))document.getElementById('factsSection').hidden=false;
@@ -35,8 +35,8 @@ async function load(){
    document.getElementById('background').textContent=background;
    document.getElementById('whatHappened').textContent=what;
    document.getElementById('whyItMatters').textContent=why;
-   document.getElementById('importance').textContent=n.importance||'Normal';
-   document.getElementById('analysisMeta').textContent=[n.news_angle||'',n.analysis_level?'Analysis level: '+n.analysis_level:''].filter(Boolean).join(' · ');
+   document.getElementById('importance').textContent=({مرتفع:'High',متوسط:'Medium',عادي:'Normal'}[n.importance]||n.importance||'Normal');
+   document.getElementById('analysisMeta').textContent=[({سياسي:'Political',ميداني:'Field',أمني:'Security',دبلوماسي:'Diplomatic',اقتصادي:'Business',إنساني:'Humanitarian',متابعة:'Follow-up'}[n.news_angle]||n.news_angle||''),n.analysis_level?'Analysis level: '+n.analysis_level:''].filter(Boolean).join(' · ');
    if(fillList('implications',implications))document.getElementById('implicationsSection').hidden=false;
    if(fillList('questions',questions))document.getElementById('questionsSection').hidden=false;
    document.getElementById('analysis').hidden=false;
