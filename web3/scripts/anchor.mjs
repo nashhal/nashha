@@ -27,9 +27,14 @@ function canonicalRecord(x) {
   };
 }
 
+function canonicalJson(value) {
+  const keys = Object.keys(value).sort();
+  return JSON.stringify(value, keys);
+}
+
 function recordHash(x) {
   return crypto.createHash("sha256")
-    .update(JSON.stringify(canonicalRecord(x)), "utf8")
+    .update(canonicalJson(canonicalRecord(x)), "utf8")
     .digest("hex");
 }
 
@@ -52,6 +57,7 @@ fs.writeFileSync(manifestPath, JSON.stringify({
   generated_at: new Date().toISOString(),
   hash_algorithm: "SHA-256",
   manifest_hash: manifestHash,
+  canonicalization: "JSON object keys sorted lexicographically",
   records
 }, null, 2) + "\n");
 
