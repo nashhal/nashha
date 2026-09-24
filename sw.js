@@ -1,4 +1,4 @@
-const CACHE='southern-revolution-shell-v8';
+const CACHE='southern-revolution-shell-v9';
 const DATA='nashhal-data-v2';
 const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest','./favicon.svg'];
 
