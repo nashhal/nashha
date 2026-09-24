@@ -1,0 +1,56 @@
+name: Nashhal Web3 Trust Anchor
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Nashhal Newsroom"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  anchor:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install Web3 toolchain
+        working-directory: web3
+        run: npm install --no-audit --no-fund --ignore-scripts
+
+      - name: Compile trust contract
+        working-directory: web3
+        run: npm run compile
+
+      - name: Build manifest and anchor
+        working-directory: web3
+        env:
+          WEB3_RPC_URL: ${{ secrets.WEB3_RPC_URL }}
+          WEB3_PRIVATE_KEY: ${{ secrets.WEB3_PRIVATE_KEY }}
+          WEB3_CONTRACT_ADDRESS: ${{ secrets.WEB3_CONTRACT_ADDRESS }}
+          IPFS_API_URL: ${{ secrets.IPFS_API_URL }}
+          IPFS_API_TOKEN: ${{ secrets.IPFS_API_TOKEN }}
+        run: npm run anchor
+
+      - name: Commit Web3 trust record
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'nashhal-trust-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/web3
+          if git diff --cached --quiet; then echo 'No Web3 trust changes.'; exit 0; fi
+          git commit -m 'تحديث طبقة Nashhal Trust Web3'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
