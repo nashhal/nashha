@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071b2a">
-<meta name="description" content="Southern Revolution Trust — تحقق من Story Source وبصمته الرقمية وLOG توثيقه وارتباطه بWeb3 Layer.">
+<meta name="description" content="Southern Revolution Trust — Verify Story Source وبصمته الرقمية وLOG توثيقه وارتباطه بWeb3 Layer.">
 <title>Southern Revolution Trust | تحقق Story</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700" rel="stylesheet">
@@ -29,7 +29,7 @@
 <main class="wrap">
 <section class="hero"><span class="eyebrow"><i></i> VERIFIABLE NEWS RECORD</span><h1>Verify Story</h1><p>راجع SOURCE وTimestamp وFINGERPRINT الرقمية، ثم check the Manifest proof status when Web3 anchoring is enabled.</p></section>
 <section class="card" id="card"><div class="empty">جارٍ تحميل LOG التوثيق…</div></section>
-<section class="card"><div class="explain"><h2>كيف تقرأ الresults؟</h2><p>مطابقة SHA-256 تعني أن البيانات الأساسية المLOGة تطابق FINGERPRINT المحفوظة للLOG. وإذا ظهر إثبات Web3 Verified، فهذا يربط manifest ببصمة مLOGة على الشبكة. Neither establishes the underlying facts by itself; factual accuracy depends on sources, evidence and editorial verification.</p></div></section>
+<section class="card"><div class="explain"><h2>كيف تقرأ الresults؟</h2><p>A SHA-256 match means أن البيانات الأساسية المLOGة تطابق FINGERPRINT المحفوظة للLOG. وإذا ظهر إثبات Web3 Verified، فهذا يربط manifest ببصمة مLOGة على الشبكة. Neither establishes the underlying facts by itself; factual accuracy depends on sources, evidence and editorial verification.</p></div></section>
 </main>
 <footer class="wrap footer">Southern Revolution Trust · مصمم لإثبات سلامة الLOG دون تخزين نص Story أو الصور على البلوكشين</footer>
 <script>
@@ -67,7 +67,7 @@ async function load(){
   html+='<div class="body"><div class="grid">';
   html+='<div class="item"><span>معرّف Story</span><b>'+esc(record.id)+'</b></div>';
   html+='<div class="item"><span>SOURCE</span><b>'+esc(record.source||'Not specified')+'</b></div>';
-  html+='<div class="item"><span>وقت النشر المLOG</span><b>'+esc(record.published||'Not specified')+'</b></div>';
+  html+='<div class="item"><span>وقت الPublish المLOG</span><b>'+esc(record.published||'Not specified')+'</b></div>';
   html+='<div class="item"><span>وقت التوثيق</span><b>'+esc(record.captured_at||'Not specified')+'</b></div></div>';
   html+='<div class="item" style="margin-top:9px"><span>العنوان</span><b>'+esc(record.title||'بدون عنوان')+'</b></div>';
   html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
