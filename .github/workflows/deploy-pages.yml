@@ -12,9 +12,10 @@ permissions:
   pages: write
   id-token: write
 
+# Keep deployments queued instead of cancelling a publish already in progress.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
