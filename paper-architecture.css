@@ -372,3 +372,18 @@ body.paper-edition .rail-media{
   body.paper-edition{background:#ececea}
   body.paper-edition .paper-page{box-shadow:0 12px 30px rgba(0,0,0,.10)}
 }
+
+/* Intro safety: once hidden, it can never reappear during scrolling or filtering. */
+.paper-opening[hidden]{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+body.paper-open-complete .paper-opening,
+body.paper-filter-out .paper-opening,
+body.paper-filter-in .paper-opening,
+body.paper-navigating-out .paper-opening{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}

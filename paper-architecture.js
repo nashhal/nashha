@@ -15,8 +15,14 @@
   const finishOpening = () => {
     body.classList.remove('paper-boot');
     body.classList.add('paper-open-complete', 'paper-motion-ready');
-    // Keep the opening layer dismissed. Removing this class made the cover reappear
-    // shortly after the page became interactive, which looked like a reset to the top.
+    const opening = document.querySelector('.paper-opening');
+    if (opening) {
+      opening.setAttribute('hidden', '');
+      opening.setAttribute('aria-hidden', 'true');
+      opening.style.display = 'none';
+      opening.style.visibility = 'hidden';
+      opening.style.pointerEvents = 'none';
+    }
     observePaperParts();
   };
 
