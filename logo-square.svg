@@ -1,0 +1,7 @@
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+<rect width="96" height="96" rx="22" fill="#0B2A4A"/>
+<circle cx="48" cy="30" r="4" fill="#fff"/>
+<circle cx="36" cy="30" r="4" fill="#fff"/>
+<circle cx="60" cy="30" r="4" fill="#fff"/>
+<text x="48" y="72" text-anchor="middle" direction="rtl" font-family="Arial, Tahoma, sans-serif" font-size="48" font-weight="700" fill="#fff">ث</text>
+</svg>
