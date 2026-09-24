@@ -29,9 +29,12 @@ def edit(verified: list[dict]) -> list[dict]:
 [
   {{
     "event_key":"نفس event_key",
-    "title":"عنوان نهائي دقيق",
-    "summary":"ملخص من 2 إلى 4 جمل",
-    "content_ar":"نص خبري من 4 إلى 8 فقرات قصيرة",
+    "title":"Final accurate headline",
+    "summary":"2 to 4 sentence summary",
+    "content_ar":"Arabic newsroom body text from 4 to 8 short paragraphs",
+    "title_en":"English headline",
+    "summary_en":"English summary in 2 to 4 sentences",
+    "content_en":"English newsroom body text from 4 to 8 short paragraphs",
     "facts_ar":["حتى 8 وقائع مدعومة"],
     "claims_ar":["الادعاءات المنسوبة بوضوح إن وجدت"],
     "news_angle":"سياسي أو ميداني أو أمني أو دبلوماسي أو اقتصادي أو إنساني أو متابعة",
