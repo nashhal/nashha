@@ -11,7 +11,8 @@
   flag.className = 'southern-flag-badge';
   flag.href = 'index.html';
   flag.setAttribute('aria-label', 'The Southern Revolution');
-  flag.innerHTML = '<img src="southern-flag.svg" alt="Southern flag">';
+  const flagSrc = location.pathname.includes('/articles/') ? '../southern-flag.svg' : 'southern-flag.svg';
+  flag.innerHTML = '<img src="' + flagSrc + '" alt="Southern flag">';
   body.insertBefore(flag, body.firstChild);
 
   const grain = document.createElement('div');
