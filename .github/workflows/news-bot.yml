@@ -1,4 +1,4 @@
-name: Nashhal Newsroom
+name: Southern Revolution Newsroom
 
 on:
   workflow_dispatch:
@@ -62,7 +62,7 @@ jobs:
       - name: 5 · بناء صفحات الأخبار وخرائط الموقع
         run: python scripts/build_site.py
 
-      - name: 6 · بناء سجل Nashhal Trust
+      - name: 6 · بناء سجل Southern Revolution Trust
         run: python scripts/build_provenance.py
 
       - name: Commit newsroom output
@@ -76,17 +76,17 @@ jobs:
             echo 'لا توجد تحديثات للنشر.'
             exit 0
           fi
-          git commit -m 'تحديث غرفة أخبار نشهل'
+          git commit -m 'تحديث غرفة أخبار الثورة الجنوبية'
           for attempt in 1 2 3; do
             git fetch origin main
             if git rebase origin/main && git push origin HEAD:main; then
-              echo 'تم نشر مخرجات غرفة أخبار نشهل.'
+              echo 'تم نشر مخرجات غرفة أخبار الثورة الجنوبية.'
               exit 0
             fi
             git rebase --abort || true
             git reset --soft origin/main
             git add data/news.json data/provenance.json articles sitemap.xml news-sitemap.xml robots.txt
-            git commit -m 'تحديث غرفة أخبار نشهل' || true
+            git commit -m 'تحديث غرفة أخبار الثورة الجنوبية' || true
             sleep 3
           done
           echo 'تعذر نشر التحديث بعد 3 محاولات.'
