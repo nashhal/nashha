@@ -7,8 +7,6 @@
   if (!body) return;
 
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const OPEN_KEY = 'southern-revolution-paper-open-v2';
-
   root.classList.add('paper-edition');
   body.classList.add('paper-edition');
 
@@ -26,11 +24,10 @@
     observePaperParts();
   };
 
-  if (reduce || sessionStorage.getItem(OPEN_KEY) === '1') {
+  if (reduce) {
     finishOpening();
   } else {
-    sessionStorage.setItem(OPEN_KEY, '1');
-    window.setTimeout(finishOpening, 1180);
+    window.setTimeout(finishOpening, 1680);
   }
 
   let observer = null;
