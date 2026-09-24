@@ -96,7 +96,7 @@ def list_html(items: object) -> str:
 
 
 def render_article(n: dict) -> str:
-    title = clean(n.get("title_en")) or "Archived Story | Al-Thawra Newspaper"
+    title = clean(n.get("title_en")) or "Story | Al-Thawra Newspaper"
     summary = clean(n.get("summary_en")) or "This archived story is preserved in its original source record. See the verification record for the original source."
     published = parse_dt(n.get("published") or n.get("published_at"))
     modified = parse_dt(n.get("updated_at") or n.get("collected_at")) or published
@@ -179,14 +179,14 @@ def render_article(n: dict) -> str:
 <header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">Al-Thawra Newspaper</a><a class="back" href="../index.html">Back to News</a></div></header>
 <main class="wrap"><article class="article">
 <div class="kicker">{esc(n.get("category_en") or ("South" if n.get("category")=="الجنوب" else "Yemen" if n.get("category")=="اليمن" else "News"))}</div><h1>{esc(title)}</h1>
-<div class="meta">{esc(n.get("region_en") or n.get("region") or "")} · {esc(published.isoformat() if published else "")}</div>
+<div class="meta">{esc(n.get("region_en") or "Yemen")} · {esc(published.isoformat() if published else "")}</div>
 <p class="lead">{esc(summary)}</p>
 {facts_block}{claims_block}
 <div class="article-body">{''.join(f'<p>{esc(clean(x))}</p>' for x in body if clean(x))}</div>
 <section class="box verification"><div class="ver-head"><strong>Verification Status</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis_en") or "Available information is reviewed, separating established facts from attributed claims and unresolved details.")}</div><div class="ver-meta">Verification score: {score_text} · Evidence: {len(evidence)} · Primary: {primary} · Independent: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · Verifiable Record</div><div class="trust-state" id="trustState">Digital fingerprint stored in the newspaper record · Web3 status available on the verification page</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">Open Verification Log ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: Under Review</span><span>·</span><span>Story text and images are not stored on-chain</span></div></section>
 {analysis_block}
-<div class="notice">This story is edited by Al-Thawra Newspaper يركز على الحدث نفسه. تحفظ newsroom مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. AI assistance does not replace editorial verification.</div>
-</article></main><footer><div class="wrap">© Al-Thawra Newspaper · News First · Verification First · Southern Revolution Trust</div></footer>
+<div class="notice">This story is edited by Al-Thawra Newspaper and focuses on the event itself. The newsroom retains verification materials and reference links for evidence review, updates and corrections. AI assistance does not replace editorial verification.</div>
+</article></main><footer><div class="wrap">© Al-Thawra Newspaper · News First · Verification First · Al-Thawra Trust</div></footer>
 
 </body></html>'''
 
@@ -234,7 +234,7 @@ def main() -> None:
             continue
         title = html.escape(clean(item.get("title")))
         pub = dt.astimezone(timezone.utc).isoformat().replace('+00:00','Z')
-        newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>الثورة الجنوبية</news:name><news:language>ar</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
+        newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>Al-Thawra Newspaper</news:name><news:language>en</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
     newsmap.append('</urlset>')
     (ROOT / "news-sitemap.xml").write_text("\n".join(newsmap) + "\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/news-sitemap.xml\n", encoding="utf-8")
