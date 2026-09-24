@@ -15,7 +15,7 @@ permissions:
 # Keep deployments queued instead of cancelling a publish already in progress.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
