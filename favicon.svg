@@ -1,8 +1,5 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background rounded square -->
-  <rect width="32" height="32" rx="6" fill="#155DFC"/>
-  
-  <!-- White U shape - simplified for small size -->
-  <path d="M 8 8 L 8 18 Q 8 24 16 24 Q 24 24 24 18 L 24 8" 
-        fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="14" fill="#0B2A4A"/>
+<circle cx="32" cy="20" r="3" fill="#fff"/><circle cx="24" cy="20" r="3" fill="#fff"/><circle cx="40" cy="20" r="3" fill="#fff"/>
+<text x="32" y="50" text-anchor="middle" direction="rtl" font-family="Arial, Tahoma, sans-serif" font-size="30" font-weight="700" fill="#fff">ث</text>
 </svg>
