@@ -15,6 +15,7 @@
   let allItems = [];
   let currentFilter = 'all';
   let lang = 'en';
+  let lastRenderSignature = '';
   const UI={en:{news:'NEWS',monitor:'MONITORING',review:'UNDER REVIEW',latest:'Latest News',latestMeta:'Continuous coverage',none:'No recent published stories in this section',more:'No more published stories',verify:'Monitoring under review',verifyMeta:'Not treated as published news until sufficient evidence is available',update:'UPDATE',digital:'The Southern Revolution'}};
 
   const clean = (value = '') => String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -135,8 +136,83 @@
   function setupDarkMode(){const root=document.body,saved=localStorage.getItem('nashhal-theme');if(saved==='dark'||(!saved&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches))root.classList.add('dark');const toggle=document.getElementById('darkToggle');if(toggle)toggle.addEventListener('click',()=>{root.classList.toggle('dark');localStorage.setItem('nashhal-theme',root.classList.contains('dark')?'dark':'light')});}
   function setupSearch(){const button=document.getElementById('searchToggle'),panel=document.getElementById('searchPanel'),form=document.getElementById('searchForm'),input=document.getElementById('searchInput');if(!button||!panel||!form||!input)return;button.addEventListener('click',()=>{panel.classList.toggle('open');if(panel.classList.contains('open'))requestAnimationFrame(()=>input.focus())});}
   function registerPWA(){const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='manifest.webmanifest?v=10';document.head.appendChild(manifest);if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=10',{updateViaCache:'none'}).then(reg=>reg.update()).catch(err=>console.warn('SW',err)));}
-  function renderAll(){renderTicker();renderHero(currentFilter);renderGrid(currentFilter);renderVerify();window.dispatchEvent(new CustomEvent('nashhal-data-ready',{detail:allItems}));}
-  async function loadNews(force=false){let cached=null;if(!force){try{cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null')}catch(_){}}if(Array.isArray(cached)&&cached.length){allItems=cached.map(normalize).filter(item=>item.title);renderAll()}try{const url=`${DATA_URL}${force?'?t=':'?v='}${Date.now()}`;const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();const raw=Array.isArray(data)?data:(data.items||data.news||[]);allItems=raw.map(normalize).filter(item=>item.title);localStorage.setItem(CACHE_KEY,JSON.stringify(allItems));renderAll()}catch(error){console.error('News loading failed:',error);if(!allItems.length){const hero=document.getElementById('heroGrid');if(hero)hero.innerHTML='<div class="error-state">News are temporarily unavailable<div><button type="button" id="retryNews">Retry</button></div></div>';const retry=document.getElementById('retryNews');if(retry)retry.onclick=()=>{showSkeleton();loadNews(true)}}}}
+  function dataSignature(items){
+    return items.map(item => [
+      item.id,item.title,item.published,item.status,item.confidence,item.category,item.image
+    ].join('|')).join('||');
+  }
+
+  function renderAll(options = {}){
+    const signature = dataSignature(allItems);
+    if (!options.force && signature === lastRenderSignature) return false;
+
+    const preserveScroll = options.preserveScroll !== false;
+    const scrollY = preserveScroll ? window.scrollY : 0;
+    const active = document.activeElement;
+    const activeId = active && active.id ? active.id : '';
+
+    renderTicker();
+    renderHero(currentFilter);
+    renderGrid(currentFilter);
+    renderVerify();
+    lastRenderSignature = signature;
+    window.dispatchEvent(new CustomEvent('nashhal-data-ready',{detail:allItems}));
+
+    if (preserveScroll) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo({top:scrollY,left:0,behavior:'auto'});
+          if(activeId){
+            const next=document.getElementById(activeId);
+            if(next) try{next.focus({preventScroll:true});}catch(_){next.focus();}
+          }
+        });
+      });
+    }
+    return true;
+  }
+
+  async function loadNews(force=false){
+    let cached=null;
+    if(!force){
+      try{cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null')}catch(_){ }
+    }
+
+    if(Array.isArray(cached)&&cached.length){
+      allItems=cached.map(normalize).filter(item=>item.title);
+      renderAll({preserveScroll:false});
+    }
+
+    try{
+      const url=`${DATA_URL}${force?'?t=':'?v='}${Date.now()}`;
+      const response=await fetch(url,{cache:'no-store'});
+      if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      const data=await response.json();
+      const raw=Array.isArray(data)?data:(data.items||data.news||[]);
+      const nextItems=raw.map(normalize).filter(item=>item.title);
+      const changed=dataSignature(nextItems)!==dataSignature(allItems);
+      allItems=nextItems;
+      localStorage.setItem(CACHE_KEY,JSON.stringify(allItems));
+      if(changed || force) renderAll({preserveScroll:true,force:true});
+    }catch(error){
+      console.error('News loading failed:',error);
+      if(!allItems.length){
+        const hero=document.getElementById('heroGrid');
+        if(hero)hero.innerHTML='<div class="error-state">News are temporarily unavailable<div><button type="button" id="retryNews">Retry</button></div></div>';
+        const retry=document.getElementById('retryNews');
+        if(retry)retry.onclick=()=>{showSkeleton();loadNews(true)};
+      }
+    }
+  }
   
-  document.addEventListener('DOMContentLoaded',()=>{injectPerformanceCSS();showSkeleton();setupFilters();setupDarkMode();setupSearch();registerPWA();loadNews(false)});
+  document.addEventListener('DOMContentLoaded',()=>{
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    injectPerformanceCSS();
+    showSkeleton();
+    setupFilters();
+    setupDarkMode();
+    setupSearch();
+    registerPWA();
+    loadNews(false);
+  });
 })();
