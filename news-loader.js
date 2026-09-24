@@ -14,7 +14,7 @@
   const platformLabel = { X: 'رصد اجتماعي', Facebook: 'رصد اجتماعي' };
   let allItems = [];
   let currentFilter = 'all';
-  let lang = localStorage.getItem('nashhal-language') || 'ar';
+  let lang = 'en';
   const UI = { ar:{news:'خبر',monitor:'رصد',review:'قيد التحقق',latest:'أحدث الأخبار',latestMeta:'تغطية مستمرة',none:'لا توجد أخبار منشورة حديثة في هذا القسم حاليًا',more:'لا مزيد من الأخبار المنشورة حاليًا',verify:'رصد قيد التحقق',verifyMeta:'لا يظهر كخبر منشور حتى تتوفر معطيات كافية',update:'تحديث',now:'الآن',minutes:'دقيقة',hours:'ساعة',days:'يوم',digital:'الثورة الجنوبية'}, en:{news:'NEWS',monitor:'MONITORING',review:'UNDER REVIEW',latest:'Latest News',latestMeta:'Continuous coverage',none:'No recent published stories in this section',more:'No more published stories',verify:'Monitoring under review',verifyMeta:'Not treated as published news until sufficient evidence is available',update:'UPDATE',now:'Now',minutes:'min',hours:'h',days:'d',digital:'Southern Revolution'} };
 
   const clean = (value = '') => String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -61,6 +61,7 @@
 
   function displaySummary(item) {
     const candidates = [
+      item.summary_en,
       item.summary,
       item.description,
       item.ai_summary_ar,
@@ -75,8 +76,8 @@
   }
 
   function normalize(item = {}, index = 0) {
-    const title = clean(item.title || item.headline || '');
-    const summary = displaySummary(item);
+    const title = clean(item.title_en || item.title_en || item.title || item.headline || '');
+    const summary = clean(item.summary_en || displaySummary(item));
     const sourceName = clean(item.source_name || item.source || item.publisher || '');
     const sourceUrl = safeUrl(item.source_url || item.link || item.url || '#');
     const published = item.published || item.published_at || item.pubDate || item.date || '';
@@ -103,9 +104,9 @@
     if (filter !== 'all') items = items.filter(item => item.category === filter || item.city === filter);
     return sortRecent(items);
   };
-  const categoryLabel = value => { const map={الجنوب:'South',عدن:'Aden',حضرموت:'Hadramout',شبوة:'Shabwah',أبين:'Abyan',لحج:'Lahj',الضالع:'Al Dhale’e',المهرة:'Al Mahrah',سقطرى:'Socotra',اليمن:'Yemen'}; return lang==='ar' ? value : (map[value]||value); };
+  const categoryLabel = value => { const map={الجنوب:'South',عدن:'Aden',حضرموت:'Hadramout',شبوة:'Shabwah',أبين:'Abyan',لحج:'Lahj',الضالع:'Al Dhale’e',المهرة:'Al Mahrah',سقطرى:'Socotra',اليمن:'Yemen'}; return map[value]||value; };
   const metaLine = item => `<div class="meta-line"><span>${escapeHtml(categoryLabel(item.category))}</span><span class="dot"></span><span>${escapeHtml(timeAgo(item.published))}</span></div>`;
-  const placeholder = (label = UI?.[lang]?.digital || 'الثورة الجنوبية') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
+  const placeholder = (label = UI?.[lang]?.digital || 'Al-Thawra') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
   const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder(UI[lang].digital);
 
   function injectPerformanceCSS() {
@@ -133,7 +134,7 @@
 
   function renderHero(filter='all'){const root=document.getElementById('heroGrid');if(!root)return;const items=confirmedItems(filter);if(!items.length){root.innerHTML=`<div class="empty-state">${UI[lang].none}</div>`;return;}const main=items[0],rail=items.slice(1,5);root.innerHTML=`<article class="hero-main" data-news-id="${esc(main.id)}" tabindex="0" role="button"><a class="hero-media" href="${articleUrl(main)}" tabindex="-1">${media(main,'hero-photo')}</a><div class="hero-body"><span class="kicker">${escapeHtml(main.category)}</span><h1>${escapeHtml(main.title)}</h1><p class="hero-summary">${escapeHtml(main.summary)}</p>${metaLine(main)}</div></article><aside class="hero-rail"><div class="rail-head"><h2>${UI[lang].latest}</h2><span>${UI[lang].latestMeta}</span></div>${rail.map((item,index)=>`<article class="rail-item" data-news-id="${esc(item.id)}" tabindex="0" role="button"><div class="rail-index">0${index+1}</div><a class="rail-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'rail-photo')}</a><div class="rail-content"><span class="kicker">${escapeHtml(item.category)}</span><h2>${escapeHtml(item.title)}</h2>${metaLine(item)}</div></article>`).join('')}</aside>`;}
 
-  function renderGrid(filter='all'){const grid=document.getElementById('newsGrid'),title=document.getElementById('gridTitle');if(!grid)return;if(title){title.dataset.dynamic='1';title.textContent=filter==='all'?UI[lang].latest:(lang==='ar'?'أحدث أخبار '+filter:(categoryLabel(filter)+' News'));}const items=confirmedItems(filter).slice(5,5+GRID_LIMIT);if(!items.length){grid.innerHTML=`<div class="empty-state">${UI[lang].more}</div>`;return;}grid.innerHTML=items.map((item,index)=>{const kind=item.platform==='X'||item.platform==='Facebook'?'social':item.status==='review'?'review':'news';const label=kind==='social'?`◉ ${UI[lang].monitor}`:kind==='review'?`◌ ${UI[lang].review}`:`✓ ${UI[lang].news}`;const cls=kind==='news'?'tag-news':kind==='review'?'tag-review':'tag-social';return `<article class="news-card ${index===0?'news-card-featured':''} news-card-new" data-news-id="${esc(item.id)}" tabindex="0" role="button"><a class="card-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'card-photo')}<span class="card-tag ${cls}">${label}</span></a><div class="card-body"><div class="card-status"><span class="status-icon" aria-hidden="true">${kind==='social'?'◉':kind==='review'?'◌':'✓'}</span>${label.replace(/^..\s*/,'')}</div><h3>${escapeHtml(item.title)}</h3>${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}${metaLine(item)}</div></article>`;}).join('');}
+  function renderGrid(filter='all'){const grid=document.getElementById('newsGrid'),title=document.getElementById('gridTitle');if(!grid)return;if(title){title.dataset.dynamic='1';title.textContent=filter==='all'?UI[lang].latest:(lang==='ar'?'أحدث أخبار '+filter:(categoryLabel(filter)+' News'));}const items=confirmedItems(filter).slice(5,5+GRID_LIMIT);if(!items.length){grid.innerHTML=`<div class="empty-state">${UI[lang].more}</div>`;return;}grid.innerHTML=items.map((item,index)=>{const kind=item.platform==='X'||item.platform==='Facebook'?'social':item.status==='review'?'review':'news';const label=kind==='social'?`◉ ${UI.en.monitor}`:kind==='review'?`◌ ${UI.en.review}`:`✓ ${UI.en.news}`;const cls=kind==='news'?'tag-news':kind==='review'?'tag-review':'tag-social';return `<article class="news-card ${index===0?'news-card-featured':''} news-card-new" data-news-id="${esc(item.id)}" tabindex="0" role="button"><a class="card-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'card-photo')}<span class="card-tag ${cls}">${label}</span></a><div class="card-body"><div class="card-status"><span class="status-icon" aria-hidden="true">${kind==='social'?'◉':kind==='review'?'◌':'✓'}</span>${label.replace(/^..\s*/,'')}</div><h3>${escapeHtml(item.title)}</h3>${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}${metaLine(item)}</div></article>`;}).join('');}
 
   function renderVerify(){const wrap=document.getElementById('verifySection'),list=document.getElementById('verifyList');if(!wrap||!list)return;const items=sortRecent(allItems.filter(review)).slice(0,VERIFY_LIMIT);wrap.hidden=!items.length;list.innerHTML=items.map(item=>`<article class="verify-item"><span class="verify-badge">◉ ${escapeHtml(lang==='ar'?(platformLabel[item.platform]||UI[lang].review):UI[lang].review)}</span><div><h3><a href="${articleUrl(item)}">${escapeHtml(item.title)}</a></h3><div class="verify-meta">${escapeHtml(item.category)} · ${escapeHtml(timeAgo(item.published))}</div></div></article>`).join('');}
 
@@ -143,6 +144,6 @@
   function registerPWA(){const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='manifest.webmanifest?v=8';document.head.appendChild(manifest);if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=8',{updateViaCache:'none'}).then(reg=>reg.update()).catch(err=>console.warn('SW',err)));}
   function renderAll(){renderTicker();renderHero(currentFilter);renderGrid(currentFilter);renderVerify();window.dispatchEvent(new CustomEvent('nashhal-data-ready',{detail:allItems}));}
   async function loadNews(force=false){let cached=null;if(!force){try{cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null')}catch(_){}}if(Array.isArray(cached)&&cached.length){allItems=cached.map(normalize).filter(item=>item.title);renderAll()}try{const url=`${DATA_URL}${force?'?t=':'?v='}${Date.now()}`;const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();const raw=Array.isArray(data)?data:(data.items||data.news||[]);allItems=raw.map(normalize).filter(item=>item.title);localStorage.setItem(CACHE_KEY,JSON.stringify(allItems));renderAll()}catch(error){console.error('تعذر تحميل الأخبار:',error);if(!allItems.length){const hero=document.getElementById('heroGrid');if(hero)hero.innerHTML='<div class="error-state">تعذر تحميل الأخبار حاليًا<div><button type="button" id="retryNews">إعادة المحاولة</button></div></div>';const retry=document.getElementById('retryNews');if(retry)retry.onclick=()=>{showSkeleton();loadNews(true)}}}}
-  document.addEventListener('nashhal-language-change', event => { lang = event.detail && event.detail.lang ? event.detail.lang : lang; renderTicker(); renderHero(currentFilter); renderGrid(currentFilter); renderVerify(); });
+  
   document.addEventListener('DOMContentLoaded',()=>{injectPerformanceCSS();showSkeleton();setupFilters();setupDarkMode();setupSearch();registerPWA();loadNews(false)});
 })();
