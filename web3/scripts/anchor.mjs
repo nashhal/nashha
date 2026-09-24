@@ -17,9 +17,29 @@ function clean(v) {
 
 const data = JSON.parse(fs.readFileSync(newsPath, "utf8"));
 const items = Array.isArray(data) ? data : (data.items || data.news || []);
+function canonicalRecord(x) {
+  return {
+    id: clean(x.id),
+    title: clean(x.title),
+    url: clean(x.source_url || x.link),
+    published: clean(x.published || x.published_at),
+    source: clean(x.source_name || x.source) || "غير محدد"
+  };
+}
+
+function recordHash(x) {
+  return crypto.createHash("sha256")
+    .update(JSON.stringify(canonicalRecord(x)), "utf8")
+    .digest("hex");
+}
+
 const records = items
-  .filter((x) => x && x.status === "published" && x.id && x.content_hash)
-  .map((x) => ({ id: clean(x.id), content_hash: clean(x.content_hash), published: clean(x.published || x.published_at) }))
+  .filter((x) => x && x.status === "published" && x.id && x.title)
+  .map((x) => ({
+    id: clean(x.id),
+    content_hash: recordHash(x),
+    published: clean(x.published || x.published_at)
+  }))
   .sort((a, b) => a.id.localeCompare(b.id));
 
 if (!records.length) { console.log("[WEB3] no published records to anchor"); process.exit(0); }
