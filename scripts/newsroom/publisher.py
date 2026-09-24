@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 
-from .common import NEWS_PATH, PIPELINE_VERSION, clean, make_id
+from .common import NEWS_PATH, PIPELINE_VERSION, clean, clean_body, make_id
 
 
 PRESERVE = (
@@ -56,7 +56,7 @@ def publish(items: list[dict]) -> dict:
         current["title"] = clean(item.get("title") or item.get("headline"))
         current["summary"] = clean(item.get("summary"))
         current["description"] = clean(item.get("summary"))[:500]
-        current["content"] = clean(item.get("content_ar"))
+        current["content"] = clean_body(item.get("content_ar"))
         current["published"] = clean(item.get("published"))
         current["published_at"] = current["published"]
         current["collected_at"] = clean(item.get("collected_at")) or now
