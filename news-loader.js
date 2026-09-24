@@ -11,11 +11,11 @@
   const TICKER_LIMIT = 8;
   const CURRENT_HOURS = 72;
   const CITY_TERMS = ['عدن','حضرموت','شبوة','أبين','لحج','الضالع','المهرة','سقطرى'];
-  const platformLabel = { X: 'رصد اجتماعي', Facebook: 'رصد اجتماعي' };
+  const platformLabel = { X: 'SOCIAL MONITORING', Facebook: 'SOCIAL MONITORING' };
   let allItems = [];
   let currentFilter = 'all';
   let lang = 'en';
-  const UI = { ar:{news:'خبر',monitor:'رصد',review:'قيد التحقق',latest:'أحدث الأخبار',latestMeta:'تغطية مستمرة',none:'لا توجد أخبار منشورة حديثة في هذا القسم حاليًا',more:'لا مزيد من الأخبار المنشورة حاليًا',verify:'رصد قيد التحقق',verifyMeta:'لا يظهر كخبر منشور حتى تتوفر معطيات كافية',update:'تحديث',now:'الآن',minutes:'دقيقة',hours:'ساعة',days:'يوم',digital:'الثورة الجنوبية'}, en:{news:'NEWS',monitor:'MONITORING',review:'UNDER REVIEW',latest:'Latest News',latestMeta:'Continuous coverage',none:'No recent published stories in this section',more:'No more published stories',verify:'Monitoring under review',verifyMeta:'Not treated as published news until sufficient evidence is available',update:'UPDATE',now:'Now',minutes:'min',hours:'h',days:'d',digital:'Southern Revolution'} };
+  const UI={en:{news:'NEWS',monitor:'MONITORING',review:'UNDER REVIEW',latest:'Latest News',latestMeta:'Continuous coverage',none:'No recent published stories in this section',more:'No more published stories',verify:'Monitoring under review',verifyMeta:'Not treated as published news until sufficient evidence is available',update:'UPDATE',digital:'Al-Thawra Newspaper'}};
 
   const clean = (value = '') => String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const escapeHtml = (value = '') => clean(value).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
@@ -30,11 +30,11 @@
     const then = Date.parse(iso || '');
     if (Number.isNaN(then)) return '';
     const min = Math.max(0, Math.floor((Date.now() - then) / 60000));
-    if (min < 1) return lang === 'ar' ? 'الآن' : 'Now';
-    if (min < 60) return lang === 'ar' ? `قبل ${min} دقيقة` : `${min} min ago`;
+    if (min < 1) return Now;
+    if (min < 60) return `${min} min ago`;
     const hr = Math.floor(min / 60);
-    if (hr < 24) return lang === 'ar' ? `قبل ${hr} ساعة` : `${hr}h ago`;
-    return lang === 'ar' ? `قبل ${Math.floor(hr / 24)} يوم` : `${Math.floor(hr / 24)}d ago`;
+    if (hr < 24) return `${hr}h ago`;
+    return `${Math.floor(hr / 24)}d ago`;
   }
 
   function isCurrent(item) {
@@ -107,7 +107,7 @@
   const categoryLabel = value => { const map={الجنوب:'South',عدن:'Aden',حضرموت:'Hadramout',شبوة:'Shabwah',أبين:'Abyan',لحج:'Lahj',الضالع:'Al Dhale’e',المهرة:'Al Mahrah',سقطرى:'Socotra',اليمن:'Yemen'}; return map[value]||value; };
   const metaLine = item => `<div class="meta-line"><span>${escapeHtml(categoryLabel(item.category))}</span><span class="dot"></span><span>${escapeHtml(timeAgo(item.published))}</span></div>`;
   const placeholder = (label = UI?.[lang]?.digital || 'Al-Thawra') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
-  const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder(UI[lang].digital);
+  const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder(UI.en.digital);
 
   function injectPerformanceCSS() {
     if (document.getElementById('nashhal-perf-css')) return;
@@ -130,7 +130,7 @@
     hero.parentElement.insertBefore(strip, hero);
   }
 
-  function renderTicker(){const track=document.getElementById('tickerTrack');if(!track)return;const items=confirmedItems().slice(0,TICKER_LIMIT);track.innerHTML=items.length?items.map(item=>`<a class="ticker-item" href="${articleUrl(item)}"><strong>${UI[lang].update}</strong><span>${escapeHtml(item.title)}</span><small>${escapeHtml(timeAgo(item.published))}</small></a>`).join(''):`<span class="ticker-item">${lang==='ar'?'لا توجد تحديثات موثقة جديدة حاليًا':'No verified updates at the moment'}</span>`;}
+  function renderTicker(){const track=document.getElementById('tickerTrack');if(!track)return;const items=confirmedItems().slice(0,TICKER_LIMIT);track.innerHTML=items.length?items.map(item=>`<a class="ticker-item" href="${articleUrl(item)}"><strong>${UI[lang].update}</strong><span>${escapeHtml(item.title)}</span><small>${escapeHtml(timeAgo(item.published))}</small></a>`).join(''):`<span class="ticker-item">${'No verified updates at the moment'}</span>`;}
 
   function renderHero(filter='all'){const root=document.getElementById('heroGrid');if(!root)return;const items=confirmedItems(filter);if(!items.length){root.innerHTML=`<div class="empty-state">${UI[lang].none}</div>`;return;}const main=items[0],rail=items.slice(1,5);root.innerHTML=`<article class="hero-main" data-news-id="${esc(main.id)}" tabindex="0" role="button"><a class="hero-media" href="${articleUrl(main)}" tabindex="-1">${media(main,'hero-photo')}</a><div class="hero-body"><span class="kicker">${escapeHtml(categoryLabel(main.category))}</span><h1>${escapeHtml(main.title)}</h1><p class="hero-summary">${escapeHtml(main.summary)}</p>${metaLine(main)}</div></article><aside class="hero-rail"><div class="rail-head"><h2>${UI[lang].latest}</h2><span>${UI[lang].latestMeta}</span></div>${rail.map((item,index)=>`<article class="rail-item" data-news-id="${esc(item.id)}" tabindex="0" role="button"><div class="rail-index">0${index+1}</div><a class="rail-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'rail-photo')}</a><div class="rail-content"><span class="kicker">${escapeHtml(categoryLabel(item.category))}</span><h2>${escapeHtml(item.title)}</h2>${metaLine(item)}</div></article>`).join('')}</aside>`;}
 
