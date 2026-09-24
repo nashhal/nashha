@@ -25,7 +25,7 @@
 <div class="top"><div class="wrap"><a href="index.html">Al-Thawra Newspaper</a><span>Southern Revolution Trust Web3</span></div></div>
 <header class="head"><div class="wrap"><a class="brand" href="index.html">Al-Thawra Newspaper</a><a class="back" href="trust.html">Verify News Record</a></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">SOUTHERN REVOLUTION TRUST · VERIFIABLE NEWS</div><h1>Web3 Layer: Record Integrity Without Replacing the Newsroom</h1><p>The goal is to give readers an independent way to verify that a specific manifest has not changed after anchoring. The content remains off-chain while the network stores a compact fingerprint proof.</p><span class="state"><i></i><span id="state">Web3 Layer مهيأة — في انتظار LOG on-chain</span></span></section>
+<section class="hero"><div class="eyebrow">SOUTHERN REVOLUTION TRUST · VERIFIABLE NEWS</div><h1>Web3 Layer: Record Integrity Without Replacing the Newsroom</h1><p>The goal is to give readers an independent way to verify that a specific manifest has not changed after anchoring. The content remains off-chain while the network stores a compact fingerprint proof.</p><span class="state"><i></i><span id="state">Web3 Layer ready — awaiting on-chain proof</span></span></section>
 
 <section class="section"><h2>How the Story Moves from Source to Proof</h2><p>Each stage has a different role, and a fingerprint is not a replacement for editorial verification.</p>
 <div class="flow">
@@ -37,18 +37,18 @@
 </div></section>
 
 <section class="section"><h2>What Goes on Web3?</h2><div class="grid">
-<div class="card"><h3>على البلوكشين</h3><p>Manifest fingerprint, CID when IPFS is used, anchoring time and the anchoring account identity defined by the smart contract.</p><div class="code">manifestHash → anchorManifest(manifestHash, cid)</div></div>
-<div class="card"><h3>خارج البلوكشين</h3><p>Story text, images, site pages and detailed verification materials remain off-chain to preserve performance and reduce cost and storage.</p><div class="code">article + media + evidence → Southern Revolution infrastructure</div></div>
+<div class="card"><h3>On-chain</h3><p>Manifest fingerprint, CID when IPFS is used, anchoring time and the anchoring account identity defined by the smart contract.</p><div class="code">manifestHash → anchorManifest(manifestHash, cid)</div></div>
+<div class="card"><h3>Off-chain</h3><p>Story text, images, site pages and detailed verification materials remain off-chain to preserve performance and reduce cost and storage.</p><div class="code">article + media + evidence → Southern Revolution infrastructure</div></div>
 </div><div class="notice"><strong>Important:</strong> A blockchain transaction proves that a fingerprint for a specific record was anchored and unchanged on that chain; it does not by itself prove that every sentence in a story is true.</div></section>
 
 <section class="section"><h2>Implementation Status</h2><div class="grid">
 <div class="card"><h3>SHA-256</h3><p>Enabled in Southern Revolution Trust to calculate a stable JSON fingerprint for core story data.</p></div>
 <div class="card"><h3>IPFS</h3><p>Prepared to store a content-addressed manifest when an IPFS provider and credentials are configured.</p></div>
 <div class="card"><h3>Ethereum Sepolia</h3><p>The smart contract and anchoring automation are in the repository. Actual on-chain status depends on configured network and wallet credentials.</p></div>
-<div class="card"><h3>التحقق</h3><p>The Southern Revolution Trust page checks the fingerprint against the manifest and displays the transaction when available.</p></div>
+<div class="card"><h3>Verification</h3><p>The Southern Revolution Trust page checks the fingerprint against the manifest and displays the transaction when available.</p></div>
 </div></section>
 </main>
-<footer class="wrap footer">Southern Revolution Trust Web3 · شفافية الLOG دون تخزين المحتوى نفسه على السلسلة</footer>
+<footer class="wrap footer">Southern Revolution Trust Web3 · Record transparency without storing content on-chain</footer>
 <script>
 (async()=>{try{const r=await fetch('data/web3/anchor.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const a=await r.json();const s=document.getElementById('state');if(a.status==='anchored')s.textContent='الLOG الحالي مرتبط بإثبات on-chain على Ethereum Sepolia';else if(a.status==='prepared')s.textContent='تم تجهيز manifest — التثبيت on-chain غير مكتمل بعد';}catch(_){}})();
 </script>
