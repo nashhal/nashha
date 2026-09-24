@@ -108,15 +108,8 @@
     });
   }
 
-  const patchDynamicParts = () => {
-    document.querySelectorAll('.news-card-new').forEach(el => {
-      if (!el.dataset.paperPatched) {
-        el.dataset.paperPatched = '1';
-        el.classList.add('is-visible');
-      }
-    });
-  };
-
-  const mo = new MutationObserver(patchDynamicParts);
+  const mo = new MutationObserver(() => {
+    window.requestAnimationFrame(observePaperParts);
+  });
   mo.observe(document.body, { childList: true, subtree: true });
 })();
