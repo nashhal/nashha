@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-<rect width="64" height="64" rx="14" fill="#0B2A4A"/>
-<path d="M14 40V21c0-4 3-7 7-7h22c4 0 7 3 7 7v19" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
-<path d="M14 41h36" stroke="#4AAE83" stroke-width="3.4" stroke-linecap="round"/>
-<circle cx="24" cy="21" r="2.2" fill="#fff"/><circle cx="32" cy="21" r="2.2" fill="#fff"/><circle cx="40" cy="21" r="2.2" fill="#fff"/>
-<path d="M24 48h16" stroke="#4AAE83" stroke-width="2.8" stroke-linecap="round"/>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061A2A"/><stop offset="1" stop-color="#123B57"/></linearGradient></defs>
+<rect width="64" height="64" rx="15" fill="url(#g)"/>
+<path d="M15 43V21c0-4 3-7 7-7h20c4 0 7 3 7 7v22" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M15 44h34" stroke="#47B08A" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="24" cy="21" r="2.3" fill="#fff"/><circle cx="32" cy="21" r="2.3" fill="#fff"/><circle cx="40" cy="21" r="2.3" fill="#fff"/>
+<path d="M24 51h16" stroke="#47B08A" stroke-width="2.7" stroke-linecap="round"/>
 </svg>
