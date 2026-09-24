@@ -188,3 +188,36 @@ body.paper-ready .verify-panel{animation:paperReveal .72s .3s cubic-bezier(.22,.
   body.paper-edition .card-photo,
   body.paper-edition .rail-photo{transition:none!important}
 }
+
+
+/* Southern flag masthead badge */
+.southern-flag-badge{
+  display:grid;
+  place-items:center;
+  width:64px;
+  height:64px;
+  margin:9px auto 0;
+  padding:5px;
+  background:#fff;
+  border:1px solid #111;
+  box-shadow:0 5px 14px rgba(0,0,0,.12);
+  position:relative;
+  z-index:100;
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.southern-flag-badge img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.southern-flag-badge:hover{
+  transform:translateY(-2px) rotate(-.4deg);
+  box-shadow:0 8px 18px rgba(0,0,0,.16);
+}
+@media(max-width:650px){
+  .southern-flag-badge{width:52px;height:52px;margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .southern-flag-badge{transition:none}
+}
