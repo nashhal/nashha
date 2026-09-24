@@ -59,7 +59,7 @@ body.dark .hero-summary{color:#aab5ba}
 html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-align:left}html[dir="ltr"] .nav-more{margin-inline-start:auto}html[dir="ltr"] .edition{text-align:left}.ltr .mast-brand{text-align:center}html[dir="ltr"] .nav button{border-left:0;border-right:.65px solid var(--line)}html[dir="ltr"] .hero-rail{border-right:0;border-left:.65px solid var(--line)}html[dir="ltr"] .rail-item{grid-template-columns:28px 86px minmax(0,1fr)}html[dir="ltr"] .card-tag{right:auto;left:8px}html[dir="ltr"] .verify-item{border-left:0;border-right:.65px solid var(--line)}
 </style>
 <link rel="stylesheet" href="paper-effects.css?v=paper2">
-<link rel="stylesheet" href="paper-architecture.css?v=paper4">
+<link rel="stylesheet" href="paper-architecture.css?v=paper5">
 
 <style id="fine-paper-rules">
 /* Fine editorial rules */
@@ -73,6 +73,152 @@ html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-ali
 .breaking-label{border-right:.65px solid rgba(255,255,255,.16)}
 .card-tag{box-shadow:inset 0 0 0 .65px rgba(255,255,255,.14)}
 @media(prefers-reduced-motion:reduce){#fine-paper-rules{display:block}}
+</style>
+<style id="hairline-editorial-system">
+/* Global hairline editorial system — ultra-light rules */
+:root{
+  --editorial-line:rgba(17,17,17,.16);
+  --editorial-line-strong:rgba(17,17,17,.28);
+  --editorial-white-line:rgba(255,255,255,.16);
+}
+.masthead,
+.section-head,
+.sidebox,
+.verify-panel,
+.hero-grid,
+.news-panel,
+.news-card,
+.rail-item,
+.rail-head,
+.meta-line,
+.search-panel,
+.search-form input,
+.nav,
+.nav-more,
+.action,
+.verify-item,
+.copy,
+.trust-row,
+.trust-cell,
+.hero-rail{
+  border-color:var(--editorial-line)!important;
+  border-style:solid!important;
+  border-width:.5px!important;
+}
+.masthead,
+.section-head,
+.sidebox,
+.verify-panel{
+  border-top-width:0!important;
+  border-bottom-width:.5px!important;
+}
+.section-head{
+  border-bottom:1px solid var(--editorial-line-strong)!important;
+}
+.hero-grid{
+  border-top:0!important;
+  border-bottom:1px solid var(--editorial-line-strong)!important;
+}
+.nav{
+  border-bottom:1px solid var(--editorial-line)!important;
+}
+.nav button{
+  border-left:0!important;
+  border-right:.5px solid var(--editorial-line)!important;
+}
+html[dir="ltr"] .nav button:last-of-type{
+  border-right:0!important;
+}
+.hero-rail{
+  border-left:.5px solid var(--editorial-line)!important;
+  border-right:0!important;
+}
+.rail-head{
+  border-bottom:.5px solid var(--editorial-line)!important;
+}
+.meta-line{
+  border-top:.5px solid var(--editorial-line)!important;
+}
+.news-card{
+  border-left:.5px solid var(--editorial-line)!important;
+  border-bottom:.5px solid var(--editorial-line)!important;
+}
+.news-card:nth-child(3n){
+  border-left:0!important;
+}
+.verify-item{
+  border-right:.5px solid var(--editorial-line)!important;
+  border-left:0!important;
+}
+.verify-item:last-child{
+  border-right:0!important;
+}
+.search-form input,
+.action,
+.nav-more{
+  border:.5px solid var(--editorial-line)!important;
+}
+.trust-row{
+  border:.5px solid var(--editorial-white-line)!important;
+}
+.trust-cell{
+  border-left:.5px solid var(--editorial-white-line)!important;
+}
+.copy{
+  border-top:.5px solid var(--editorial-white-line)!important;
+}
+.masthead{
+  border-bottom:1px solid var(--editorial-line-strong)!important;
+}
+.rule{
+  height:1px!important;
+  background:var(--editorial-line-strong)!important;
+}
+.breaking-label{
+  border-right:.5px solid var(--editorial-white-line)!important;
+}
+.search-results a,
+.side-links a{
+  border-top:.5px solid var(--editorial-line)!important;
+}
+.paper-page{
+  border-inline:.5px solid var(--editorial-line)!important;
+}
+.paper-page::before{
+  height:1px!important;
+  background:var(--editorial-line-strong)!important;
+  opacity:.75!important;
+}
+.paper-page::after{
+  width:.5px!important;
+  background:rgba(17,17,17,.035)!important;
+  box-shadow:none!important;
+}
+.paper-section + .paper-section::before{
+  height:1px!important;
+  top:-.5px!important;
+  background:var(--editorial-line)!important;
+  clip-path:none!important;
+  filter:none!important;
+}
+body.paper-edition .section-head h2::after{
+  width:42px!important;
+  height:1px!important;
+  background:var(--editorial-line-strong)!important;
+}
+body.paper-edition .nav button.active::after{
+  height:1px!important;
+}
+body.paper-edition .hero-main::before{
+  opacity:.55!important;
+  filter:drop-shadow(-2px 2px 3px rgba(0,0,0,.045))!important;
+}
+.empty-state,.error-state{
+  border:.5px dashed var(--editorial-line)!important;
+}
+.card-tag{
+  box-shadow:none!important;
+}
 </style>
 </head>
 <body class="paper-boot">
