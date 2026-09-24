@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071b2a">
-<meta name="description" content="Nashhal Trust — تحقق من مصدر الخبر وبصمته الرقمية وسجل توثيقه وارتباطه بطبقة Web3.">
-<title>Nashhal Trust | تحقق الخبر</title>
+<meta name="description" content="Southern Revolution Trust — تحقق من مصدر الخبر وبصمته الرقمية وسجل توثيقه وارتباطه بطبقة Web3.">
+<title>Southern Revolution Trust | تحقق الخبر</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -24,14 +24,14 @@
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><a href="index.html">نشهل</a><span>Nashhal Trust · المصدر · البصمة · سجل Web3</span></div></div>
-<header class="head"><div class="wrap"><a class="brand" href="trust.html"><span class="mark">ن</span><span><strong>Nashhal Trust</strong><small>طبقة التحقق والتوثيق</small></span></a><a class="back" href="index.html">العودة إلى نشهل</a></div></header>
+<div class="top"><div class="wrap"><a href="index.html">الثورة الجنوبية</a><span>Southern Revolution Trust · المصدر · البصمة · سجل Web3</span></div></div>
+<header class="head"><div class="wrap"><a class="brand" href="trust.html"><span class="mark">ث</span><span><strong>Southern Revolution Trust</strong><small>طبقة التحقق والتوثيق</small></span></a><a class="back" href="index.html">العودة إلى الثورة الجنوبية</a></div></header>
 <main class="wrap">
 <section class="hero"><span class="eyebrow"><i></i> VERIFIABLE NEWS RECORD</span><h1>تحقق من الخبر</h1><p>راجع المصدر والوقت والبصمة الرقمية، ثم تحقق من حالة إثبات الـManifest على طبقة Web3 عندما يكون الربط مفعّلًا.</p></section>
 <section class="card" id="card"><div class="empty">جارٍ تحميل سجل التوثيق…</div></section>
 <section class="card"><div class="explain"><h2>كيف تقرأ النتيجة؟</h2><p>مطابقة SHA-256 تعني أن البيانات الأساسية المسجلة تطابق البصمة المحفوظة للسجل. وإذا ظهر إثبات Web3 موثّق، فهذا يربط manifest ببصمة مسجلة على الشبكة. أي من ذلك لا يحوّل الخبر إلى حقيقة مطلقة؛ صحة الوقائع تعتمد على المصادر والأدلة والتحقق التحريري.</p></div></section>
 </main>
-<footer class="wrap footer">Nashhal Trust · مصمم لإثبات سلامة السجل دون تخزين نص الخبر أو الصور على البلوكشين</footer>
+<footer class="wrap footer">Southern Revolution Trust · مصمم لإثبات سلامة السجل دون تخزين نص الخبر أو الصور على البلوكشين</footer>
 <script>
 const params=new URLSearchParams(location.search),id=params.get('id')||'',raw=params.get('data')||'';
 const $=id=>document.getElementById(id);
@@ -63,7 +63,7 @@ async function load(){
   const web3Match=!!(wrecord&&wrecord.content_hash===calculated);
   const anchored=web3Anchor?.status==='anchored'&&web3Match;
   const prepared=web3Anchor?.status==='prepared'&&web3Match;
-  let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'البصمة مطابقة':'البصمة لا تطابق السجل')+'</h2><p>'+esc(localOk?'النسخة المعروضة تطابق البصمة المحفوظة في سجل نشهل.':'تعذر مطابقة السجل الحالي مع البصمة المحفوظة.')+'</p></div></div>';
+  let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'البصمة مطابقة':'البصمة لا تطابق السجل')+'</h2><p>'+esc(localOk?'النسخة المعروضة تطابق البصمة المحفوظة في سجل الثورة الجنوبية.':'تعذر مطابقة السجل الحالي مع البصمة المحفوظة.')+'</p></div></div>';
   html+='<div class="body"><div class="grid">';
   html+='<div class="item"><span>معرّف الخبر</span><b>'+esc(record.id)+'</b></div>';
   html+='<div class="item"><span>المصدر</span><b>'+esc(record.source||'غير محدد')+'</b></div>';
@@ -72,7 +72,7 @@ async function load(){
   html+='<div class="item" style="margin-top:9px"><span>العنوان</span><b>'+esc(record.title||'بدون عنوان')+'</b></div>';
   html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
   html+='<div class="item" style="margin-top:9px"><span>المصدر الأصلي</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">فتح المصدر الأصلي ↗</a>':'غير متوفر')+'</b></div>';
-  html+='<section class="web3"><h3>Nashhal Trust Web3</h3>';
+  html+='<section class="web3"><h3>Southern Revolution Trust Web3</h3>';
   if(anchored) html+='<p class="desc">هذا manifest يتضمن بصمة الخبر وتم تثبيته على Ethereum Sepolia وفق سجل Web3 المنشور.</p>';
   else if(prepared) html+='<p class="desc">تم تجهيز manifest يحتوي على بصمة هذا الخبر، لكن التثبيت on-chain لم يكتمل بعد.</p>';
   else html+='<p class="desc">لا يوجد إثبات Web3 مطابق لهذا الخبر في السجل المنشور حاليًا.</p>';
