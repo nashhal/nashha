@@ -60,14 +60,7 @@
   }
 
   function displaySummary(item) {
-    const candidates = [
-      item.summary_en,
-      item.summary,
-      item.description,
-      item.ai_summary_ar,
-      Array.isArray(item.facts_ar) ? item.facts_ar[0] : '',
-      Array.isArray(item.what_happened_ar) ? item.what_happened_ar[0] : item.what_happened_ar
-    ];
+    const candidates = [item.summary_en];
     for (const candidate of candidates) {
       const text = clean(candidate);
       if (text && !noisyText(text)) return text.slice(0, 260);
@@ -78,12 +71,12 @@
   function normalize(item = {}, index = 0) {
     const title = clean(item.title_en || '');
     const summary = clean(item.summary_en || '');
-    const sourceName = clean(item.source_name || item.source || item.publisher || '');
+    const sourceName = clean(item.source_name_en || item.source_name || item.source || item.publisher || '');
     const sourceUrl = safeUrl(item.source_url || item.link || item.url || '#');
     const published = item.published || item.published_at || item.pubDate || item.date || '';
-    const category = clean(item.category || item.region || 'اليمن');
+    const category = clean(item.category_en || item.category || item.region || 'Yemen');
     const text = `${title} ${summary}`.toLowerCase();
-    const city = CITY_TERMS.find(term => text.includes(term.toLowerCase())) || '';
+    const city = item.region_en || CITY_TERMS.find(term => text.includes(term.toLowerCase())) || '';
     const imageValue = String(item.image || item.image_url || item.thumbnail || '').trim();
     const id = String(item.id || item.event_key || `${Date.parse(published) || index}-${title.slice(0,40)}`);
     return {
@@ -101,10 +94,10 @@
   const sortRecent = items => [...items].sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
   const confirmedItems = (filter = 'all') => {
     let items = allItems.filter(confirmed);
-    if (filter !== 'all') items = items.filter(item => item.category === filter || item.city === filter);
+    if (filter !== 'all') items = items.filter(item => item.category === filter || item.city === filter || item.region_en === filter);
     return sortRecent(items);
   };
-  const categoryLabel = value => { const map={الجنوب:'South',عدن:'Aden',حضرموت:'Hadramout',شبوة:'Shabwah',أبين:'Abyan',لحج:'Lahj',الضالع:'Al Dhale’e',المهرة:'Al Mahrah',سقطرى:'Socotra',اليمن:'Yemen'}; return map[value]||value; };
+  const categoryLabel = value => value || 'Yemen';
   const metaLine = item => `<div class="meta-line"><span>${escapeHtml(categoryLabel(item.category))}</span><span class="dot"></span><span>${escapeHtml(timeAgo(item.published))}</span></div>`;
   const placeholder = (label = UI?.[lang]?.digital || 'Al-Thawra') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
   const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder(UI.en.digital);
@@ -126,7 +119,7 @@
     const hero = document.getElementById('heroGrid');
     if (!hero || document.getElementById('nashhal-trust-strip')) return;
     const strip = document.createElement('section'); strip.id = 'nashhal-trust-strip'; strip.className = 'wrap trust-strip';
-    strip.innerHTML = '<a href="trust.html"><strong>SHA-256</strong>بصمة رقمية لكل سجل موثّق</a><a href="web3.html"><strong>Web3 Trust</strong>تهيئة manifest لإثبات مستقل عند تفعيل الربط</a><a href="editorial-policy.html"><strong>تحقق تحريري</strong>نفصل الوقائع عن الادعاءات قبل النشر</a><a href="ai-policy.html"><strong>AI مساعد فقط</strong>الذكاء الاصطناعي لا يتجاوز بوابة التحقق</a>';
+    strip.innerHTML = '<a href="trust.html"><strong>SHA-256</strong>Digital fingerprint for every verified record</a><a href="web3.html"><strong>Web3 Trust</strong>Manifest anchoring when network proof is enabled</a><a href="editorial-policy.html"><strong>Editorial Verification</strong>Facts and attributed claims are kept distinct</a><a href="ai-policy.html"><strong>AI Assistance</strong>Automation does not replace editorial verification</a>';
     hero.parentElement.insertBefore(strip, hero);
   }
 
@@ -134,16 +127,16 @@
 
   function renderHero(filter='all'){const root=document.getElementById('heroGrid');if(!root)return;const items=confirmedItems(filter);if(!items.length){root.innerHTML=`<div class="empty-state">${UI[lang].none}</div>`;return;}const main=items[0],rail=items.slice(1,5);root.innerHTML=`<article class="hero-main" data-news-id="${esc(main.id)}" tabindex="0" role="button"><a class="hero-media" href="${articleUrl(main)}" tabindex="-1">${media(main,'hero-photo')}</a><div class="hero-body"><span class="kicker">${escapeHtml(categoryLabel(main.category))}</span><h1>${escapeHtml(main.title)}</h1><p class="hero-summary">${escapeHtml(main.summary)}</p>${metaLine(main)}</div></article><aside class="hero-rail"><div class="rail-head"><h2>${UI[lang].latest}</h2><span>${UI[lang].latestMeta}</span></div>${rail.map((item,index)=>`<article class="rail-item" data-news-id="${esc(item.id)}" tabindex="0" role="button"><div class="rail-index">0${index+1}</div><a class="rail-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'rail-photo')}</a><div class="rail-content"><span class="kicker">${escapeHtml(categoryLabel(item.category))}</span><h2>${escapeHtml(item.title)}</h2>${metaLine(item)}</div></article>`).join('')}</aside>`;}
 
-  function renderGrid(filter='all'){const grid=document.getElementById('newsGrid'),title=document.getElementById('gridTitle');if(!grid)return;if(title){title.dataset.dynamic='1';title.textContent=filter==='all'?UI[lang].latest:(lang==='ar'?'أحدث أخبار '+filter:(categoryLabel(filter)+' News'));}const items=confirmedItems(filter).slice(5,5+GRID_LIMIT);if(!items.length){grid.innerHTML=`<div class="empty-state">${UI[lang].more}</div>`;return;}grid.innerHTML=items.map((item,index)=>{const kind=item.platform==='X'||item.platform==='Facebook'?'social':item.status==='review'?'review':'news';const label=kind==='social'?`◉ ${UI.en.monitor}`:kind==='review'?`◌ ${UI.en.review}`:`✓ ${UI.en.news}`;const cls=kind==='news'?'tag-news':kind==='review'?'tag-review':'tag-social';return `<article class="news-card ${index===0?'news-card-featured':''} news-card-new" data-news-id="${esc(item.id)}" tabindex="0" role="button"><a class="card-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'card-photo')}<span class="card-tag ${cls}">${label}</span></a><div class="card-body"><div class="card-status"><span class="status-icon" aria-hidden="true">${kind==='social'?'◉':kind==='review'?'◌':'✓'}</span>${label.replace(/^..\s*/,'')}</div><h3>${escapeHtml(item.title)}</h3>${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}${metaLine(item)}</div></article>`;}).join('');}
+  function renderGrid(filter='all'){const grid=document.getElementById('newsGrid'),title=document.getElementById('gridTitle');if(!grid)return;if(title){title.dataset.dynamic='1';title.textContent=filter==='all'?UI.en.latest:(categoryLabel(filter)+' News');}const items=confirmedItems(filter).slice(5,5+GRID_LIMIT);if(!items.length){grid.innerHTML=`<div class="empty-state">${UI[lang].more}</div>`;return;}grid.innerHTML=items.map((item,index)=>{const kind=item.platform==='X'||item.platform==='Facebook'?'social':item.status==='review'?'review':'news';const label=kind==='social'?`◉ ${UI.en.monitor}`:kind==='review'?`◌ ${UI.en.review}`:`✓ ${UI.en.news}`;const cls=kind==='news'?'tag-news':kind==='review'?'tag-review':'tag-social';return `<article class="news-card ${index===0?'news-card-featured':''} news-card-new" data-news-id="${esc(item.id)}" tabindex="0" role="button"><a class="card-media" href="${articleUrl(item)}" tabindex="-1">${media(item,'card-photo')}<span class="card-tag ${cls}">${label}</span></a><div class="card-body"><div class="card-status"><span class="status-icon" aria-hidden="true">${kind==='social'?'◉':kind==='review'?'◌':'✓'}</span>${label.replace(/^..\s*/,'')}</div><h3>${escapeHtml(item.title)}</h3>${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}${metaLine(item)}</div></article>`;}).join('');}
 
-  function renderVerify(){const wrap=document.getElementById('verifySection'),list=document.getElementById('verifyList');if(!wrap||!list)return;const items=sortRecent(allItems.filter(review)).slice(0,VERIFY_LIMIT);wrap.hidden=!items.length;list.innerHTML=items.map(item=>`<article class="verify-item"><span class="verify-badge">◉ ${escapeHtml(lang==='ar'?(platformLabel[item.platform]||UI[lang].review):UI[lang].review)}</span><div><h3><a href="${articleUrl(item)}">${escapeHtml(item.title)}</a></h3><div class="verify-meta">${escapeHtml(item.category)} · ${escapeHtml(timeAgo(item.published))}</div></div></article>`).join('');}
+  function renderVerify(){const wrap=document.getElementById('verifySection'),list=document.getElementById('verifyList');if(!wrap||!list)return;const items=sortRecent(allItems.filter(review)).slice(0,VERIFY_LIMIT);wrap.hidden=!items.length;list.innerHTML=items.map(item=>`<article class="verify-item"><span class="verify-badge">◉ ${UI.en.review}</span><div><h3><a href="${articleUrl(item)}">${escapeHtml(item.title)}</a></h3><div class="verify-meta">${escapeHtml(item.category)} · ${escapeHtml(timeAgo(item.published))}</div></div></article>`).join('');}
 
   function setupFilters(){const nav=document.getElementById('sectionNav');if(!nav)return;nav.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{nav.querySelectorAll('[data-filter]').forEach(btn=>{btn.classList.remove('active');btn.setAttribute('aria-selected','false')});button.classList.add('active');button.setAttribute('aria-selected','true');currentFilter=button.dataset.filter||'all';const draw=()=>{renderHero(currentFilter);renderGrid(currentFilter)};if(document.startViewTransition)document.startViewTransition(draw);else draw();history.pushState({filter:currentFilter},'',currentFilter==='all'?location.pathname+location.search:`#${encodeURIComponent(currentFilter)}`);}));}
   function setupDarkMode(){const root=document.body,saved=localStorage.getItem('nashhal-theme');if(saved==='dark'||(!saved&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches))root.classList.add('dark');const toggle=document.getElementById('darkToggle');if(toggle)toggle.addEventListener('click',()=>{root.classList.toggle('dark');localStorage.setItem('nashhal-theme',root.classList.contains('dark')?'dark':'light')});}
   function setupSearch(){const button=document.getElementById('searchToggle'),panel=document.getElementById('searchPanel'),form=document.getElementById('searchForm'),input=document.getElementById('searchInput');if(!button||!panel||!form||!input)return;button.addEventListener('click',()=>{panel.classList.toggle('open');if(panel.classList.contains('open'))requestAnimationFrame(()=>input.focus())});}
   function registerPWA(){const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='manifest.webmanifest?v=9';document.head.appendChild(manifest);if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=9',{updateViaCache:'none'}).then(reg=>reg.update()).catch(err=>console.warn('SW',err)));}
   function renderAll(){renderTicker();renderHero(currentFilter);renderGrid(currentFilter);renderVerify();window.dispatchEvent(new CustomEvent('nashhal-data-ready',{detail:allItems}));}
-  async function loadNews(force=false){let cached=null;if(!force){try{cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null')}catch(_){}}if(Array.isArray(cached)&&cached.length){allItems=cached.map(normalize).filter(item=>item.title);renderAll()}try{const url=`${DATA_URL}${force?'?t=':'?v='}${Date.now()}`;const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();const raw=Array.isArray(data)?data:(data.items||data.news||[]);allItems=raw.map(normalize).filter(item=>item.title);localStorage.setItem(CACHE_KEY,JSON.stringify(allItems));renderAll()}catch(error){console.error('تعذر تحميل الأخبار:',error);if(!allItems.length){const hero=document.getElementById('heroGrid');if(hero)hero.innerHTML='<div class="error-state">تعذر تحميل الأخبار حاليًا<div><button type="button" id="retryNews">إعادة المحاولة</button></div></div>';const retry=document.getElementById('retryNews');if(retry)retry.onclick=()=>{showSkeleton();loadNews(true)}}}}
+  async function loadNews(force=false){let cached=null;if(!force){try{cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null')}catch(_){}}if(Array.isArray(cached)&&cached.length){allItems=cached.map(normalize).filter(item=>item.title);renderAll()}try{const url=`${DATA_URL}${force?'?t=':'?v='}${Date.now()}`;const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();const raw=Array.isArray(data)?data:(data.items||data.news||[]);allItems=raw.map(normalize).filter(item=>item.title);localStorage.setItem(CACHE_KEY,JSON.stringify(allItems));renderAll()}catch(error){console.error('News loading failed:',error);if(!allItems.length){const hero=document.getElementById('heroGrid');if(hero)hero.innerHTML='<div class="error-state">News are temporarily unavailable<div><button type="button" id="retryNews">Retry</button></div></div>';const retry=document.getElementById('retryNews');if(retry)retry.onclick=()=>{showSkeleton();loadNews(true)}}}}
   
   document.addEventListener('DOMContentLoaded',()=>{injectPerformanceCSS();showSkeleton();setupFilters();setupDarkMode();setupSearch();registerPWA();loadNews(false)});
 })();
