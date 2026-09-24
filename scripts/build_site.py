@@ -186,9 +186,7 @@ def render_article(n: dict) -> str:
 {analysis_block}
 <div class="notice">هذا خبر محرر باسم الثورة الجنوبية يركز على الحدث نفسه. تحفظ غرفة التحرير مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. استخدام الذكاء الاصطناعي لا يعني اعتماد المعلومات دون مراجعة قواعد التحقق التحريري.</div>
 </article></main><footer><div class="wrap">© الثورة الجنوبية · الحدث أولًا · التحقق أولًا · Southern Revolution Trust</div></footer>
-<script>
-(async()=>{const s=document.getElementById('web3State');const state=document.getElementById('trustState');try{const r=await fetch('../data/web3/anchor.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const a=await r.json();if(a.status==='anchored'){s.textContent='Web3: مثبت على Ethereum Sepolia';state.textContent='النسخة مرتبطة بإثبات on-chain عند فتح سجل التحقق';}else if(a.status==='prepared'){s.textContent='Web3: manifest جاهز';state.textContent='تم تجهيز manifest للبصمات · التثبيت on-chain غير مكتمل بعد';}}catch(_){}})();
-</script>
+
 </body></html>'''
 
 
