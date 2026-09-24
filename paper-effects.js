@@ -1,4 +1,4 @@
-/* Southern Revolution Newspaper — Paper Edition motion layer */
+/* Southern Revolution Newspaper — Real Paper Edition */
 (() => {
   const root = document.documentElement;
   const body = document.body;
@@ -7,13 +7,16 @@
   root.classList.add('paper-edition');
   body.classList.add('paper-edition');
 
-  const flag = document.createElement('a');
-  flag.className = 'southern-flag-badge';
-  flag.href = 'index.html';
-  flag.setAttribute('aria-label', 'The Southern Revolution');
-  const flagSrc = location.pathname.includes('/articles/') ? '../southern-flag.svg' : 'southern-flag.svg';
-  flag.innerHTML = '<img src="' + flagSrc + '" alt="Southern flag">';
-  body.insertBefore(flag, body.firstChild);
+  const mastBrand = document.querySelector('.mast-brand');
+  if (mastBrand && !mastBrand.querySelector('.southern-flag-badge')) {
+    const flag = document.createElement('a');
+    flag.className = 'southern-flag-badge';
+    flag.href = 'index.html';
+    flag.setAttribute('aria-label', 'The Southern Revolution');
+    const flagSrc = location.pathname.includes('/articles/') ? '../southern-flag.svg' : 'southern-flag.svg';
+    flag.innerHTML = '<img src="' + flagSrc + '" alt="Southern flag">';
+    mastBrand.insertBefore(flag, mastBrand.firstChild);
+  }
 
   const grain = document.createElement('div');
   grain.className = 'paper-grain-layer';
@@ -21,7 +24,7 @@
   body.appendChild(grain);
 
   const revealTargets = body.querySelectorAll(
-    '.section, .hero-grid, .news-panel, .sidebar, .verify-panel, .article, .trust-panel, .box'
+    '.masthead, .nav, .breaking, .hero-grid, .news-panel, .sidebar, .verify-panel, .trust-panel, .article'
   );
 
   revealTargets.forEach((el, index) => {
@@ -35,7 +38,5 @@
     body.classList.add('paper-ready');
   });
 
-  window.setTimeout(() => {
-    body.classList.remove('paper-ready');
-  }, 1400);
+  window.setTimeout(() => body.classList.remove('paper-ready'), 1400);
 })();
