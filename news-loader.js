@@ -91,7 +91,7 @@
     const hero = document.getElementById('heroGrid');
     if (!hero || document.getElementById('nashhal-trust-strip')) return;
     const strip = document.createElement('section'); strip.id = 'nashhal-trust-strip'; strip.className = 'wrap trust-strip';
-    strip.innerHTML = '<div><strong>الحدث أولًا</strong>نبحث عن الحدث نفسه لا عن عناوين القنوات</div><div><strong>التحقق أولًا</strong>نفصل بين الوقائع والادعاءات وما لم يثبت</div><a href="editorial-policy.html"><strong>سياسة التحرير</strong>معايير واضحة للدقة والتصحيح</a><a href="ai-policy.html"><strong>استخدام AI</strong>الذكاء الاصطناعي أداة مساعدة لا بديلًا عن التحقق</a>';
+    strip.innerHTML = '<a href="trust.html"><strong>SHA-256</strong>بصمة رقمية لكل سجل موثّق</a><a href="web3.html"><strong>Web3 Trust</strong>تهيئة manifest لإثبات مستقل عند تفعيل الربط</a><a href="editorial-policy.html"><strong>تحقق تحريري</strong>نفصل الوقائع عن الادعاءات قبل النشر</a><a href="ai-policy.html"><strong>AI مساعد فقط</strong>الذكاء الاصطناعي لا يتجاوز بوابة التحقق</a>';
     hero.parentElement.insertBefore(strip, hero);
   }
 
