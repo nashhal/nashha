@@ -24,6 +24,50 @@ def esc(v: object) -> str:
     return html.escape(clean(v), quote=True)
 
 
+def noisy_text(value: object) -> bool:
+    text = clean(value)
+    if not text:
+        return True
+    markers = (
+        "English العربية UN Logo",
+        "ابحث عن بيانات الأمم المتحدة",
+        "من نحن عن الأمم المتحدة",
+        "Submit search",
+        "مسار التنقل",
+        "المركز الإعلامي",
+    )
+    hits = sum(1 for marker in markers if marker in text)
+    return hits >= 2 or (len(text) > 700 and hits >= 1)
+
+
+def display_summary(item: dict) -> str:
+    candidates = [
+        item.get("summary"),
+        item.get("description"),
+        item.get("ai_summary_ar"),
+        (item.get("facts_ar") or [None])[0] if isinstance(item.get("facts_ar"), list) else None,
+        item.get("what_happened_ar"),
+    ]
+    for candidate in candidates:
+        text = clean(candidate)
+        if text and not noisy_text(text):
+            return text[:320]
+    return ""
+
+
+def display_body(item: dict, summary: str) -> list[str]:
+    facts = item.get("facts_ar")
+    if isinstance(facts, list) and any(clean(x) for x in facts):
+        return [clean(x) for x in facts if clean(x)]
+    candidates = [item.get("content"), item.get("body")]
+    for candidate in candidates:
+        text = clean(candidate)
+        if text and not noisy_text(text):
+            parts = [clean(p) for p in str(candidate).split("\n") if clean(p)]
+            return parts[:20]
+    return [summary] if summary else []
+
+
 def parse_dt(v: object):
     text = clean(v).replace("Z", "+00:00")
     if not text:
@@ -53,7 +97,7 @@ def list_html(items: object) -> str:
 
 def render_article(n: dict) -> str:
     title = clean(n.get("title")) or "خبر من نشهل"
-    summary = clean(n.get("summary") or n.get("description"))
+    summary = display_summary(n)
     published = parse_dt(n.get("published") or n.get("published_at"))
     modified = parse_dt(n.get("updated_at") or n.get("collected_at")) or published
     score = n.get("verification_score")
@@ -69,7 +113,7 @@ def render_article(n: dict) -> str:
     evidence = n.get("verification_evidence") if isinstance(n.get("verification_evidence"), list) else []
     independent = sum(1 for x in evidence if isinstance(x, dict) and x.get("type") == "independent")
     primary = sum(1 for x in evidence if isinstance(x, dict) and x.get("type") == "primary")
-    body = facts if facts else [clean(n.get("content") or summary)]
+    body = display_body(n, summary)
 
     graph = {
         "@context": "https://schema.org",
