@@ -112,8 +112,10 @@ def verify(drafts: list[dict]) -> list[dict]:
         if status not in {"confirmed", "developing", "unconfirmed"}:
             status, score = "unconfirmed", min(score, 54)
 
+        verified_primary = next((x for x in evidence if x["type"] == "primary"), None)
         results.append({
             **draft_map[key],
+            "primary_source": verified_primary or draft_map[key].get("primary_source") or {},
             "verification": status,
             "verification_status": status,
             "verification_score": score,
