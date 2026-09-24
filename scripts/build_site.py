@@ -96,24 +96,24 @@ def list_html(items: object) -> str:
 
 
 def render_article(n: dict) -> str:
-    title = clean(n.get("title_en")) or clean(n.get("title")) or "Story from Al-Thawra Newspaper"
-    summary = clean(n.get("summary_en")) or display_summary(n)
+    title = clean(n.get("title_en")) or "Archived Story | Al-Thawra Newspaper"
+    summary = clean(n.get("summary_en")) or "This archived story is preserved in its original source record. See the verification record for the original source."
     published = parse_dt(n.get("published") or n.get("published_at"))
     modified = parse_dt(n.get("updated_at") or n.get("collected_at")) or published
     score = n.get("verification_score")
     try:
         score_text = f"{int(score)}%"
     except (TypeError, ValueError):
-        score_text = "غير متاحة"
+        score_text = "Not available"
     verification = clean(n.get("verification"))
     label = {"confirmed": "Confirmed", "developing": "Developing", "unconfirmed": "Unverified"}.get(verification, "Under review")
     badge = "confirmed" if verification == "confirmed" else "developing" if verification == "developing" else ""
-    facts = n.get("facts_en") if isinstance(n.get("facts_en"), list) else (n.get("facts_ar") if isinstance(n.get("facts_ar"), list) else [])
-    claims = n.get("claims_en") if isinstance(n.get("claims_en"), list) else (n.get("claims_ar") if isinstance(n.get("claims_ar"), list) else [])
+    facts = n.get("facts_en") if isinstance(n.get("facts_en"), list) else []
+    claims = n.get("claims_en") if isinstance(n.get("claims_en"), list) else []
     evidence = n.get("verification_evidence") if isinstance(n.get("verification_evidence"), list) else []
     independent = sum(1 for x in evidence if isinstance(x, dict) and x.get("type") == "independent")
     primary = sum(1 for x in evidence if isinstance(x, dict) and x.get("type") == "primary")
-    body = [clean(x) for x in (n.get("content_en") or "").split("\n") if clean(x)] or display_body(n, summary)
+    body = [clean(x) for x in (n.get("content_en") or "").split("\n") if clean(x)]
 
     graph = {
         "@context": "https://schema.org",
@@ -133,12 +133,12 @@ def render_article(n: dict) -> str:
 
     facts_block = f'<section class="box facts"><h2>Verified Facts</h2>{list_html(facts)}</section>' if facts else ""
     claims_block = f'<section class="box claims"><h2>Attributed Claims</h2>{list_html(claims)}</section>' if claims else ""
-    analysis = clean(n.get("analysis_ar"))
-    background = clean(n.get("background_ar"))
-    what = clean(n.get("what_happened_ar"))
-    why = clean(n.get("why_it_matters_ar"))
-    implications = list_html(n.get("implications_ar"))
-    questions = list_html(n.get("open_questions_ar"))
+    analysis = clean(n.get("analysis_en"))
+    background = clean(n.get("background_en"))
+    what = clean(n.get("what_happened_en"))
+    why = clean(n.get("why_it_matters_en"))
+    implications = list_html(n.get("implications_en"))
+    questions = list_html(n.get("open_questions_en"))
     analysis_block = ""
     if any((what, background, analysis, why, implications, questions)):
         analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>Editorial Context</strong><span>{esc(n.get("importance") or "Normal")}</span></div>'''
