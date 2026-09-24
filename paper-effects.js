@@ -7,6 +7,13 @@
   root.classList.add('paper-edition');
   body.classList.add('paper-edition');
 
+  const flag = document.createElement('a');
+  flag.className = 'southern-flag-badge';
+  flag.href = 'index.html';
+  flag.setAttribute('aria-label', 'The Southern Revolution');
+  flag.innerHTML = '<img src="southern-flag.svg" alt="Southern flag">';
+  body.insertBefore(flag, body.firstChild);
+
   const grain = document.createElement('div');
   grain.className = 'paper-grain-layer';
   grain.setAttribute('aria-hidden', 'true');
