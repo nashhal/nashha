@@ -1,6 +1,6 @@
-const CACHE='al-thawra-shell-v12';
+const CACHE='al-thawra-shell-v13';
 const DATA='nashhal-data-v2';
-const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./news-loader.js','./manifest.webmanifest','./favicon.svg','./paper-effects.css','./paper-effects.js'];
+const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./news-loader.js','./manifest.webmanifest','./favicon.svg','./paper-effects.css','./paper-effects.js','./southern-flag.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
