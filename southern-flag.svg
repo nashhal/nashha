@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Southern flag">
+<rect x="1.5" y="1.5" width="117" height="117" rx="5" fill="#fff" stroke="#111" stroke-width="3"/>
+<defs><clipPath id="f"><rect x="14" y="14" width="92" height="92" rx="1"/></clipPath></defs>
+<g clip-path="url(#f)">
+<rect x="14" y="14" width="92" height="30.67" fill="#d91e18"/>
+<rect x="14" y="44.67" width="92" height="30.66" fill="#fff"/>
+<rect x="14" y="75.33" width="92" height="30.67" fill="#111"/>
+<path d="M14 14H70L14 60Z" fill="#67b7e8"/>
+<path d="M37 22.5l2.9 6h6.5l-5.1 4 2 6.2-6.3-3.6-6.2 3.6 2-6.2-5.1-4H34z" fill="#c9151b"/>
+</g>
+</svg>
