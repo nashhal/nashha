@@ -63,32 +63,32 @@ async function load(){
   const web3Match=!!(wrecord&&wrecord.content_hash===calculated);
   const anchored=web3Anchor?.status==='anchored'&&web3Match;
   const prepared=web3Anchor?.status==='prepared'&&web3Match;
-  let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'FINGERPRINT مطابقة':'FINGERPRINT لا تطابق الLOG')+'</h2><p>'+esc(localOk?'النسخة المعروضة تطابق FINGERPRINT المحفوظة في LOG Al-Thawra Newspaper.':'تعذر مطابقة الLOG الحالي مع FINGERPRINT المحفوظة.')+'</p></div></div>';
+  let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'Fingerprint Match':'Fingerprint Mismatch')+'</h2><p>'+esc(localOk?'The displayed record matches the fingerprint stored for this Al-Thawra Newspaper record.':'The current record could not be matched to its stored fingerprint.')+'</p></div></div>';
   html+='<div class="body"><div class="grid">';
-  html+='<div class="item"><span>معرّف Story</span><b>'+esc(record.id)+'</b></div>';
+  html+='<div class="item"><span>Story ID</span><b>'+esc(record.id)+'</b></div>';
   html+='<div class="item"><span>SOURCE</span><b>'+esc(record.source||'Not specified')+'</b></div>';
-  html+='<div class="item"><span>وقت الPublish المLOG</span><b>'+esc(record.published||'Not specified')+'</b></div>';
+  html+='<div class="item"><span>Published At</span><b>'+esc(record.published||'Not specified')+'</b></div>';
   html+='<div class="item"><span>وقت التوثيق</span><b>'+esc(record.captured_at||'Not specified')+'</b></div></div>';
-  html+='<div class="item" style="margin-top:9px"><span>العنوان</span><b>'+esc(record.title||'بدون عنوان')+'</b></div>';
+  html+='<div class="item" style="margin-top:9px"><span>Headline</span><b>'+esc(record.title||'بدون عنوان')+'</b></div>';
   html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
-  html+='<div class="item" style="margin-top:9px"><span>SOURCE الأصلي</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">فتح SOURCE الأصلي ↗</a>':'Not available')+'</b></div>';
+  html+='<div class="item" style="margin-top:9px"><span>Original Source</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">فتح Original Source ↗</a>':'Not available')+'</b></div>';
   html+='<section class="web3"><h3>Southern Revolution Trust Web3</h3>';
-  if(anchored) html+='<p class="desc">هذا manifest يتضمن بصمة Story وتم تثبيته على Ethereum Sepolia وفق LOG Web3 المنشور.</p>';
-  else if(prepared) html+='<p class="desc">تم تجهيز manifest يحتوي على بصمة هذا Story، لكن التثبيت on-chain لم يكتمل بعد.</p>';
-  else html+='<p class="desc">لا يوجد إثبات Web3 مطابق لهذا Story في الLOG المنشور حاليًا.</p>';
+  if(anchored) html+='<p class="desc">This manifest contains the story fingerprint and has been anchored on Ethereum Sepolia according to the published Web3 record.</p>';
+  else if(prepared) html+='<p class="desc">The manifest is prepared with this story fingerprint, but on-chain anchoring is not complete yet.</p>';
+  else html+='<p class="desc">No matching Web3 proof for this story is currently published.</p>';
   if(anchored||prepared){
     html+='<span class="network">ETHEREUM SEPOLIA · CHAIN 11155111</span><div class="web3-grid">';
     html+='<div class="item"><span>Manifest Hash</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.manifest_hash||web3Manifest.manifest_hash||'')+'</b></div>';
     html+='<div class="item"><span>IPFS CID</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.cid||'Not available')+'</b></div>';
-    html+='<div class="item"><span>العقد</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.contract_address||'Not available')+'</b></div>';
-    if(anchored&&web3Anchor.transaction_hash)html+='<div class="item"><span>المعاملة</span><b><a href="'+esc(web3Anchor.explorer_url||('https://sepolia.etherscan.io/tx/'+web3Anchor.transaction_hash))+'" target="_blank" rel="noopener noreferrer">فتح الإثبات على Etherscan ↗</a></b></div>';
+    html+='<div class="item"><span>Contract</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.contract_address||'Not available')+'</b></div>';
+    if(anchored&&web3Anchor.transaction_hash)html+='<div class="item"><span>Transaction</span><b><a href="'+esc(web3Anchor.explorer_url||('https://sepolia.etherscan.io/tx/'+web3Anchor.transaction_hash))+'" target="_blank" rel="noopener noreferrer">Open Proof on Etherscan ↗</a></b></div>';
     html+='</div>';
   }
   html+='</section>';
-  html+='<div class="actions"><a class="btn primary" href="index.html">Back للأخبار</a><a class="btn" href="search.html">Search آخر</a><button class="btn" type="button" id="copyBtn">نسخ رابط Verification</button></div>';
-  html+='<div class="note"><strong>تنبيه:</strong> FINGERPRINT وإثبات Web3 يثبتان هوية الLOG وسلامة البيانات المLOGة، وليس صحة كل ادعاء في Story. لا يتم تخزين نص Story أو الصور On-chain.</div></div>';
+  html+='<div class="actions"><a class="btn primary" href="index.html">Back to News</a><a class="btn" href="search.html">Latest Search</a><button class="btn" type="button" id="copyBtn">Copy Verification Link</button></div>';
+  html+='<div class="note"><strong>Note:</strong> Fingerprints and Web3 proofs establish record identity and data integrity; they do not establish the truth of every claim in a story. Story text and images are not stored on-chain.</div></div>';
   $('card').innerHTML=html;
-  $('copyBtn')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);$('copyBtn').textContent='تم النسخ ✓'}catch{}})
+  $('copyBtn')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);$('copyBtn').textContent='Copied ✓'}catch{}})
 }
 load();
 </script>
