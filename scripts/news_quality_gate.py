@@ -108,7 +108,7 @@ def main():
             and score >= 80
             and primary >= 1
             and independent >= 1
-            and str(item.get("editorial_status") or "") == "ready"
+            and (not str(item.get("pipeline_version") or "").startswith("1.") or str(item.get("editorial_status") or "") == "ready")
             and str(item.get("title") or "").strip()
             and str(item.get("summary") or "").strip()
             and str(item.get("content") or "").strip()
