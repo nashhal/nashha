@@ -14,13 +14,13 @@
 <style>
 :root{
  --ink:#102332;--muted:#617180;--paper:#fff;--bg:#f4f7f8;--line:#dce4e8;--soft:#edf3f4;
- --navy:#071b2a;--navy2:#103b55;--mint:#13a77c;--mint2:#08795d;--cyan:#39bfe2;--red:#cc3b3b;
+ --navy:#0B2A4A;--navy2:#1F5A8A;--mint:#2E7D5B;--mint2:#256B4D;--cyan:#4A90B8;--red:#C62828;
  --max:1320px;--shadow:0 16px 44px rgba(7,27,42,.08);--radius:14px
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans Arabic',Arial,sans-serif;line-height:1.8}
-body.dark{--ink:#edf5f7;--muted:#a9bac4;--paper:#0e1b25;--bg:#08121a;--line:#243843;--soft:#122530;--navy:#031017;--navy2:#123246;--mint:#3fd0a7;--mint2:#2ab38d;--cyan:#55cde8;--shadow:0 18px 50px rgba(0,0,0,.28)}
+body.dark{--ink:#edf3f8;--muted:#a7b5c2;--paper:#101923;--bg:#08111a;--line:#2a3946;--soft:#182735;--navy:#0B2A4A;--navy2:#2B6EA3;--mint:#4AAE83;--mint2:#3F916F;--cyan:#62A9CF;--shadow:0 18px 50px rgba(0,0,0,.28)}
 a{text-decoration:none;color:inherit}
 button,input{font:inherit}
 .wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
@@ -74,7 +74,7 @@ body.dark .nav{background:rgba(14,27,37,.96)}
 
 .hero{padding:18px 0}.hero-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(330px,1fr);gap:16px}
 .hero-main,.hero-rail,.news-panel,.verify-panel,.info-card,.ledger-panel{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
-.hero-main{overflow:hidden;position:relative}.hero-main:after{content:'TRUSTED FLOW';position:absolute;right:16px;top:16px;padding:4px 8px;border-radius:6px;background:rgba(7,27,42,.86);color:#a9ebda;font:800 7px ui-monospace,SFMono-Regular,monospace;letter-spacing:.12em;z-index:3}
+.hero-main{overflow:hidden;position:relative}.hero-main:after{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:var(--red);z-index:3}
 .hero-media{display:block;aspect-ratio:16/7.6;background:linear-gradient(135deg,#0d2e43,#1c5d73);overflow:hidden}.hero-photo{width:100%;height:100%;object-fit:cover;display:block}
 .media-ph{width:100%;height:100%;min-height:170px;display:grid;place-items:center;background:radial-gradient(circle at 25% 25%,#164b63 0,#0c2b40 40%,#071b2a 100%);color:#cbe6ed;font:800 19px 'IBM Plex Sans Arabic';letter-spacing:.05em}
 .hero-body{padding:20px 22px 22px}.kicker{display:inline-flex;align-items:center;gap:6px;color:var(--mint2);font:800 10px 'IBM Plex Sans Arabic'}.kicker:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--mint)}
@@ -100,12 +100,13 @@ body.dark .ledger-step strong{background:#173a33}
 
 .info-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;padding-bottom:24px}.info-card{padding:17px}.info-card h3{font:800 13px 'IBM Plex Sans Arabic';margin-bottom:5px}.info-card p{font-size:9px;color:var(--muted)}
 .footer{background:#06131d;color:#dceaf0;padding:30px 0 16px}.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:28px}.footer h3{font:800 13px 'IBM Plex Sans Arabic';margin-bottom:7px}.footer p,.footer li,.footer a{font-size:8px;color:#9bb0bc}.footer ul{list-style:none;display:grid;gap:5px}.footer a:hover{color:#fff}.copy{border-top:1px solid #203540;margin-top:20px;padding-top:11px;font-size:7px;color:#718692}
+.trust-compact{display:grid;grid-template-columns:minmax(0,1.5fr) auto;gap:16px;align-items:center;margin-bottom:18px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-right:4px solid var(--navy2);box-shadow:var(--shadow);border-radius:12px}.trust-compact-main{display:flex;align-items:center;gap:10px}.trust-icon{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--soft);color:var(--navy2);font:800 12px ui-monospace}.trust-compact strong{font:800 13px 'IBM Plex Sans Arabic'}.trust-compact p{font-size:8px;color:var(--muted);margin-top:2px;max-width:760px}.trust-compact-side{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}.trust-compact-side span{padding:4px 7px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font:700 7px ui-monospace}.trust-compact-side a{padding:7px 10px;border-radius:8px;background:var(--navy2);color:#fff;font:800 8px 'IBM Plex Sans Arabic'}
 .empty-state{padding:35px;text-align:center;color:var(--muted);background:var(--soft);border:1px dashed var(--line);border-radius:10px}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(19,167,124,.25);outline-offset:2px}
-@media(max-width:1000px){.header .wrap{grid-template-columns:1fr auto}.mast{display:none}.web3-hero-card{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}.ledger-flow{grid-template-columns:repeat(3,1fr)}.ledger-step:nth-child(3):after{display:none}.news-grid{grid-template-columns:repeat(2,1fr)}.verify-list{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.wrap{width:calc(100% - 20px)}.top-links{display:none}.header .wrap{min-height:70px}.brand-name{font-size:23px}.brand-logo{width:40px;height:40px}.actions .action:nth-child(2){display:none}.nav button{padding:10px 12px;font-size:9px}.breaking{min-height:37px}.breaking-label{padding:0 10px;font-size:8px}.ticker-track{gap:22px}.ticker-item{font-size:8px}.web3-hero{padding-top:12px}.web3-hero-card{padding:20px 17px;border-radius:15px}.web3-copy h1{font-size:29px}.web3-copy p{font-size:11px}.status-grid{grid-template-columns:1fr 1fr}.hero{padding-top:13px}.hero-body{padding:15px}.hero-main h1{font-size:23px}.hero-summary{font-size:11px}.rail-item{grid-template-columns:31px 68px minmax(0,1fr);padding:9px}.rail-media{width:68px;height:55px}.rail-content h2{font-size:9px}.news-grid{grid-template-columns:1fr}.news-card-featured{grid-column:auto;display:block}.ledger-flow{grid-template-columns:1fr 1fr}.ledger-step:nth-child(2):after,.ledger-step:nth-child(4):after{display:none}.verify-list{grid-template-columns:1fr}.verify-item{border-left:0;border-bottom:1px solid var(--line)}.verify-item:last-child{border-bottom:0}.info-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.actions .action#langToggle{display:grid}}
+@media(max-width:1000px){.header .wrap{grid-template-columns:1fr auto}.mast{display:none}.hero-grid{grid-template-columns:1fr}.ledger-flow{grid-template-columns:repeat(3,1fr)}.ledger-step:nth-child(3):after{display:none}.news-grid{grid-template-columns:repeat(2,1fr)}.verify-list{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.trust-compact{grid-template-columns:1fr}}
+@media(max-width:650px){.wrap{width:calc(100% - 20px)}.top-links{display:none}.header .wrap{min-height:70px}.brand-name{font-size:23px}.brand-logo{width:40px;height:40px}.actions .action:nth-child(2){display:none}.nav button{padding:10px 12px;font-size:9px}.breaking{min-height:37px}.breaking-label{padding:0 10px;font-size:8px}.ticker-track{gap:22px}.ticker-item{font-size:8px}.hero{padding-top:13px}.hero-body{padding:15px}.hero-main h1{font-size:23px}.hero-summary{font-size:11px}.rail-item{grid-template-columns:31px 68px minmax(0,1fr);padding:9px}.rail-media{width:68px;height:55px}.rail-content h2{font-size:9px}.news-grid{grid-template-columns:1fr}.news-card-featured{grid-column:auto;display:block}.ledger-flow{grid-template-columns:1fr 1fr}.ledger-step:nth-child(2):after,.ledger-step:nth-child(4):after{display:none}.verify-list{grid-template-columns:1fr}.verify-item{border-left:0;border-bottom:1px solid var(--line)}.verify-item:last-child{border-bottom:0}.info-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.trust-compact-side{justify-content:flex-start}.actions .action#langToggle{display:grid}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-html[dir="ltr"] .hero-main:after{right:auto;left:16px}html[dir="ltr"] .card-tag{right:auto;left:9px}html[dir="ltr"] .verify-panel{border-right:0;border-left:4px solid var(--mint2)}html[dir="ltr"] .nav button{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .verify-item{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .ledger-step:not(:last-child):after{left:auto;right:-12px;content:'→'}
+html[dir="ltr"] .hero-main:after{right:auto;left:0}html[dir="ltr"] .card-tag{right:auto;left:9px}html[dir="ltr"] .verify-panel{border-right:0;border-left:4px solid var(--mint2)}html[dir="ltr"] .nav button{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .verify-item{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .ledger-step:not(:last-child):after{left:auto;right:-12px;content:'→'}
 </style>
 </head>
 <body>
@@ -114,7 +115,7 @@ html[dir="ltr"] .hero-main:after{right:auto;left:16px}html[dir="ltr"] .card-tag{
 <header class="header">
 <div class="wrap">
 <a class="brand" href="#home"><div class="brand-logo"><img src="logo.jpg" alt="شعار نشهل"></div><div><div class="brand-name">نشهل</div><div class="brand-sub">الخبر · المصدر · البصمة</div></div></a>
-<div class="mast"><strong>NASHHAL NEWS</strong>منصة أخبار مبنية حول التحقق وسجل التوثيق</div>
+<div class="mast"><strong>نشهل</strong>خبر · تفاصيل · متابعة · تحقق</div>
 <div class="actions"><button class="action" id="searchToggle" aria-label="البحث">⌕</button><button class="action" id="darkToggle" aria-label="الوضع الليلي">◐</button></div>
 </div>
 <div class="search-panel" id="searchPanel"><div class="wrap"><form class="search-form" id="searchForm"><input id="searchInput" type="search" placeholder="ابحث في أخبار نشهل"><button type="submit">بحث</button></form><div class="search-results" id="searchResults"></div></div></div>
@@ -127,29 +128,17 @@ html[dir="ltr"] .hero-main:after{right:auto;left:16px}html[dir="ltr"] .card-tag{
 <section class="breaking" aria-label="عاجل"><div class="breaking-label"><span class="live-dot"></span>مباشر</div><div class="ticker"><div class="ticker-track" id="tickerTrack"><span class="ticker-item">جاري تحميل آخر التحديثات…</span></div></div></section>
 
 <main id="home">
-<section class="web3-hero">
-<div class="wrap web3-hero-card">
-<div class="web3-copy">
-<span class="eyebrow"><i></i> NASHHAL TRUST · WEB3</span>
-<h1>الخبر يبدأ من المصدر وينتهي ببصمة قابلة للتحقق</h1>
-<p>نشهل تبني تجربة نشر تفصل بين جمع الخبر وكتابته وتأكيده وتحريره ونشره، ثم تنشئ سجلًا رقميًا يتيح التحقق من هوية النسخة الموثقة وسلامة بياناتها. طبقة Web3 صممت لتوثيق البصمة دون وضع نص الخبر أو الصور على السلسلة.</p>
-<div class="web3-actions"><a class="web3-btn primary" href="trust.html">تحقق من خبر</a><a class="web3-btn ghost" href="web3.html">كيف تعمل طبقة Web3؟</a></div>
-</div>
-<div class="web3-status-card">
-<div class="status-kicker">حالة شبكة التوثيق</div>
-<div class="status-title" id="web3StatusTitle">طبقة Web3 مهيأة</div>
-<div class="status-desc" id="web3StatusDesc">سيظهر هنا وضع سجل التوثيق عند توفر ملف Web3 المنشور.</div>
-<div class="status-grid">
-<div class="status-pill"><span>البصمة</span><b>SHA-256</b></div>
-<div class="status-pill"><span>الأرشيف</span><b>IPFS-ready</b></div>
-<div class="status-pill"><span>الشبكة</span><b>Ethereum Sepolia</b></div>
-<div class="status-pill"><span>الحالة</span><b id="web3StatusBadge" class="status-pending">قيد الربط</b></div>
-</div>
-</div>
-</div>
+<section class="hero"><div class="wrap hero-grid" id="heroGrid"></div></section>
+
+<section class="wrap news-panel" id="south">
+<div class="panel-head"><h2 id="gridTitle">أحدث الأخبار</h2><span>تحديث تلقائي · المصدر الأصلي · سجل التوثيق</span></div>
+<div class="news-grid" id="newsGrid"></div>
 </section>
 
-<section class="hero"><div class="wrap hero-grid" id="heroGrid"></div></section>
+<section class="wrap trust-compact" id="trust">
+<div class="trust-compact-main"><span class="trust-icon">✓</span><div><strong>Nashhal Trust</strong><p>كل خبر منشور يمكن مراجعته بمصدره وبصمته الرقمية. طبقة Web3 تجهّز سجل الـManifest للإثبات الخارجي عند تفعيل الربط.</p></div></div>
+<div class="trust-compact-side"><span>SHA-256</span><span>IPFS-ready</span><span>Ethereum Sepolia</span><a href="trust.html">تحقق من سجل ↗</a></div>
+</section>
 
 <section class="wrap ledger-panel" id="ledger">
 <div class="ledger-head"><div><h2>غرفة أخبار نشهل</h2><p>الرحلة التحريرية مصممة كسلسلة مراحل يمكن تتبعها قبل أن يصل الخبر إلى القارئ</p></div><a class="web3-btn primary" href="trust.html">سجل التوثيق ↗</a></div>
@@ -161,11 +150,6 @@ html[dir="ltr"] .hero-main:after{right:auto;left:16px}html[dir="ltr"] .card-tag{
 <div class="ledger-step"><strong>05</strong><b>نشر + بصمة</b><span>سجل محلي وقابل للربط بـWeb3</span></div>
 </div>
 <div class="ledger-note">التوثيق لا يساوي صحة مطلقة للخبر. البصمة تثبت هوية البيانات التي تم تسجيلها، بينما تبقى صحة الوقائع موضوعًا للتحقق التحريري والأدلة.</div>
-</section>
-
-<section class="wrap news-panel" id="south">
-<div class="panel-head"><h2 id="gridTitle">أحدث الأخبار</h2><span>تحديث تلقائي · المصدر الأصلي · سجل التوثيق</span></div>
-<div class="news-grid" id="newsGrid"></div>
 </section>
 
 <section class="wrap verify-panel" id="verifySection" hidden>
