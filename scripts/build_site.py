@@ -176,7 +176,7 @@ def main() -> None:
             recent.append(item)
     recent.sort(key=lambda x: parse_dt(x.get("published") or x.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
 
-    urls = [f"{BASE}/", f"{BASE}/about.html", f"{BASE}/editorial-policy.html", f"{BASE}/ai-policy.html", f"{BASE}/corrections.html"]
+    urls = [f"{BASE}/", f"{BASE}/about.html", f"{BASE}/editorial-policy.html", f"{BASE}/ai-policy.html", f"{BASE}/corrections.html", f"{BASE}/trust.html", f"{BASE}/web3.html", f"{BASE}/search.html"]
     urls += [page_url(x) for x in live]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
