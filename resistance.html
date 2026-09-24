@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Southern Resistance Encyclopedia | نشهل</title>
+<title>Southern Resistance Encyclopedia | Al-Thawra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700" rel="stylesheet">
 <style>
@@ -10,13 +10,13 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><div style="font-size:11px;opacity:.8">نشهل · South Yemen History & Heritage</div><h1>Southern Resistance Encyclopedia والأحداث Historyية</h1><p>ملفات تاريخية مطولة تُبنى من المصادر Archiveية والكتب والدراسات. لا تُعامل Search Results الأولية بوصفها حقائق نهائية؛ بل تُراجع وتُقارن قبل اعتمادها.</p></div></header>
-<div class="bar"><div class="wrap"><a href="heritage.html">← South Yemen History & Heritage</a><a href="index.html">الرئيسية</a></div></div>
+<header><div class="wrap"><div style="font-size:11px;opacity:.8">Al-Thawra · South Yemen History & Heritage</div><h1>Southern Resistance Encyclopedia والأحداث Historyية</h1><p>ملفات تاريخية مطولة تُبنى من المصادر Archiveية والكتب والدراسات. لا تُعامل Search Results الأولية بوصفها حقائق نهائية؛ بل تُراجع وتُقارن قبل اعتمادها.</p></div></header>
+<div class="bar"><div class="wrap"><a href="heritage.html">← South Yemen History & Heritage</a><a href="index.html">Home</a></div></div>
 <main class="wrap">
-<section class="intro"><h2>منهج التوثيق</h2><p>لكل حدث LOG مستقل: History، المكان، الأطراف التي يذكرها SOURCE، السياق، النتائج، الروايات المختلفة، وبيانات الكتاب أو الوثيقة. تُصنف المواد إلى <b>مرشح</b> أو <b>Verified</b> أو <b>Disputed</b>. ولا تُنشر تفاصيل تشغيلية عن العنف؛ المحتوى هنا تاريخي توثيقي.</p><div class="note">تنبيه منهجي: قد تستخدم المصادر الاستعمارية أو الأجنبية مصطلحات وتسميات تعكس منظور كاتبها. لذلك تُقرأ مع مصادر محلية وأكاديمية أخرى متى توفرت.</div><div class="controls"><input id="q" placeholder="Search في اسم الحدث أو المنطقة أو الكتاب"><select id="region"><option value="">All regions</option><option>يافع</option><option>لحج</option><option>الضالع</option><option>شبوة</option><option>حضرموت</option><option>المهرة</option><option>عدن</option><option>الواحدي</option><option>القعيطي</option><option>الكثيري</option><option>الجنوب</option></select></div></section>
+<section class="intro"><h2>Documentation Method</h2><p>لكل حدث LOG مستقل: History، المكان، الأطراف التي يذكرها SOURCE، السياق، النتائج، الروايات المختلفة، وبيانات الكتاب أو الوثيقة. تُصنف المواد إلى <b>مرشح</b> أو <b>Verified</b> أو <b>Disputed</b>. ولا تُنشر تفاصيل تشغيلية عن العنف؛ المحتوى هنا تاريخي توثيقي.</p><div class="note">تنبيه منهجي: قد تستخدم المصادر الاستعمارية أو الأجنبية مصطلحات وتسميات تعكس منظور كاتبها. لذلك تُقرأ مع مصادر محلية وأكاديمية أخرى متى توفرت.</div><div class="controls"><input id="q" placeholder="Search في اسم الحدث أو المنطقة أو الكتاب"><select id="region"><option value="">All regions</option><option>Yafa</option><option>لحج</option><option>الضالع</option><option>شبوة</option><option>حضرموت</option><option>المهرة</option><option>عدن</option><option>الواحدي</option><option>القعيطي</option><option>الكثيري</option><option>الجنوب</option></select></div></section>
 <section class="card"><h2>الLOG Historyي</h2><div id="status" class="note">جارٍ تحميل الLOGات...</div><div id="events"></div></section>
 </main>
-<footer class="footer"><div class="wrap">نشهل · قسم History والتراث · Archive والمصادر</div></footer>
+<footer class="footer"><div class="wrap">Al-Thawra · قسم History والتراث · Archive والمصادر</div></footer>
 <script>
 const q=document.getElementById('q'),region=document.getElementById('region'),box=document.getElementById('events'),status=document.getElementById('status');let all=[];
 function render(){const term=q.value.trim().toLowerCase(),r=region.value;const rows=all.filter(e=>{const hay=JSON.stringify(e).toLowerCase();return(!term||hay.includes(term))&&(!r||e.region===r)});status.textContent=`عرض ${rows.length} من ${all.length} LOGًا · الLOGات المرشحة تحتاج مراجعة SOURCE قبل اعتمادها`;box.innerHTML=rows.length?rows.map(e=>`<article class="event"><div class="meta"><span class="tag">${e.region||'الجنوب'}</span><span class="tag">${e.status==='verified'?'Verified':e.status==='disputed'?'Disputed':'Review candidate'}</span>${e.period?`<span class="tag">${e.period}</span>`:''}</div><h3>${escapeHtml(e.title||'حدث تاريخي')}</h3><p>${escapeHtml(e.summary||'لا يوجد ملخص بعد. تتم مراجعة الوثيقة الأصلية قبل كتابة المقال المطول.')}</p><div class="source"><b>SOURCE:</b> ${escapeHtml(e.source?.book_title||e.source?.name||'Not specified')} · <b>المؤلف:</b> ${escapeHtml(e.source?.creator||'Not specified')} · <b>السنة:</b> ${escapeHtml(e.source?.date||'Not specifiedة')} · <b>المعرّف:</b> ${escapeHtml(e.source?.identifier||e.source_id||'Not available')}</div></article>`).join(''):'<div class="empty">No matching results.</div>'}
