@@ -15,7 +15,7 @@
   let allItems = [];
   let currentFilter = 'all';
   let lang = 'en';
-  const UI={en:{news:'NEWS',monitor:'MONITORING',review:'UNDER REVIEW',latest:'Latest News',latestMeta:'Continuous coverage',none:'No recent published stories in this section',more:'No more published stories',verify:'Monitoring under review',verifyMeta:'Not treated as published news until sufficient evidence is available',update:'UPDATE',digital:'Al-Thawra Newspaper'}};
+  const UI={en:{news:'NEWS',monitor:'MONITORING',review:'UNDER REVIEW',latest:'Latest News',latestMeta:'Continuous coverage',none:'No recent published stories in this section',more:'No more published stories',verify:'Monitoring under review',verifyMeta:'Not treated as published news until sufficient evidence is available',update:'UPDATE',digital:'The Southern Revolution'}};
 
   const clean = (value = '') => String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const escapeHtml = (value = '') => clean(value).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));

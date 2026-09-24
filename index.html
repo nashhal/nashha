@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b202c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="description" content="Al-Thawra Newspaper — South Yemen and Yemen news with source and verification context.">
-<meta property="og:title" content="Al-Thawra Newspaper">
-<meta property="og:description" content="Digital newspaper covering news and developments from original sources with clear verification status.">
-<title>Al-Thawra Newspaper | South Yemen and Yemen</title>
+<meta name="description" content="The Southern Revolution — English digital newspaper covering Southern Yemen with source and verification context.">
+<meta property="og:title" content="The Southern Revolution">
+<meta property="og:description" content="A paper-inspired digital newspaper covering developments in Southern Yemen with source and verification context.">
+<title>The Southern Revolution | Digital Newspaper</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -59,27 +59,30 @@ body.dark .hero-summary{color:#aab5ba}
 html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-align:left}html[dir="ltr"] .nav-more{margin-inline-start:auto}html[dir="ltr"] .edition{text-align:left}.ltr .mast-brand{text-align:center}html[dir="ltr"] .nav button{border-left:0;border-right:1px solid var(--line)}html[dir="ltr"] .hero-rail{border-right:0;border-left:1px solid var(--line)}html[dir="ltr"] .rail-item{grid-template-columns:28px 86px minmax(0,1fr)}html[dir="ltr"] .card-tag{right:auto;left:8px}html[dir="ltr"] .verify-item{border-left:0;border-right:1px solid var(--line)}
 </style>
 <link rel="stylesheet" href="paper-effects.css">
+<link rel="stylesheet" href="paper-architecture.css">
 </head>
-<body>
-<div class="utility"><div class="wrap"><div>Thursday, September 24, 2026 · Digital Edition</div><div class="utility-links"><a href="daily-report.html">Daily Bulletin</a><a href="trust.html">Verification Log</a><a href="about.html">About</a></div></div></div>
-<header class="masthead">
+<body class="paper-boot">
+<div class="paper-opening" aria-hidden="true"><div class="paper-opening-shadow"></div><div class="paper-opening-sheet"><div class="paper-opening-crease"></div><div class="paper-opening-title">THE SOUTHERN<br>REVOLUTION</div><div class="paper-opening-date">DIGITAL EDITION · SOUTHERN YEMEN</div></div><div class="paper-opening-tear"></div></div>
+<div class="paper-world">
+<div class="utility" data-paper-part="utility"><div class="wrap"><div>Thursday, September 24, 2026 · Digital Edition</div><div class="utility-links"><a href="daily-report.html">Daily Bulletin</a><a href="trust.html">Verification Log</a><a href="about.html">About</a></div></div></div>
+<header class="masthead" data-paper-part="masthead">
 <div class="wrap mast-grid">
 <div class="edition"><strong>Al-Thawra Newspaper</strong><span>South Yemen and Yemen</span><div class="en">SOUTHERN REVOLUTION NEWSPAPER</div></div>
-<a class="mast-brand" href="#home" aria-label="Al-Thawra Newspaper"><img class="mast-logo" src="logo-square.svg" alt=""><div class="mast-title">Al-Thawra</div><div class="mast-en">SOUTHERN REVOLUTION NEWSPAPER</div><div class="rule"></div></a>
+<a class="mast-brand" href="#home" aria-label="Al-Thawra Newspaper"><img class="mast-logo" src="logo-square.svg" alt=""><div class="mast-title">The Southern Revolution</div><div class="mast-en">SOUTHERN YEMEN · DIGITAL NEWSPAPER</div><div class="rule"></div></a>
 <div class="actions"><button class="action" id="searchToggle" aria-label="Search">Search</button><button class="action" id="darkToggle" aria-label="Dark mode">◐</button></div>
 </div>
 <div class="search-panel" id="searchPanel"><div class="wrap"><form class="search-form" id="searchForm"><input id="searchInput" type="search" placeholder="Search the newspaper"><button type="submit">Search</button></form><div class="search-results" id="searchResults"></div></div></div>
 </header>
-<nav class="nav" aria-label="Sections"><div class="wrap" id="sectionNav">
+<nav class="nav" data-paper-part="nav" aria-label="Sections"><div class="wrap" id="sectionNav">
 <button class="active" data-filter="all">Home</button><button data-filter="الجنوب">South</button><button data-filter="عدن">Aden</button><button data-filter="حضرموت">Hadramout</button><button data-filter="شبوة">Shabwah</button><button data-filter="أبين">Abyan</button><button data-filter="لحج">Lahj</button><button data-filter="الضالع">Al Dhale’e</button><button data-filter="المهرة">Al Mahrah</button><button data-filter="سقطرى">Socotra</button><button data-filter="اليمن">Yemen</button><a class="nav-more" href="search.html">Advanced Search</a>
 </div></nav>
-<section class="breaking" aria-label="Latest Updates"><div class="breaking-label"><span class="live-dot"></span><span id="breakingLabelText">BREAKING</span></div><div class="ticker"><div class="ticker-track" id="tickerTrack"><span class="ticker-item">Loading latest updates...</span></div></div></section>
-<main id="home">
-<section class="section"><div class="wrap">
+<section class="breaking" data-paper-part="breaking" aria-label="Latest Updates"><div class="breaking-label"><span class="live-dot"></span><span id="breakingLabelText">BREAKING</span></div><div class="ticker"><div class="ticker-track" id="tickerTrack"><span class="ticker-item">Loading latest updates...</span></div></div></section>
+<main id="home" class="paper-page" data-paper-part="page">
+<section class="section paper-section paper-section-lead"><div class="wrap">
 <div class="section-head"><h2 id="gridTitle">Latest News</h2><p id="sectionMeta">News · Source · Verification</p></div>
 <div class="hero-grid" id="heroGrid"></div>
 </div></section>
-<section class="section" style="padding-top:0"><div class="wrap news-layout">
+<section class="section paper-section paper-section-columns" style="padding-top:0"><div class="wrap news-layout">
 <div class="news-panel"><div class="news-grid" id="newsGrid"></div></div>
 <aside class="sidebar">
 <div class="sidebox"><h3>Digital Edition</h3><p>Continuous coverage of recent published events, with material under review kept separate.</p></div>
@@ -87,7 +90,7 @@ html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-ali
 <div class="sidebox"><h3>Trust & Verification</h3><p>Every published story has a source record and a digital fingerprint that can be reviewed from the verification page.</p><div class="side-links"><a href="trust.html">Open Verification Log ↗</a><a href="web3.html">WEB3 Layer</a></div></div>
 </aside>
 </div></section>
-<section class="section" style="padding-top:0"><div class="wrap trust-panel">
+<section class="section paper-section paper-section-record" style="padding-top:0"><div class="wrap trust-panel">
 <div class="section-head"><h2>Newspaper Record</h2><p>Source transparency and publication status</p></div>
 <div class="trust-row">
 <div class="trust-cell"><strong>SOURCE</strong><span>Original source link with every story</span></div>
@@ -95,14 +98,16 @@ html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-ali
 <div class="trust-cell"><strong>SHA-256</strong><span>Digital fingerprint for the stored record</span></div>
 <div class="trust-cell"><strong>WEB3</strong><span>External proof when network anchoring is enabled</span></div>
 </div></div></section>
-<section class="wrap verify-panel" id="verifySection" hidden><div class="verify-head"><h2>Monitoring Under VERIFICATION</h2><p>Not treated as published news until sufficient evidence is available</p></div><div class="verify-list" id="verifyList"></div></section>
+<section class="wrap verify-panel paper-section paper-section-review" id="verifySection" hidden><div class="verify-head"><h2>Monitoring Under VERIFICATION</h2><p>Not treated as published news until sufficient evidence is available</p></div><div class="verify-list" id="verifyList"></div></section>
 </main>
-<footer class="footer"><div class="wrap"><div class="footer-grid">
+<footer class="footer" data-paper-part="footer"><div class="wrap"><div class="footer-grid">
 <div><h3>Al-Thawra Newspaper</h3><p>A digital newspaper covering developments with visible source and verification status. Automation assists monitoring and organization and does not replace editorial work.</p></div>
 <div><h3>Newspaper</h3><ul><li><a href="about.html">About</a></li><li><a href="daily-report.html">Daily Bulletin</a></li><li><a href="search.html">Advanced Search</a></li></ul></div>
 <div><h3>Transparency</h3><ul><li><a href="trust.html">Verification Log</a></li><li><a href="editorial-policy.html">Editorial Policy</a></li><li><a href="corrections.html">Corrections</a></li></ul></div>
 </div><div class="copy">© 2026 Al-Thawra Newspaper · Southern Revolution Newspaper</div></div></footer>
+</div>
 <script src="news-loader.js" defer></script>
+<script src="paper-architecture.js" defer></script>
 <script src="paper-effects.js" defer></script>
 </body>
 </html>
