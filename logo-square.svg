@@ -1,8 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="شعار صحيفة الثورة الجنوبية">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061A2A"/><stop offset="1" stop-color="#123B57"/></linearGradient></defs>
-<rect x="10" y="10" width="236" height="236" rx="58" fill="url(#g)"/>
-<path d="M424 -21Q281 -21 194.5 8.0Q108 37 70.0 88.0Q32 139 32 204Q32 251 44.0 300.5Q56 350 67 388L192 359Q185 331 178.5 299.5Q172 268 172 244Q172 207 198.5 178.5Q225 150 286.0 134.5Q347 119 450 119V116L451 119Q645 119 739.5 141.0Q834 163 834 218Q834 254 822.0 304.5Q810 355 791 407L922 445Q935 411 947.0 370.5Q959 330 966.5 289.5Q974 249 974 214Q974 152 947.0 107.5Q920 63 857.5 34.5Q795 6 689.0 -7.5Q583 -21 425 -21V-20ZM509 570Q484 570 465.5 589.0Q447 608 447 634Q447 660 465.5 678.0Q484 696 509 696Q535 696 553 678.0Q571 660 571 634Q571 608 553 589.0Q535 570 509 570ZM297 570Q272 570 253.5 589.0Q235 608 235 634Q235 660 253.5 678.0Q272 696 297 696Q323 696 341 678.0Q359 660 359 634Q359 608 341 589.0Q323 570 297 570ZM722 570Q697 570 678.5 589.0Q660 608 660 634Q660 660 678.5 678.0Q697 696 722 696Q748 696 766 678.0Q784 660 784 634Q784 608 766 589.0Q748 570 722 570Z" transform="translate(68 143) scale(.12 -.12)" fill="#fff"/>
-<path d="M76 182h104" stroke="#47B08A" stroke-width="10" stroke-linecap="round"/>
-<path d="M91 181v-34h74v34" fill="none" stroke="#fff" stroke-width="8"/>
-<path d="M104 204h48" stroke="#47B08A" stroke-width="7" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="The Southern Revolution logo">
+<rect x="12" y="12" width="232" height="232" rx="48" fill="#111"/>
+<path d="M72 78h75c24 0 43 12 43 34 0 18-12 29-30 34l24 42h-31l-20-37H101v37H72V78Zm29 24v25h43c11 0 17-4 17-13s-6-12-17-12h-43Z" fill="#fff"/>
+<path d="M72 190h112" stroke="#d7d7d4" stroke-width="7" stroke-linecap="round"/>
+<path d="M72 66h112" stroke="#d7d7d4" stroke-width="7" stroke-linecap="round"/>
+<path d="M74 198h108" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+<rect x="72" y="196" width="27" height="8" rx="4" fill="#c83f3f"/>
+<rect x="100" y="196" width="27" height="8" rx="4" fill="#111"/>
+<rect x="128" y="196" width="27" height="8" rx="4" fill="#fff" stroke="#111" stroke-width="2"/>
+<rect x="156" y="196" width="27" height="8" rx="4" fill="#38a477"/>
 </svg>
