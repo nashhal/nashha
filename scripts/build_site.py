@@ -157,6 +157,7 @@ def render_article(n: dict) -> str:
 <title>{esc(title)} | Al-Thawra Newspaper</title>
 <meta name="description" content="{esc(summary[:300])}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paper-effects.css">
 <link rel="canonical" href="{page_url(n)}">
 <meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="Al-Thawra Newspaper">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(summary[:300])}">
@@ -187,6 +188,7 @@ def render_article(n: dict) -> str:
 {analysis_block}
 <div class="notice">This story is edited by Al-Thawra Newspaper and focuses on the event itself. The newsroom retains verification materials and reference links for evidence review, updates and corrections. AI assistance does not replace editorial verification.</div>
 </article></main><footer><div class="wrap">© Al-Thawra Newspaper · News First · Verification First · Al-Thawra Trust</div></footer>
+<script src="../paper-effects.js" defer></script>
 
 </body></html>'''
 
