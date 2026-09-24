@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071b2a">
-<meta name="description" content="Southern Revolution Trust Web3 — كيف توثق Al-Thawra Newspaper LOG الأخبار بFINGERPRINT الرقمية وIPFS وEthereum.">
-<title>Southern Revolution Trust Web3 | Al-Thawra Newspaper</title>
+<meta name="description" content="The Southern Revolution Trust Web3 — record integrity, manifests, hashes and optional blockchain anchoring.">
+<title>Southern Revolution Trust Web3 | The Southern Revolution</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700" rel="stylesheet">
 <style>
@@ -22,10 +22,10 @@
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><a href="index.html">Al-Thawra Newspaper</a><span>Southern Revolution Trust Web3</span></div></div>
-<header class="head"><div class="wrap"><a class="brand" href="index.html">Al-Thawra Newspaper</a><a class="back" href="trust.html">Verify News Record</a></div></header>
+<div class="top"><div class="wrap"><a href="index.html">The Southern Revolution</a><span>Southern Revolution Trust Web3</span></div></div>
+<header class="head"><div class="wrap"><a class="brand" href="index.html">The Southern Revolution</a><a class="back" href="trust.html">Verify News Record</a></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">SOUTHERN REVOLUTION TRUST · VERIFIABLE NEWS</div><h1>Web3 Layer: Record Integrity Without Replacing the Newsroom</h1><p>The goal is to give readers an independent way to verify that a specific manifest has not changed after anchoring. The content remains off-chain while the network stores a compact fingerprint proof.</p><span class="state"><i></i><span id="state">Web3 Layer ready — awaiting on-chain proof</span></span></section>
+<section class="hero"><div class="eyebrow">SOUTHERN REVOLUTION TRUST · VERIFIABLE NEWS</div><h1>Web3 Layer: Record Integrity Without Replacing the Newsroom</h1><p>The Web3 layer is an optional record-integrity mechanism. It can anchor a deterministic manifest fingerprint and, when configured, an IPFS CID. The blockchain proof does not verify the truth of the underlying reporting.</p><span class="state"><i></i><span id="state">Web3 layer is optional — checking the current anchor record</span></span></section>
 
 <section class="section"><h2>How the Story Moves from Source to Proof</h2><p>Each stage has a different role, and a fingerprint is not a replacement for editorial verification.</p>
 <div class="flow">
@@ -43,9 +43,9 @@
 
 <section class="section"><h2>Implementation Status</h2><div class="grid">
 <div class="card"><h3>SHA-256</h3><p>Enabled in Southern Revolution Trust to calculate a stable JSON fingerprint for core story data.</p></div>
-<div class="card"><h3>IPFS</h3><p>Prepared to store a content-addressed manifest when an IPFS provider and credentials are configured.</p></div>
-<div class="card"><h3>Ethereum Sepolia</h3><p>The smart contract and anchoring automation are in the repository. Actual on-chain status depends on configured network and wallet credentials.</p></div>
-<div class="card"><h3>Verification</h3><p>The Southern Revolution Trust page checks the fingerprint against the manifest and displays the transaction when available.</p></div>
+<div class="card"><h3>IPFS</h3><p>The anchoring script can upload the manifest to an IPFS-compatible endpoint when configured. This is not evidence that a live CID currently exists.</p></div>
+<div class="card"><h3>Ethereum Sepolia</h3><p>The contract and anchoring scripts are present in the repository. A live on-chain proof exists only when the repository has produced an anchor record with a transaction hash.</p></div>
+<div class="card"><h3>Verification</h3><p>The Trust page compares record fingerprints with the published manifest and displays a blockchain transaction only when an actual anchor record is available.</p></div>
 </div></section>
 </main>
 <footer class="wrap footer">Southern Revolution Trust Web3 · Record transparency without storing content on-chain</footer>
