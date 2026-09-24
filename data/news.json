@@ -1,5 +1,245 @@
 [
   {
+    "id": "srn-20260924-lahj-security-152888",
+    "event_key": "srn-lahj-security-152888",
+    "title": "محافظ لحج يعقد لقاءً مع أئمة وخطباء الحوطة وتبن حول الخطاب الديني",
+    "original_title": "محافظ لحج يلتقي أئمة وخطباء الحَوطَة وتُبَن ويحث على تحصين المجتمع ومواجهة الفكر الحوثي",
+    "source": "وكالة الأنباء اليمنية (سبأ)",
+    "source_name": "وكالة الأنباء اليمنية (سبأ)",
+    "source_url": "https://www.sabanew.net/story/ar/152888",
+    "link": "https://www.sabanew.net/story/ar/152888",
+    "published": "2026-09-24T12:18:00+00:00",
+    "published_at": "2026-09-24T12:18:00+00:00",
+    "collected_at": "2026-09-24T12:50:00Z",
+    "category": "الجنوب",
+    "region": "لحج",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "عقد محافظ لحج مراد الحالمي لقاءً مع أئمة وخطباء مديريتي الحوطة وتبن لمناقشة دور الخطاب الديني في المجتمع. ويعرض الخبر تصريحات المشاركين بشأن مواجهة الاستقطاب وتعزيز الخطاب المعتدل.",
+    "description": "لقاء في لحج لمناقشة دور الخطاب الديني والاستقطاب المجتمعي.",
+    "content": "عقد محافظ لحج مراد الحالمي لقاءً موسعاً مع أئمة المساجد وخطباء الجوامع في الحوطة وتبن لمناقشة دور الخطاب الديني في المجتمع.\nوبحسب سبأ، تناول اللقاء قضايا تتعلق بالخطاب الديني والوعي المجتمعي ومسؤولية المؤسسات الدينية والتربوية في الحد من الاستقطاب.",
+    "facts_ar": [
+      "اللقاء عُقد في محافظة لحج يوم 24 سبتمبر 2026",
+      "شارك فيه أئمة وخطباء من الحوطة وتبن",
+      "ناقش اللقاء دور الخطاب الديني في المجتمع",
+      "تضمن اللقاء حديثًا عن مواجهة الاستقطاب وتعزيز خطاب معتدل"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 75,
+    "verification_basis": "المادة تقرير مباشر عن لقاء محلي، وتفاصيل المواقف منسوبة إلى المتحدثين في التقرير.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "وكالة الأنباء اليمنية (سبأ)",
+        "url": "https://www.sabanew.net/story/ar/152888",
+        "type": "primary",
+        "role": "تقرير مباشر عن اللقاء"
+      }
+    ],
+    "primary_source": {
+      "name": "وكالة الأنباء اليمنية (سبأ)",
+      "url": "https://www.sabanew.net/story/ar/152888"
+    },
+    "source_type": "official_primary",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-seed-2026-09-24"
+  },
+  {
+    "id": "srn-20260924-hadramout-schools-152887",
+    "event_key": "srn-hadramout-schools-152887",
+    "title": "مدارس وادي حضرموت تنظم فعاليات تربوية لإحياء ذكرى 26 سبتمبر",
+    "original_title": "مدارس وادي حضرموت تحيي ذكرى ثورة 26 سبتمبر بفعاليات تربوية ووطنية",
+    "source": "وكالة الأنباء اليمنية (سبأ)",
+    "source_name": "وكالة الأنباء اليمنية (سبأ)",
+    "source_url": "https://www.sabanew.net/story/ar/152887",
+    "link": "https://www.sabanew.net/story/ar/152887",
+    "published": "2026-09-24T11:50:00+00:00",
+    "published_at": "2026-09-24T11:50:00+00:00",
+    "collected_at": "2026-09-24T12:50:00Z",
+    "category": "الجنوب",
+    "region": "حضرموت",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "أفادت سبأ بأن مدارس وادي حضرموت نظمت اليوم فعاليات وطوابير صباحية بمناسبة ذكرى 26 سبتمبر. وتضمنت الفعاليات أنشطة تربوية ووطنية للطلاب.",
+    "description": "فعاليات تربوية في مدارس وادي حضرموت بمناسبة ذكرى 26 سبتمبر.",
+    "content": "نظمت مدارس في وادي حضرموت، الخميس 24 سبتمبر 2026، فعاليات تربوية ووطنية بمناسبة ذكرى 26 سبتمبر.\nوبحسب سبأ، شملت الفعاليات طوابير صباحية وأنشطة هدفت إلى إحياء المناسبة وتعزيز الوعي لدى الطلاب.",
+    "facts_ar": [
+      "الفعاليات أُقيمت في مدارس وادي حضرموت",
+      "أُقيمت يوم 24 سبتمبر 2026",
+      "شملت طوابير صباحية وأنشطة تربوية ووطنية",
+      "الفعاليات استهدفت الطلاب في المدارس"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 80,
+    "verification_basis": "المادة تقرير مباشر منشور عبر سبأ عن نشاط تربوي محلي.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "وكالة الأنباء اليمنية (سبأ)",
+        "url": "https://www.sabanew.net/story/ar/152887",
+        "type": "primary",
+        "role": "تقرير عن الفعاليات المدرسية"
+      }
+    ],
+    "primary_source": {
+      "name": "وكالة الأنباء اليمنية (سبأ)",
+      "url": "https://www.sabanew.net/story/ar/152887"
+    },
+    "source_type": "official_primary",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-seed-2026-09-24"
+  },
+  {
+    "id": "srn-20260924-aden-eu-152880",
+    "event_key": "srn-aden-eu-152880",
+    "title": "محافظ عدن يبحث مع الاتحاد الأوروبي وهولندا أوضاع النازحين والتداعيات الإنسانية",
+    "original_title": "محافظ عدن يبحث مع سفيري الاتحاد الأوروبي وهولندا تداعيات التصعيد الحوثي وأوضاع النازحين",
+    "source": "وكالة الأنباء اليمنية (سبأ)",
+    "source_name": "وكالة الأنباء اليمنية (سبأ)",
+    "source_url": "https://www.sabanew.net/story/ar/152880",
+    "link": "https://www.sabanew.net/story/ar/152880",
+    "published": "2026-09-24T07:29:00+00:00",
+    "published_at": "2026-09-24T07:29:00+00:00",
+    "collected_at": "2026-09-24T12:50:00Z",
+    "category": "الجنوب",
+    "region": "عدن",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "بحث محافظ عدن عبدالرحمن شيخ مع سفير الاتحاد الأوروبي لدى اليمن وسفيرة هولندا التطورات الإنسانية والميدانية وانعكاسات التصعيد والنزوح على العاصمة عدن. ووفق سبأ، تناول اللقاء أوضاع الخدمات والاحتياجات المرتبطة باستقبال الأسر النازحة.",
+    "description": "بحث محافظ عدن مع سفيري الاتحاد الأوروبي وهولندا التطورات الإنسانية وأوضاع النازحين في عدن.",
+    "content": "بحث محافظ عدن عبدالرحمن شيخ مع سفير الاتحاد الأوروبي لدى اليمن وسفيرة هولندا مستجدات الأوضاع الإنسانية والميدانية.\nوتناول اللقاء، بحسب سبأ، انعكاسات النزوح والضغوط على قطاعات الصحة والمياه والكهرباء والإيواء في عدن.\nكما استعرضت السلطة المحلية جهود استقبال الأسر النازحة والتنسيق مع الجهات الإنسانية لتوفير الاحتياجات الأساسية.",
+    "facts_ar": [
+      "اللقاء عُقد في عدن يوم 24 سبتمبر 2026",
+      "المباحثات تناولت الأوضاع الإنسانية والميدانية",
+      "نوقشت انعكاسات النزوح على الخدمات في عدن",
+      "السلطة المحلية عرضت جهود استقبال الأسر النازحة"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 75,
+    "verification_basis": "المادة صادرة عن وكالة الأنباء اليمنية (سبأ) وتنقل موقف وتصريحات المشاركين في اللقاء؛ لم تُضف إليها تفاصيل من خارج المصدر.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "وكالة الأنباء اليمنية (سبأ)",
+        "url": "https://www.sabanew.net/story/ar/152880",
+        "type": "primary",
+        "role": "تقرير مباشر عن اللقاء"
+      }
+    ],
+    "primary_source": {
+      "name": "وكالة الأنباء اليمنية (سبأ)",
+      "url": "https://www.sabanew.net/story/ar/152880"
+    },
+    "source_type": "official_primary",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-seed-2026-09-24"
+  },
+  {
+    "id": "srn-20260924-weather-152871",
+    "event_key": "srn-weather-152871",
+    "title": "أجواء شديدة الحرارة متوقعة على السواحل والصحاري مع فرص أمطار على مناطق جنوبية",
+    "original_title": "الأرصاد تتوقّع استمرار الطقس شديد الحرارة في السواحل والصحاري ومعتدل وأمطار رعدية في المرتفعات الجبلية",
+    "source": "وكالة الأنباء اليمنية (سبأ)",
+    "source_name": "وكالة الأنباء اليمنية (سبأ)",
+    "source_url": "https://www.sabanew.net/story/ar/152871",
+    "link": "https://www.sabanew.net/story/ar/152871",
+    "published": "2026-09-24T06:35:00+00:00",
+    "published_at": "2026-09-24T06:35:00+00:00",
+    "collected_at": "2026-09-24T12:50:00Z",
+    "category": "الجنوب",
+    "region": "اليمن",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "توقعت هيئة الأرصاد، وفق نشرة نقلتها سبأ، استمرار الأجواء الحارة إلى شديدة الحرارة على السواحل والصحاري، مع فرص أمطار متفرقة على أجزاء من السواحل الجنوبية وسقطرى وبعض المرتفعات. وتشمل التوقعات مناطق من لحج وأبين وشبوة وحضرموت.",
+    "description": "توقعات جوية تتضمن حرارة مرتفعة وفرص أمطار على مناطق جنوبية.",
+    "content": "توقّع مركز التنبؤات الجوية والإنذار المبكر استمرار الطقس الحار إلى شديد الحرارة على عدد من المناطق الساحلية والصحراوية.\nكما أشارت النشرة إلى فرص هطول أمطار متفرقة على أجزاء من السواحل الجنوبية وأرخبيل سقطرى والمرتفعات.\nوتشمل التوقعات مناطق من لحج وأبين وشبوة وحضرموت، مع تحذيرات مرتبطة بالسيول والعواصف والرياح.",
+    "facts_ar": [
+      "النشرة صدرت يوم 24 سبتمبر 2026",
+      "درجات حرارة مرتفعة متوقعة على السواحل والصحاري",
+      "فرص أمطار متفرقة تشمل أجزاء من المناطق الجنوبية",
+      "ذُكرت لحج وأبين وشبوة وحضرموت ضمن نطاقات الأمطار المحتملة"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 85,
+    "verification_basis": "المعلومة عبارة عن نشرة جوية من مركز التنبؤات الجوية والإنذار المبكر نقلتها سبأ.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "وكالة الأنباء اليمنية (سبأ)",
+        "url": "https://www.sabanew.net/story/ar/152871",
+        "type": "primary",
+        "role": "نقل النشرة الجوية اليومية"
+      }
+    ],
+    "primary_source": {
+      "name": "وكالة الأنباء اليمنية (سبأ)",
+      "url": "https://www.sabanew.net/story/ar/152871"
+    },
+    "source_type": "official_primary",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-seed-2026-09-24"
+  },
+  {
+    "id": "srn-20260924-aden-power-374781",
+    "event_key": "srn-aden-power-374781",
+    "title": "كهرباء عدن: تسع ساعات فصل مقابل ساعتين تشغيل حتى فجر الخميس",
+    "original_title": "عدن : مستجدات كهرباء عدن حتى صباح الخميس 24 سبتمبر 2026م",
+    "source": "عدن تايم",
+    "source_name": "عدن تايم",
+    "source_url": "https://www.aden-tm.net/news/374781",
+    "link": "https://www.aden-tm.net/news/374781",
+    "published": "2026-09-24T00:47:00+00:00",
+    "published_at": "2026-09-24T00:47:00+00:00",
+    "collected_at": "2026-09-24T12:50:00Z",
+    "category": "الجنوب",
+    "region": "عدن",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "نشرت عدن تايم تحديثًا لحالة كهرباء عدن عند الساعة 12:32 فجر الخميس، وأفادت فيه بأن مدة الانقطاع بلغت 9 ساعات مقابل ساعتين للتشغيل حتى ذلك الوقت. هذه الأرقام تخص التحديث المنشور في المصدر وليست توقعًا لبقية اليوم.",
+    "description": "تحديث لحالة كهرباء عدن حتى فجر 24 سبتمبر 2026.",
+    "content": "أفادت عدن تايم في تحديث نشرته فجر الخميس بأن حالة كهرباء عدن حتى الساعة 12:32 بلغت 9 ساعات فصل مقابل ساعتين تشغيل.\nوتتعلق الأرقام بالفترة التي يغطيها التحديث المنشور، ولا تعني بالضرورة استمرار النمط نفسه طوال اليوم.",
+    "facts_ar": [
+      "التحديث نُشر فجر 24 سبتمبر 2026",
+      "أفاد المصدر بـ9 ساعات فصل",
+      "أفاد المصدر بساعتين تشغيل حتى وقت التحديث",
+      "الأرقام مرتبطة بالفترة التي يغطيها التقرير"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 70,
+    "verification_basis": "التحديث المحلي منشور في عدن تايم ويتضمن أرقامًا لحالة الكهرباء حتى وقت محدد.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "عدن تايم",
+        "url": "https://www.aden-tm.net/news/374781",
+        "type": "primary",
+        "role": "تحديث محلي مباشر لحالة الكهرباء"
+      }
+    ],
+    "primary_source": {
+      "name": "عدن تايم",
+      "url": "https://www.aden-tm.net/news/374781"
+    },
+    "source_type": "local_news",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-seed-2026-09-24"
+  },
+  {
     "id": "f3612ca530b48e8aaf9d",
     "title": "إحاطة ديفيد غريسلي 25 يوليو 2023",
     "original_title": "إحاطة ديفيد غريسلي 25 يوليو 2023",
@@ -3144,7 +3384,7 @@
     "verification_status": "developing",
     "verification_score": 70,
     "verification_evidence_count": 0,
-    "freshness_hours": 71.0
+    "freshness_hours": 71
   },
   {
     "id": "38d24ce249d7f87d76a3",
@@ -3324,7 +3564,7 @@
     "verification_status": "developing",
     "verification_score": 70,
     "verification_evidence_count": 0,
-    "freshness_hours": 68.0
+    "freshness_hours": 68
   },
   {
     "id": "34768c5661b8829a7abb",
