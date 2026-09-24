@@ -1,1 +1,0 @@
-Use Git tree operations to finalize index.
