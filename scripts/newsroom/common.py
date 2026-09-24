@@ -16,7 +16,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[2]
 NEWS_PATH = ROOT / "data" / "news.json"
 
-MODEL = os.getenv("XAI_MODEL", "grok-4.5")
+MODEL = os.getenv("XAI_MODEL") or "grok-4.5"
 REQUEST_TIMEOUT = int(os.getenv("NEWSROOM_TIMEOUT", "120"))
 MAX_CANDIDATES = int(os.getenv("NEWSROOM_MAX_CANDIDATES", "8"))
 MAX_EVIDENCE = 12
