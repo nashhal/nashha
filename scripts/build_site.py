@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build indexable article pages, sitemaps and crawl rules for Nashhal."""
+"""Build indexable article pages, sitemaps and crawl rules for Southern Revolution Newspaper."""
 from __future__ import annotations
 
 import html
@@ -96,7 +96,7 @@ def list_html(items: object) -> str:
 
 
 def render_article(n: dict) -> str:
-    title = clean(n.get("title")) or "خبر من نشهل"
+    title = clean(n.get("title")) or "خبر من صحيفة الثورة الجنوبية"
     summary = display_summary(n)
     published = parse_dt(n.get("published") or n.get("published_at"))
     modified = parse_dt(n.get("updated_at") or n.get("collected_at")) or published
@@ -125,8 +125,8 @@ def render_article(n: dict) -> str:
         "dateModified": modified.isoformat() if modified else None,
         "articleSection": clean(n.get("category") or "الأخبار"),
         "inLanguage": "ar",
-        "author": {"@type": "Organization", "name": "غرفة تحرير نشهل"},
-        "publisher": {"@type": "Organization", "name": "نشهل", "url": BASE},
+        "author": {"@type": "Organization", "name": "غرفة تحرير الثورة الجنوبية"},
+        "publisher": {"@type": "Organization", "name": "الثورة الجنوبية", "url": BASE},
         "mainEntityOfPage": {"@type": "WebPage", "@id": page_url(n)},
     }
     graph = {k: v for k, v in graph.items() if v is not None}
@@ -141,7 +141,7 @@ def render_article(n: dict) -> str:
     questions = list_html(n.get("open_questions_ar"))
     analysis_block = ""
     if any((what, background, analysis, why, implications, questions)):
-        analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>قراءة نشهل</strong><span>{esc(n.get("importance") or "عادي")}</span></div>'''
+        analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>قراءة الثورة الجنوبية</strong><span>{esc(n.get("importance") or "عادي")}</span></div>'''
         if what: analysis_block += f'<div><h3>ماذا حدث؟</h3>{paragraphize(what)}</div>'
         if background: analysis_block += f'<div><h3>خلفية</h3>{paragraphize(background)}</div>'
         if analysis: analysis_block += f'<div><h3>القراءة والسياق</h3>{paragraphize(analysis)}</div>'
@@ -154,10 +154,10 @@ def render_article(n: dict) -> str:
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} | نشهل</title>
+<title>{esc(title)} | الثورة الجنوبية</title>
 <meta name="description" content="{esc(summary[:300])}">
 <link rel="canonical" href="{page_url(n)}">
-<meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="نشهل">
+<meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="الثورة الجنوبية">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(summary[:300])}">
 <script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
 <style>
@@ -174,18 +174,18 @@ def render_article(n: dict) -> str:
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><a href="../index.html">نشهل</a> · منصة أخبار مستقلة</div></div>
-<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">نشهل</a><a class="back" href="../index.html">العودة للأخبار</a></div></header>
+<div class="top"><div class="wrap"><a href="../index.html">الثورة الجنوبية</a> · منصة أخبار مستقلة</div></div>
+<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">الثورة الجنوبية</a><a class="back" href="../index.html">العودة للأخبار</a></div></header>
 <main class="wrap"><article class="article">
 <div class="kicker">{esc(n.get("category") or "أخبار")}</div><h1>{esc(title)}</h1>
 <div class="meta">{esc(n.get("region") or "")} · {esc(published.isoformat() if published else "")}</div>
 <p class="lead">{esc(summary)}</p>
 {facts_block}{claims_block}
 <div class="article-body">{''.join(f'<p>{esc(clean(x))}</p>' for x in body if clean(x))}</div>
-<section class="box verification"><div class="ver-head"><strong>حالة التحقق في نشهل</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis") or "تُراجع المعطيات المتاحة ويُفصل بين ما ثبت وما نُسب وما يزال قيد التحقق.")}</div><div class="ver-meta">درجة التحقق: {score_text} · مواد التحقق: {len(evidence)} · أولية: {primary} · مستقلة: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Nashhal Trust · سجل قابل للتحقق</div><div class="trust-state" id="trustState">البصمة الرقمية محفوظة في سجل نشهل · فحص Web3 متاح من صفحة التحقق</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">فتح سجل التحقق ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: قيد التحقق</span><span>·</span><span>لا يتم تخزين نص الخبر أو الصور على البلوكشين</span></div></section>
+<section class="box verification"><div class="ver-head"><strong>حالة التحقق في الثورة الجنوبية</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis") or "تُراجع المعطيات المتاحة ويُفصل بين ما ثبت وما نُسب وما يزال قيد التحقق.")}</div><div class="ver-meta">درجة التحقق: {score_text} · مواد التحقق: {len(evidence)} · أولية: {primary} · مستقلة: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · سجل قابل للتحقق</div><div class="trust-state" id="trustState">البصمة الرقمية محفوظة في سجل الثورة الجنوبية · فحص Web3 متاح من صفحة التحقق</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">فتح سجل التحقق ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: قيد التحقق</span><span>·</span><span>لا يتم تخزين نص الخبر أو الصور على البلوكشين</span></div></section>
 {analysis_block}
-<div class="notice">هذا خبر محرر باسم نشهل يركز على الحدث نفسه. تحفظ غرفة التحرير مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. استخدام الذكاء الاصطناعي لا يعني اعتماد المعلومات دون مراجعة قواعد التحقق التحريري.</div>
-</article></main><footer><div class="wrap">© نشهل · الحدث أولًا · التحقق أولًا · Nashhal Trust</div></footer>
+<div class="notice">هذا خبر محرر باسم الثورة الجنوبية يركز على الحدث نفسه. تحفظ غرفة التحرير مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. استخدام الذكاء الاصطناعي لا يعني اعتماد المعلومات دون مراجعة قواعد التحقق التحريري.</div>
+</article></main><footer><div class="wrap">© الثورة الجنوبية · الحدث أولًا · التحقق أولًا · Southern Revolution Trust</div></footer>
 <script>
 (async()=>{const s=document.getElementById('web3State');const state=document.getElementById('trustState');try{const r=await fetch('../data/web3/anchor.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const a=await r.json();if(a.status==='anchored'){s.textContent='Web3: مثبت على Ethereum Sepolia';state.textContent='النسخة مرتبطة بإثبات on-chain عند فتح سجل التحقق';}else if(a.status==='prepared'){s.textContent='Web3: manifest جاهز';state.textContent='تم تجهيز manifest للبصمات · التثبيت on-chain غير مكتمل بعد';}}catch(_){}})();
 </script>
@@ -235,7 +235,7 @@ def main() -> None:
             continue
         title = html.escape(clean(item.get("title")))
         pub = dt.astimezone(timezone.utc).isoformat().replace('+00:00','Z')
-        newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>نشهل</news:name><news:language>ar</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
+        newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>الثورة الجنوبية</news:name><news:language>ar</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
     newsmap.append('</urlset>')
     (ROOT / "news-sitemap.xml").write_text("\n".join(newsmap) + "\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/news-sitemap.xml\n", encoding="utf-8")
