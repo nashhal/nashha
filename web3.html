@@ -23,29 +23,29 @@
 </head>
 <body>
 <div class="top"><div class="wrap"><a href="index.html">Al-Thawra Newspaper</a><span>Southern Revolution Trust Web3</span></div></div>
-<header class="head"><div class="wrap"><a class="brand" href="index.html">Al-Thawra Newspaper</a><a class="back" href="trust.html">الVerify LOG خبر</a></div></header>
+<header class="head"><div class="wrap"><a class="brand" href="index.html">Al-Thawra Newspaper</a><a class="back" href="trust.html">Verify News Record</a></div></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">SOUTHERN REVOLUTION TRUST · VERIFIABLE NEWS</div><h1>Web3 Layer توثق الLOG and does not replace Newsroom</h1><p>الهدف هو إعطاء القارئ طريقة مستقلة للVerify أن manifest محدد لم يتغير بعد تثبيته. The content itself remains off-chain، بينما تحفظ السلسلة إثباتًا موجزًا للبصمة.</p><span class="state"><i></i><span id="state">Web3 Layer مهيأة — في انتظار LOG on-chain</span></span></section>
+<section class="hero"><div class="eyebrow">SOUTHERN REVOLUTION TRUST · VERIFIABLE NEWS</div><h1>Web3 Layer: Record Integrity Without Replacing the Newsroom</h1><p>The goal is to give readers an independent way to verify that a specific manifest has not changed after anchoring. The content remains off-chain while the network stores a compact fingerprint proof.</p><span class="state"><i></i><span id="state">Web3 Layer مهيأة — في انتظار LOG on-chain</span></span></section>
 
-<section class="section"><h2>كيف the story moves من SOURCE إلى الإثبات؟</h2><p>كل مرحلة لها وظيفة مختلفة، ولا تعتبر FINGERPRINT بديلًا عن التحقق الEditي.</p>
+<section class="section"><h2>How the Story Moves from Source to Proof</h2><p>Each stage has a different role, and a fingerprint is not a replacement for editorial verification.</p>
 <div class="flow">
-<div class="step"><div class="num">01</div><b>Collect</b><span>اكتشاف الحدث والSources الأولية</span></div>
-<div class="step"><div class="num">02</div><b>Write</b><span>Edit مسودة مرتبطة بSOURCE</span></div>
-<div class="step"><div class="num">03</div><b>Verify</b><span>مراجعة الأدلة والادعاءات</span></div>
-<div class="step"><div class="num">04</div><b>Edit</b><span>صياغة نهائية وسياق واضح</span></div>
-<div class="step"><div class="num">05</div><b>Publish + Trust</b><span>SHA-256 ثم manifest ثم Web3 عند التفعيل</span></div>
+<div class="step"><div class="num">01</div><b>Collect</b><span>Discover the event and primary sources</span></div>
+<div class="step"><div class="num">02</div><b>Write</b><span>Edit a source-linked draft</span></div>
+<div class="step"><div class="num">03</div><b>Verify</b><span>Review evidence and claims</span></div>
+<div class="step"><div class="num">04</div><b>Edit</b><span>Final writing and clear context</span></div>
+<div class="step"><div class="num">05</div><b>Publish + Trust</b><span>SHA-256, then manifest, then Web3 when enabled</span></div>
 </div></section>
 
-<section class="section"><h2>ماذا يتم وضعه على Web3؟</h2><div class="grid">
-<div class="card"><h3>على البلوكشين</h3><p>بصمة manifest، وCID عند استخدام IPFS، ووقت التثبيت، وهوية حساب التثبيت وفق العقد الذكي.</p><div class="code">manifestHash → anchorManifest(manifestHash, cid)</div></div>
-<div class="card"><h3>خارج البلوكشين</h3><p>نص Story، الصور، صفحات الموقع ومواد التحقق التفصيلية. هذا يحافظ على الأداء ويقلل تكلفة ومساحة الLOG.</p><div class="code">article + media + evidence → Southern Revolution infrastructure</div></div>
-</div><div class="notice"><strong>مهم:</strong> وجود معاملة على البلوكشين يثبت وجود بصمة لLOG معين وعدم تغييرها على السلسلة، ولا يثبت بمفرده أن كل جملة في Story صحيحة.</div></section>
+<section class="section"><h2>What Goes on Web3?</h2><div class="grid">
+<div class="card"><h3>على البلوكشين</h3><p>Manifest fingerprint, CID when IPFS is used, anchoring time and the anchoring account identity defined by the smart contract.</p><div class="code">manifestHash → anchorManifest(manifestHash, cid)</div></div>
+<div class="card"><h3>خارج البلوكشين</h3><p>Story text, images, site pages and detailed verification materials remain off-chain to preserve performance and reduce cost and storage.</p><div class="code">article + media + evidence → Southern Revolution infrastructure</div></div>
+</div><div class="notice"><strong>Important:</strong> A blockchain transaction proves that a fingerprint for a specific record was anchored and unchanged on that chain; it does not by itself prove that every sentence in a story is true.</div></section>
 
-<section class="section"><h2>حالة التنفيذ</h2><div class="grid">
-<div class="card"><h3>SHA-256</h3><p>مفعل ضمن Southern Revolution Trust لحساب بصمة البيانات الأساسية للخبر بصيغة JSON ثابتة.</p></div>
-<div class="card"><h3>IPFS</h3><p>مهيأ ليحفظ manifest بعنوان محتوى عند توفير مزود IPFS وبيانات الاعتماد اللازمة.</p></div>
-<div class="card"><h3>Ethereum Sepolia</h3><p>العقد الذكي وأتمتة التثبيت موجودان في المستودع. حالة on-chain الفعلية تعتمد على تفعيل أسرار الشبكة والمحفظة.</p></div>
-<div class="card"><h3>التحقق</h3><p>صفحة Southern Revolution Trust تفحص FINGERPRINT وتقارنها بالـmanifest وتعرض المعاملة عندما تتوفر.</p></div>
+<section class="section"><h2>Implementation Status</h2><div class="grid">
+<div class="card"><h3>SHA-256</h3><p>Enabled in Southern Revolution Trust to calculate a stable JSON fingerprint for core story data.</p></div>
+<div class="card"><h3>IPFS</h3><p>Prepared to store a content-addressed manifest when an IPFS provider and credentials are configured.</p></div>
+<div class="card"><h3>Ethereum Sepolia</h3><p>The smart contract and anchoring automation are in the repository. Actual on-chain status depends on configured network and wallet credentials.</p></div>
+<div class="card"><h3>التحقق</h3><p>The Southern Revolution Trust page checks the fingerprint against the manifest and displays the transaction when available.</p></div>
 </div></section>
 </main>
 <footer class="wrap footer">Southern Revolution Trust Web3 · شفافية الLOG دون تخزين المحتوى نفسه على السلسلة</footer>
