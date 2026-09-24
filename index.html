@@ -11,7 +11,7 @@
 <title>The Southern Revolution | Digital Newspaper</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
 <style>
 :root{
  --paper:#ffffff;--paper2:#f2f2f2;--ink:#111111;--muted:#666666;--line:#cfcfcf;
@@ -59,7 +59,7 @@ body.dark .hero-summary{color:#aab5ba}
 html[dir="ltr"] .utility .wrap{text-align:left}html[dir="ltr"] .edition{text-align:left}html[dir="ltr"] .nav-more{margin-inline-start:auto}html[dir="ltr"] .edition{text-align:left}.ltr .mast-brand{text-align:center}html[dir="ltr"] .nav button{border-left:0;border-right:.65px solid var(--line)}html[dir="ltr"] .hero-rail{border-right:0;border-left:.65px solid var(--line)}html[dir="ltr"] .rail-item{grid-template-columns:28px 86px minmax(0,1fr)}html[dir="ltr"] .card-tag{right:auto;left:8px}html[dir="ltr"] .verify-item{border-left:0;border-right:.65px solid var(--line)}
 </style>
 <link rel="stylesheet" href="paper-effects.css?v=paper2">
-<link rel="stylesheet" href="paper-architecture.css?v=paper5">
+<link rel="stylesheet" href="paper-architecture.css?v=paper6">
 
 <style id="fine-paper-rules">
 /* Fine editorial rules */
@@ -218,6 +218,114 @@ body.paper-edition .hero-main::before{
 }
 .card-tag{
   box-shadow:none!important;
+}
+</style>
+<style id="refined-newspaper-typography">
+/* Refined newspaper typography */
+:root{
+  --font-serif:'Newsreader', Georgia, serif;
+  --font-sans:'Inter', Arial, sans-serif;
+}
+html,body{
+  font-family:var(--font-sans)!important;
+  font-weight:400!important;
+}
+.mast-title,
+.section-head h2,
+.hero-main h1,
+.rail-content h2,
+.card-body h3,
+.sidebox h3,
+.footer h3,
+.paper-opening-panel span,
+.paper-opening-front strong{
+  font-family:var(--font-serif)!important;
+  font-weight:400!important;
+  letter-spacing:-.025em!important;
+}
+.mast-title{
+  font-weight:300!important;
+  letter-spacing:-.045em!important;
+}
+.hero-main h1{
+  font-weight:400!important;
+  letter-spacing:-.035em!important;
+}
+.section-head h2,
+.sidebox h3,
+.footer h3{
+  font-weight:400!important;
+}
+.rail-content h2,
+.card-body h3{
+  font-weight:400!important;
+}
+.mast-en,
+.edition,
+.edition strong,
+.edition .en,
+.utility,
+.utility-links,
+.actions,
+.action,
+.nav button,
+.nav-more,
+.breaking,
+.breaking-label,
+.ticker-item,
+.hero-main .kicker,
+.rail-content .kicker,
+.card-tag,
+.card-status,
+.meta-line,
+.verify-head,
+.verify-badge,
+.verify-meta,
+.copy,
+.footer p,
+.footer a,
+.paper-opening-panel small,
+.paper-opening-date,
+.paper-opening-front em{
+  font-family:var(--font-sans)!important;
+  font-weight:400!important;
+}
+.utility,
+.utility-links,
+.nav button,
+.action,
+.nav-more,
+.breaking-label,
+.card-tag,
+.card-status,
+.verify-badge{
+  font-weight:500!important;
+}
+.hero-summary,
+.card-body p,
+.sidebox p,
+.verify-head p,
+.verify-meta,
+.footer p,
+.footer a,
+.section-head p{
+  font-family:var(--font-sans)!important;
+  font-weight:300!important;
+}
+.meta-line,
+.ticker-item small,
+.edition,
+.edition .en{
+  font-weight:300!important;
+}
+.paper-opening-panel span{
+  font-weight:300!important;
+}
+.paper-opening-front strong{
+  font-weight:400!important;
+}
+.paper-opening-front em{
+  font-weight:300!important;
 }
 </style>
 </head>
