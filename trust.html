@@ -85,8 +85,8 @@ async function load(){
     html+='</div>';
   }
   html+='</section>';
-  html+='<div class="actions"><a class="btn primary" href="index.html">Back للأخبار</a><a class="btn" href="search.html">Search آخر</a><button class="btn" type="button" id="copyBtn">نسخ رابط التحقق</button></div>';
-  html+='<div class="note"><strong>تنبيه:</strong> FINGERPRINT وإثبات Web3 يثبتان هوية الLOG وسلامة البيانات المLOGة، وليس صحة كل ادعاء في Story. لا يتم تخزين نص Story أو الصور على البلوكشين.</div></div>';
+  html+='<div class="actions"><a class="btn primary" href="index.html">Back للأخبار</a><a class="btn" href="search.html">Search آخر</a><button class="btn" type="button" id="copyBtn">نسخ رابط Verification</button></div>';
+  html+='<div class="note"><strong>تنبيه:</strong> FINGERPRINT وإثبات Web3 يثبتان هوية الLOG وسلامة البيانات المLOGة، وليس صحة كل ادعاء في Story. لا يتم تخزين نص Story أو الصور On-chain.</div></div>';
   $('card').innerHTML=html;
   $('copyBtn')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);$('copyBtn').textContent='تم النسخ ✓'}catch{}})
 }
