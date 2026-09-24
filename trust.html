@@ -49,8 +49,8 @@ async function load(){
  if(!record){$('card').innerHTML='<div class="empty">No verification record was found for this story.<br><small>The story may be external or its fingerprint may not have been recorded yet.</small></div>';return}
  const news=Array.isArray(newsData)?newsData:(newsData?.news||newsData?.items||[]);
  const sourceStory=news.find(x=>String(x.id)===String(record.id));
- const displayTitle=sourceStory?.title_en||record.title||'Story record';
- const displaySource=sourceStory?.source_name_en||record.source||record.source_name||'Not specified';
+ const displayTitle=sourceStory?.title_en || (record.title && !/[\u0600-\u06ff]/.test(record.title) ? record.title : 'Story record');
+ const displaySource=sourceStory?.source_name_en || (record.source && !/[\u0600-\u06ff]/.test(record.source) ? record.source : 'Source record');
  const displayRegion=sourceStory?.region_en||regionLabel(sourceStory?.region);
  const calculated=await sha256(canonical(record)),expected=String(record.content_hash||'');
  const localOk=!expected||expected===calculated;
