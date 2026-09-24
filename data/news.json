@@ -50,7 +50,14 @@
     "summary_en": "Lahj Governor Murad Al-Halimi held a meeting with imams and mosque preachers from Al Hawtah and Tuban to discuss the role of religious discourse in society. The report says participants discussed polarization and the promotion of moderate messaging.",
     "content_en": "Lahj Governor Murad Al-Halimi held a meeting with imams and mosque preachers from Al Hawtah and Tuban to discuss the role of religious discourse in society.\nAccording to Saba News Agency, the meeting addressed religious discourse, public awareness and the role of religious and educational institutions in reducing polarization.",
     "region_en": "Lahj",
-    "source_name_en": "Saba News Agency"
+    "source_name_en": "Saba News Agency",
+    "facts_en": [
+      "The meeting was held in Lahj on September 24, 2026",
+      "Imams and preachers from Al Hawtah and Tuban attended",
+      "The meeting discussed the role of religious discourse in society",
+      "Participants discussed polarization and moderate messaging"
+    ],
+    "verification_basis_en": "The item is a direct local report from Saba News Agency. Statements and positions are attributed to participants in the report."
   },
   {
     "id": "srn-20260924-hadramout-schools-152887",
@@ -103,7 +110,14 @@
     "summary_en": "Schools in Hadramout Valley held morning assemblies and educational activities on September 24 to mark the anniversary of September 26. The activities included educational and civic programs for students.",
     "content_en": "Schools in Hadramout Valley held educational and civic activities on Thursday, September 24, 2026, marking the anniversary of September 26.\nAccording to Saba News Agency, the program included morning assemblies and activities aimed at marking the occasion and raising student awareness.",
     "region_en": "Hadramout",
-    "source_name_en": "Saba News Agency"
+    "source_name_en": "Saba News Agency",
+    "facts_en": [
+      "The activities were held at schools in Hadramout Valley",
+      "They took place on September 24, 2026",
+      "The program included morning assemblies and educational and civic activities",
+      "Students were the target participants"
+    ],
+    "verification_basis_en": "The item is a direct Saba News Agency report about local school activities."
   },
   {
     "id": "srn-20260924-aden-eu-152880",
@@ -156,7 +170,14 @@
     "summary_en": "Aden Governor Abdulrahman Sheikh met the European Union ambassador to Yemen and the Dutch ambassador to discuss humanitarian and field developments and the effects of displacement on Aden. According to Saba, the meeting also covered pressure on basic services and efforts to receive displaced families.",
     "content_en": "Aden Governor Abdulrahman Sheikh met the European Union ambassador to Yemen and the Dutch ambassador to discuss humanitarian and field developments.\nAccording to Saba News Agency, the meeting covered the effects of displacement and pressure on health, water, electricity and shelter services in Aden.\nThe local authority also reviewed efforts to receive displaced families and coordinate with humanitarian actors.",
     "region_en": "Aden",
-    "source_name_en": "Saba News Agency"
+    "source_name_en": "Saba News Agency",
+    "facts_en": [
+      "The meeting was held in Aden on September 24, 2026",
+      "The talks covered humanitarian and field conditions",
+      "The effects of displacement on basic services in Aden were discussed",
+      "The local authority reviewed efforts to receive displaced families"
+    ],
+    "verification_basis_en": "The report was published by Saba News Agency and attributes the meeting details and participant statements to the source."
   },
   {
     "id": "srn-20260924-weather-152871",
@@ -209,7 +230,14 @@
     "summary_en": "The weather forecast calls for hot to very hot conditions across parts of the coastal and desert areas, with scattered rain possible in parts of the southern coast, Socotra and some highlands. Lahj, Abyan, Shabwah and Hadramout are among the areas mentioned in the forecast.",
     "content_en": "The early warning and weather forecasting center expects hot to very hot conditions across a number of coastal and desert areas.\nThe bulletin also points to scattered rain across parts of the southern coast, Socotra and highland areas.\nThe forecast includes parts of Lahj, Abyan, Shabwah and Hadramout, with warnings related to floods, thunderstorms and winds.",
     "region_en": "Yemen",
-    "source_name_en": "Saba News Agency"
+    "source_name_en": "Saba News Agency",
+    "facts_en": [
+      "The bulletin was issued on September 24, 2026",
+      "High temperatures were expected across coastal and desert areas",
+      "Scattered rain was possible in parts of southern areas",
+      "Lahj, Abyan, Shabwah and Hadramout were included among the areas mentioned"
+    ],
+    "verification_basis_en": "The information comes from a daily weather bulletin from the early warning and forecasting center as reported by Saba News Agency."
   },
   {
     "id": "srn-20260924-aden-power-374781",
@@ -262,7 +290,14 @@
     "summary_en": "Aden Time reported an electricity update at 12:32 a.m. Thursday, stating that outages had reached nine hours compared with two hours of supply at that point. The figures refer to the period covered by the published update and are not a forecast for the rest of the day.",
     "content_en": "Aden Time reported early Thursday that electricity service in Aden had reached nine hours of outage versus two hours of supply by 12:32 a.m.\nThe figures refer to the period covered by the published update and do not necessarily indicate that the same pattern would continue throughout the day.",
     "region_en": "Aden",
-    "source_name_en": "Aden Time"
+    "source_name_en": "Aden Time",
+    "facts_en": [
+      "The update was published early on September 24, 2026",
+      "The source reported nine hours of outage",
+      "The source reported two hours of supply by the stated update time",
+      "The figures refer to the period covered by the published report"
+    ],
+    "verification_basis_en": "The figures come from a local Aden Time update covering electricity conditions up to a specific time."
   },
   {
     "id": "f3612ca530b48e8aaf9d",
