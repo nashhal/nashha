@@ -1,9 +1,9 @@
-name: Nashhal Web3 Trust Anchor
+name: Southern Revolution Web3 Trust Anchor
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Nashhal Newsroom"]
+    workflows: ["Southern Revolution Newsroom"]
     types: [completed]
 
 permissions:
@@ -50,7 +50,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/web3
           if git diff --cached --quiet; then echo 'No Web3 trust changes.'; exit 0; fi
-          git commit -m 'تحديث طبقة Nashhal Trust Web3'
+          git commit -m 'تحديث طبقة Southern Revolution Trust Web3'
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
