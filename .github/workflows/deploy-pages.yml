@@ -32,6 +32,14 @@ jobs:
       - name: إعداد GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: إعداد Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: إعادة بناء صفحات الأخبار
+        run: python scripts/build_site.py
+
       - name: رفع ملفات الموقع
         uses: actions/upload-pages-artifact@v3
         with:
