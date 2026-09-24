@@ -3,9 +3,9 @@
    No image asset required.
 */
 :root{
-  --paper-effect-bg:#e8e2d8;
-  --paper-effect-sheet:#fffdf7;
-  --paper-effect-shadow:0 22px 55px rgba(43,34,25,.14);
+  --paper-effect-bg:#ededed;
+  --paper-effect-sheet:#ffffff;
+  --paper-effect-shadow:0 22px 55px rgba(0,0,0,.12);
 }
 html.paper-edition{background:var(--paper-effect-bg)}
 body.paper-edition{
@@ -21,11 +21,11 @@ body.paper-edition::before{
   pointer-events:none;
   opacity:.26;
   background:
-    radial-gradient(circle at 14% 18%,rgba(91,73,49,.12),transparent 24%),
-    radial-gradient(circle at 79% 33%,rgba(91,73,49,.08),transparent 21%),
-    radial-gradient(circle at 42% 79%,rgba(91,73,49,.07),transparent 25%),
-    repeating-linear-gradient(0deg,rgba(60,48,35,.025) 0 1px,transparent 1px 4px),
-    repeating-linear-gradient(90deg,rgba(60,48,35,.018) 0 1px,transparent 1px 5px);
+    radial-gradient(circle at 14% 18%,rgba(0,0,0,.08),transparent 24%),
+    radial-gradient(circle at 79% 33%,rgba(0,0,0,.055),transparent 21%),
+    radial-gradient(circle at 42% 79%,rgba(0,0,0,.045),transparent 25%),
+    repeating-linear-gradient(0deg,rgba(0,0,0,.022) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.016) 0 1px,transparent 1px 5px);
   mix-blend-mode:multiply;
   animation:paperDrift 18s steps(4,end) infinite;
 }
@@ -35,7 +35,7 @@ body.paper-edition::after{
   inset:0;
   z-index:9998;
   pointer-events:none;
-  background:radial-gradient(circle at center,transparent 56%,rgba(38,30,22,.085) 100%);
+  background:radial-gradient(circle at center,transparent 56%,rgba(0,0,0,.075) 100%);
   opacity:.42;
 }
 .paper-grain-layer{
@@ -45,15 +45,15 @@ body.paper-edition::after{
   pointer-events:none;
   opacity:.055;
   background:
-    repeating-radial-gradient(circle at 20% 30%,rgba(20,16,11,.6) 0 .7px,transparent .8px 3px),
-    repeating-radial-gradient(circle at 80% 70%,rgba(20,16,11,.45) 0 .6px,transparent .7px 4px);
+    repeating-radial-gradient(circle at 20% 30%,rgba(0,0,0,.5) 0 .7px,transparent .8px 3px),
+    repeating-radial-gradient(circle at 80% 70%,rgba(0,0,0,.38) 0 .6px,transparent .7px 4px);
   mix-blend-mode:multiply;
   animation:paperGrain 1.1s steps(3,end) infinite;
 }
 body.paper-edition .masthead,
 body.paper-edition .head{
   position:relative;
-  box-shadow:0 4px 0 rgba(42,33,25,.035);
+  box-shadow:0 4px 0 rgba(0,0,0,.035);
 }
 body.paper-edition .hero-grid,
 body.paper-edition .news-panel,
@@ -63,7 +63,7 @@ body.paper-edition .article{
   position:relative;
   background-image:
     linear-gradient(rgba(255,255,255,.28),rgba(255,255,255,.28)),
-    repeating-linear-gradient(0deg,rgba(76,58,39,.018) 0 1px,transparent 1px 5px);
+    repeating-linear-gradient(0deg,rgba(0,0,0,.016) 0 1px,transparent 1px 5px);
   box-shadow:var(--paper-effect-shadow);
 }
 body.paper-edition .hero-grid{overflow:visible}
@@ -75,14 +75,14 @@ body.paper-edition .hero-main::after{
   width:72px;
   height:72px;
   pointer-events:none;
-  background:linear-gradient(135deg,transparent 0 47%,rgba(83,68,50,.18) 48% 50%,rgba(255,253,247,.92) 51% 100%);
-  filter:drop-shadow(-4px 4px 4px rgba(48,37,26,.08));
+  background:linear-gradient(135deg,transparent 0 47%,rgba(0,0,0,.16) 48% 50%,rgba(255,253,247,.92) 51% 100%);
+  filter:drop-shadow(-4px 4px 4px rgba(0,0,0,.07));
   transform:translate(9px,-9px);
   transition:transform .45s cubic-bezier(.22,.61,.36,1),filter .45s ease;
 }
 body.paper-edition .hero-main:hover::after{
   transform:translate(0,0);
-  filter:drop-shadow(-7px 7px 6px rgba(48,37,26,.14));
+  filter:drop-shadow(-7px 7px 6px rgba(0,0,0,.12));
 }
 body.paper-edition .hero-photo,
 body.paper-edition .card-photo,
@@ -102,7 +102,7 @@ body.paper-edition .news-card{
 }
 body.paper-edition .news-card:hover{
   transform:translateY(-3px) rotate(.08deg);
-  box-shadow:0 11px 26px rgba(42,33,25,.09);
+  box-shadow:0 11px 26px rgba(0,0,0,.08);
   z-index:2;
 }
 body.paper-edition .section-head{position:relative}
@@ -123,7 +123,7 @@ body.paper-edition .breaking{
   box-shadow:0 5px 12px rgba(20,26,30,.08);
 }
 body.paper-edition .article{transform-origin:50% 0}
-body.paper-edition .article .cover{box-shadow:0 15px 30px rgba(43,34,25,.12)}
+body.paper-edition .article .cover{box-shadow:0 15px 30px rgba(0,0,0,.1)}
 body.paper-edition .paper-reveal{animation:paperReveal .8s cubic-bezier(.22,.61,.36,1) both}
 body.paper-edition .paper-stagger-1{animation-delay:.06s}
 body.paper-edition .paper-stagger-2{animation-delay:.12s}
