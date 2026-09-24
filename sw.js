@@ -1,6 +1,6 @@
-const CACHE='nashhal-shell-v3';
+const CACHE='nashhal-shell-v4';
 const DATA='nashhal-data-v2';
-const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest'];
+const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./language.js','./global-ui.js','./news-loader.js','./bilingual-news.js','./logo.jpg','./manifest.webmanifest'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
@@ -29,8 +29,10 @@ self.addEventListener('fetch',event=>{
 
   if(url.origin===self.location.origin){
     event.respondWith((async()=>{
+      const isNavigation = event.request.mode === 'navigate' || event.request.destination === 'document';
       try{
-        const response=await fetch(event.request);
+        // HTML is network-first so published layout changes are visible immediately.
+        const response=await fetch(event.request, {cache: isNavigation ? 'no-store' : 'default'});
         const path=url.pathname;
         const cacheable=/\.(js|css|html|jpg|jpeg|png|webp|webmanifest)$/.test(path);
         if(response.ok&&cacheable){
