@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 
-from .common import MAX_CANDIDATES, clean, extract_json, xai_responses
+from .common import MAX_CANDIDATES, clean, clean_body, extract_json, xai_responses
 
 
 def edit(verified: list[dict]) -> list[dict]:
@@ -66,7 +66,7 @@ def edit(verified: list[dict]) -> list[dict]:
             continue
         title = clean(item.get("title"))
         summary = clean(item.get("summary"))
-        body = clean(item.get("content_ar"))
+        body = clean_body(item.get("content_ar"))
         if not title or not summary or not body:
             continue
 
