@@ -89,9 +89,4 @@
   }, true);
 
   // No pointer-follow transforms: the newspaper should remain visually stable while reading.
-
-  const mo = new MutationObserver(() => {
-    window.requestAnimationFrame(observePaperParts);
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
 })();
