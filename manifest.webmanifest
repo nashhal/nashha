@@ -1,13 +1,13 @@
 {
-  "name": "صحيفة الثورة الجنوبية | أخبار الجنوب واليمن",
-  "short_name": "الثورة الجنوبية",
-  "lang": "ar",
-  "dir": "rtl",
+  "name": "Al-Thawra Newspaper | South Yemen and Yemen",
+  "short_name": "Al-Thawra",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#F7F8FA",
   "theme_color": "#0B2A4A",
-  "description": "صحيفة الثورة الجنوبية لمتابعة أخبار الجنوب واليمن من مصادرها الأصلية.",
+  "description": "Al-Thawra Newspaper covering South Yemen and Yemen with source and verification context.",
   "icons": [
     {"src":"logo-square.svg","sizes":"any","type":"image/svg+xml"}
   ]
