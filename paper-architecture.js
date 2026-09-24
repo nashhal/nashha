@@ -26,30 +26,32 @@
     window.setTimeout(finishOpening, 1180);
   }
 
+  let observer = null;
   function observePaperParts() {
+    const targets = document.querySelectorAll('.paper-section,.news-card,.rail-item');
     if (!('IntersectionObserver' in window)) {
-      document.querySelectorAll('.paper-section,.news-card,.rail-item').forEach(el => el.classList.add('is-visible'));
+      targets.forEach(el => el.classList.add('is-visible'));
       return;
     }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .08, rootMargin: '0px 0px -5% 0px' });
-
-    document.querySelectorAll('.paper-section,.news-card,.rail-item').forEach(el => {
+    if (!observer) {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08, rootMargin: '0px 0px -5% 0px' });
+    }
+    targets.forEach(el => {
       if (!el.classList.contains('is-visible')) observer.observe(el);
     });
   }
 
   const refreshObserver = () => window.requestAnimationFrame(observePaperParts);
 
-  window.addEventListener('nashhal-data-ready', refreshObserver);
-  window.addEventListener('load', refreshObserver);
+  window.addEventListener('nashhal-data-ready', refreshObserver, { passive:true });
+  window.addEventListener('load', refreshObserver, { passive:true });
 
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href]');
@@ -86,30 +88,5 @@
     }, 220);
   }, true);
 
-  const paper = document.querySelector('.paper-page');
-  if (paper && !reduce && window.matchMedia('(pointer:fine)').matches) {
-    let raf = 0;
-    let px = 0;
-    let py = 0;
-    paper.addEventListener('pointermove', (event) => {
-      const rect = paper.getBoundingClientRect();
-      px = ((event.clientX - rect.left) / rect.width - .5) * 2;
-      py = ((event.clientY - rect.top) / rect.height - .5) * 2;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        paper.style.setProperty('--paper-mx', (px * 2).toFixed(2) + 'px');
-        paper.style.setProperty('--paper-my', (py * 1.2).toFixed(2) + 'px');
-        raf = 0;
-      });
-    });
-    paper.addEventListener('pointerleave', () => {
-      paper.style.setProperty('--paper-mx', '0px');
-      paper.style.setProperty('--paper-my', '0px');
-    });
-  }
-
-  const mo = new MutationObserver(() => {
-    window.requestAnimationFrame(observePaperParts);
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
+  // No pointer-follow transforms: the newspaper should remain visually stable while reading.
 })();
