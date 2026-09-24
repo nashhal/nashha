@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071b2a">
-<meta name="description" content="Southern Revolution Trust — تحقق من Story Source وبصمته الرقمية وLOG توثيقه وارتباطه بطبقة Web3.">
-<title>Southern Revolution Trust | تحقق الخبر</title>
+<meta name="description" content="Southern Revolution Trust — تحقق من Story Source وبصمته الرقمية وLOG توثيقه وارتباطه بWeb3 Layer.">
+<title>Southern Revolution Trust | تحقق Story</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700" rel="stylesheet">
 <style>
@@ -27,11 +27,11 @@
 <div class="top"><div class="wrap"><a href="index.html">Al-Thawra Newspaper</a><span>Southern Revolution Trust · SOURCE · FINGERPRINT · LOG Web3</span></div></div>
 <header class="head"><div class="wrap"><a class="brand" href="trust.html"><span class="mark">ث</span><span><strong>Southern Revolution Trust</strong><small>Verification & Provenance</small></span></a><a class="back" href="index.html">Back إلى Al-Thawra Newspaper</a></div></header>
 <main class="wrap">
-<section class="hero"><span class="eyebrow"><i></i> VERIFIABLE NEWS RECORD</span><h1>Verify Story</h1><p>راجع SOURCE والوقت وFINGERPRINT الرقمية، ثم check the Manifest proof status when Web3 anchoring is enabled.</p></section>
+<section class="hero"><span class="eyebrow"><i></i> VERIFIABLE NEWS RECORD</span><h1>Verify Story</h1><p>راجع SOURCE وTimestamp وFINGERPRINT الرقمية، ثم check the Manifest proof status when Web3 anchoring is enabled.</p></section>
 <section class="card" id="card"><div class="empty">جارٍ تحميل LOG التوثيق…</div></section>
 <section class="card"><div class="explain"><h2>كيف تقرأ الresults؟</h2><p>مطابقة SHA-256 تعني أن البيانات الأساسية المLOGة تطابق FINGERPRINT المحفوظة للLOG. وإذا ظهر إثبات Web3 Verified، فهذا يربط manifest ببصمة مLOGة على الشبكة. Neither establishes the underlying facts by itself; factual accuracy depends on sources, evidence and editorial verification.</p></div></section>
 </main>
-<footer class="wrap footer">Southern Revolution Trust · مصمم لإثبات سلامة الLOG دون تخزين نص الخبر أو الصور على البلوكشين</footer>
+<footer class="wrap footer">Southern Revolution Trust · مصمم لإثبات سلامة الLOG دون تخزين نص Story أو الصور على البلوكشين</footer>
 <script>
 const params=new URLSearchParams(location.search),id=params.get('id')||'',raw=params.get('data')||'';
 const $=id=>document.getElementById(id);
@@ -55,7 +55,7 @@ async function load(){
   ]);
   let record=id&&Array.isArray(provenance)?provenance.find(x=>x.id===id):null;
   if(!record){const f=parseFallback();if(f)record={...f,status:'external'};}
-  if(!record){$('card').innerHTML='<div class="empty">لم يتم العثور على LOG توثيق لهذا الخبر.<br><small>قد يكون الخبر خارجيًا أو لم تدخل بصمته في الLOG بعد.</small></div>';return}
+  if(!record){$('card').innerHTML='<div class="empty">لم يتم العثور على LOG توثيق لهذا Story.<br><small>قد يكون Story خارجيًا أو لم تدخل بصمته في الLOG بعد.</small></div>';return}
   const calculated=await sha256(canonical(record));
   const expected=String(record.content_hash||'');
   const localOk=!expected||expected===calculated;
@@ -65,7 +65,7 @@ async function load(){
   const prepared=web3Anchor?.status==='prepared'&&web3Match;
   let html='<div class="status '+(localOk?'ok':'bad')+'"><span class="status-dot"></span><div><h2>'+esc(localOk?'FINGERPRINT مطابقة':'FINGERPRINT لا تطابق الLOG')+'</h2><p>'+esc(localOk?'النسخة المعروضة تطابق FINGERPRINT المحفوظة في LOG Al-Thawra Newspaper.':'تعذر مطابقة الLOG الحالي مع FINGERPRINT المحفوظة.')+'</p></div></div>';
   html+='<div class="body"><div class="grid">';
-  html+='<div class="item"><span>معرّف الخبر</span><b>'+esc(record.id)+'</b></div>';
+  html+='<div class="item"><span>معرّف Story</span><b>'+esc(record.id)+'</b></div>';
   html+='<div class="item"><span>SOURCE</span><b>'+esc(record.source||'Not specified')+'</b></div>';
   html+='<div class="item"><span>وقت النشر المLOG</span><b>'+esc(record.published||'Not specified')+'</b></div>';
   html+='<div class="item"><span>وقت التوثيق</span><b>'+esc(record.captured_at||'Not specified')+'</b></div></div>';
@@ -73,9 +73,9 @@ async function load(){
   html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
   html+='<div class="item" style="margin-top:9px"><span>SOURCE الأصلي</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">فتح SOURCE الأصلي ↗</a>':'Not available')+'</b></div>';
   html+='<section class="web3"><h3>Southern Revolution Trust Web3</h3>';
-  if(anchored) html+='<p class="desc">هذا manifest يتضمن بصمة الخبر وتم تثبيته على Ethereum Sepolia وفق LOG Web3 المنشور.</p>';
-  else if(prepared) html+='<p class="desc">تم تجهيز manifest يحتوي على بصمة هذا الخبر، لكن التثبيت on-chain لم يكتمل بعد.</p>';
-  else html+='<p class="desc">لا يوجد إثبات Web3 مطابق لهذا الخبر في الLOG المنشور حاليًا.</p>';
+  if(anchored) html+='<p class="desc">هذا manifest يتضمن بصمة Story وتم تثبيته على Ethereum Sepolia وفق LOG Web3 المنشور.</p>';
+  else if(prepared) html+='<p class="desc">تم تجهيز manifest يحتوي على بصمة هذا Story، لكن التثبيت on-chain لم يكتمل بعد.</p>';
+  else html+='<p class="desc">لا يوجد إثبات Web3 مطابق لهذا Story في الLOG المنشور حاليًا.</p>';
   if(anchored||prepared){
     html+='<span class="network">ETHEREUM SEPOLIA · CHAIN 11155111</span><div class="web3-grid">';
     html+='<div class="item"><span>Manifest Hash</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor.manifest_hash||web3Manifest.manifest_hash||'')+'</b></div>';
@@ -85,8 +85,8 @@ async function load(){
     html+='</div>';
   }
   html+='</section>';
-  html+='<div class="actions"><a class="btn primary" href="index.html">Back للأخبار</a><a class="btn" href="search.html">بحث آخر</a><button class="btn" type="button" id="copyBtn">نسخ رابط التحقق</button></div>';
-  html+='<div class="note"><strong>تنبيه:</strong> FINGERPRINT وإثبات Web3 يثبتان هوية الLOG وسلامة البيانات المLOGة، وليس صحة كل ادعاء في الخبر. لا يتم تخزين نص الخبر أو الصور على البلوكشين.</div></div>';
+  html+='<div class="actions"><a class="btn primary" href="index.html">Back للأخبار</a><a class="btn" href="search.html">Search آخر</a><button class="btn" type="button" id="copyBtn">نسخ رابط التحقق</button></div>';
+  html+='<div class="note"><strong>تنبيه:</strong> FINGERPRINT وإثبات Web3 يثبتان هوية الLOG وسلامة البيانات المLOGة، وليس صحة كل ادعاء في Story. لا يتم تخزين نص Story أو الصور على البلوكشين.</div></div>';
   $('card').innerHTML=html;
   $('copyBtn')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);$('copyBtn').textContent='تم النسخ ✓'}catch{}})
 }
