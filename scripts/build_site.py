@@ -29,7 +29,7 @@ def noisy_text(value: object) -> bool:
     if not text:
         return True
     markers = (
-        "English العربية UN Logo",
+        "English UN Logo",
         "ابحث عن بيانات الأمم المتحدة",
         "من نحن عن الأمم المتحدة",
         "Submit search",
@@ -96,7 +96,7 @@ def list_html(items: object) -> str:
 
 
 def render_article(n: dict) -> str:
-    title = clean(n.get("title_en")) or "Story | Al-Thawra Newspaper"
+    title = clean(n.get("title_en")) or "Story | The Southern Revolution"
     summary = clean(n.get("summary_en")) or "This archived story is preserved in its original source record. See the verification record for the original source."
     published = parse_dt(n.get("published") or n.get("published_at"))
     modified = parse_dt(n.get("updated_at") or n.get("collected_at")) or published
@@ -125,8 +125,8 @@ def render_article(n: dict) -> str:
         "dateModified": modified.isoformat() if modified else None,
         "articleSection": clean(n.get("category_en")) or clean(n.get("category") or "News"),
         "inLanguage": "en",
-        "author": {"@type": "Organization", "name": "Al-Thawra Newsroom"},
-        "publisher": {"@type": "Organization", "name": "Al-Thawra Newspaper", "url": BASE},
+        "author": {"@type": "Organization", "name": "The Southern Revolution Newsroom"},
+        "publisher": {"@type": "Organization", "name": "The Southern Revolution", "url": BASE},
         "mainEntityOfPage": {"@type": "WebPage", "@id": page_url(n)},
     }
     graph = {k: v for k, v in graph.items() if v is not None}
@@ -154,12 +154,12 @@ def render_article(n: dict) -> str:
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} | Al-Thawra Newspaper</title>
+<title>{esc(title)} | The Southern Revolution</title>
 <meta name="description" content="{esc(summary[:300])}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../paper-effects.css">
 <link rel="canonical" href="{page_url(n)}">
-<meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="Al-Thawra Newspaper">
+<meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="The Southern Revolution">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(summary[:300])}">
 <script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
 <style>
@@ -176,8 +176,8 @@ def render_article(n: dict) -> str:
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><a href="../index.html">Al-Thawra Newspaper</a> · Independent News Platform</div></div>
-<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">Al-Thawra Newspaper</a><a class="back" href="../index.html">Back to News</a></div></header>
+<div class="top"><div class="wrap"><a href="../index.html">The Southern Revolution</a> · Independent News Platform</div></div>
+<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">The Southern Revolution</a><a class="back" href="../index.html">Back to News</a></div></header>
 <main class="wrap"><article class="article">
 <div class="kicker">{esc(n.get("category_en") or ("South" if n.get("category")=="الجنوب" else "Yemen" if n.get("category")=="اليمن" else "News"))}</div><h1>{esc(title)}</h1>
 <div class="meta">{esc(n.get("region_en") or "Yemen")} · {esc(published.isoformat() if published else "")}</div>
@@ -186,8 +186,8 @@ def render_article(n: dict) -> str:
 <div class="article-body">{''.join(f'<p>{esc(clean(x))}</p>' for x in body if clean(x))}</div>
 <section class="box verification"><div class="ver-head"><strong>Verification Status</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis_en") or "Available information is reviewed, separating established facts from attributed claims and unresolved details.")}</div><div class="ver-meta">Verification score: {score_text} · Evidence: {len(evidence)} · Primary: {primary} · Independent: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · Verifiable Record</div><div class="trust-state" id="trustState">Digital fingerprint stored in the newspaper record · Web3 status available on the verification page</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">Open Verification Log ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: Under Review</span><span>·</span><span>Story text and images are not stored on-chain</span></div></section>
 {analysis_block}
-<div class="notice">This story is edited by Al-Thawra Newspaper and focuses on the event itself. The newsroom retains verification materials and reference links for evidence review, updates and corrections. AI assistance does not replace editorial verification.</div>
-</article></main><footer><div class="wrap">© Al-Thawra Newspaper · News First · Verification First · Al-Thawra Trust</div></footer>
+<div class="notice">This story is edited by The Southern Revolution and focuses on the event itself. The newsroom retains verification materials and reference links for evidence review, updates and corrections. AI assistance does not replace editorial verification.</div>
+</article></main><footer><div class="wrap">© The Southern Revolution · News First · Verification First · Al-Thawra Trust</div></footer>
 <script src="../paper-effects.js" defer></script>
 
 </body></html>'''
@@ -236,7 +236,7 @@ def main() -> None:
             continue
         title = html.escape(clean(item.get("title")))
         pub = dt.astimezone(timezone.utc).isoformat().replace('+00:00','Z')
-        newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>Al-Thawra Newspaper</news:name><news:language>en</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
+        newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>The Southern Revolution</news:name><news:language>en</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
     newsmap.append('</urlset>')
     (ROOT / "news-sitemap.xml").write_text("\n".join(newsmap) + "\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/news-sitemap.xml\n", encoding="utf-8")
