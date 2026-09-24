@@ -2,8 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import solc from "solc";
 
-const root = process.cwd();
-const sourcePath = path.join(root, "contracts", "NashhalTrustAnchor.sol");
+const packageRoot = process.cwd();
+const repoRoot = path.resolve(packageRoot, "..");
+const sourcePath = path.join(repoRoot, "contracts", "NashhalTrustAnchor.sol");
 const source = fs.readFileSync(sourcePath, "utf8");
 
 const input = {
@@ -16,7 +17,7 @@ const input = {
 };
 
 function findImports(importPath) {
-  const full = path.join(root, "node_modules", importPath);
+  const full = path.join(packageRoot, "node_modules", importPath);
   if (!fs.existsSync(full)) return { error: "Import not found: " + importPath };
   return { contents: fs.readFileSync(full, "utf8") };
 }
@@ -37,7 +38,7 @@ const artifact = {
   deployedBytecode: "0x" + contract.evm.deployedBytecode.object
 };
 
-const outDir = path.join(root, "web3", "artifacts");
+const outDir = path.join(packageRoot, "artifacts");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "NashhalTrustAnchor.json"), JSON.stringify(artifact, null, 2) + "\n");
 console.log("[WEB3] compiled " + artifact.contractName + " with " + artifact.compiler);
