@@ -10,7 +10,7 @@
   const VERIFY_LIMIT = 6;
   const TICKER_LIMIT = 8;
   const CURRENT_HOURS = 72;
-  const CITY_TERMS = ['عدن','حضرموت','شبوة','أبين','لحج','الضالع','المهرة','سقطرى'];
+  const CITY_TERMS = ['Aden','Hadramout','Shabwah','Abyan','Lahj','Al Dhale’e','Al Mahrah','Socotra'];
   const platformLabel = { X: 'SOCIAL MONITORING', Facebook: 'SOCIAL MONITORING' };
   let allItems = [];
   let currentFilter = 'all';
@@ -48,13 +48,13 @@
     const text = clean(value);
     if (!text) return true;
     const markers = [
-      'English العربية UN Logo',
-      'ابحث عن بيانات الأمم المتحدة',
-      'من نحن عن الأمم المتحدة',
-      'العربية UN Logo',
+      'English UN Logo',
+      'UN data search',
+      'About the UN',
+      'UN Logo',
       'Submit search',
-      'مسار التنقل',
-      'المركز الإعلامي'
+      'Breadcrumb',
+      'Media Center'
     ];
     const hits = markers.filter(m => text.includes(m)).length;
     return hits >= 2 || (text.length > 700 && hits >= 1);
@@ -100,13 +100,13 @@
   };
   const categoryLabel = value => value || 'Yemen';
   const metaLine = item => `<div class="meta-line"><span>${escapeHtml(categoryLabel(item.category))}</span><span class="dot"></span><span>${escapeHtml(timeAgo(item.published))}</span></div>`;
-  const placeholder = (label = UI?.[lang]?.digital || 'Al-Thawra') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
+  const placeholder = (label = UI?.[lang]?.digital || 'The Southern Revolution') => `<div class="media-ph"><span>${escapeHtml(label)}</span></div>`;
   const media = (item, klass = '') => item.image ? `<img class="${klass}" src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : placeholder(UI.en.digital);
 
   function injectPerformanceCSS() {
     if (document.getElementById('nashhal-perf-css')) return;
     const style = document.createElement('style'); style.id = 'nashhal-perf-css';
-    style.textContent = `.news-skeleton{display:grid;gap:10px;padding:18px;background:var(--paper);border:1px solid var(--line)}.sk{background:linear-gradient(90deg,var(--soft) 25%,rgba(255,255,255,.55) 50%,var(--soft) 75%);background-size:200% 100%;animation:nashhalShimmer 1.25s linear infinite;border-radius:4px}.sk.h{height:260px}.sk.t{height:24px;width:78%}.sk.s{height:15px;width:92%}.sk.m{height:13px;width:60%}@keyframes nashhalShimmer{to{background-position:-200% 0}}.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--paper);border:1px solid var(--line);margin:0 0 20px}.trust-strip a,.trust-strip div{padding:14px;border-left:1px solid var(--line);font:700 10px/1.7 'IBM Plex Sans Arabic';color:var(--ink)}.trust-strip a:last-child,.trust-strip div:last-child{border-left:0}.trust-strip strong{display:block;color:var(--green);font-size:12px;margin-bottom:3px}.verify-live{display:inline-flex;align-items:center;gap:5px}.verify-live i{width:6px;height:6px;border-radius:50%;background:#18794e}@media(max-width:650px){.trust-strip{grid-template-columns:1fr 1fr}.trust-strip a,.trust-strip div{border-bottom:1px solid var(--line)}}@media(prefers-reduced-motion:reduce){.sk{animation:none}.ticker-track,.live-dot{animation:none!important}}`;
+    style.textContent = `.news-skeleton{display:grid;gap:10px;padding:18px;background:var(--paper);border:1px solid var(--line)}.sk{background:linear-gradient(90deg,var(--soft) 25%,rgba(255,255,255,.55) 50%,var(--soft) 75%);background-size:200% 100%;animation:nashhalShimmer 1.25s linear infinite;border-radius:4px}.sk.h{height:260px}.sk.t{height:24px;width:78%}.sk.s{height:15px;width:92%}.sk.m{height:13px;width:60%}@keyframes nashhalShimmer{to{background-position:-200% 0}}.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--paper);border:1px solid var(--line);margin:0 0 20px}.trust-strip a,.trust-strip div{padding:14px;border-left:1px solid var(--line);font:700 10px/1.7 'IBM Plex Sans';color:var(--ink)}.trust-strip a:last-child,.trust-strip div:last-child{border-left:0}.trust-strip strong{display:block;color:var(--green);font-size:12px;margin-bottom:3px}.verify-live{display:inline-flex;align-items:center;gap:5px}.verify-live i{width:6px;height:6px;border-radius:50%;background:#18794e}@media(max-width:650px){.trust-strip{grid-template-columns:1fr 1fr}.trust-strip a,.trust-strip div{border-bottom:1px solid var(--line)}}@media(prefers-reduced-motion:reduce){.sk{animation:none}.ticker-track,.live-dot{animation:none!important}}`;
     document.head.appendChild(style);
   }
 
@@ -114,14 +114,6 @@
     const hero = document.getElementById('heroGrid'), grid = document.getElementById('newsGrid');
     if (hero && !hero.children.length) hero.innerHTML = '<div class="news-skeleton"><div class="sk h"></div><div class="sk t"></div><div class="sk s"></div><div class="sk m"></div></div>';
     if (grid && !grid.children.length) grid.innerHTML = Array.from({length:6},()=>'<div class="news-skeleton"><div class="sk h" style="height:150px"></div><div class="sk t"></div><div class="sk s"></div></div>').join('');
-  }
-
-  function injectTrustStrip() {
-    const hero = document.getElementById('heroGrid');
-    if (!hero || document.getElementById('nashhal-trust-strip')) return;
-    const strip = document.createElement('section'); strip.id = 'nashhal-trust-strip'; strip.className = 'wrap trust-strip';
-    strip.innerHTML = '<a href="trust.html"><strong>SHA-256</strong>Digital fingerprint for every verified record</a><a href="web3.html"><strong>Web3 Trust</strong>Manifest anchoring when network proof is enabled</a><a href="editorial-policy.html"><strong>Editorial Verification</strong>Facts and attributed claims are kept distinct</a><a href="ai-policy.html"><strong>AI Assistance</strong>Automation does not replace editorial verification</a>';
-    hero.parentElement.insertBefore(strip, hero);
   }
 
   function renderTicker(){const track=document.getElementById('tickerTrack');if(!track)return;const items=confirmedItems().slice(0,TICKER_LIMIT);track.innerHTML=items.length?items.map(item=>`<a class="ticker-item" href="${articleUrl(item)}"><strong>${UI[lang].update}</strong><span>${escapeHtml(item.title)}</span><small>${escapeHtml(timeAgo(item.published))}</small></a>`).join(''):`<span class="ticker-item">${'No verified updates at the moment'}</span>`;}
