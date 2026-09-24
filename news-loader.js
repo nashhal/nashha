@@ -214,5 +214,5 @@
     setupSearch();
     registerPWA();
     loadNews(false);
-  });cument.addEventListener('DOMContentLoaded',()=>{injectPerformanceCSS();showSkeleton();setupFilters();setupDarkMode();setupSearch();registerPWA();loadNews(false)});
+  });
 })();
