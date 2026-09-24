@@ -96,8 +96,8 @@ def list_html(items: object) -> str:
 
 
 def render_article(n: dict) -> str:
-    title = clean(n.get("title")) or "خبر من صحيفة الثورة الجنوبية"
-    summary = display_summary(n)
+    title = clean(n.get("title_en")) or clean(n.get("title")) or "Story from Al-Thawra Newspaper"
+    summary = clean(n.get("summary_en")) or display_summary(n)
     published = parse_dt(n.get("published") or n.get("published_at"))
     modified = parse_dt(n.get("updated_at") or n.get("collected_at")) or published
     score = n.get("verification_score")
@@ -106,7 +106,7 @@ def render_article(n: dict) -> str:
     except (TypeError, ValueError):
         score_text = "غير متاحة"
     verification = clean(n.get("verification"))
-    label = {"confirmed": "مؤكد", "developing": "قيد التطور", "unconfirmed": "غير مؤكد"}.get(verification, "قيد التحقق")
+    label = {"confirmed": "Confirmed", "developing": "Developing", "unconfirmed": "Unverified"}.get(verification, "Under review")
     badge = "confirmed" if verification == "confirmed" else "developing" if verification == "developing" else ""
     facts = n.get("facts_ar") if isinstance(n.get("facts_ar"), list) else []
     claims = n.get("claims_ar") if isinstance(n.get("claims_ar"), list) else []
@@ -123,10 +123,10 @@ def render_article(n: dict) -> str:
         "url": page_url(n),
         "datePublished": published.isoformat() if published else None,
         "dateModified": modified.isoformat() if modified else None,
-        "articleSection": clean(n.get("category") or "الأخبار"),
-        "inLanguage": "ar",
-        "author": {"@type": "Organization", "name": "غرفة تحرير الثورة الجنوبية"},
-        "publisher": {"@type": "Organization", "name": "الثورة الجنوبية", "url": BASE},
+        "articleSection": clean(n.get("category_en")) or clean(n.get("category") or "News"),
+        "inLanguage": "en",
+        "author": {"@type": "Organization", "name": "Al-Thawra Newsroom"},
+        "publisher": {"@type": "Organization", "name": "Al-Thawra Newspaper", "url": BASE},
         "mainEntityOfPage": {"@type": "WebPage", "@id": page_url(n)},
     }
     graph = {k: v for k, v in graph.items() if v is not None}
@@ -141,29 +141,29 @@ def render_article(n: dict) -> str:
     questions = list_html(n.get("open_questions_ar"))
     analysis_block = ""
     if any((what, background, analysis, why, implications, questions)):
-        analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>قراءة الثورة الجنوبية</strong><span>{esc(n.get("importance") or "عادي")}</span></div>'''
-        if what: analysis_block += f'<div><h3>ماذا حدث؟</h3>{paragraphize(what)}</div>'
-        if background: analysis_block += f'<div><h3>خلفية</h3>{paragraphize(background)}</div>'
-        if analysis: analysis_block += f'<div><h3>القراءة والسياق</h3>{paragraphize(analysis)}</div>'
-        if why: analysis_block += f'<div><h3>لماذا يهم؟</h3>{paragraphize(why)}</div>'
-        if implications: analysis_block += f'<div><h3>المسارات المحتملة</h3>{implications}</div>'
-        if questions: analysis_block += f'<div><h3>الأسئلة المفتوحة</h3>{questions}</div>'
+        analysis_block = f'''<section class="box analysis"><div class="analysis-title"><strong>Editorial Context</strong><span>{esc(n.get("importance") or "عادي")}</span></div>'''
+        if what: analysis_block += f'<div><h3>What Happened?</h3>{paragraphize(what)}</div>'
+        if background: analysis_block += f'<div><h3>Background</h3>{paragraphize(background)}</div>'
+        if analysis: analysis_block += f'<div><h3>Context and Analysis</h3>{paragraphize(analysis)}</div>'
+        if why: analysis_block += f'<div><h3>Why It Matters</h3>{paragraphize(why)}</div>'
+        if implications: analysis_block += f'<div><h3>Possible Paths</h3>{implications}</div>'
+        if questions: analysis_block += f'<div><h3>Open Questions</h3>{questions}</div>'
         analysis_block += "</section>"
 
     return f'''<!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} | الثورة الجنوبية</title>
+<title>{esc(title)} | Al-Thawra Newspaper</title>
 <meta name="description" content="{esc(summary[:300])}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="canonical" href="{page_url(n)}">
-<meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="الثورة الجنوبية">
+<meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="Al-Thawra Newspaper">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(summary[:300])}">
 <script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
 <style>
 :root{{--bg:#f2f4f6;--paper:#fff;--ink:#14202b;--muted:#687482;--line:#d7dde3;--brand:#0B2A4A;--brand2:#1F5A8A;--ok:#18794e;--warn:#a16207;--soft:#eef3f7;--max:920px}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Naskh Arabic','Amiri',serif;line-height:2}}
+*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;line-height:2}}
 .top{{background:var(--brand);color:#fff;padding:9px 0;font-size:12px}}.wrap{{width:min(var(--max),calc(100% - 30px));margin:auto}}.top a,.back{{color:#fff;text-decoration:none}}
 .head{{background:var(--paper);border-bottom:1px solid var(--line);padding:18px 0}}.headrow{{display:flex;justify-content:space-between;gap:15px;align-items:center}}.brand{{font-size:28px;font-weight:900;color:var(--ink);text-decoration:none}}.back{{color:var(--brand2);font-weight:700;text-decoration:none}}
 .article{{margin:28px 0 55px;background:var(--paper);border:1px solid var(--line);padding:32px;box-shadow:0 8px 28px rgba(11,42,74,.06)}}.kicker{{color:var(--brand2);font-size:12px;font-weight:900}}h1{{font-family:'Amiri',serif;font-size:42px;line-height:1.35;margin:8px 0 10px;font-weight:700}}.meta{{color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);padding-bottom:15px}}
@@ -176,16 +176,16 @@ def render_article(n: dict) -> str:
 </head>
 <body>
 <div class="top"><div class="wrap"><a href="../index.html">الثورة الجنوبية</a> · منصة أخبار مستقلة</div></div>
-<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">الثورة الجنوبية</a><a class="back" href="../index.html">العودة للأخبار</a></div></header>
+<header class="head"><div class="wrap headrow"><a class="brand" href="../index.html">الثورة الجنوبية</a><a class="back" href="../index.html">Back to News</a></div></header>
 <main class="wrap"><article class="article">
 <div class="kicker">{esc(n.get("category") or "أخبار")}</div><h1>{esc(title)}</h1>
 <div class="meta">{esc(n.get("region") or "")} · {esc(published.isoformat() if published else "")}</div>
 <p class="lead">{esc(summary)}</p>
 {facts_block}{claims_block}
 <div class="article-body">{''.join(f'<p>{esc(clean(x))}</p>' for x in body if clean(x))}</div>
-<section class="box verification"><div class="ver-head"><strong>حالة التحقق في الثورة الجنوبية</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis") or "تُراجع المعطيات المتاحة ويُفصل بين ما ثبت وما نُسب وما يزال قيد التحقق.")}</div><div class="ver-meta">درجة التحقق: {score_text} · مواد التحقق: {len(evidence)} · أولية: {primary} · مستقلة: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · سجل قابل للتحقق</div><div class="trust-state" id="trustState">البصمة الرقمية محفوظة في سجل الثورة الجنوبية · فحص Web3 متاح من صفحة التحقق</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">فتح سجل التحقق ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: قيد التحقق</span><span>·</span><span>لا يتم تخزين نص الخبر أو الصور على البلوكشين</span></div></section>
+<section class="box verification"><div class="ver-head"><strong>Verification Status</strong><span class="badge {badge}">{label}</span></div><div class="ver-text">{esc(n.get("verification_basis") or "Available information is reviewed, separating established facts from attributed claims and unresolved details.")}</div><div class="ver-meta">Verification score: {score_text} · Evidence: {len(evidence)} · Primary: {primary} · Independent: {independent}</div></section><section class="box trust-box" data-news-id="{esc(n.get("id"))}"><div class="trust-row"><div><div class="trust-title">Southern Revolution Trust · Verifiable Record</div><div class="trust-state" id="trustState">Digital fingerprint stored in the newspaper record · Web3 status available on the verification page</div></div><a class="trust-btn" href="../trust.html?id={quote(str(n.get("id","")).strip())}">Open Verification Log ↗</a></div><div class="trust-meta"><span>SHA-256</span><span>·</span><span id="web3State">Web3: قيد التحقق</span><span>·</span><span>Story text and images are not stored on-chain</span></div></section>
 {analysis_block}
-<div class="notice">هذا خبر محرر باسم الثورة الجنوبية يركز على الحدث نفسه. تحفظ غرفة التحرير مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. استخدام الذكاء الاصطناعي لا يعني اعتماد المعلومات دون مراجعة قواعد التحقق التحريري.</div>
+<div class="notice">هذا Story edited by Al-Thawra Newspaper يركز على الحدث نفسه. تحفظ newsroom مواد التحقق والروابط المرجعية في سجل الحدث لمراجعة الأدلة والتحديثات والتصحيحات. AI assistance does not replace editorial verification.</div>
 </article></main><footer><div class="wrap">© الثورة الجنوبية · الحدث أولًا · التحقق أولًا · Southern Revolution Trust</div></footer>
 
 </body></html>'''
