@@ -12,7 +12,7 @@ const anchorPath = path.join(outDir, "anchor.json");
 const artifactPath = path.join(packageRoot, "artifacts", "NashhalTrustAnchor.json");
 
 function clean(v) {
-  return String(v ?? "").replace(/<[^>]+>/g, " ").replace(/\\s+/g, " ").trim();
+  return String(v ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 
 const data = JSON.parse(fs.readFileSync(newsPath, "utf8"));
