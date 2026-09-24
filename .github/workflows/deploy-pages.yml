@@ -1,4 +1,4 @@
-name: نشر نهشل على GitHub Pages
+name: نشر صحيفة الثورة الجنوبية على GitHub Pages
 
 on:
   push:
