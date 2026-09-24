@@ -1,6 +1,19 @@
-<svg width="360" height="96" viewBox="0 0 360 96" xmlns="http://www.w3.org/2000/svg">
-<rect x="4" y="4" width="88" height="88" rx="22" fill="#0B2A4A"/>
-<circle cx="48" cy="30" r="4" fill="#fff"/><circle cx="36" cy="30" r="4" fill="#fff"/><circle cx="60" cy="30" r="4" fill="#fff"/>
-<text x="48" y="73" text-anchor="middle" direction="rtl" font-family="Arial, Tahoma, sans-serif" font-size="48" font-weight="700" fill="#fff">ث</text>
-<text x="112" y="62" font-family="Arial, Tahoma, sans-serif" font-size="38" font-weight="700" fill="#0B2A4A">الثورة الجنوبية</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="210" viewBox="0 0 720 210" role="img" aria-labelledby="title desc">
+<title id="title">صحيفة الثورة الجنوبية</title>
+<desc id="desc">شعار صحيفة الثورة الجنوبية</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#071B2A"/>
+    <stop offset="1" stop-color="#123C59"/>
+  </linearGradient>
+</defs>
+<rect x="8" y="8" width="194" height="194" rx="44" fill="url(#bg)"/>
+<path d="M48 130V76c0-10 8-18 18-18h78c10 0 18 8 18 18v54" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+<path d="M48 132h114" stroke="#4AAE83" stroke-width="8" stroke-linecap="round"/>
+<path d="M70 130v-28h70v28" fill="none" stroke="#fff" stroke-width="7"/>
+<circle cx="84" cy="76" r="5.5" fill="#fff"/><circle cx="105" cy="76" r="5.5" fill="#fff"/><circle cx="126" cy="76" r="5.5" fill="#fff"/>
+<path d="M88 150h34" stroke="#4AAE83" stroke-width="6" stroke-linecap="round"/>
+<text x="234" y="92" font-family="Tahoma, Arial, sans-serif" font-size="45" font-weight="800" fill="#0B2A4A">الثورة الجنوبية</text>
+<text x="236" y="132" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2.5" fill="#2E7D5B">SOUTHERN REVOLUTION</text>
+<text x="236" y="164" font-family="Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.8" fill="#617180">NEWS • REPORTS • FOLLOW-UP</text>
 </svg>
