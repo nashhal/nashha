@@ -1,4 +1,4 @@
-const CACHE='al-thawra-shell-v10';
+const CACHE='al-thawra-shell-v11';
 const DATA='nashhal-data-v2';
 const SHELL=['./','./index.html','./article.html','./about.html','./editorial-policy.html','./ai-policy.html','./corrections.html','./trust.html','./web3.html','./search.html','./news-loader.js','./manifest.webmanifest','./favicon.svg'];
 
