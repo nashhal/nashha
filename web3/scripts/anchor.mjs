@@ -3,12 +3,13 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { Contract, JsonRpcProvider, Wallet } from "ethers";
 
-const root = process.cwd();
-const newsPath = path.join(root, "data", "news.json");
-const outDir = path.join(root, "data", "web3");
+const packageRoot = process.cwd();
+const repoRoot = path.resolve(packageRoot, "..");
+const newsPath = path.join(repoRoot, "data", "news.json");
+const outDir = path.join(repoRoot, "data", "web3");
 const manifestPath = path.join(outDir, "manifest.json");
 const anchorPath = path.join(outDir, "anchor.json");
-const artifactPath = path.join(root, "web3", "artifacts", "NashhalTrustAnchor.json");
+const artifactPath = path.join(packageRoot, "artifacts", "NashhalTrustAnchor.json");
 
 function clean(v) {
   return String(v ?? "").replace(/<[^>]+>/g, " ").replace(/\\s+/g, " ").trim();
