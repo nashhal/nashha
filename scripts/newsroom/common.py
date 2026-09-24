@@ -28,6 +28,16 @@ def clean(value: object) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def clean_body(value: object) -> str:
+    value = re.sub(r"<[^>]+>", "", str(value or ""))
+    lines = [re.sub(r"[ \t]+", " ", line).strip() for line in value.splitlines()]
+    paragraphs = []
+    for line in lines:
+        if line:
+            paragraphs.append(line)
+    return "\n\n".join(paragraphs).strip()
+
+
 def canonical_url(url: object) -> str:
     try:
         p = urlparse(clean(url))
