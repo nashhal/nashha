@@ -1,0 +1,1 @@
+"""Nashhal automation scripts package."""

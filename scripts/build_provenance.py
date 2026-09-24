@@ -48,6 +48,12 @@ def main() -> None:
             "content_hash": hashlib.sha256(payload).hexdigest(),
             "hash_algorithm": "SHA-256",
             "status": "recorded",
+            "publication_status": clean(item.get("status")),
+            "verification": clean(item.get("verification")),
+            "verification_score": item.get("verification_score", 0),
+            "verification_evidence_count": item.get("verification_evidence_count", 0),
+            "pipeline_version": clean(item.get("pipeline_version")) or "legacy",
+            "pipeline_stages": item.get("pipeline_stages") if isinstance(item.get("pipeline_stages"), list) else [],
             "anchor": {"type": "github-history", "ref": "main"},
         })
     rows.sort(key=lambda x: x["id"])
