@@ -1,13 +1,13 @@
 {
-  "name": "Al-Thawra Newspaper | South Yemen and Yemen",
-  "short_name": "Al-Thawra",
+  "name": "The Southern Revolution | Southern Yemen News",
+  "short_name": "Southern Revolution",
   "lang": "en",
   "dir": "ltr",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#F7F8FA",
-  "theme_color": "#0B2A4A",
-  "description": "Al-Thawra Newspaper covering South Yemen and Yemen with source and verification context.",
+  "background_color": "#F2F2F2",
+  "theme_color": "#111111",
+  "description": "English digital newspaper covering Southern Yemen with reporting, context and source transparency.",
   "icons": [
     {"src":"logo-square.svg","sizes":"any","type":"image/svg+xml"}
   ]
