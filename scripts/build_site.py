@@ -360,7 +360,7 @@ h1{{margin:8px 0 10px;font:300 clamp(38px,6vw,66px)/1.02 Newsreader,Georgia,seri
 .links{{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}}.links a{{padding:9px 12px;border:.5px solid var(--ink);font:500 8px Inter,sans-serif;text-transform:uppercase;letter-spacing:.7px}}.links a.source{{background:var(--black);color:#fff}}
 .note{{margin-top:25px;padding-top:14px;border-top:.5px solid var(--line);color:var(--muted);font:300 9px/1.8 Inter,sans-serif}}
 footer{{background:var(--black);color:#a9a49c;padding:20px 0;font:300 8px Inter,sans-serif}}
-@media(max-width:620px){{.sheet{{padding:23px 18px 32px}}.record-grid{{grid-template-columns:1fr}}.cell,.cell:nth-child(2n){{border-right:0}}.cell:nth-last-child(-n+2){{border-bottom:.5px solid var(--line)}.cell:last-child{{border-bottom:0}}}}
+@media(max-width:620px){{.sheet{{padding:23px 18px 32px}}.record-grid{{grid-template-columns:1fr}}.cell,.cell:nth-child(2n){{border-right:0}}.cell:nth-last-child(-n+2){{border-bottom:.5px solid var(--line)}}.cell:last-child{{border-bottom:0}}}}
 </style>
 <script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
 </head>
