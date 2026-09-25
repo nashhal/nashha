@@ -283,7 +283,7 @@ def build_library(items: list[dict]) -> list[dict]:
             "people": [],
             "institutions": [],
             "source": source,
-            "source_url": clean(n.get("source_url") or n.get("link")),
+            "source_url": "",
             "verification": clean(n.get("verification_status") or n.get("verification") or "Under review"),
             "verification_score": n.get("verification_score"),
             "original_news_id": clean(n.get("id")),
@@ -304,7 +304,6 @@ def render_library_item(record: dict) -> str:
     source = clean(record.get("source")) or "Archive record"
     region = clean(record.get("region")) or "Southern Yemen"
     collection = clean(record.get("collection_name")) or clean(record.get("collection")) or "Archive"
-    source_url = clean(record.get("source_url"))
     article_url = clean(record.get("article_url"))
     subjects = record.get("subjects") if isinstance(record.get("subjects"), list) else []
     verification = clean(record.get("verification")) or "Not assessed"
@@ -324,7 +323,6 @@ def render_library_item(record: dict) -> str:
     }
     graph = {k:v for k,v in graph.items() if v is not None}
 
-    source_link = f'<a class="source" href="{esc(source_url)}" target="_blank" rel="noopener noreferrer">Open original source ↗</a>' if source_url else ""
     article_link = f'<a class="secondary" href="{esc(article_url)}">Open newsroom article ↗</a>' if article_url else ""
 
     return f'''<!doctype html>
@@ -380,7 +378,7 @@ footer{{background:var(--black);color:#a9a49c;padding:20px 0;font:300 8px Inter,
 </div></section>
 <section class="section"><h2>Subjects</h2><p class="lead">{esc(" · ".join(clean(x) for x in subjects if clean(x)) or "No subject tags have been assigned yet.")}</p></section>
 <div class="links">{source_link}{article_link}<a class="secondary" href="../../library.html">Back to library ↗</a></div>
-<div class="note">This archive record preserves source and descriptive metadata for research. A source link identifies the origin of the material; it does not by itself constitute independent verification or endorsement of every claim contained in the source.</div>
+<div class="note">This archive record is generated entirely from material stored in The Southern Revolution repository. No external database or search service is used to populate the library.</div>
 </main>
 <footer><div class="wrap">The Southern Revolution Library · Archive · Search · Research</div></footer>
 </body>
