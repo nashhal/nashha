@@ -67,8 +67,6 @@
     "original_title": "اجتماع بعدن يناقش تسهيل حركة التجارة وانسياب السلع الغذائية الأساسية والاستهلاكية",
     "source": "عدن الغد",
     "source_name": "عدن الغد",
-    "source_url": "https://www.adngad.net/news/883696",
-    "link": "https://www.adngad.net/news/883696",
     "published": "2026-09-25T02:47:00+03:00",
     "published_at": "2026-09-25T02:47:00+03:00",
     "collected_at": "2026-09-25T07:00:00+03:00",
@@ -95,14 +93,12 @@
     "verification_evidence": [
       {
         "name": "Aden Al-Ghad",
-        "url": "https://www.adngad.net/news/883696",
         "type": "local_report",
         "role": "Direct report on the meeting"
       }
     ],
     "primary_source": {
-      "name": "Aden Al-Ghad",
-      "url": "https://www.adngad.net/news/883696"
+      "name": "Aden Al-Ghad"
     },
     "source_type": "local_primary",
     "rewrite_status": "original_editorial",
