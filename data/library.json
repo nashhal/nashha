@@ -1,20 +1,260 @@
 {
-  "version": 1,
-  "generated_at": "2026-09-25T00:00:00Z",
+  "version": 2,
+  "generated_at": "2026-09-25T10:31:20.872Z",
   "collections": [
-    {"id":"history","name":"History","description":"Historical records, timelines and contextual material."},
-    {"id":"documents","name":"Documents","description":"Official documents, declarations, agreements and records."},
-    {"id":"newspapers","name":"Newspapers","description":"Newspaper reports and archived editions."},
-    {"id":"books","name":"Books & Research","description":"Books, studies, journals and research publications."},
-    {"id":"reports","name":"Reports","description":"Institutional, humanitarian and analytical reports."},
-    {"id":"maps","name":"Maps","description":"Historical and geographic maps."},
-    {"id":"photographs","name":"Photographs & Media","description":"Photographs, posters and audiovisual references."},
-    {"id":"people","name":"People","description":"Biographical and archival records on people."},
-    {"id":"institutions","name":"Institutions","description":"Organizations, authorities and institutions."},
-    {"id":"oral-history","name":"Oral History","description":"Recorded memories and testimony with source notes."},
-    {"id":"current-news","name":"News Archive","description":"Published Southern Revolution news records."},
-    {"id":"references","name":"Reference Index","description":"Cross-referenced bibliographic and source material."}
+    {
+      "id": "history",
+      "name": "History",
+      "description": "Historical records, timelines and contextual material.",
+      "count": 0
+    },
+    {
+      "id": "documents",
+      "name": "Documents",
+      "description": "Official documents, declarations, agreements and records.",
+      "count": 0
+    },
+    {
+      "id": "newspapers",
+      "name": "Newspapers",
+      "description": "Newspaper reports and archived editions.",
+      "count": 0
+    },
+    {
+      "id": "books",
+      "name": "Books & Research",
+      "description": "Books, studies, journals and research publications.",
+      "count": 0
+    },
+    {
+      "id": "reports",
+      "name": "Reports",
+      "description": "Institutional, humanitarian and analytical reports.",
+      "count": 0
+    },
+    {
+      "id": "maps",
+      "name": "Maps",
+      "description": "Historical and geographic maps.",
+      "count": 0
+    },
+    {
+      "id": "photographs",
+      "name": "Photographs & Media",
+      "description": "Photographs, posters and audiovisual references.",
+      "count": 0
+    },
+    {
+      "id": "people",
+      "name": "People",
+      "description": "Biographical and archival records on people.",
+      "count": 0
+    },
+    {
+      "id": "institutions",
+      "name": "Institutions",
+      "description": "Organizations, authorities and institutions.",
+      "count": 0
+    },
+    {
+      "id": "oral-history",
+      "name": "Oral History",
+      "description": "Recorded memories and testimony with source notes.",
+      "count": 0
+    },
+    {
+      "id": "current-news",
+      "name": "News Archive",
+      "description": "Published Southern Revolution news records.",
+      "count": 7
+    },
+    {
+      "id": "references",
+      "name": "Reference Index",
+      "description": "Cross-referenced bibliographic and source material.",
+      "count": 0
+    }
   ],
-  "stats": {"total_records": 0, "sources": 0, "regions": 0},
-  "items": []
+  "stats": {
+    "total_records": 7,
+    "sources": 4,
+    "regions": 4
+  },
+  "items": [
+    {
+      "id": "NEWS-srn-20260925-aden-cb-18",
+      "title": "Yemen Central Bank Suspends Licences of Four Exchange Entities and a Remittance Agent",
+      "description": "The Central Bank of Yemen suspended the licences of four exchange companies or establishments and a remittance agent and ordered their offices closed, according to Decision No. 18 of 2026.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-24T19:20:00+03:00",
+      "region": "Aden",
+      "location": "Aden",
+      "language": "English",
+      "subjects": [
+        "Economy",
+        "Aden"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Yemen Monitor",
+      "source_url": "https://sahafah24.net/article/772480265/",
+      "verification": "developing",
+      "verification_score": 80,
+      "original_news_id": "srn-20260925-aden-cb-18",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260925-aden-cb-18.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260925-aden-cb-18.html"
+    },
+    {
+      "id": "NEWS-srn-20260925-aden-trade-883696",
+      "title": "Aden Meeting Discusses Trade Facilitation and Flow of Essential Goods",
+      "description": "A meeting in Aden discussed challenges affecting trade and measures to facilitate the flow of essential and consumer goods, with participation from the Ministry of Industry and Trade, customs authorities and the Aden Chamber of Commerce.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-25T02:47:00+03:00",
+      "region": "Aden",
+      "location": "Aden",
+      "language": "English",
+      "subjects": [
+        "Economy",
+        "Aden"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Aden Al-Ghad",
+      "source_url": "https://www.adngad.net/news/883696",
+      "verification": "developing",
+      "verification_score": 78,
+      "original_news_id": "srn-20260925-aden-trade-883696",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260925-aden-trade-883696.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260925-aden-trade-883696.html"
+    },
+    {
+      "id": "NEWS-srn-20260924-lahj-security-152888",
+      "title": "Lahj Governor Meets Imams and Preachers to Discuss Religious Discourse",
+      "description": "Lahj Governor Murad Al-Halimi held a meeting with imams and mosque preachers from Al Hawtah and Tuban to discuss the role of religious discourse in society. The report says participants discussed polarization and the promotion of moderate messaging.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-24T12:18:00+00:00",
+      "region": "Lahj",
+      "location": "Lahj",
+      "language": "English",
+      "subjects": [
+        "South Yemen",
+        "Lahj"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Saba News Agency",
+      "source_url": "https://www.sabanew.net/story/ar/152888",
+      "verification": "developing",
+      "verification_score": 75,
+      "original_news_id": "srn-20260924-lahj-security-152888",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260924-lahj-security-152888.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260924-lahj-security-152888.html"
+    },
+    {
+      "id": "NEWS-srn-20260924-hadramout-schools-152887",
+      "title": "Hadramout Valley Schools Hold Educational Events Marking September 26",
+      "description": "Schools in Hadramout Valley held morning assemblies and educational activities on September 24 to mark the anniversary of September 26. The activities included educational and civic programs for students.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-24T11:50:00+00:00",
+      "region": "Hadramout",
+      "location": "Hadramout",
+      "language": "English",
+      "subjects": [
+        "South Yemen",
+        "Hadramout"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Saba News Agency",
+      "source_url": "https://www.sabanew.net/story/ar/152887",
+      "verification": "developing",
+      "verification_score": 80,
+      "original_news_id": "srn-20260924-hadramout-schools-152887",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260924-hadramout-schools-152887.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260924-hadramout-schools-152887.html"
+    },
+    {
+      "id": "NEWS-srn-20260924-aden-eu-152880",
+      "title": "Aden Governor Meets EU and Dutch Envoys on Displacement and Humanitarian Conditions",
+      "description": "Aden Governor Abdulrahman Sheikh met the European Union ambassador to Yemen and the Dutch ambassador to discuss humanitarian and field developments and the effects of displacement on Aden. According to Saba, the meeting also covered pressure on basic services and efforts to receive displaced families.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-24T07:29:00+00:00",
+      "region": "Aden",
+      "location": "Aden",
+      "language": "English",
+      "subjects": [
+        "South Yemen",
+        "Aden"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Saba News Agency",
+      "source_url": "https://www.sabanew.net/story/ar/152880",
+      "verification": "developing",
+      "verification_score": 75,
+      "original_news_id": "srn-20260924-aden-eu-152880",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260924-aden-eu-152880.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260924-aden-eu-152880.html"
+    },
+    {
+      "id": "NEWS-srn-20260924-weather-152871",
+      "title": "Very Hot Conditions Expected Along Coasts and Deserts, with Rain Chances in Southern Areas",
+      "description": "The weather forecast calls for hot to very hot conditions across parts of the coastal and desert areas, with scattered rain possible in parts of the southern coast, Socotra and some highlands. Lahj, Abyan, Shabwah and Hadramout are among the areas mentioned in the forecast.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-24T06:35:00+00:00",
+      "region": "Yemen",
+      "location": "Yemen",
+      "language": "English",
+      "subjects": [
+        "South Yemen",
+        "Yemen"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Saba News Agency",
+      "source_url": "https://www.sabanew.net/story/ar/152871",
+      "verification": "developing",
+      "verification_score": 85,
+      "original_news_id": "srn-20260924-weather-152871",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260924-weather-152871.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260924-weather-152871.html"
+    },
+    {
+      "id": "NEWS-srn-20260924-aden-power-374781",
+      "title": "Aden Electricity Update: Nine Hours of Outage Versus Two Hours of Supply",
+      "description": "Aden Time reported an electricity update at 12:32 a.m. Thursday, stating that outages had reached nine hours compared with two hours of supply at that point. The figures refer to the period covered by the published update and are not a forecast for the rest of the day.",
+      "type": "newspaper",
+      "collection": "current-news",
+      "collection_name": "News Archive",
+      "date": "2026-09-24T00:47:00+00:00",
+      "region": "Aden",
+      "location": "Aden",
+      "language": "English",
+      "subjects": [
+        "South Yemen",
+        "Aden"
+      ],
+      "people": [],
+      "institutions": [],
+      "source": "Aden Time",
+      "source_url": "https://www.aden-tm.net/news/374781",
+      "verification": "developing",
+      "verification_score": 70,
+      "original_news_id": "srn-20260924-aden-power-374781",
+      "article_url": "https://nashhal.github.io/nashha/articles/srn-20260924-aden-power-374781.html)",
+      "page_url": "https://nashhal.github.io/nashha/library/item/NEWS-srn-20260924-aden-power-374781.html"
+    }
+  ]
 }
