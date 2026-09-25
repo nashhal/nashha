@@ -67,7 +67,7 @@ async function load(){
  html+='<div class="item" style="margin-top:9px"><span>Headline</span><b>'+esc(displayTitle)+'</b></div>';
  if(displayRegion) html+='<div class="item" style="margin-top:9px"><span>Region</span><b>'+esc(displayRegion)+'</b></div>';
  html+='<div class="hash"><span>SHA-256</span><code>'+esc(expected||calculated)+'</code></div>';
- html+='<div class="item" style="margin-top:9px"><span>Original Source</span><b>'+(record.url?'<a href="'+esc(record.url)+'" target="_blank" rel="noopener noreferrer" style="color:var(--mint2);text-decoration:none">Open Original Source ↗</a>':'Not available')+'</b></div>';
+ html+='<div class="item" style="margin-top:9px"><span>Source Access</span><b>Internal record only · external source links are disabled</b></div>';
  html+='<section class="web3"><h3>Southern Revolution Trust Web3</h3>';
  if(anchored) html+='<p class="desc">This manifest contains the story fingerprint and has been anchored on Ethereum Sepolia according to the published Web3 record.</p>';
  else if(prepared) html+='<p class="desc">The manifest is prepared with this story fingerprint, but on-chain anchoring is not complete yet.</p>';
@@ -76,7 +76,7 @@ async function load(){
  html+='<div class="item"><span>Manifest Hash</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor?.manifest_hash||web3Manifest?.manifest_hash||'')+'</b></div>';
  html+='<div class="item"><span>IPFS CID</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor?.cid||'Not available')+'</b></div>';
  html+='<div class="item"><span>Contract</span><b style="direction:ltr;text-align:left;word-break:break-all;font-family:ui-monospace">'+esc(web3Anchor?.contract_address||'Not available')+'</b></div>';
- if(anchored&&web3Anchor?.transaction_hash) html+='<div class="item"><span>Transaction</span><b><a href="'+esc(web3Anchor.explorer_url||('https://sepolia.etherscan.io/tx/'+web3Anchor.transaction_hash))+'" target="_blank" rel="noopener noreferrer">Open Proof on Etherscan ↗</a></b></div>';
+ if(anchored&&web3Anchor?.transaction_hash) html+='<div class="item"><span>Transaction</span><b>'+esc(web3Anchor.transaction_hash)+'</b></div>';
  html+='</div>';}
  html+='</section>';
  html+='<div class="actions"><a class="btn primary" href="index.html">Back to News</a><a class="btn" href="search.html">Latest Search</a><button class="btn" type="button" id="copyBtn">Copy Verification Link</button></div>';
