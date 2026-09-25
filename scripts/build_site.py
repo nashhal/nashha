@@ -229,7 +229,7 @@ def library_collections() -> list[dict]:
         {"id":"provenance","name":"Provenance Archive","description":"Internal preservation records with timestamps and SHA-256 fingerprints."},
     ]
 
-
+\n\ndef internal_url_or_empty(value: object) -> str:\n    text = clean(value)\n    if not text:\n        return ""\n    try:\n        from urllib.parse import urlparse\n        parsed = urlparse(text)\n        if parsed.scheme in ("", None):\n            return text\n        if parsed.scheme not in ("http", "https"):\n            return ""\n        host = (parsed.netloc or "").lower().split(":")[0]\n        allowed = urlparse(BASE).netloc.lower()\n        return text if host == allowed else ""\n    except Exception:\n        return ""\n
 def build_library(items: list[dict]) -> list[dict]:
     curated_path = ROOT / "data" / "library-curated.json"
     curated = []
@@ -251,6 +251,10 @@ def build_library(items: list[dict]) -> list[dict]:
         if not rid or not title or rid in seen:
             continue
         rec = dict(raw)
+        rec.pop("source_url", None)
+        rec.pop("image", None)
+        rec.pop("image_url", None)
+        rec.pop("external_url", None)
         rec.setdefault("language", "English")
         rec.setdefault("collection", "references")
         rec["page_url"] = rec.get("page_url") or f"{BASE}/library/item/{quote(rid)}.html"
@@ -334,7 +338,7 @@ def build_library(items: list[dict]) -> list[dict]:
             "verification": clean(n.get("verification_status") or n.get("verification") or "Under review"),
             "verification_score": n.get("verification_score"),
             "original_news_id": clean(n.get("id")),
-            "article_url": page_url(n),
+            "article_url": internal_url_or_empty(page_url(n)),
             "page_url": library_item_url(rid),
         }
         records.append(rec)
