@@ -204,10 +204,225 @@ def load_items() -> list[dict]:
         return []
 
 
+def library_item_url(record_id: object) -> str:
+    return f"{BASE}/library/item/{quote(str(record_id).strip())}.html"
+
+
+def library_item_path(record_id: object) -> Path:
+    return ROOT / "library" / "item" / f"{str(record_id).strip()}.html"
+
+
+def library_collections() -> list[dict]:
+    return [
+        {"id":"history","name":"History","description":"Historical records, timelines and contextual material."},
+        {"id":"documents","name":"Documents","description":"Official documents, declarations, agreements and records."},
+        {"id":"newspapers","name":"Newspapers","description":"Newspaper reports and archived editions."},
+        {"id":"books","name":"Books & Research","description":"Books, studies, journals and research publications."},
+        {"id":"reports","name":"Reports","description":"Institutional, humanitarian and analytical reports."},
+        {"id":"maps","name":"Maps","description":"Historical and geographic maps."},
+        {"id":"photographs","name":"Photographs & Media","description":"Photographs, posters and audiovisual references."},
+        {"id":"people","name":"People","description":"Biographical and archival records on people."},
+        {"id":"institutions","name":"Institutions","description":"Organizations, authorities and institutions."},
+        {"id":"oral-history","name":"Oral History","description":"Recorded memories and testimony with source notes."},
+        {"id":"current-news","name":"News Archive","description":"Published Southern Revolution news records."},
+        {"id":"references","name":"Reference Index","description":"Cross-referenced bibliographic and source material."},
+    ]
+
+
+def build_library(items: list[dict]) -> list[dict]:
+    curated_path = ROOT / "data" / "library-curated.json"
+    curated = []
+    if curated_path.exists():
+        try:
+            raw = json.loads(curated_path.read_text(encoding="utf-8"))
+            curated = raw.get("items", []) if isinstance(raw, dict) else raw
+        except Exception:
+            curated = []
+
+    records: list[dict] = []
+    seen: set[str] = set()
+
+    for raw in curated:
+        if not isinstance(raw, dict):
+            continue
+        rid = clean(raw.get("id"))
+        title = clean(raw.get("title"))
+        if not rid or not title or rid in seen:
+            continue
+        rec = dict(raw)
+        rec.setdefault("language", "English")
+        rec.setdefault("collection", "references")
+        rec["page_url"] = rec.get("page_url") or f"{BASE}/library/item/{quote(rid)}.html"
+        records.append(rec)
+        seen.add(rid)
+
+    for n in items:
+        if not isinstance(n, dict) or not clean(n.get("id")):
+            continue
+        rid = f"NEWS-{clean(n.get('id'))}"
+        if rid in seen:
+            continue
+        dt = parse_dt(n.get("published") or n.get("published_at"))
+        region = clean(n.get("region_en") or n.get("region")) or "Southern Yemen"
+        source = clean(n.get("source_name_en") or n.get("source_name") or n.get("source")) or "Unknown source"
+        title = clean(n.get("title_en") or n.get("title")) or "Untitled news record"
+        description = clean(n.get("summary_en") or n.get("description"))[:420]
+        subjects = [x for x in [clean(n.get("category_en") or n.get("category")), region] if x]
+        rec = {
+            "id": rid,
+            "title": title,
+            "description": description,
+            "type": "newspaper",
+            "collection": "current-news",
+            "collection_name": "News Archive",
+            "date": dt.isoformat() if dt else "",
+            "region": region,
+            "location": region,
+            "language": "English",
+            "subjects": subjects,
+            "people": [],
+            "institutions": [],
+            "source": source,
+            "source_url": clean(n.get("source_url") or n.get("link")),
+            "verification": clean(n.get("verification_status") or n.get("verification") or "Under review"),
+            "verification_score": n.get("verification_score"),
+            "original_news_id": clean(n.get("id")),
+            "article_url": page_url(n),
+            "page_url": library_item_url(rid),
+        }
+        records.append(rec)
+        seen.add(rid)
+
+    return records
+
+
+def render_library_item(record: dict) -> str:
+    title = clean(record.get("title")) or "Archive Record"
+    description = clean(record.get("description")) or "Archive record preserved for research and reference."
+    date = parse_dt(record.get("date"))
+    rid = clean(record.get("id"))
+    source = clean(record.get("source")) or "Archive record"
+    region = clean(record.get("region")) or "Southern Yemen"
+    collection = clean(record.get("collection_name")) or clean(record.get("collection")) or "Archive"
+    source_url = clean(record.get("source_url"))
+    article_url = clean(record.get("article_url"))
+    subjects = record.get("subjects") if isinstance(record.get("subjects"), list) else []
+    verification = clean(record.get("verification")) or "Not assessed"
+
+    graph = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "headline": title,
+        "name": title,
+        "description": description[:300],
+        "url": library_item_url(rid),
+        "datePublished": date.isoformat() if date else None,
+        "inLanguage": clean(record.get("language")) or "en",
+        "isAccessibleForFree": True,
+        "publisher": {"@type": "Organization", "name": "The Southern Revolution", "url": BASE},
+        "about": [{"@type":"Thing","name": clean(x)} for x in subjects if clean(x)],
+    }
+    graph = {k:v for k,v in graph.items() if v is not None}
+
+    source_link = f'<a class="source" href="{esc(source_url)}" target="_blank" rel="noopener noreferrer">Open original source ↗</a>' if source_url else ""
+    article_link = f'<a class="secondary" href="{esc(article_url)}">Open newsroom article ↗</a>' if article_url else ""
+
+    return f'''<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)} | Library | The Southern Revolution</title>
+<meta name="description" content="{esc(description[:300])}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="canonical" href="{library_item_url(rid)}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(description[:300])}">
+<meta property="og:url" content="{library_item_url(rid)}">
+<meta property="og:site_name" content="The Southern Revolution">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{{--paper:#fffdf8;--bg:#d9d7d1;--ink:#141414;--muted:#716c64;--line:rgba(20,20,20,.18);--black:#0e0e0d}}
+*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}}a{{color:inherit;text-decoration:none}}
+.top{{background:var(--black);color:#fff;padding:12px 0;font:500 9px Inter,sans-serif;letter-spacing:1.5px}}.wrap{{width:min(920px,calc(100% - 28px));margin:auto}}
+.toprow{{display:flex;justify-content:space-between;gap:15px}}.top a{{color:#fff}}
+.sheet{{background:var(--paper);margin:28px auto 60px;padding:30px 34px 42px;border-top:1px solid var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.12)}}
+.crumb{{display:flex;justify-content:space-between;gap:15px;padding-bottom:10px;border-bottom:.5px solid var(--line);font:300 8px Inter,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px}}
+.kicker{{margin-top:30px;font:500 9px Inter,sans-serif;letter-spacing:2px;color:#757067;text-transform:uppercase}}
+h1{{margin:8px 0 10px;font:300 clamp(38px,6vw,66px)/1.02 Newsreader,Georgia,serif;letter-spacing:-1.5px}}
+.lead{{max-width:760px;color:#57524c;font:300 14px/1.8 Inter,sans-serif}}
+.meta{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding:12px 0;border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);color:var(--muted);font:300 8px/1.5 Inter,sans-serif}}
+.meta b{{font-weight:500;color:var(--ink)}}.section{{margin-top:24px;padding-top:17px;border-top:.5px solid var(--line)}}.section h2{{margin:0 0 9px;font:400 24px Newsreader,serif}}
+.record-grid{{display:grid;grid-template-columns:1fr 1fr;gap:0;border:.5px solid var(--line)}}.cell{{padding:13px;border-right:.5px solid var(--line);border-bottom:.5px solid var(--line)}}.cell:nth-child(2n){{border-right:0}}.cell:nth-last-child(-n+2){{border-bottom:0}}.cell span{{display:block;color:var(--muted);font:500 7px Inter,sans-serif;letter-spacing:1px;text-transform:uppercase}}.cell strong{{display:block;margin-top:5px;font:400 15px Newsreader,serif;line-height:1.45}}
+.links{{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}}.links a{{padding:9px 12px;border:.5px solid var(--ink);font:500 8px Inter,sans-serif;text-transform:uppercase;letter-spacing:.7px}}.links a.source{{background:var(--black);color:#fff}}
+.note{{margin-top:25px;padding-top:14px;border-top:.5px solid var(--line);color:var(--muted);font:300 9px/1.8 Inter,sans-serif}}
+footer{{background:var(--black);color:#a9a49c;padding:20px 0;font:300 8px Inter,sans-serif}}
+@media(max-width:620px){{.sheet{{padding:23px 18px 32px}}.record-grid{{grid-template-columns:1fr}}.cell,.cell:nth-child(2n){{border-right:0}}.cell:nth-last-child(-n+2){{border-bottom:.5px solid var(--line)}.cell:last-child{{border-bottom:0}}}}
+</style>
+<script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
+</head>
+<body>
+<div class="top"><div class="wrap toprow"><a href="../../library.html">THE SOUTHERN REVOLUTION LIBRARY</a><a href="../../index.html">NEWSPAPER ↗</a></div></div>
+<main class="wrap sheet">
+<div class="crumb"><span>{esc(collection)}</span><span>Record {esc(rid)}</span></div>
+<div class="kicker">Archive Record</div>
+<h1>{esc(title)}</h1>
+<p class="lead">{esc(description)}</p>
+<div class="meta"><span><b>Date</b> · {esc(date.isoformat() if date else "Undated")}</span><span>·</span><span><b>Region</b> · {esc(region)}</span><span>·</span><span><b>Source</b> · {esc(source)}</span></div>
+<section class="section"><h2>Record Details</h2><div class="record-grid">
+<div class="cell"><span>Collection</span><strong>{esc(collection)}</strong></div>
+<div class="cell"><span>Language</span><strong>{esc(record.get("language") or "English")}</strong></div>
+<div class="cell"><span>Verification</span><strong>{esc(verification)}</strong></div>
+<div class="cell"><span>Record ID</span><strong>{esc(rid)}</strong></div>
+</div></section>
+<section class="section"><h2>Subjects</h2><p class="lead">{esc(" · ".join(clean(x) for x in subjects if clean(x)) or "No subject tags have been assigned yet.")}</p></section>
+<div class="links">{source_link}{article_link}<a class="secondary" href="../../library.html">Back to library ↗</a></div>
+<div class="note">This archive record preserves source and descriptive metadata for research. A source link identifies the origin of the material; it does not by itself constitute independent verification or endorsement of every claim contained in the source.</div>
+</main>
+<footer><div class="wrap">The Southern Revolution Library · Archive · Search · Research</div></footer>
+</body>
+</html>'''
+
+
+def write_library_outputs(records: list[dict]) -> None:
+    out_path = ROOT / "data" / "library.json"
+    collections = library_collections()
+    counts = {c["id"]:0 for c in collections}
+    sources: set[str] = set()
+    regions: set[str] = set()
+    for record in records:
+        cid = clean(record.get("collection")) or "references"
+        if cid in counts:
+            counts[cid] += 1
+        if clean(record.get("source")):
+            sources.add(clean(record.get("source")))
+        if clean(record.get("region")):
+            regions.add(clean(record.get("region")))
+    for c in collections:
+        c["count"] = counts.get(c["id"], 0)
+    payload = {
+        "version": 2,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "collections": collections,
+        "stats": {"total_records":len(records),"sources":len(sources),"regions":len(regions)},
+        "items": records,
+    }
+    out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    item_dir = ROOT / "library" / "item"
+    item_dir.mkdir(parents=True, exist_ok=True)
+    for record in records:
+        path = library_item_path(record.get("id"))
+        path.write_text(render_library_item(record), encoding="utf-8")
+
 def main() -> None:
     items = [x for x in load_items() if isinstance(x, dict) and x.get("id") and x.get("title")]
     ARTICLES.mkdir(parents=True, exist_ok=True)
     live = [x for x in items if clean(x.get("status", "published")) == "published"]
+    library_records = build_library(live)
+    write_library_outputs(library_records)
     generated = set()
     for item in live:
         path = ARTICLES / f"{item['id']}.html"
@@ -222,8 +437,9 @@ def main() -> None:
             recent.append(item)
     recent.sort(key=lambda x: parse_dt(x.get("published") or x.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
 
-    urls = [f"{BASE}/", f"{BASE}/about.html", f"{BASE}/editorial-policy.html", f"{BASE}/ai-policy.html", f"{BASE}/corrections.html", f"{BASE}/trust.html", f"{BASE}/web3.html", f"{BASE}/search.html"]
+    urls = [f"{BASE}/", f"{BASE}/about.html", f"{BASE}/editorial-policy.html", f"{BASE}/ai-policy.html", f"{BASE}/corrections.html", f"{BASE}/trust.html", f"{BASE}/web3.html", f"{BASE}/search.html", f"{BASE}/library.html"]
     urls += [page_url(x) for x in live]
+    urls += [library_item_url(x.get("id")) for x in library_records]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
         sitemap.append(f"<url><loc>{html.escape(u)}</loc></url>")
@@ -241,7 +457,7 @@ def main() -> None:
     newsmap.append('</urlset>')
     (ROOT / "news-sitemap.xml").write_text("\n".join(newsmap) + "\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\nSitemap: {BASE}/news-sitemap.xml\n", encoding="utf-8")
-    print(f"[DONE] Generated {len(generated)} indexable article pages and sitemaps")
+    print(f"[DONE] Generated {len(generated)} article pages + {len(library_records)} library records and sitemaps")
 
 
 if __name__ == '__main__':
