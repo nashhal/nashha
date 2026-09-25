@@ -128,6 +128,7 @@ def render_article(n: dict) -> str:
         "author": {"@type": "Organization", "name": "The Southern Revolution Newsroom"},
         "publisher": {"@type": "Organization", "name": "The Southern Revolution", "url": BASE},
         "mainEntityOfPage": {"@type": "WebPage", "@id": page_url(n)},
+        "isAccessibleForFree": True,
     }
     graph = {k: v for k, v in graph.items() if v is not None}
 
@@ -155,8 +156,8 @@ def render_article(n: dict) -> str:
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | The Southern Revolution</title>
-<meta name="description" content="{esc(summary[:300])}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="{esc(summary[:300])}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../paper-effects.css">
 <link rel="canonical" href="{page_url(n)}">
 <meta property="og:type" content="article"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{page_url(n)}"><meta property="og:site_name" content="The Southern Revolution">
@@ -164,10 +165,10 @@ def render_article(n: dict) -> str:
 <script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>
 <style>
 :root{{--bg:#f2f4f6;--paper:#fff;--ink:#14202b;--muted:#687482;--line:#d7dde3;--brand:#0B2A4A;--brand2:#1F5A8A;--ok:#18794e;--warn:#a16207;--soft:#eef3f7;--max:920px}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;line-height:2}}
+*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:'Newsreader',serif;line-height:2}}
 .top{{background:var(--brand);color:#fff;padding:9px 0;font-size:12px}}.wrap{{width:min(var(--max),calc(100% - 30px));margin:auto}}.top a,.back{{color:#fff;text-decoration:none}}
 .head{{background:var(--paper);border-bottom:1px solid var(--line);padding:18px 0}}.headrow{{display:flex;justify-content:space-between;gap:15px;align-items:center}}.brand{{font-size:28px;font-weight:900;color:var(--ink);text-decoration:none}}.back{{color:var(--brand2);font-weight:700;text-decoration:none}}
-.article{{margin:28px 0 55px;background:var(--paper);border:1px solid var(--line);padding:32px;box-shadow:0 8px 28px rgba(11,42,74,.06)}}.kicker{{color:var(--brand2);font-size:12px;font-weight:900}}h1{{font-family:'Source Serif 4',serif;font-size:42px;line-height:1.35;margin:8px 0 10px;font-weight:700}}.meta{{color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);padding-bottom:15px}}
+.article{{margin:28px 0 55px;background:var(--paper);border:1px solid var(--line);padding:32px;box-shadow:0 8px 28px rgba(11,42,74,.06)}}.kicker{{color:var(--brand2);font-size:12px;font-weight:900}}h1{{font-family:'Newsreader',serif;font-size:42px;line-height:1.35;margin:8px 0 10px;font-weight:700}}.meta{{color:var(--muted);font-size:12px;border-bottom:1px solid var(--line);padding-bottom:15px}}
 .lead{{font-family:'Source Serif 4',serif;font-size:21px;font-weight:600;line-height:1.9;margin:22px 0}}.article-body{{font-family:'Source Serif 4',serif;font-size:18px;line-height:2}}.article-body p{{margin:0 0 14px}}
 .box{{margin:24px 0;padding:18px 20px;border:1px solid var(--line);background:var(--soft)}}.box h2,.box h3{{margin:0 0 8px;color:var(--brand);font-weight:900;font-size:16px}}.box ul{{margin:0;padding-right:20px}}.box li{{margin:5px 0;font-size:15px}}
 .claims{{border-right:4px solid var(--warn);background:#fbfaf4}}.claims h2{{color:#7a5700}}.verification{{border-right:4px solid var(--brand2)}}.trust-box{{background:linear-gradient(135deg,#f4f9fc,#edf6f5);border-right:4px solid #39bfe2}}.trust-box .trust-row{{display:flex;justify-content:space-between;align-items:center;gap:12px}}.trust-box .trust-title{{font-size:16px;font-weight:900;color:var(--brand)}}.trust-box .trust-state{{font-size:10px;color:var(--muted);margin-top:4px}}.trust-btn{{display:inline-flex;padding:7px 11px;border-radius:7px;background:var(--brand);color:#fff;text-decoration:none;font-size:10px;font-weight:900;white-space:nowrap}}.trust-box .trust-meta{{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;color:var(--muted);font-size:9px}}.trust-box code{{font-family:ui-monospace,SFMono-Regular,monospace;direction:ltr}}.ver-head{{display:flex;justify-content:space-between;align-items:center;gap:10px}}.ver-head strong{{font-size:17px}}.badge{{padding:3px 9px;border-radius:3px;background:var(--brand2);color:#fff;font-size:11px;font-weight:900}}.badge.confirmed{{background:var(--ok)}}.badge.developing{{background:var(--warn)}}.ver-text{{color:#344555;font-size:14px;margin-top:8px}}.ver-meta{{color:var(--muted);font-size:10px;margin-top:10px}}
@@ -217,7 +218,7 @@ def main() -> None:
     recent = []
     for item in live:
         dt = parse_dt(item.get("published") or item.get("published_at"))
-        if dt and now - dt <= timedelta(days=30):
+        if dt and now - dt <= timedelta(days=2):
             recent.append(item)
     recent.sort(key=lambda x: parse_dt(x.get("published") or x.get("published_at")) or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
 
@@ -234,7 +235,7 @@ def main() -> None:
         dt = parse_dt(item.get("published") or item.get("published_at"))
         if not dt:
             continue
-        title = html.escape(clean(item.get("title")))
+        title = html.escape(clean(item.get("title_en") or item.get("title")))
         pub = dt.astimezone(timezone.utc).isoformat().replace('+00:00','Z')
         newsmap.append(f'<url><loc>{html.escape(page_url(item))}</loc><news:news><news:publication><news:name>The Southern Revolution</news:name><news:language>en</news:language></news:publication><news:publication_date>{pub}</news:publication_date><news:title>{title}</news:title></news:news></url>')
     newsmap.append('</urlset>')
