@@ -42,7 +42,7 @@ async function load(){
    if(fillList('questions',questions))document.getElementById('questionsSection').hidden=false;
    document.getElementById('analysis').hidden=false;
   }
-  const img=n.image||n.image_url||n.thumbnail;if(img){const cover=document.getElementById('cover');cover.src=img;cover.hidden=false}
+  const img=n.image||n.image_url||n.thumbnail;if(img){try{const u=new URL(String(img),location.href);if(u.origin===location.origin){const cover=document.getElementById('cover');cover.src=u.href;cover.hidden=false}}catch(_){}}
  }catch(e){
   document.getElementById('title').textContent='Story not found';
   document.getElementById('summary').textContent='The story is currently unavailable or has not been synchronized yet.';
