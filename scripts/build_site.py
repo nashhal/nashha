@@ -226,6 +226,7 @@ def library_collections() -> list[dict]:
         {"id":"oral-history","name":"Oral History","description":"Recorded memories and testimony with source notes."},
         {"id":"current-news","name":"News Archive","description":"Published Southern Revolution news records."},
         {"id":"references","name":"Reference Index","description":"Cross-referenced bibliographic and source material."},
+        {"id":"provenance","name":"Provenance Archive","description":"Internal preservation records with timestamps and SHA-256 fingerprints."},
     ]
 
 
@@ -255,6 +256,52 @@ def build_library(items: list[dict]) -> list[dict]:
         rec["page_url"] = rec.get("page_url") or f"{BASE}/library/item/{quote(rid)}.html"
         records.append(rec)
         seen.add(rid)
+
+    provenance_path = ROOT / "data" / "provenance.json"
+    if provenance_path.exists():
+        try:
+            provenance_raw = json.loads(provenance_path.read_text(encoding="utf-8"))
+        except Exception:
+            provenance_raw = []
+        if isinstance(provenance_raw, list):
+            for p in provenance_raw:
+                if not isinstance(p, dict):
+                    continue
+                rid = clean(p.get("id"))
+                if not rid:
+                    continue
+                pid = f"PROV-{rid}"
+                if pid in seen:
+                    continue
+                dt = parse_dt(p.get("published") or p.get("captured_at"))
+                source = clean(p.get("source")) or "Repository provenance record"
+                title = clean(p.get("title")) or "Archived provenance record"
+                rec = {
+                    "id": pid,
+                    "title": "Archived provenance record · " + source,
+                    "description": title[:420],
+                    "type": "provenance",
+                    "collection": "provenance",
+                    "collection_name": "Provenance Archive",
+                    "date": dt.isoformat() if dt else clean(p.get("captured_at")),
+                    "region": "Repository Archive",
+                    "location": "The Southern Revolution Repository",
+                    "language": "Original record",
+                    "subjects": ["Provenance", source],
+                    "people": [],
+                    "institutions": [source],
+                    "source": source,
+                    "source_url": "",
+                    "verification": clean(p.get("status")) or "Recorded",
+                    "content_hash": clean(p.get("content_hash")),
+                    "hash_algorithm": clean(p.get("hash_algorithm")) or "SHA-256",
+                    "captured_at": clean(p.get("captured_at")),
+                    "anchor_type": clean((p.get("anchor") or {}).get("type") if isinstance(p.get("anchor"), dict) else ""),
+                    "anchor_ref": clean((p.get("anchor") or {}).get("ref") if isinstance(p.get("anchor"), dict) else ""),
+                    "page_url": library_item_url(pid),
+                }
+                records.append(rec)
+                seen.add(pid)
 
     for n in items:
         if not isinstance(n, dict) or not clean(n.get("id")):
@@ -372,6 +419,8 @@ footer{{background:var(--black);color:#a9a49c;padding:20px 0;font:300 8px Inter,
 <div class="cell"><span>Language</span><strong>{esc(record.get("language") or "English")}</strong></div>
 <div class="cell"><span>Verification</span><strong>{esc(verification)}</strong></div>
 <div class="cell"><span>Record ID</span><strong>{esc(rid)}</strong></div>
+{("<div class=\"cell\"><span>SHA-256</span><strong>"+esc(record.get("content_hash"))+"</strong></div>") if clean(record.get("content_hash")) else ""}
+{("<div class=\"cell\"><span>Captured</span><strong>"+esc(record.get("captured_at"))+"</strong></div>") if clean(record.get("captured_at")) else ""}
 </div></section>
 <section class="section"><h2>Subjects</h2><p class="lead">{esc(" · ".join(clean(x) for x in subjects if clean(x)) or "No subject tags have been assigned yet.")}</p></section>
 <div class="links">{source_link}{article_link}<a class="secondary" href="../../library.html">Back to library ↗</a></div>
