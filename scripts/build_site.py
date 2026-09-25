@@ -370,6 +370,7 @@ def render_library_item(record: dict) -> str:
     }
     graph = {k:v for k,v in graph.items() if v is not None}
 
+    source_link = ""
     article_link = f'<a class="secondary" href="{esc(article_url)}">Open newsroom article ↗</a>' if article_url else ""
 
     return f'''<!doctype html>
