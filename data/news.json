@@ -1,5 +1,127 @@
 [
   {
+    "id": "srn-20260925-aden-cb-18",
+    "event_key": "srn-aden-central-bank-18-2026",
+    "title": "البنك المركزي يوقف تراخيص أربع منشآت صرافة ووكيل حوالة",
+    "original_title": "قرار بإيقاف ترخيص وإغلاق مقرات أربع شركات ومنشآت صرافة",
+    "source": "يمن مونيتور",
+    "source_name": "يمن مونيتور",
+    "source_url": "https://sahafah24.net/article/772480265/",
+    "link": "https://sahafah24.net/article/772480265/",
+    "published": "2026-09-24T19:20:00+03:00",
+    "published_at": "2026-09-24T19:20:00+03:00",
+    "collected_at": "2026-09-25T07:00:00+03:00",
+    "category": "اقتصاد",
+    "region": "عدن",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "أوقف البنك المركزي اليمني تراخيص أربع شركات ومنشآت صرافة ووكيل حوالة وأمر بإغلاق مقراتها، وفق قرار رقم 18 لعام 2026.",
+    "description": "قرار للبنك المركزي اليمني بشأن أربع جهات صرافة ووكيل حوالة.",
+    "content": "أفاد يمن مونيتور بأن البنك المركزي اليمني أوقف تراخيص أربع شركات ومنشآت صرافة ووكيل حوالة وأمر بإغلاق مقراتها، استناداً إلى مخالفات قال البنك إنها ثبتت في تقرير رقابي ميداني.",
+    "facts_ar": [
+      "صدر القرار برقم 18 لعام 2026",
+      "شمل القرار أربع جهات تعمل في الصرافة والحوالات",
+      "أمر القرار بإيقاف التراخيص وإغلاق المقرات",
+      "استند القرار إلى تقرير رقابي ميداني بحسب المصدر"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 80,
+    "verification_basis": "التقرير ينقل قراراً منسوباً إلى محافظ البنك المركزي اليمني ويذكر أساسه الرقابي.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "Yemen Monitor via Sahafah24",
+        "url": "https://sahafah24.net/article/772480265/",
+        "type": "reported_decision",
+        "role": "Report on Central Bank Decision"
+      }
+    ],
+    "primary_source": {
+      "name": "Yemen Monitor",
+      "url": "https://sahafah24.net/article/772480265/"
+    },
+    "source_type": "reported_official_decision",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-verified-2026-09-25",
+    "title_en": "Yemen Central Bank Suspends Licences of Four Exchange Entities and a Remittance Agent",
+    "summary_en": "The Central Bank of Yemen suspended the licences of four exchange companies or establishments and a remittance agent and ordered their offices closed, according to Decision No. 18 of 2026.",
+    "content_en": "Yemen Monitor reported that the Central Bank of Yemen suspended the licences of four exchange companies or establishments and a remittance agent and ordered their offices closed. The report said the decision was based on violations identified in a field inspection report by the bank's banking supervision sector.",
+    "region_en": "Aden",
+    "source_name_en": "Yemen Monitor",
+    "facts_en": [
+      "The decision is numbered 18 for 2026",
+      "It covers four exchange entities and a remittance agent",
+      "The decision orders licence suspensions and closure of the offices",
+      "The report says the decision followed a field supervisory report"
+    ],
+    "verification_basis_en": "The report attributes the decision to the Central Bank governor and states the supervisory basis cited for the action.",
+    "category_en": "Economy"
+  },
+  {
+    "id": "srn-20260925-aden-trade-883696",
+    "event_key": "srn-aden-trade-883696",
+    "title": "اجتماع في عدن يناقش تسهيل حركة التجارة وانسياب السلع",
+    "original_title": "اجتماع بعدن يناقش تسهيل حركة التجارة وانسياب السلع الغذائية الأساسية والاستهلاكية",
+    "source": "عدن الغد",
+    "source_name": "عدن الغد",
+    "source_url": "https://www.adngad.net/news/883696",
+    "link": "https://www.adngad.net/news/883696",
+    "published": "2026-09-25T02:47:00+03:00",
+    "published_at": "2026-09-25T02:47:00+03:00",
+    "collected_at": "2026-09-25T07:00:00+03:00",
+    "category": "اقتصاد",
+    "region": "عدن",
+    "status": "published",
+    "confidence": "medium",
+    "auto_published": true,
+    "summary": "ناقش اجتماع في عدن تحديات حركة التجارة وإجراءات تسهيل تدفق السلع الأساسية والاستهلاكية، بمشاركة وزارة الصناعة والتجارة ومصلحة الجمارك والغرفة التجارية.",
+    "description": "اجتماع في عدن حول تسهيل التجارة وانسياب السلع.",
+    "content": "ناقش اجتماع عقد في عدن عدداً من التحديات المرتبطة بحركة التجارة وانسياب السلع الغذائية الأساسية والاستهلاكية. ووفق عدن الغد، تناول اللقاء التنسيق بين الجهات الحكومية وتبسيط الإجراءات المرتبطة بالنشاط التجاري، إضافة إلى التحضير لاجتماع اللجنة الوطنية لتسهيل التجارة.",
+    "facts_ar": [
+      "الاجتماع عقد في عدن يوم 25 سبتمبر 2026",
+      "شارك فيه مسؤولون من وزارة الصناعة والتجارة ومصلحة الجمارك والغرفة التجارية",
+      "ناقش تسهيل حركة التجارة وانسياب السلع الأساسية والاستهلاكية",
+      "تناول التحضير لاجتماع اللجنة الوطنية لتسهيل التجارة"
+    ],
+    "claims_ar": [],
+    "verification": "developing",
+    "verification_status": "developing",
+    "verification_score": 78,
+    "verification_basis": "تقرير محلي مباشر من عدن الغد عن اجتماع اقتصادي في عدن.",
+    "verification_evidence_count": 1,
+    "verification_evidence": [
+      {
+        "name": "Aden Al-Ghad",
+        "url": "https://www.adngad.net/news/883696",
+        "type": "local_report",
+        "role": "Direct report on the meeting"
+      }
+    ],
+    "primary_source": {
+      "name": "Aden Al-Ghad",
+      "url": "https://www.adngad.net/news/883696"
+    },
+    "source_type": "local_primary",
+    "rewrite_status": "original_editorial",
+    "editorial_model": "manual-verified-2026-09-25",
+    "title_en": "Aden Meeting Discusses Trade Facilitation and Flow of Essential Goods",
+    "summary_en": "A meeting in Aden discussed challenges affecting trade and measures to facilitate the flow of essential and consumer goods, with participation from the Ministry of Industry and Trade, customs authorities and the Aden Chamber of Commerce.",
+    "content_en": "A meeting in Aden discussed challenges affecting trade and the flow of essential and consumer goods. According to Aden Al-Ghad, participants examined coordination between government bodies, procedures related to commercial activity and preparations for a meeting of the National Trade Facilitation Committee.",
+    "region_en": "Aden",
+    "source_name_en": "Aden Al-Ghad",
+    "facts_en": [
+      "The meeting was held in Aden on September 25, 2026",
+      "Officials from the Ministry of Industry and Trade, customs authorities and the Aden Chamber of Commerce participated",
+      "The meeting discussed trade facilitation and the flow of essential and consumer goods",
+      "Participants discussed preparations for the National Trade Facilitation Committee"
+    ],
+    "verification_basis_en": "A direct local report from Aden Al-Ghad covering an economic meeting in Aden.",
+    "category_en": "Economy"
+  },
+  {
     "id": "srn-20260924-lahj-security-152888",
     "event_key": "srn-lahj-security-152888",
     "title": "محافظ لحج يعقد لقاءً مع أئمة وخطباء الحوطة وتبن حول الخطاب الديني",
