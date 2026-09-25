@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="The Southern Revolution Library — a searchable digital archive of news, documents, publications, maps and historical records related to Southern Yemen.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="canonical" href="https://nashhal.github.io/nashha/library.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Southern Revolution Library">
+<meta property="og:description" content="A searchable digital archive focused on Southern Yemen.">
+<meta property="og:url" content="https://nashhal.github.io/nashha/library.html">
+<meta property="og:site_name" content="The Southern Revolution">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Southern Revolution Library">
+<meta name="twitter:description" content="A searchable digital archive focused on Southern Yemen.">
+<title>The Southern Revolution Library | Southern Yemen Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="paper-effects.css">
+<link rel="stylesheet" href="library.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"The Southern Revolution Library","url":"https://nashhal.github.io/nashha/library.html","description":"A searchable digital archive focused on Southern Yemen.","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"The Southern Revolution","url":"https://nashhal.github.io/nashha/"}}</script>
+</head>
+<body>
+<div class="library-shell">
+<header class="library-top">
+  <div class="library-wrap library-top-inner">
+    <a href="index.html" class="library-brand">THE SOUTHERN REVOLUTION</a>
+    <div class="library-top-links"><a href="index.html">Newspaper</a><a href="search.html">News Search</a></div>
+  </div>
+</header>
+
+<main>
+<section class="library-hero">
+  <div class="library-wrap">
+    <div class="archive-kicker"><span>THE ARCHIVE</span><small>DIGITAL LIBRARY · SOUTHERN YEMEN</small></div>
+    <h1>The Southern Revolution Library</h1>
+    <p class="library-dek">A growing research archive for news, documents, publications, maps, photographs and historical records connected to Southern Yemen.</p>
+    <div class="archive-statline" id="statline"><span>Loading archive…</span></div>
+  </div>
+</section>
+
+<section class="library-wrap library-tools">
+  <div class="library-search">
+    <label for="libraryQuery">Search the archive</label>
+    <div class="library-search-row">
+      <input id="libraryQuery" type="search" autocomplete="off" placeholder="Title, place, source, subject or person">
+      <button id="librarySearchButton" type="button">Search</button>
+    </div>
+  </div>
+
+  <div class="library-filters" aria-label="Archive filters">
+    <select id="typeFilter" aria-label="Type"><option value="">All types</option></select>
+    <select id="regionFilter" aria-label="Region"><option value="">All regions</option></select>
+    <select id="yearFilter" aria-label="Year"><option value="">All years</option></select>
+    <select id="sourceFilter" aria-label="Source"><option value="">All sources</option></select>
+    <select id="sortFilter" aria-label="Sort"><option value="date-desc">Newest first</option><option value="date-asc">Oldest first</option><option value="title-asc">Title A–Z</option><option value="relevance">Relevance</option></select>
+  </div>
+
+  <div class="collection-strip" id="collections"></div>
+  <div class="library-state" id="state">Preparing the archive…</div>
+</section>
+
+<section class="library-wrap library-content">
+  <div class="library-main">
+    <div class="archive-head"><h2>Archive Records</h2><span id="resultCount">—</span></div>
+    <div id="records" class="records"><div class="loading-records">Loading library records…</div></div>
+    <button id="loadMore" class="load-more" type="button" hidden>Load more records</button>
+  </div>
+  <aside class="library-side">
+    <div class="side-paper">
+      <span class="side-label">ARCHIVE NOTE</span>
+      <h3>A library is more than a list.</h3>
+      <p>Each record is intended to keep its title, date, place, source and provenance together so material can be found and cited later.</p>
+    </div>
+    <div class="side-paper">
+      <span class="side-label">COLLECTIONS</span>
+      <div id="collectionCounts" class="collection-counts"></div>
+    </div>
+    <div class="side-paper">
+      <span class="side-label">RECORD STANDARD</span>
+      <p>Descriptions are kept separate from source claims. A source link identifies where the material comes from; it is not, by itself, an endorsement of the material.</p>
+    </div>
+  </aside>
+</section>
+</main>
+
+<footer class="library-footer">
+  <div class="library-wrap footer-grid">
+    <div><strong>The Southern Revolution Library</strong><span>Archive · Search · Research</span></div>
+    <div><a href="about.html">About</a><a href="editorial-policy.html">Editorial Policy</a><a href="corrections.html">Corrections</a></div>
+    <div><a href="index.html">Return to Newspaper ↗</a></div>
+  </div>
+</footer>
+</div>
+<script src="library.js" defer></script>
+</body>
+</html>

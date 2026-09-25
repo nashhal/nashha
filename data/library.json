@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-25T00:00:00Z",
+  "collections": [
+    {"id":"history","name":"History","description":"Historical records, timelines and contextual material."},
+    {"id":"documents","name":"Documents","description":"Official documents, declarations, agreements and records."},
+    {"id":"newspapers","name":"Newspapers","description":"Newspaper reports and archived editions."},
+    {"id":"books","name":"Books & Research","description":"Books, studies, journals and research publications."},
+    {"id":"reports","name":"Reports","description":"Institutional, humanitarian and analytical reports."},
+    {"id":"maps","name":"Maps","description":"Historical and geographic maps."},
+    {"id":"photographs","name":"Photographs & Media","description":"Photographs, posters and audiovisual references."},
+    {"id":"people","name":"People","description":"Biographical and archival records on people."},
+    {"id":"institutions","name":"Institutions","description":"Organizations, authorities and institutions."},
+    {"id":"oral-history","name":"Oral History","description":"Recorded memories and testimony with source notes."},
+    {"id":"current-news","name":"News Archive","description":"Published Southern Revolution news records."},
+    {"id":"references","name":"Reference Index","description":"Cross-referenced bibliographic and source material."}
+  ],
+  "stats": {"total_records": 0, "sources": 0, "regions": 0},
+  "items": []
+}
