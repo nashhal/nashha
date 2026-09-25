@@ -339,9 +339,6 @@ def render_library_item(record: dict) -> str:
 <meta property="og:description" content="{esc(description[:300])}">
 <meta property="og:url" content="{library_item_url(rid)}">
 <meta property="og:site_name" content="The Southern Revolution">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
 <style>
 :root{{--paper:#fffdf8;--bg:#d9d7d1;--ink:#141414;--muted:#716c64;--line:rgba(20,20,20,.18);--black:#0e0e0d}}
 *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}}a{{color:inherit;text-decoration:none}}
