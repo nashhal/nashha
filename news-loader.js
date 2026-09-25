@@ -21,9 +21,13 @@
   const clean = (value = '') => String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const escapeHtml = (value = '') => clean(value).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
   const safeUrl = (value = '') => {
-    if (!String(value).trim()) return '#';
-    try { const url = new URL(String(value), window.location.href); return ['http:', 'https:'].includes(url.protocol) ? url.href : '#'; }
-    catch (_) { return '#'; }
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    try {
+      const url = new URL(raw, window.location.href);
+      if (url.origin !== window.location.origin) return '';
+      return url.href;
+    } catch (_) { return ''; }
   };
   const articleUrl = item => `articles/${encodeURIComponent(item.id)}.html`;
 
@@ -73,7 +77,6 @@
     const title = clean(item.title_en || '');
     const summary = clean(item.summary_en || '');
     const sourceName = clean(item.source_name_en || item.source_name || item.source || item.publisher || '');
-    const sourceUrl = safeUrl(item.source_url || item.link || item.url || '#');
     const published = item.published || item.published_at || item.pubDate || item.date || '';
     const category = clean(item.category_en || item.category || item.region || 'Yemen');
     const text = `${title} ${summary}`.toLowerCase();
@@ -81,7 +84,7 @@
     const imageValue = String(item.image || item.image_url || item.thumbnail || '').trim();
     const id = String(item.id || item.event_key || `${Date.parse(published) || index}-${title.slice(0,40)}`);
     return {
-      id, title, summary, sourceName, sourceUrl, published, category,
+      id, title, summary, sourceName, published, category,
       status: clean(item.status || 'published'), confidence: clean(item.confidence || ''),
       verification: clean(item.verification || ''), verificationScore: Number(item.verification_score || 0),
       evidenceCount: Number(item.verification_evidence_count || 0),
