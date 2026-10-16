@@ -9,6 +9,6 @@
   "theme_color": "#111111",
   "description": "English digital newspaper covering Southern Yemen with reporting, context and source transparency.",
   "icons": [
-    {"src":"logo-square.svg","sizes":"any","type":"image/svg+xml"}
+    {"src":"logo-square.svg?v=20261016","sizes":"any","type":"image/svg+xml"}
   ]
 }
